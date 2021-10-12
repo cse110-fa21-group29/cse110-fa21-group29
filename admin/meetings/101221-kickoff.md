@@ -11,8 +11,6 @@ Location: Zoom<br>
 
 ## Attendance ##
 
-______
-
 - ### Present ###
     1. Tri Dao 
     2. Edbert Dai
@@ -32,15 +30,11 @@ ______
 
 ## Purpose Of Meeting ##
 
-______
-
 To complete the assignments due this week.(Branding, Contract, Bonding).
 
 <br>
 
 ## Decisions Made ##
-
-______
 
 - Jiayi will create the branding page.
 - Contract has been mostly outlined and decided.
@@ -49,8 +43,6 @@ ______
 <br>
 
 ## Agenda and Meeting Notes ##
-
-_______
 
 ### Tasks To Be Completed ###
 
