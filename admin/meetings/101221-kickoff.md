@@ -17,7 +17,7 @@ Location: Zoom<br>
     3. Avery Pham
     4. Fangcheng Dou
     5. Haonan Jiang
-    6. Jiayi Zhang
+    6. Jiayi Zhao
     7. Justin Butera
     8. Zhuoran Tang
     9. Jeffrey Morales
