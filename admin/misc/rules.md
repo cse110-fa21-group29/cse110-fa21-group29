@@ -4,7 +4,7 @@ Creation 10/12/2021
 
 ## 1) Group Identification
 Group #29  
-Instruction - Thomas Allen Powell  
+Instructor - Thomas Allen Powell  
 Team Name - Red Pandas  
 
 Team member info:
