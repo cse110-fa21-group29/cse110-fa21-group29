@@ -1,6 +1,6 @@
 # Team Red Pandas #
 
-![Red Pandas Brand](red-panda.png)
+![Red Pandas Brand](branding/red-panda.png)
 
 ## Team Values ##
 
@@ -20,11 +20,11 @@
     - Hi, my name is Edbert Dai. I'm currently a senior majoring in Computer Science. In my free time, I like to play video games and watch movies. (https://edbertdai.github.io/fa21-cse110-lab1)
 - Enzo de Oliveira
     - I am a third year student majoring in Computer Science and minoring in Mathematics. My hobbies include running and playing the guitar. (https://edeolive.github.io/CSE110-Lab1/
-- Fangcheng Dou)
+- Fangcheng Dou
     - I am currently a fourth-year student majoring in Computer Science and Engineering. I like playing video games. (https://fangchengdou.github.io/)
 - Haonan Jiang
     - I am a thrid-year computer science major. I like working out and playing video games. I enjoy traveling but cannot do so due to pandemic. (https://solowyhn.github.io/CSE110-LAB1/)
-- Jefferey Morales
+- Jeffrey Morales
     - I'm currently a fourth year majoring in Management Science with minors in Computer Science and Accounting. I love watching and playing basketball and hanging out with friends. (https://github.com/j1morale)
 - Jiayi Zhao
     - I am currently a third year student majoring in Mathematics-Computer Science and Cognitive Science specialize in machine learning and neural computation. My hobby is staying at home and play with my cat. (https://vikizzz.github.io) 
