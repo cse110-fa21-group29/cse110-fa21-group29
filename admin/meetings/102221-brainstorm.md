@@ -72,7 +72,7 @@ We will first start by making the recipe manager aggregator based and if time al
 
 Baha wrote down some APIs that may help us implement the aggregator.
 - Spoonacular
-- Edenmam
+- Edemam
 
 Since we modified our target audience, the user expectations needed to be expanded upon. Also, we dicussed some additional points that all users would expect out of any app.
 The following was added:
