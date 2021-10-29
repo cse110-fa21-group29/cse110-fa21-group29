@@ -4,7 +4,8 @@
 2. Afterwards, team leaders or lead developer will create GitHub issues for each **development task**
 	* Should be broken down to smaller chunks
 	* Should have a title, basic description, link to mockup (if needed)
-	* Should be assigned to a developer, labelled, and put in the “Sprint To Do” column
+	* Should be assigned to a developer, labelled
+	* Each issue will automatically be added to the "To Do" column
 	* Bugs should be in separate GitHub issues and have a separate branch for the bug fix
 
 ## Workflow While Developing
@@ -24,7 +25,7 @@
 			* `feat/6-initial-menu-bar`
 			* `bug/17-repeated-recipes`
 			* `bug/12`
-3. The developer will also move the issue from “Sprint To Do” to “In Progress”
+3. The developer will also move the issue from “To Do” to “In Progress”
 4. The developer will add commits with their work (specific to this feature)
 	* When code is committed, we will use `prettier` (code formatting) and `eslint` (preventing bugs/unnecessary code) to ensure consistency
 		* These tools work automatically, and will modify your code as you are committing
@@ -61,7 +62,7 @@
 1. When the feature is complete, create a new Pull Request for the feature branch
 	* The PR should have a name and a short description of what the branch actually contains
 	* The PR should be labelled and linked to the relevant GitHub issue
-	* This will automatically move the issue from “In Progress” to “Ready for Review”
+	* The developer should move the issue from "In Progress" to "Ready for Review"
 2. The developer should merge `main` into their feature branch and resolve merge conflicts if necessary
 3. If the automated checks on the PR (linter, tests) fail, the developer should investigate and commit any necessary changes
 4. When ready, the developer should request review from Justin
