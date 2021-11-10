@@ -1,0 +1,31 @@
+.recipe-card-section {
+  height: 500px;
+  position: relative;
+  border: 1px solid blueviolet;
+}
+
+.recipe-card-grid {
+  border: 1px solid blue;
+  margin: 50px 5%;
+}
+
+.recipe-card {
+  background-color: aqua;
+  height: 300px;
+  margin: 50px;
+  border: 1px solid red;
+}
+
+.prev-button {
+  position: absolute;
+  top: 50%;
+  left: 2%;
+  font-size: 2em;
+}
+
+.next-button {
+  position: absolute;
+  top: 50%;
+  right: 2%;
+  font-size: 2em;
+}

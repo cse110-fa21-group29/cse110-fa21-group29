@@ -4,6 +4,7 @@ $(document).ready(function () {
         slidesToShow: 3,
         slidesToScroll: 3,
         nextArrow: $(".next-button"),
-        prevArrow: $(".prev-button")
+        prevArrow: $(".prev-button"),
+
     });
 });
