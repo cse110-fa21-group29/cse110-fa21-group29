@@ -9,9 +9,8 @@
 
 <body>
     <form>
-        <img id="recipe-img" alt="recipe-img" src="placeholder-image.png" onclick=""/>
-        <input type='file' onchange="readURL('recipe-img');" id="recipe-img-upload-button" />
-        <input type='image' src="placeholder-image.png">
+        <label for="recipe-img-upload-button" id="recipe-img"></label>
+        <input type='file' onchange="readURL(this,'recipe-img');" id="recipe-img-upload-button" />
         <section id="recipe-properties">
             <label id="nutritional-information" for="nutritional-information-input">Nutritional Information: </label>
             <textarea id="nutritional-information-input"></textarea>
@@ -69,6 +68,7 @@
         <div id="ingredients">Ingredients</div>
         <div id="ingredients-input-grid">
             <i class="fas fa-plus-circle plus-button"></i>
+
             <input type="text" id="ingredients-1">
             <i class="fas fa-plus-circle plus-button"></i>
             <input type="text" id="ingredients-2">
@@ -82,7 +82,12 @@
             <i class="fas fa-plus-circle plus-button"></i>
             <div id="steps-grid-1">
                 <textarea id="steps-1">Step 1...</textarea>
-                <div class="img-upload">img1</div>
+
+                <label for="recipe-img-upload-button" id="steps-img-1" class="img-upload-img"></label>
+                <input type='file' onchange="readURL(this,'steps-img-1');" id="steps-img-upload-button-1"
+                    class="img-upload-button" />
+
+
                 <i class="fas fa-minus-circle minus-button"></i>
             </div>
             <div id="steps-grid-2">

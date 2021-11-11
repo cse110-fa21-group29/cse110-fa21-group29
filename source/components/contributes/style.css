@@ -9,7 +9,8 @@ form {
   margin: auto;
 }
 
-#recipe-img {
+#recipe-img,
+#recipe-img-upload-button {
   position: absolute;
   width: 515px;
   height: 277px;
@@ -156,7 +157,8 @@ form {
   height: 100px;
   left: 95px;
 }
-#steps-input-grid .img-upload {
+#steps-input-grid .img-upload-img,
+#steps-input-grid .img-upload-button {
   width: 300px;
   height: 100px;
   margin-top: auto;
@@ -187,7 +189,18 @@ form {
   right: 40px;
 }
 
-#recipe-img-upload-button {
-  position:absolute;
-  /* display: none; */
+#recipe-img-upload-button,
+.img-upload-button {
+  position: absolute;
+  cursor: pointer;
+  display: none;
+}
+
+#recipe-img,
+.img-upload-img {
+  background-image: url(placeholder-image.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
 }
