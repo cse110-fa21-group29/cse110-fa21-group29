@@ -1,3 +1,5 @@
+// used for build horizontal scroll recipes
+// https://kenwheeler.github.io/slick/
 let x = []
 for (let i = 1; i < 20; i++) {
     x[i] = {

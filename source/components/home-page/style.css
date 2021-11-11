@@ -12,7 +12,6 @@ body{
 .recipe-card-grid-3 {
   margin: 0px 5% 30px 5%;
   height: 500px;
-  /* border: 1px solid brown; */
 }
 
 .recipe-card {
@@ -41,7 +40,6 @@ body{
   height: 10%;
 }
 .recipe-card-stats {
-  /* border-top: 1px solid rgba(196, 30, 30, 0.514); */
   margin: 0px;
   height: 20%;
   display: grid;
