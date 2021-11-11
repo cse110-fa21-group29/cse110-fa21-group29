@@ -9,7 +9,9 @@
 
 <body>
     <form>
-        <div id="recipe-img">recipe img</div>
+        <img id="recipe-img" alt="recipe-img" src="placeholder-image.png" onclick=""/>
+        <input type='file' onchange="readURL('recipe-img');" id="recipe-img-upload-button" />
+        <input type='image' src="placeholder-image.png">
         <section id="recipe-properties">
             <label id="nutritional-information" for="nutritional-information-input">Nutritional Information: </label>
             <textarea id="nutritional-information-input"></textarea>
@@ -55,7 +57,7 @@
                 <option value="sub-category-4">sub-category-4</option>
             </select>
         </section>
-        <label id="title" for="title-input">Title:</label>
+        <label id="title" for="title-input">Title</label>
         <input type="text" id="title-input">
         <label id="author-information" for="author-information-input">Author Information</label>
         <input type="text" id="author-information-input">
@@ -66,27 +68,27 @@
         <div id="block"></div>
         <div id="ingredients">Ingredients</div>
         <div id="ingredients-input-grid">
-            <i class="fas fa-plus-circle"></i>
+            <i class="fas fa-plus-circle plus-button"></i>
             <input type="text" id="ingredients-1">
-            <i class="fas fa-minus-circle"></i>
+            <i class="fas fa-plus-circle plus-button"></i>
             <input type="text" id="ingredients-2">
-            <i class="fas fa-minus-circle"></i>
+            <i class="fas fa-plus-circle plus-button"></i>
             <input type="text" id="ingredients-3">
-            <i class="fas fa-minus-circle"></i>
+            <i class="fas fa-plus-circle plus-button"></i>
         </div>
 
         <div id="steps">Steps</div>
         <div id="steps-input-grid">
-            <i class="fas fa-plus-circle"></i>
+            <i class="fas fa-plus-circle plus-button"></i>
             <div id="steps-grid-1">
                 <textarea id="steps-1">Step 1...</textarea>
                 <div class="img-upload">img1</div>
-                <i class="fas fa-minus-circle"></i>
+                <i class="fas fa-minus-circle minus-button"></i>
             </div>
             <div id="steps-grid-2">
                 <textarea id="steps-2">Step 2...</textarea>
                 <div class="img-upload">img2</div>
-                <i class="fas fa-minus-circle"></i>
+                <i class="fas fa-minus-circle minus-button"></i>
             </div>
         </div>
         <div id="button-part">
