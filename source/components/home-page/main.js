@@ -1,7 +1,7 @@
 let x = []
 for (let i = 1; i < 20; i++) {
     x[i] = {
-        breakpoint: 400 * i,
+        breakpoint: 450 * i,
         settings: {
             slidesToShow: i,
             slidesToScroll: i,
