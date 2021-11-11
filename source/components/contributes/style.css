@@ -1,0 +1,215 @@
+/* *{
+    border: 1px solid brown;
+}
+
+.flex-box{
+    display: flex;
+}
+
+#recipe-img{
+    width: 30%;
+    height: 20vw;
+    margin: 3vw;
+}
+
+#recipe-properties{
+    margin:3vw;
+    width: 50%;
+}
+
+#title-input{
+    width: 80%;
+} */
+
+* {
+  /* border: 1px solid brown; */
+  font-size: 20px;
+}
+
+
+form {
+  width: 1440px;
+  position: relative;
+  margin: auto;
+}
+
+#recipe-img {
+  position: absolute;
+  width: 515px;
+  height: 277px;
+  left: 45px;
+  top: 125px;
+}
+
+#recipe-properties {
+  position: absolute;
+  width: 688px;
+  height: 245px;
+  left: 704px;
+  top: 125px;
+}
+
+#title {
+  position: absolute;
+  width: 111px;
+  height: 32px;
+  left: 24px;
+  top: 402px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 42px;
+  text-align: center;
+}
+
+#title-input {
+  position: absolute;
+  width: 1349px;
+  height: 37px;
+  left: 45px;
+  top: 452px;
+}
+
+#author-information {
+  position: absolute;
+  width: 396px;
+  height: 46px;
+  left: -1px;
+  top: 511px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 42px;
+  text-align: center;
+}
+
+#author-information-input {
+  position: absolute;
+  width: 1349px;
+  height: 37px;
+  left: 46px;
+  top: 557px;
+}
+
+#description {
+  position: absolute;
+  width: 183px;
+  height: 42px;
+  left: 47px;
+  top: 624px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 42px;
+  text-align: center;
+}
+
+#description-input {
+  position: absolute;
+  width: 1348px;
+  height: 244px;
+  left: 45px;
+  top: 666px;
+}
+
+#block{
+    height: 946px;
+}
+
+#ingredients {
+  width: 300px;
+  height: 42px;
+  left: 80px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 42px;
+  text-align: center;
+}
+#ingredients-input-grid,#steps-input-grid{
+    border: 1px solid black;
+}
+#ingredients-input-grid,#steps-input-grid {
+    position: relative;
+  width: 1348px;
+  left: 46px;
+}
+
+#ingredients-input-grid > input {
+    margin: 20px;
+  width: 1106px;
+  height: 37px;
+  left: 95px;
+}
+
+.fa-plus-circle{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+#steps{
+    width: 180px;
+  height: 42px;
+  left: 46px;
+  margin-top: 50px;
+  margin-bottom: 10px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 42px;
+  text-align: center;
+}
+
+#steps-input-grid > div{
+    display: flex;
+}
+#steps-input-grid  textarea {
+    margin: 20px;
+  width: 806px;
+  height: 100px;
+  left: 95px;
+}
+#steps-input-grid .img-upload{
+    width: 300px;
+    height: 100px;
+    margin-top:auto;
+    margin-bottom: auto;
+}
+
+#steps-input-grid .fa-minus-circle{
+    margin-left: 20px;
+    margin-top:auto;
+    margin-bottom: auto;
+}
+#button-part{
+    position: relative;
+    margin-top: 50px;
+    margin-bottom: 200px;
+
+}
+#cancel-button{
+    position: absolute;
+    width: 267px;
+height: 38px;
+left: 40px;
+}
+
+#submit-button{
+    position: absolute;
+    width: 267px;
+height: 38px;
+right: 40px;
+}
+
+
