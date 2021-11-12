@@ -1,5 +1,5 @@
-body{
-    min-width: 700px;
+body {
+  min-width: 700px;
 }
 
 .recipe-card-section {
@@ -7,9 +7,7 @@ body{
   position: relative;
 }
 
-.recipe-card-grid-1,
-.recipe-card-grid-2,
-.recipe-card-grid-3 {
+.recipe-card-grid {
   margin: 0px 5% 30px 5%;
   height: 500px;
 }
@@ -76,27 +74,22 @@ body{
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.6);
 }
 
-.recipe-category-1 {
+.recipe-category {
   text-align: center;
   margin-bottom: 0px;
+  width: 20%;
+}
+#recipe-category-1 {
   background-color: orange;
-  width: 20%;
 }
-.recipe-category-2 {
-  text-align: center;
-  margin-bottom: 0px;
+#recipe-category-2 {
   background-color: greenyellow;
-  width: 20%;
 }
-.recipe-category-3 {
-  text-align: center;
-  margin-bottom: 0px;
+#recipe-category-3 {
   background-color: rgb(62, 248, 239);
-  width: 20%;
 }
-
 #home-header {
-  background-image: url(headerimg.jpg);
+  background-image: url(../../static/home-page/headerimg.jpg);
   height: 500px;
   background-position: center;
   background-repeat: no-repeat;
@@ -112,15 +105,22 @@ body{
   font-size: 60px;
 }
 
-.fa-star {
-  position: absolute;
-  left: 20px;
-  top: 300px;
-  color: rgb(219, 175, 54);
-}
 #star-text {
   width: 40px;
   position: absolute;
   left: 90px;
   top: 360px;
+}
+
+.arrow-button-left,
+.arrow-button-right {
+  font-size: 7vw;
+}
+
+#star {
+  font-size: 200px;
+  position: absolute;
+  left: 20px;
+  top: 300px;
+  color: rgb(219, 175, 54);
 }
