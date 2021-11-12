@@ -91,7 +91,7 @@ body {
 }
 #home-header {
   background-image: url(../../static/home-page/headerimg.jpg);
-  height: 500px;
+  height: 40%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100%;
@@ -100,7 +100,7 @@ body {
 
 #title {
   top: 40%;
-  color: rgb(122, 78, 241);
+  color: white;
   line-height: 500px;
   text-shadow: 2px 2px black;
   font-size: 60px;
