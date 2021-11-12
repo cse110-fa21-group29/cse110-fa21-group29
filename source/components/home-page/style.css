@@ -1,6 +1,5 @@
 body {
   min-width: 700px;
-  margin: 0px;
 }
 
 .recipe-card-section {
@@ -91,7 +90,7 @@ body {
 }
 #home-header {
   background-image: url(../../static/home-page/headerimg.jpg);
-  height: 40%;
+  height: 500px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100%;
@@ -100,28 +99,28 @@ body {
 
 #title {
   top: 40%;
-  color: white;
+  color: rgb(253, 226, 204);
   line-height: 500px;
   text-shadow: 2px 2px black;
   font-size: 60px;
 }
 
-/* #star-text {
+#star-text {
   width: 40px;
   position: absolute;
   left: 90px;
   top: 360px;
-} */
+}
 
 .arrow-button-left,
 .arrow-button-right {
   font-size: 7vw;
 }
 
-/* #star {
+#star {
   font-size: 200px;
   position: absolute;
   left: 20px;
   top: 300px;
   color: rgb(219, 175, 54);
-} */
+}
