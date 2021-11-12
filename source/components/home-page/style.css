@@ -1,5 +1,6 @@
 body {
   min-width: 700px;
+  margin: 0px;
 }
 
 .recipe-card-section {
@@ -99,28 +100,28 @@ body {
 
 #title {
   top: 40%;
-  color: white;
+  color: rgb(122, 78, 241);
   line-height: 500px;
   text-shadow: 2px 2px black;
   font-size: 60px;
 }
 
-#star-text {
+/* #star-text {
   width: 40px;
   position: absolute;
   left: 90px;
   top: 360px;
-}
+} */
 
 .arrow-button-left,
 .arrow-button-right {
   font-size: 7vw;
 }
 
-#star {
+/* #star {
   font-size: 200px;
   position: absolute;
   left: 20px;
   top: 300px;
   color: rgb(219, 175, 54);
-}
+} */
