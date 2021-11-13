@@ -1,112 +1,120 @@
 <html>
-
-<head>
+  <head>
     <title>contribute</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/e4decbc4b8.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/e4decbc4b8.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="main.js"></script>
 
     <!-- FilePond is used to upload image and review
          https://pqina.nl/filepond/ -->
-    <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet" />
-    <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css"
-        rel="stylesheet" />
+    <link
+      href="https://unpkg.com/filepond/dist/filepond.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css"
+      rel="stylesheet"
+    />
     <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
     <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <form>
+      <input type="file" name="filepond" class="filepond" id="recipe-img" />
+      <section id="recipe-properties">
+        <label id="nutritional-information" for="nutritional-information-input"
+          >Nutritional Information:
+        </label>
+        <textarea id="nutritional-information-input"></textarea>
+        <br />
+        <label id="cost" for="cost-input">Cost: </label>
+        <input type="text" id="cost-input" />
+        <br />
+        <label id="time" for="time-input">Time: </label>
+        <input type="text" id="time-input" />
+        <br />
+        <label id="serving-size" for="serving-size-input">Serving Size: </label>
+        <input type="text" id="serving-size-input" />
+        <br />
+        <label for="category-1">category-1:</label>
+        <select id="category-1" name="category-1">
+          <option value="sub-category-1">sub-category-1</option>
+          <option value="sub-category-2">sub-category-2</option>
+          <option value="sub-category-3">sub-category-3</option>
+          <option value="sub-category-4">sub-category-4</option>
+        </select>
+        <br />
+        <label for="category-2">category-2:</label>
+        <select id="category-2" name="category-1">
+          <option value="sub-category-1">sub-category-1</option>
+          <option value="sub-category-2">sub-category-2</option>
+          <option value="sub-category-3">sub-category-3</option>
+          <option value="sub-category-4">sub-category-4</option>
+        </select>
+        <br />
+        <label for="category-3">category-3:</label>
+        <select id="category-3" name="category-1">
+          <option value="sub-category-1">sub-category-1</option>
+          <option value="sub-category-2">sub-category-2</option>
+          <option value="sub-category-3">sub-category-3</option>
+          <option value="sub-category-4">sub-category-4</option>
+        </select>
+        <br />
+        <label for="category-4">category-4:</label>
+        <select id="category-4" name="category-1">
+          <option value="sub-category-1">sub-category-1</option>
+          <option value="sub-category-2">sub-category-2</option>
+          <option value="sub-category-3">sub-category-3</option>
+          <option value="sub-category-4">sub-category-4</option>
+        </select>
+      </section>
+      <label id="title" for="title-input">Title:</label>
+      <input type="text" id="title-input" />
+      <label id="author-information" for="author-information-input"
+        >Author Information</label
+      >
+      <input type="text" id="author-information-input" />
+      <label id="description" for="description-input">Description</label>
+      <textarea id="description-input"></textarea>
 
-        <input type="file" name="filepond" class="filepond" id="recipe-img">
-        <section id="recipe-properties">
-            <label id="nutritional-information" for="nutritional-information-input">Nutritional Information: </label>
-            <textarea id="nutritional-information-input"></textarea>
-            <br>
-            <label id="cost" for="cost-input">Cost: </label>
-            <input type="text" id="cost-input">
-            <br>
-            <label id="time" for="time-input">Time: </label>
-            <input type="text" id="time-input">
-            <br>
-            <label id="serving-size" for="serving-size-input">Serving Size: </label>
-            <input type="text" id="serving-size-input">
-            <br>
-            <label for="category-1">category-1:</label>
-            <select id="category-1" name="category-1">
-                <option value="sub-category-1">sub-category-1</option>
-                <option value="sub-category-2">sub-category-2</option>
-                <option value="sub-category-3">sub-category-3</option>
-                <option value="sub-category-4">sub-category-4</option>
-            </select>
-            <br>
-            <label for="category-2">category-2:</label>
-            <select id="category-2" name="category-1">
-                <option value="sub-category-1">sub-category-1</option>
-                <option value="sub-category-2">sub-category-2</option>
-                <option value="sub-category-3">sub-category-3</option>
-                <option value="sub-category-4">sub-category-4</option>
-            </select>
-            <br>
-            <label for="category-3">category-3:</label>
-            <select id="category-3" name="category-1">
-                <option value="sub-category-1">sub-category-1</option>
-                <option value="sub-category-2">sub-category-2</option>
-                <option value="sub-category-3">sub-category-3</option>
-                <option value="sub-category-4">sub-category-4</option>
-            </select>
-            <br>
-            <label for="category-4">category-4:</label>
-            <select id="category-4" name="category-1">
-                <option value="sub-category-1">sub-category-1</option>
-                <option value="sub-category-2">sub-category-2</option>
-                <option value="sub-category-3">sub-category-3</option>
-                <option value="sub-category-4">sub-category-4</option>
-            </select>
-        </section>
-        <label id="title" for="title-input">Title:</label>
-        <input type="text" id="title-input">
-        <label id="author-information" for="author-information-input">Author Information</label>
-        <input type="text" id="author-information-input">
-        <label id="description" for="description-input">Description</label>
-        <textarea id="description-input"></textarea>
+      <div id="block"></div>
+      <div id="ingredients">Ingredients</div>
+      <div id="ingredients-input-grid">
+        <i
+          class="fas fa-plus-circle plus-button"
+          id="ingredients-plus-button"
+        ></i>
 
+        <input type="text" id="ingredients-1" />
+        <i class="fas fa-minus-circle"></i>
+        <input type="text" id="ingredients-2" />
+        <i class="fas fa-minus-circle"></i>
+        <input type="text" id="ingredients-3" />
+        <i class="fas fa-minus-circle"></i>
+      </div>
 
-        <div id="block"></div>
-        <div id="ingredients">Ingredients</div>
-        <div id="ingredients-input-grid">
-            <i class="fas fa-plus-circle plus-button" id="ingredients-plus-button"></i>
-
-            <input type="text" id="ingredients-1">
-            <i class="fas fa-minus-circle"></i>
-            <input type="text" id="ingredients-2">
-            <i class="fas fa-minus-circle"></i>
-            <input type="text" id="ingredients-3">
-            <i class="fas fa-minus-circle"></i>
+      <div id="steps">Steps</div>
+      <div id="steps-input-grid">
+        <i class="fas fa-plus-circle"></i>
+        <div id="steps-grid-1">
+          <textarea id="steps-1">Step 1...</textarea>
+          <input type="file" name="filepond" class="filepond img-upload" />
+          <i class="fas fa-minus-circle"></i>
         </div>
-
-        <div id="steps">Steps</div>
-        <div id="steps-input-grid">
-            <i class="fas fa-plus-circle"></i>
-            <div id="steps-grid-1">
-                <textarea id="steps-1">Step 1...</textarea>
-                <input type="file" name="filepond" class="filepond img-upload">
-                <i class="fas fa-minus-circle"></i>
-            </div>
-            <div id="steps-grid-2">
-                <textarea id="steps-2">Step 2...</textarea>
-                <input type="file" name="filepond" class="filepond img-upload">
-                <i class="fas fa-minus-circle"></i>
-            </div>
+        <div id="steps-grid-2">
+          <textarea id="steps-2">Step 2...</textarea>
+          <input type="file" name="filepond" class="filepond img-upload" />
+          <i class="fas fa-minus-circle"></i>
         </div>
-        <div id="button-part">
-            <button id="cancel-button" onclick="cancelConfirm()">Cancel</button>
-            <button id="submit-button" onclick="submitConfirm()">Submit</button>
-        </div>
-
+      </div>
+      <div id="button-part">
+        <button id="cancel-button" onclick="cancelConfirm()">Cancel</button>
+        <button id="submit-button" onclick="submitConfirm()">Submit</button>
+      </div>
     </form>
-
-
-</body>
-
+  </body>
 </html>
