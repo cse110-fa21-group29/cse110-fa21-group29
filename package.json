@@ -5,16 +5,5 @@
     "husky": "^7.0.4",
     "lint-staged": "^11.2.6",
     "prettier": "2.4.1"
-  },
-  "scripts": {
-    "prepare": "husky install"
-  },
-  "lint-staged": {
-    "./source/**/*.js": [
-      "eslint --fix"
-    ],
-    "./source/**": [
-      "prettier --write --ignore-unknown"
-    ]
   }
 }
