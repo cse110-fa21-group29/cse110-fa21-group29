@@ -7,11 +7,11 @@
     "prettier": "2.4.1"
   },
   "lint-staged": {
-    "./source/**/*.js": "eslint --fix",
-    "./source/**": "prettier --write --ignore-unknown"
+    "./**/*.js": "eslint --fix",
+    "./**": "prettier --write --ignore-unknown"
   },
   "scripts": {
-    "start": "node ./source/server.js",
-    "start-local": "node ./source/server-local.js"
+    "heroku-prebuild": "cp package.json package-lock.json source && cd source && npm ci",
+    "start": "node ./server.js"
   }
 }
