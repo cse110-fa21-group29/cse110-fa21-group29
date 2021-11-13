@@ -8,9 +8,5 @@
   },
   "scripts": {
     "prepare": "husky install"
-  },
-  "lint-staged": {
-    "./source/**/*.js": "eslint --fix",
-    "./source/**": "prettier --write --ignore-unknown"
   }
 }
