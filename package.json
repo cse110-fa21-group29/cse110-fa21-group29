@@ -1,0 +1,13 @@
+{
+  "devDependencies": {
+    "eslint": "^8.2.0",
+    "eslint-config-prettier": "^8.3.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^11.2.6",
+    "prettier": "2.4.1"
+  },
+  "lint-staged": {
+    "./source/**/*.js": "eslint --fix",
+    "./source/**": "prettier --write --ignore-unknown"
+  }
+}
