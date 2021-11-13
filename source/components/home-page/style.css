@@ -11,14 +11,21 @@ body {
 .recipe-card-grid {
   margin: 0px 5% 30px 5%;
   height: 500px;
+
+  overflow-x: scroll;
+  overflow-y: hidden;
+  display: flex;
+  white-space: nowrap;
 }
 
 .recipe-card {
-  height: 80%;
+  height: 30vh;
+  width: 20vh;
+  min-width: 20vh;
   margin: 3vw 30px;
   transition: 0.5s ease;
   cursor: pointer;
-  display: grid;
+  /* display: grid; */
   border-radius: 18px;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
   text-align: center;
@@ -37,14 +44,17 @@ body {
 .recipe-card-name {
   margin: 0px;
   height: 10%;
+  display: flex;
+}
+
+.recipe-card-name div {
+  margin: auto;
 }
 .recipe-card-stats {
   margin: 0px;
   height: 20%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  border-bottom-left-radius: 18px;
-  border-bottom-right-radius: 18px;
 }
 
 .recipe-card-stats .stat {
