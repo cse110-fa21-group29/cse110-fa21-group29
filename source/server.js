@@ -4,6 +4,7 @@
 let http = require("http");
 let fs = require("fs");
 let path = require("path");
+const PORT = process.env.PORT || 5000;
 
 http
   .createServer((request, response) => {
@@ -50,5 +51,5 @@ http
       }
     });
   })
-  .listen(8125);
-console.log("Server running");
+  .listen(PORT);
+console.log(`Server running on port ${PORT}`);
