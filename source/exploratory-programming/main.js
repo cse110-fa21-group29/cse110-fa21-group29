@@ -8,7 +8,6 @@ window.addEventListener("DOMContentLoaded", () => {
     recipeCard.data = "test data " + i;
     recipeCardContainer.appendChild(recipeCard);
   }
-  sdfoisndfosidnfoin
 
   const newRecipe = {
     id: 1,
