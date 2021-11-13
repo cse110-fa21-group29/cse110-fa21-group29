@@ -1,3 +1,4 @@
+// Horizontal Scroll recipes
 window.addEventListener("DOMContentLoaded", () => {
   for (let i = 1; i < 4; i++) {
     let recippecardgrid = document.getElementById("recipe-card-grid-" + i);

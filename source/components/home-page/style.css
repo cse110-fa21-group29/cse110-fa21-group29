@@ -10,7 +10,7 @@ body {
 
 .recipe-card-grid {
   margin: 0px 5% 30px 5%;
-  height: 500px;
+  height: 600px;
 
   overflow: hidden;
   display: flex;
@@ -48,6 +48,7 @@ body {
 
 .recipe-card-name div {
   margin: auto;
+  font-size: x-large;
 }
 .recipe-card-stats {
   margin: 0px;
@@ -62,7 +63,7 @@ body {
   justify-content: center;
   flex-direction: column;
   color: grey;
-  padding: 10px;
+  font-size: small;
 }
 
 .fa-angle-left {
@@ -116,22 +117,22 @@ body {
   font-size: 3vw;
 }
 
-#star-text {
+/* #star-text {
   width: 40px;
   position: absolute;
   left: 90px;
   top: 360px;
-}
+} */
 
 .arrow-button-left,
 .arrow-button-right {
-  font-size: 7vw;
+  font-size: 5vw;
 }
 
-#star {
+/* #star {
   font-size: 200px;
   position: absolute;
   left: 20px;
   top: 300px;
   color: rgb(219, 175, 54);
-}
+} */
