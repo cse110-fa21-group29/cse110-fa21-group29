@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   routerSetup();
 });
 
@@ -7,10 +7,10 @@ document.addEventListener('DOMContentLoaded', () => {
 // and replaces it with child element relating to
 // new route.
 function routerSetup() {
-  document.addEventListener('router-navigate', (event) => {
-    const contentElement = document.getElementById('content');
+  document.addEventListener("router-navigate", (event) => {
+    const contentElement = document.getElementById("content");
     const oldRouteElement = contentElement.firstElementChild;
     const newRouteElement = document.createElement(event.detail);
     contentElement.replaceChild(newRouteElement, oldRouteElement);
-  })
+  });
 }
