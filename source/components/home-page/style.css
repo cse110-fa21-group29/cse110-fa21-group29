@@ -91,11 +91,12 @@ body {
 }
 #home-header {
   background-image: url(../../static/home-page/headerimg.jpg);
-  height: 50%;
+  height: 40%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100%;
   text-align: center;
+  max-height: 50vw;
 }
 
 #title {
