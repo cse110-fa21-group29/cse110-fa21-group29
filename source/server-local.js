@@ -1,4 +1,4 @@
-// Set up nodejs server HEROKU
+// Set up nodejs server LOCAL
 // Adapted from https://developer.mozilla.org/en-US/docs/Learn/Server-side/Node_server_without_framework
 
 let http = require("http");
@@ -10,9 +10,9 @@ http
   .createServer((request, response) => {
     console.log(`request: ${request.url}`);
 
-    let filePath = "." + request.url;
-    if (filePath === "./") {
-      filePath = "./index.html";
+    let filePath = "./source" + request.url;
+    if (filePath === "./source/") {
+      filePath = "./source/index.html";
     }
 
     let extName = String(path.extname(filePath)).toLowerCase();
