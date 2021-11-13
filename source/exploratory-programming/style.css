@@ -1,0 +1,5 @@
+.recipe-card-grid-container {
+  display: flex;
+  flex-direction: row;
+  column-gap: 20px;
+}
