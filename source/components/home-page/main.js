@@ -32,7 +32,7 @@ window.addEventListener("DOMContentLoaded", () => {
 function recipeScroll(scrollleft, recipegrid) {
   if (scrollleft) {
     recipegrid.scroll({
-      left: recipegrid.scrollLeft - recipegrid.clientWidth,
+      left: recipegrid.scrollLeft - (recipegrid.clientWidth * 3) / 4,
       behavior: "smooth",
     });
   } else {
