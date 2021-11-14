@@ -136,3 +136,29 @@ body {
   top: 300px;
   color: rgb(219, 175, 54);
 } */
+
+/* about us */
+#about-us {
+  text-align: center;
+  background-color: fff1f1;
+  padding: 5vw;
+}
+#about-us-title {
+  height: 10vh;
+  font-size: 4vw;
+}
+#about-us-flexbox {
+  display: flex;
+}
+
+#about-us-img {
+  margin: 5vw;
+  width: 30vw;
+}
+
+#about-us-text {
+  border-radius: 20px;
+  background-color: white;
+  padding: 4%;
+  margin: 5vw;
+}
