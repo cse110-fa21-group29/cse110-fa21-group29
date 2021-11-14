@@ -4,13 +4,13 @@ body {
 }
 
 .recipe-card-section {
-  height: 600px;
+  height: 45vh;
   position: relative;
 }
 
 .recipe-card-grid {
   margin: 0px 5% 30px 5%;
-  height: 600px;
+  height: 45vh;
 
   overflow: hidden;
   display: flex;
