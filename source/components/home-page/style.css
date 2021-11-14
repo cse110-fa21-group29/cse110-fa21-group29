@@ -18,9 +18,9 @@ body {
 }
 
 .recipe-card {
-  height: 30vh;
-  width: 20vh;
-  min-width: 20vh;
+  height: 25vh;
+  /* width: 20vh; */
+  min-width: 18vh;
   margin: 3vw 30px;
   transition: 0.5s ease;
   cursor: pointer;
