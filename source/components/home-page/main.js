@@ -13,6 +13,20 @@ window.addEventListener("DOMContentLoaded", () => {
         recipeScroll(false, recippecardgrid);
       });
   }
+
+  // copy recipe
+  let recipesample = document.getElementById("recipe-card-sample");
+  for (let i = 0; i < 20; i++) {
+    document
+      .getElementById("recipe-card-grid-1")
+      .append(recipesample.cloneNode(true));
+    document
+      .getElementById("recipe-card-grid-2")
+      .append(recipesample.cloneNode(true));
+    document
+      .getElementById("recipe-card-grid-3")
+      .append(recipesample.cloneNode(true));
+  }
 });
 
 function recipeScroll(scrollleft, recipegrid) {
