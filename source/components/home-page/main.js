@@ -37,7 +37,7 @@ function recipeScroll(scrollleft, recipegrid) {
     });
   } else {
     recipegrid.scroll({
-      left: recipegrid.scrollLeft + recipegrid.clientWidth,
+      left: recipegrid.scrollLeft + (recipegrid.clientWidth * 3) / 4,
       behavior: "smooth",
     });
   }
