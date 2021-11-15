@@ -1,30 +1,44 @@
-// used for build horizontal scroll recipes
-// https://kenwheeler.github.io/slick/
-let responsivelist = [];
-for (let i = 1; i < 20; i++) {
-  responsivelist[i] = {
-    breakpoint: 450 * i,
-    settings: {
-      slidesToShow: i,
-      slidesToScroll: i,
-      infinite: true,
-    },
-  };
-}
-$(document).ready(function () {
-  $("#recipe-card-grid-1").slick({
-    nextArrow: $("#next-button-1"),
-    prevArrow: $("#prev-button-1"),
-    responsive: responsivelist,
-  });
-  $("#recipe-card-grid-2").slick({
-    nextArrow: $("#next-button-2"),
-    prevArrow: $("#prev-button-2"),
-    responsive: responsivelist,
-  });
-  $("#recipe-card-grid-3").slick({
-    nextArrow: $("#next-button-3"),
-    prevArrow: $("#prev-button-3"),
-    responsive: responsivelist,
-  });
+// Horizontal Scroll recipes
+window.addEventListener("DOMContentLoaded", () => {
+  for (let i = 1; i < 4; i++) {
+    let recippecardgrid = document.getElementById("recipe-card-grid-" + i);
+    document
+      .getElementById("prev-button-" + i)
+      .addEventListener("click", () => {
+        recipeScroll(true, recippecardgrid);
+      });
+    document
+      .getElementById("next-button-" + i)
+      .addEventListener("click", () => {
+        recipeScroll(false, recippecardgrid);
+      });
+  }
+
+  // copy recipe
+  let recipesample = document.getElementById("recipe-card-sample");
+  for (let i = 0; i < 20; i++) {
+    document
+      .getElementById("recipe-card-grid-1")
+      .append(recipesample.cloneNode(true));
+    document
+      .getElementById("recipe-card-grid-2")
+      .append(recipesample.cloneNode(true));
+    document
+      .getElementById("recipe-card-grid-3")
+      .append(recipesample.cloneNode(true));
+  }
 });
+
+function recipeScroll(scrollleft, recipegrid) {
+  if (scrollleft) {
+    recipegrid.scroll({
+      left: recipegrid.scrollLeft - (recipegrid.clientWidth * 3) / 4,
+      behavior: "smooth",
+    });
+  } else {
+    recipegrid.scroll({
+      left: recipegrid.scrollLeft + (recipegrid.clientWidth * 3) / 4,
+      behavior: "smooth",
+    });
+  }
+}
