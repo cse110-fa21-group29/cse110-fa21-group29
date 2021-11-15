@@ -10,13 +10,23 @@ function routerSetup() {
   document.addEventListener("router-navigate", (event) => {
     const contentElement = document.getElementById("content");
     const oldRouteElement = contentElement.firstElementChild;
-    const newRouteElement = document.createElement(event.detail);
+    const newRouteElement = document.createElement(event.detail.route);
     contentElement.replaceChild(newRouteElement, oldRouteElement);
 
-    let routeUrl = `#${event.detail}`;
-    if (event.detail === "home-page") {
-      routeUrl = "#";
-    }
-    history.pushState(event.detail, event.detail, routeUrl);
+    history.pushState(
+      event.detail.route,
+      event.detail.route,
+      getRouterUrls(event.detail.route, event.detail.params)
+    );
   });
+}
+
+function getRouterUrls(route, params) {
+  const routerUrls = {
+    "home-page": "",
+    "recipe-details": `recipes/${params.id}`,
+    "recipe-contribute": `recipes/contribute`,
+  };
+
+  return `#/${routerUrls[route]}`;
 }

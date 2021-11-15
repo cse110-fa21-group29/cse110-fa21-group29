@@ -48,7 +48,12 @@ class HomePage extends HTMLElement {
       recipeCard.addEventListener("click", () => {
         // TODO: Add info about specific recipe card
         const routerEvent = new CustomEvent("router-navigate", {
-          detail: "recipe-details",
+          detail: {
+            route: "recipe-details",
+            params: {
+              id: 1,
+            },
+          },
           bubbles: true,
           composed: true,
         });

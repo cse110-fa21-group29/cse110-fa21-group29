@@ -17,7 +17,10 @@ class RecipeDetails extends HTMLElement {
     const buttonElement = this.shadowRoot.getElementById("button");
     buttonElement.addEventListener("click", () => {
       const routerEvent = new CustomEvent("router-navigate", {
-        detail: "home-page",
+        detail: {
+          route: "home-page",
+          params: {},
+        },
         bubbles: true,
         composed: true,
       });
