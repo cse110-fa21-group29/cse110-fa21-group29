@@ -1,6 +1,7 @@
 body {
   min-width: 700px;
   margin: 0px;
+  min-height: 600px;
 }
 
 .recipe-card-section {
