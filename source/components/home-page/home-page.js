@@ -45,6 +45,18 @@ class HomePage extends HTMLElement {
         .getElementById("recipe-card-grid-3")
         .append(recipesample.cloneNode(true));
     }
+
+    this.shadowRoot.querySelectorAll(".recipe-card").forEach((recipeCard) => {
+      recipeCard.addEventListener("click", () => {
+        // TODO: Add info about specific recipe card
+        const routerEvent = new CustomEvent("router-navigate", {
+          detail: "recipe-details",
+          bubbles: true,
+          composed: true,
+        });
+        recipeCard.dispatchEvent(routerEvent);
+      });
+    });
   }
 
   recipeScroll(scrollleft, recipegrid) {
