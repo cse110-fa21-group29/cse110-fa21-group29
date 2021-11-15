@@ -11,11 +11,9 @@ class HomePage extends HTMLElement {
     let elementContentText = await elementContent.text();
     this.shadowRoot.innerHTML = elementContentText;
     this.setupElement();
-    console.log("connected callback");
   }
 
   setupElement() {
-    console.log("setup element");
     for (let i = 1; i < 4; i++) {
       let recippecardgrid = this.shadowRoot.getElementById(
         "recipe-card-grid-" + i
