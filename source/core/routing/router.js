@@ -12,5 +12,11 @@ function routerSetup() {
     const oldRouteElement = contentElement.firstElementChild;
     const newRouteElement = document.createElement(event.detail);
     contentElement.replaceChild(newRouteElement, oldRouteElement);
+
+    let routeUrl = `#${event.detail}`;
+    if (event.detail === "home-page") {
+      routeUrl = "#";
+    }
+    history.pushState(event.detail, event.detail, routeUrl);
   });
 }
