@@ -141,24 +141,31 @@ body {
 #about-us {
   text-align: center;
   background-color: fff1f1;
-  padding: 5vw;
+  padding: 30px;
 }
 #about-us-title {
-  height: 10vh;
-  font-size: 4vw;
-}
-#about-us-flexbox {
-  display: flex;
+  font-size: 40px;
 }
 
 #about-us-img {
-  margin: 5vw;
-  width: 30vw;
+  /* margin: 20px; */
+  height: 200px;
+  width: 200px;
+  padding: 30px;
+  margin: 30px;
 }
 
 #about-us-text {
   border-radius: 20px;
   background-color: white;
-  padding: 4%;
-  margin: 5vw;
+  padding: 30px;
+  height: 200px;
+  width: 300px;
+  margin: 30px;
+  text-align: left;
+}
+
+#about-us-flexbox {
+  display: flex;
+  justify-content: center;
 }
