@@ -1,0 +1,313 @@
+.recipe-image {
+    position: absolute;
+    width: 611px;
+    height: 407px;
+    left: 27px;
+    top: 115px;
+}
+
+.title-author-box {
+    position: absolute;
+    width: 750px;
+    height: 407px;
+    left: 668px;
+    top: 115px;
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+h1.recipe-name {
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 64px;
+    line-height: 74px;
+    position: absolute;
+    width: 758px;
+    height: 60px;
+    left: 682px;
+    top: 131px;
+}
+
+h3.author-date {
+    position: absolute;
+    width: 788px;
+    height: 202px;
+    left: 683px;
+    top: 320px;
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 34px;
+    color: #000000;
+}
+
+.description-box {
+    position: absolute;
+    width: 1391px;
+    height: 314px;
+    left: 28px;
+    top: 547px;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+div.description-title {
+    text-align: center;
+    text-decoration: underline;
+    font-family: Ubuntu;
+    font-size: 30px;
+    padding-top: 15px;
+}
+
+div.description {
+    text-align: left;
+    font-family: Ubuntu;
+    font-size: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.ingredients {
+    position: absolute;
+    width: 1391px;
+    height: 641px;
+    left: 27px;
+    top: 1354px;
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+div.ing-title {
+    text-align: center;
+    text-decoration: underline;
+    font-family: Ubuntu;
+    font-size: 30px;
+    padding-top: 15px;
+}
+
+div.ing-list {
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 34px;
+    color: #000000;
+}
+
+.info-box {
+    position: absolute;
+    width: 760px;
+    height: 255px;
+    left: 28px;
+    top: 885px;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.category-box {
+    position: absolute;
+    width: 760px;
+    height: 145px;
+    left: 28px;
+    top: 1175px;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.nutrient-box {
+    position: absolute;
+    width: 600px;
+    height: 435px;
+    left: 820px;
+    top: 885px;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.info-title {
+    text-align: left;
+    text-decoration: underline;
+    font-family: Ubuntu;
+    font-size: 30px;
+    padding-top: 15px;
+    padding-left: 15px;
+}
+
+.info-list {
+    text-align: left;
+    font-family: Ubuntu;
+    font-size: 30px;
+    padding-left: 15px;
+}
+
+.category-title {
+    text-align: left;
+    text-decoration: underline;
+    font-family: Ubuntu;
+    font-size: 30px;
+    padding-top: 15px;
+    padding-left: 15px;
+}
+
+.category-list {
+    display: inline;
+    font-family: Ubuntu;
+    font-size: 30px;
+    color: #3AAd53;
+}
+
+.nutrient-title {
+    text-align: left;
+    text-decoration: underline;
+    font-family: Ubuntu;
+    font-size: 30px;
+    padding-top: 15px;
+    padding-left: 15px;
+}
+
+.nutrient-list {
+    text-align: left;
+    font-family: Ubuntu;
+    font-size: 30px;
+    padding-left: 15px;
+}
+
+li {
+    margin: 20px 0;
+}
+
+.direction-box {
+    position: absolute;
+    width: 1391px;
+    height: 641px;
+    left: 27px;
+    top: 2019px;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.direction-title {
+    text-align: center;
+    text-decoration: underline;
+    font-family: Ubuntu;
+    font-size: 30px;
+    padding-top: 15px;
+    padding-left: 15px;
+}
+
+.direction-list {
+    text-align: left;
+    font-family: Ubuntu;
+    font-size: 30px;
+    padding-left: 15px;
+}
+
+#comment-box {
+    position: absolute;
+    width: 1385px;
+    height: 727px;
+    left: 30px;
+    top: 2686px;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+    #comment-box #comment-box1 {
+        width: 1328px;
+        height: 160px;
+        left: 79px;
+        top: 3533px;
+        margin: auto;
+        margin-top: 2%;
+        background: #FFFFFF;
+        border: 1px solid #000000;
+        box-sizing: border-box;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+        #comment-box #comment-box1 #comment-box1-1 {
+            width: 800px;
+            height: 130px;
+            left: 79px;
+            top: 3533px;
+            margin-top: 1%;
+            margin-left: 1%;
+            background: #FFFFFF;
+            border: 1px solid #000000;
+            box-sizing: border-box;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        }
+    #comment-box #comment-box2 {
+        width: 1328px;
+        height: 468px;
+        left: 59px;
+        top: 3288px;
+        margin: auto;
+        margin-top: 3%;
+        background: #FFFFFF;
+        border: 1px solid #000000;
+        box-sizing: border-box;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+        #comment-box #comment-box2 #comment-box2-1 {
+            width: 1293px;
+            height: 160px;
+            left: 79px;
+            top: 3303px;
+            margin: auto;
+            margin-top: 2%;
+            background: #FFFFFF;
+            border: 1px solid #000000;
+            box-sizing: border-box;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        }
+        #comment-box #comment-box2 #comment-box2-2 {
+            width: 1293px;
+            height: 160px;
+            left: 79px;
+            top: 3533px;
+            margin: auto;
+            margin-top: 4%;
+            background: #FFFFFF;
+            border: 1px solid #000000;
+            box-sizing: border-box;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        }
+
+.footer-box {
+    position: absolute;
+    width: 1440px;
+    height: 45px;
+    left: 0px;
+    top: 3476px;
+
+    background: #C4C4C4;
+}
+
+.footer-text {
+    position: absolute;
+    width: 595px;
+    height: 25.12px;
+    left: 423px;
+    top: 3485.47px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    text-align: center;
+
+    color: #000000;
+}
+
