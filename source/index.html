@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <title>Yummy Recipes: A Red Pandas Company</title>
+    <!-- Global stylesheet -->
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="static/font-awesome/css/all.min.css" />
+
+    <!-- Global JS -->
+    <script src="main.js" type="module"></script>
+    <script src="core/routing/router.js" type="module"></script>
+
+    <!-- Component JS -->
+    <script
+      src="./components/common/footer/common-footer.js"
+      type="module"
+    ></script>
+    <script
+      src="./components/common/nav-bar/common-nav-bar.js"
+      type="module"
+    ></script>
+    <script src="./components/home-page/home-page.js" type="module"></script>
+    <script
+      src="./components/recipe-details/recipe-details.js"
+      type="module"
+    ></script>
+  </head>
+  <body>
+    <header>
+      <common-nav-bar></common-nav-bar>
+    </header>
+
+    <main>
+      <!-- Filled in with correct component based on route -->
+      <!-- Initial route is home-page -->
+      <div id="content">
+        <home-page></home-page>
+      </div>
+    </main>
+
+    <footer>
+      <common-footer></common-footer>
+    </footer>
+  </body>
+</html>
