@@ -10,7 +10,10 @@ class CommonNavBar extends HTMLElement {
     );
     let elementContentText = await elementContent.text();
     this.shadowRoot.innerHTML = elementContentText;
+    this.setupElement();
   }
+
+  setupElement() {}
 }
 
 customElements.define("common-nav-bar", CommonNavBar);
