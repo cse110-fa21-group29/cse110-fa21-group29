@@ -19,7 +19,7 @@ class RecipeDetails extends HTMLElement {
       const routerEvent = new CustomEvent("router-navigate", {
         detail: {
           route: "home-page",
-          params: {},
+          params: [],
         },
         bubbles: true,
         composed: true,

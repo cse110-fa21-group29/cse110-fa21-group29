@@ -50,9 +50,7 @@ class HomePage extends HTMLElement {
         const routerEvent = new CustomEvent("router-navigate", {
           detail: {
             route: "recipe-details",
-            params: {
-              id: 1,
-            },
+            params: [1],
           },
           bubbles: true,
           composed: true,
