@@ -1,0 +1,40 @@
+#top-grid,
+#bottom-grid {
+  display: flex;
+  text-align: center;
+}
+#timer {
+  width: 50vw;
+  height: 30vh;
+  border: solid black 1px;
+}
+#back-button,
+#next-button {
+  width: 20%;
+  height: 20vh;
+  margin: auto;
+  border-radius: 10px;
+  border: none;
+  font-size: xx-large;
+  color: white;
+}
+#back-button {
+  background-color: F93F3F;
+}
+#next-button {
+  background-color: 2cb82c;
+}
+#direction {
+  width: 80vw;
+  border: solid black 1px;
+  border-radius: 10px;
+  margin: 10px;
+  height: 60vh;
+}
+#direction-img,
+#direction-video {
+  border: solid black 1px;
+  height: 45%;
+  width: 30vw;
+  margin: 10px;
+}
