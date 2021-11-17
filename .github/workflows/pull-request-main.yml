@@ -33,7 +33,7 @@ jobs:
           prettier_dir: source/
   
   build-and-preview-firebase-hosting-main:
-    name: Build and preview firebase
+    name: Build and preview firebase hosting
     if: '${{ github.event.pull_request.head.repo.full_name == github.repository }}'
     runs-on: ubuntu-latest
     steps:
