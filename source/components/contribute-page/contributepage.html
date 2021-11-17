@@ -1,85 +1,132 @@
 <html>
-
-<head>
+  <head>
     <link rel="stylesheet" type="text/css" href="style.css" />
     <script type="text/javascript" src="main.js"></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <form id="contribute-form">
-        <section id="left-side">
-            <h1>Recipe Cover Image</h1>
-            <input type="file" id="submit-img"onchange="uploadImg(event)">
+      <section id="left-side">
+        <h1>Recipe Cover Image<span class="red-star">*</span></h1>
+        <input type="file" id="submit-img" onchange="uploadImg(event)" />
 
-            <h1>Nutrients</h1>
-            <div id="recipe-left-grid">
-                <div>
-                    <label for="input-colories">Calories</label><br>
-                    <input type="text" id="input-colories" class="input-left-text">
-                </div>
-                <div>
-                    <label for="input-protein">Protein (in grams)</label><br>
-                    <input type="text" id="input-protein" class="input-left-text">
-                </div>
+        <h1>Nutrients</h1>
+        <div id="recipe-left-grid">
+          <div>
+            <label for="input-colories">Calories</label><br />
+            <input type="text" id="input-colories" class="input-left-text" />
+          </div>
+          <div>
+            <label for="input-protein">Protein (in grams)</label><br />
+            <input type="text" id="input-protein" class="input-left-text" />
+          </div>
 
+          <div>
+            <label for="input-fat">Fat (in grams)</label><br />
+            <input type="text" id="input-fat" class="input-left-text" />
+          </div>
+          <div>
+            <label for="input-number-of-servings">Number of servings</label
+            ><br />
+            <input
+              type="text"
+              id="input-number-of-servings"
+              class="input-left-text"
+            />
+          </div>
+        </div>
+        <h1>Categories</h1>
 
-                <div>
-                    <label for="input-fat">Fat (in grams)</label><br>
-                    <input type="text" id="input-fat" class="input-left-text">
-                </div>
-                <div>
-                    <label for="input-number-of-servings">Number of servings</label><br>
-                    <input type="text" id="input-number-of-servings" class="input-left-text">
-                </div>
-            </div>
-            <h1>Categories</h1>
+        <input type="checkbox" id="input-gluten-free" /><label
+          for="input-gluten-free"
+          >Gluten-Free</label
+        ><br />
 
-            <input type="checkbox" id="input-gluten-free"><label for="input-gluten-free">Gluten-Free</label><br>
+        <input type="checkbox" id="input-vegan" /><label for="input-vegan"
+          >Vegan</label
+        ><br />
 
-            <input type="checkbox" id="input-vegan"><label for="input-vegan">Vegan</label><br>
+        <input type="checkbox" id="input-vegetarian" /><label
+          for="input-vegetarian"
+          >Vegetarian</label
+        >
+      </section>
+      <section id="right-side">
+        <h1>Recipe General Information</h1>
+        <div>
+          <label for="input-recipe-title"
+            >Recipe Title<span class="red-star">*</span></label
+          ><br />
+          <input
+            type="text"
+            id="input-recipe-title"
+            class="input-right-text"
+            required
+          />
+        </div>
+        <div>
+          <label for="input-author">Author<span class="red-star">*</span></label
+          ><br />
+          <input
+            type="text"
+            id="input-author"
+            class="input-right-text"
+            required
+          />
+        </div>
+        <div>
+          <label for="input-video-url">Video URL</label><br />
+          <input type="text" id="input-video-url" class="input-right-text" />
+        </div>
+        <div>
+          <label for="input-time">Time<span class="red-star">*</span></label
+          ><br />
+          <input
+            type="text"
+            id="input-time"
+            class="input-right-text"
+            required
+          />
+        </div>
+        <div>
+          <label for="input-cost">Cost<span class="red-star">*</span></label
+          ><br />
+          <input
+            type="text"
+            id="input-cost"
+            class="input-right-text"
+            required
+          />
+        </div>
+        <div>
+          <label for="input-description"
+            >Description<span class="red-star">*</span></label
+          ><br />
+          <textarea
+            id="input-description"
+            class="right-textarea"
+            required
+          ></textarea>
+        </div>
+        <h1>Ingredients<span class="red-star">*</span></h1>
 
-            <input type="checkbox" id="input-vegetarian"><label for="input-vegetarian">Vegetarian</label>
+        <textarea
+          id="input-ingredient"
+          class="right-textarea"
+          placeholder="Put each ingredient on its own line."
+        ></textarea>
 
-        </section>
-        <section id="right-side">
-            <h1>Recipe General Information</h1>
-            <div>
-                <label for="input-recipe-title">Recipe Title</label><br>
-                <input type="text" id="input-recipe-title" class="input-right-text">
-            </div>
-            <div>
-                <label for="input-author">Author</label><br>
-                <input type="text" id="input-author" class="input-right-text">
-            </div>
-            <div>
-                <label for="input-video-url">Video URL</label><br>
-                <input type="text" id="input-video-url" class="input-right-text">
-            </div>
-            <div>
-                <label for="input-time">Time</label><br>
-                <input type="text" id="input-time" class="input-right-text">
-            </div>
-            <div>
-                <label for="input-cost">Cost</label><br>
-                <input type="text" id="input-cost" class="input-right-text">
-            </div>
-            <div>
-                <label for="input-description">Description</label><br>
-                <textarea id="input-description" class="right-textarea"></textarea>
-            </div>
-            <h1>Ingredients</h1>
+        <h1>Directions<span class="red-star">*</span></h1>
 
-            <textarea id="input-ingredient" class="right-textarea"></textarea>
+        <textarea
+          id="input-direction"
+          class="right-textarea"
+          placeholder="Put each step on its own line."
+        ></textarea>
 
-            <h1>Directions</h1>
-
-            <textarea id="input-direction" class="right-textarea"></textarea>
-
-            <button id="submit-button"onclick="confirm('submit?')">Submit</button>
-            <button id="cancel-button"onclick="confirm('cancel?')">Cancel</button>
-
-        </section>
+        <button id="submit-button" onclick="confirm('submit?')">Submit</button>
+        <button id="cancel-button" onclick="confirm('cancel?')">Cancel</button>
+      </section>
     </form>
-</body>
-
+  </body>
 </html>
