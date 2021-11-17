@@ -133,17 +133,31 @@ def parse_recipes():
 
 # add categories highProtein
 def category_highProtein():
+    file_read = 'source/models/json/0_parsedRecipes.json'
     file_name = 'source/models/json/parsedRecipes.json'
 
-    with open("{}{}.json".format(source_dir, file_name)) as jsonFile:
+    with open(file_read) as jsonFile:
         jsonObject = json.load(jsonFile)
+        high_protein_amount = 35
+
+        # loop through and add highProtein category
+        for index, recipe in enumerate(jsonObject):
+            recipe['categories']['highProtein'] = False
+            protein = recipe['nutrients']['protein']
+
+            # set highProtein category to True
+            if int(protein[0:len(protein)-1]) >= high_protein_amount:
+                recipe['categories']['highProtein'] = True
+    
+    with open(file_name, 'w') as f:
+        json.dump(jsonObject, f)
 
 # add categories healthy
 def category_healthy():
     pass
 
 def main():
-    parse_recipes()
+    category_highProtein()
 
 if __name__ == "__main__":
     main()
