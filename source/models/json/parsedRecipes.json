@@ -15,7 +15,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 8,
@@ -58,7 +60,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": true,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 1,
@@ -93,7 +97,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -127,13 +133,15 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 1,
-      "calories": "377",
+      "calories": "1377",
       "protein": "75g",
-      "fat": "02g"
+      "fat": "102g"
     },
     "description": "Need a gluten free and dairy free main course? African Chicken Peanut Stew could be a tremendous recipe to try. This recipe makes 1 servings with 1377 calories, 75g of protein, and 102g of fat each. For $3.87 per serving, this recipe covers 62% of your daily requirements of vitamins and minerals. It can be enjoyed any time, but it is especially good for Autumn. From preparation to the plate, this recipe takes approximately 45 minutes. 124 people have tried and liked this recipe. Head to the store and pick up bell peppers, tomato, pepper, and a few other things to make it today.",
     "ingredients": [
@@ -172,7 +180,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 1,
@@ -213,7 +223,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 6,
@@ -263,7 +275,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 6,
@@ -310,7 +324,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 6,
@@ -350,7 +366,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 8,
@@ -393,7 +411,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 4,
@@ -432,7 +452,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -472,7 +494,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -514,7 +538,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 3,
@@ -555,7 +581,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 4,
@@ -592,7 +620,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 6,
@@ -637,7 +667,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -676,7 +708,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 1,
@@ -718,7 +752,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -755,7 +791,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 6,
@@ -800,7 +838,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": true,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -840,7 +880,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 1,
@@ -875,7 +917,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 1,
@@ -910,7 +954,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -946,7 +992,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 6,
@@ -985,7 +1033,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -1031,7 +1081,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -1074,7 +1126,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 3,
@@ -1120,7 +1174,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 2,
@@ -1162,7 +1218,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 4,
@@ -1203,7 +1261,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -1246,7 +1306,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 3,
@@ -1285,7 +1347,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 8,
@@ -1335,7 +1399,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -1373,7 +1439,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 6,
@@ -1419,7 +1487,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 6,
@@ -1457,7 +1527,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 8,
@@ -1501,7 +1573,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 6,
@@ -1541,7 +1615,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 12,
@@ -1587,7 +1663,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 4,
@@ -1627,7 +1705,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 6,
@@ -1665,7 +1745,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": true,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -1701,7 +1783,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -1737,7 +1821,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 3,
@@ -1771,7 +1857,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 1,
@@ -1813,7 +1901,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 3,
@@ -1854,7 +1944,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -1890,7 +1982,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 4,
@@ -1926,7 +2020,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 6,
@@ -1970,7 +2066,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 4,
@@ -2007,7 +2105,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 1,
@@ -2047,7 +2147,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -2089,7 +2191,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -2132,7 +2236,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 6,
@@ -2171,7 +2277,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 1,
@@ -2210,7 +2318,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 8,
@@ -2243,7 +2353,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 4,
@@ -2282,7 +2394,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -2318,7 +2432,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -2352,7 +2468,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 2,
@@ -2396,7 +2514,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -2432,7 +2552,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 5,
@@ -2473,7 +2595,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 1,
@@ -2517,7 +2641,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -2564,7 +2690,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -2607,7 +2735,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 8,
@@ -2647,7 +2777,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -2684,7 +2816,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -2723,7 +2857,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -2761,7 +2897,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -2798,7 +2936,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -2836,7 +2976,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 4,
@@ -2878,7 +3020,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -2920,7 +3064,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -2960,7 +3106,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 4,
@@ -3005,7 +3153,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -3047,7 +3197,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 4,
@@ -3086,7 +3238,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 6,
@@ -3123,7 +3277,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 1,
@@ -3159,7 +3315,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": true,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -3197,7 +3355,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 6,
@@ -3241,11 +3401,13 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
-      "calories": "112",
+      "calories": "1112",
       "protein": "57g",
       "fat": "54g"
     },
@@ -3288,7 +3450,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 6,
@@ -3334,7 +3498,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 4,
@@ -3371,7 +3537,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -3410,7 +3578,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 4,
@@ -3449,7 +3619,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 6,
@@ -3491,7 +3663,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 6,
@@ -3527,7 +3701,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 2,
@@ -3567,7 +3743,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 3,
@@ -3604,7 +3782,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 4,
@@ -3642,7 +3822,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -3678,7 +3860,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 2,
@@ -3715,7 +3899,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -3755,7 +3941,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 4,
@@ -3793,7 +3981,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 6,
@@ -3849,7 +4039,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -3894,7 +4086,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 4,
@@ -3932,7 +4126,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 4,
@@ -3971,7 +4167,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -4007,7 +4205,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -4048,7 +4248,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -4087,7 +4289,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -4127,7 +4331,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -4166,7 +4372,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -4204,7 +4412,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -4249,7 +4459,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": true,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -4288,7 +4500,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 8,
@@ -4328,7 +4542,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 1,
@@ -4363,7 +4579,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -4408,7 +4626,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": true,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 8,
@@ -4449,7 +4669,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -4486,7 +4708,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -4526,7 +4750,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -4569,7 +4795,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 12,
@@ -4617,7 +4845,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": true,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 6,
@@ -4660,7 +4890,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -4697,12 +4929,14 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 6,
       "calories": "786",
-      "protein": "01g",
+      "protein": "101g",
       "fat": "32g"
     },
     "description": "You can never have too many main course recipes, so give Southern Fried Catfish a try. Watching your figure? This dairy free and pescatarian recipe has 786 calories, 101g of protein, and 32g of fat per serving. For $8.78 per serving, this recipe covers 40% of your daily requirements of vitamins and minerals. A few people made this recipe, and 39 would say it hit the spot. This recipe is typical of Southern cuisine. Head to the store and pick up dressed catfish, salt, garlic powder, and a few other things to make it today.",
@@ -4733,7 +4967,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -4772,7 +5008,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 4,
@@ -4814,7 +5052,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 1,
@@ -4851,7 +5091,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 1,
@@ -4889,7 +5131,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -4933,7 +5177,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 2,
@@ -4972,7 +5218,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -5012,7 +5260,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 1,
@@ -5047,7 +5297,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 6,
@@ -5089,7 +5341,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -5129,7 +5383,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -5166,7 +5422,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 4,
@@ -5206,7 +5464,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 4,
@@ -5246,7 +5506,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 6,
@@ -5288,7 +5550,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 8,
@@ -5329,7 +5593,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 3,
@@ -5372,7 +5638,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 4,
@@ -5413,7 +5681,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 6,
@@ -5454,7 +5724,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -5491,7 +5763,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 6,
@@ -5548,7 +5822,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 4,
@@ -5593,7 +5869,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": true,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 2,
@@ -5629,7 +5907,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 4,
@@ -5670,7 +5950,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 2,
@@ -5710,7 +5992,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 2,
@@ -5746,7 +6030,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 3,
@@ -5781,7 +6067,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 4,
@@ -5824,7 +6112,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": true,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 3,
@@ -5862,7 +6152,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 2,
@@ -5900,7 +6192,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": true,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 6,
@@ -5948,7 +6242,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 3,
@@ -5986,7 +6282,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 4,
@@ -6035,7 +6333,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": true,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 6,
@@ -6073,7 +6373,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -6120,7 +6422,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 6,
@@ -6159,7 +6463,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -6195,7 +6501,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -6232,7 +6540,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 5,
@@ -6272,7 +6582,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -6311,7 +6623,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 6,
@@ -6352,7 +6666,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -6398,7 +6714,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 4,
@@ -6435,7 +6753,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 2,
@@ -6481,7 +6801,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 1,
@@ -6519,7 +6841,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 1,
@@ -6555,7 +6879,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -6592,7 +6918,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 3,
@@ -6629,7 +6957,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": true,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 2,
@@ -6669,7 +6999,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 2,
@@ -6709,7 +7041,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": true,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 2,
@@ -6753,7 +7087,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 6,
@@ -6794,7 +7130,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 4,
@@ -6840,7 +7178,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 1,
@@ -6876,7 +7216,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 2,
@@ -6920,7 +7262,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 10,
@@ -6961,7 +7305,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 4,
@@ -7001,7 +7347,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -7039,7 +7387,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -7081,7 +7431,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 2,
@@ -7122,7 +7474,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": true,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -7167,7 +7521,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 2,
@@ -7204,7 +7560,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 8,
@@ -7252,7 +7610,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -7294,7 +7654,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": true,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 2,
@@ -7342,7 +7704,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 4,
@@ -7380,7 +7744,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 1,
@@ -7415,7 +7781,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 3,
@@ -7453,7 +7821,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 3,
@@ -7488,7 +7858,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 4,
@@ -7529,7 +7901,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 4,
@@ -7577,7 +7951,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -7615,7 +7991,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -7654,7 +8032,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 4,
@@ -7692,7 +8072,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 4,
@@ -7730,7 +8112,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -7771,7 +8155,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 2,
@@ -7812,7 +8198,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 8,
@@ -7855,7 +8243,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 8,
@@ -7899,7 +8289,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 3,
@@ -7944,7 +8336,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 1,
@@ -7983,7 +8377,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -8027,7 +8423,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -8064,7 +8462,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -8103,7 +8503,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -8143,7 +8545,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -8181,7 +8585,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 6,
@@ -8231,7 +8637,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 8,
@@ -8272,7 +8680,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 6,
@@ -8313,7 +8723,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 8,
@@ -8350,7 +8762,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 6,
@@ -8393,7 +8807,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 1,
@@ -8434,11 +8850,13 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": true,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 2,
-      "calories": "068",
+      "calories": "1068",
       "protein": "57g",
       "fat": "50g"
     },
@@ -8482,7 +8900,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 1,
@@ -8521,7 +8941,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 2,
@@ -8560,7 +8982,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 1,
@@ -8606,7 +9030,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 3,
@@ -8642,7 +9068,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 3,
@@ -8685,7 +9113,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -8733,7 +9163,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -8768,7 +9200,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 1,
@@ -8808,7 +9242,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -8848,7 +9284,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -8890,7 +9328,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 1,
@@ -8931,7 +9371,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 4,
@@ -8984,7 +9426,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 6,
@@ -9026,7 +9470,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": true,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 6,
@@ -9064,7 +9510,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": true,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 3,
@@ -9103,7 +9551,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -9147,7 +9597,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -9188,7 +9640,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -9228,7 +9682,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 6,
@@ -9269,7 +9725,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -9306,7 +9764,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -9350,7 +9810,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -9388,7 +9850,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -9430,7 +9894,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -9468,7 +9934,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 1,
@@ -9506,7 +9974,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 8,
@@ -9546,7 +10016,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 6,
@@ -9597,7 +10069,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -9642,7 +10116,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 3,
@@ -9686,7 +10162,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -9725,7 +10203,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -9762,7 +10242,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -9804,7 +10286,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 10,
@@ -9848,7 +10332,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -9891,7 +10377,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -9926,7 +10414,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -9968,7 +10458,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -10009,7 +10501,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 10,
@@ -10053,7 +10547,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -10097,7 +10593,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -10147,7 +10645,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -10184,7 +10684,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 1,
@@ -10223,7 +10725,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -10265,7 +10769,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 3,
@@ -10301,7 +10807,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 6,
@@ -10338,7 +10846,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -10375,13 +10885,15 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 5,
-      "calories": "390",
+      "calories": "1390",
       "protein": "49g",
-      "fat": "26g"
+      "fat": "126g"
     },
     "description": "Coffee-braised Short Ribs might be just the main course you are searching for. For $5.55 per serving, this recipe covers 32% of your daily requirements of vitamins and minerals. This recipe makes 5 servings with 1390 calories, 49g of protein, and 126g of fat each. 6 people have tried and liked this recipe. If you have tomato paste, cilantro, brown sugar, and a few other ingredients on hand, you can make it.",
     "ingredients": [
@@ -10419,7 +10931,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": true,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -10456,7 +10970,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 6,
@@ -10497,7 +11013,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -10541,7 +11059,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 6,
@@ -10580,7 +11100,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 6,
@@ -10621,7 +11143,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 4,
@@ -10665,7 +11189,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -10714,7 +11240,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -10752,11 +11280,13 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 6,
-      "calories": "053",
+      "calories": "1053",
       "protein": "89g",
       "fat": "35g"
     },
@@ -10786,7 +11316,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 4,
@@ -10832,7 +11364,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 8,
@@ -10866,7 +11400,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -10905,7 +11441,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 6,
@@ -10946,7 +11484,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 2,
@@ -10984,7 +11524,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 10,
@@ -11021,7 +11563,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 5,
@@ -11055,7 +11599,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 6,
@@ -11101,7 +11647,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -11134,7 +11682,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 3,
@@ -11177,7 +11727,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -11220,7 +11772,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 6,
@@ -11261,7 +11815,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -11303,7 +11859,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -11345,11 +11903,13 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 6,
-      "calories": "102",
+      "calories": "1102",
       "protein": "69g",
       "fat": "59g"
     },
@@ -11385,7 +11945,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 3,
@@ -11422,7 +11984,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -11464,7 +12028,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -11511,7 +12077,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -11546,7 +12114,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -11583,7 +12153,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 8,
@@ -11619,7 +12191,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 10,
@@ -11660,7 +12234,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 3,
@@ -11703,7 +12279,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 12,
@@ -11740,7 +12318,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -11778,7 +12358,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 6,
@@ -11815,7 +12397,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -11853,7 +12437,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -11897,7 +12483,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -11935,7 +12523,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 3,
@@ -11974,7 +12564,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 8,
@@ -12017,7 +12609,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -12058,7 +12652,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 1,
@@ -12093,7 +12689,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -12136,7 +12734,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 1,
@@ -12174,7 +12774,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -12215,7 +12817,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 1,
@@ -12255,7 +12859,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -12298,7 +12904,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 6,
@@ -12345,7 +12953,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 1,
@@ -12381,7 +12991,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 6,
@@ -12426,7 +13038,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 12,
@@ -12465,7 +13079,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -12510,7 +13126,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -12551,7 +13169,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -12596,7 +13216,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -12637,7 +13259,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 6,
@@ -12678,7 +13302,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -12724,7 +13350,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 1,
@@ -12763,7 +13391,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -12805,7 +13435,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -12850,7 +13482,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -12890,7 +13524,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 2,
@@ -12933,7 +13569,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 1,
@@ -12967,7 +13605,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -13006,11 +13646,13 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 3,
-      "calories": "106",
+      "calories": "1106",
       "protein": "72g",
       "fat": "61g"
     },
@@ -13053,7 +13695,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 8,
@@ -13098,11 +13742,13 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": true
     },
     "nutrients": {
       "totalServings": 2,
-      "calories": "003",
+      "calories": "1003",
       "protein": "76g",
       "fat": "57g"
     },
@@ -13139,7 +13785,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 5,
@@ -13176,7 +13824,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -13218,7 +13868,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -13257,7 +13909,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -13309,7 +13963,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -13352,7 +14008,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 6,
@@ -13390,7 +14048,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -13431,7 +14091,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -13478,7 +14140,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": true,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -13522,7 +14186,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 3,
@@ -13557,7 +14223,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -13598,7 +14266,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 6,
@@ -13638,7 +14308,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -13681,7 +14353,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 8,
@@ -13721,7 +14395,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -13760,7 +14436,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 3,
@@ -13802,11 +14480,13 @@
     "categories": {
       "vegan": false,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 1,
-      "calories": "053",
+      "calories": "1053",
       "protein": "65g",
       "fat": "15g"
     },
@@ -13839,7 +14519,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -13884,7 +14566,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -13924,7 +14608,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 3,
@@ -13964,7 +14650,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -14001,7 +14689,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 6,
@@ -14040,7 +14730,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": true,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 6,
@@ -14095,7 +14787,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -14136,7 +14830,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 6,
@@ -14174,7 +14870,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -14212,7 +14910,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 8,
@@ -14252,7 +14952,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 6,
@@ -14299,7 +15001,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 8,
@@ -14346,7 +15050,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -14393,7 +15099,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -14433,7 +15141,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 1,
@@ -14471,7 +15181,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -14508,7 +15220,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -14553,7 +15267,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -14593,7 +15309,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -14630,7 +15348,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -14671,7 +15391,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 8,
@@ -14718,7 +15440,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -14762,7 +15486,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -14804,7 +15530,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -14841,7 +15569,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 8,
@@ -14876,7 +15606,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 8,
@@ -14911,7 +15643,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -14949,7 +15683,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 5,
@@ -14989,7 +15725,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -15027,7 +15765,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
@@ -15067,7 +15807,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 3,
@@ -15101,7 +15843,9 @@
     "categories": {
       "vegan": true,
       "vegetarian": true,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 3,
@@ -15140,7 +15884,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": false
+      "glutenFree": false,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -15190,7 +15936,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": false,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 4,
@@ -15228,7 +15976,9 @@
     "categories": {
       "vegan": false,
       "vegetarian": false,
-      "glutenFree": true
+      "glutenFree": true,
+      "highProtein": true,
+      "healthy": false
     },
     "nutrients": {
       "totalServings": 2,
