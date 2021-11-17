@@ -31,7 +31,9 @@ jobs:
           eslint_dir: source/
           prettier: true
           prettier_dir: source/
-  build_and_preview:
+  
+  build_and_preview_firebase_hosting:
+    name: Build and preview firebase
     if: '${{ github.event.pull_request.head.repo.full_name == github.repository }}'
     runs-on: ubuntu-latest
     steps:
