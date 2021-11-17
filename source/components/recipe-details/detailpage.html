@@ -5,49 +5,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Recipe Detail Page</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
-    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin"
+    />
   </head>
   <body>
-    <header>
-      
-    </header>
+    <header></header>
     <main>
       <div class="recipe">
-        <!-- recipe image-->
-        <img 
-          class="recipe-image"
-          src="../../static/home-page/demorecipe.jpg"
-        />
-        <!-- the box on the right side of image-->
-        <div class="title-author-box"></div>
-        <!-- recipe name, author, date and website-->
-        <div>
-          <h1 class="recipe-name">Vegetable Dish</h1>
-          <h3 class="author-date">
-              by Anonymous
-              <br>
-              9-11-2021  
-              <br> 
-              https://amazingrecipe.com
-          </h3>
+        <!-- This is the first row of the page, including the image and the author box-->
+        <div class="first-row">
+          <img
+            class="recipe-image"
+            src="../../static/home-page/demorecipe.jpg"
+          />
+          <!-- the box on the right side of image-->
+          <div class="title-author-box">
+            <div class="dish-name">Vegetable Dish</div>
+            <!-- recipe name, author, date and the url-->
+            <div class="author-name">by Anonymous</div>
+            <div class="author-date">11-11-2021</div>
+            <div class="recipe-url">https://amazingrecipe.com</div>
+          </div>
         </div>
+
         <!-- Description box-->
         <div class="description-box">
-          <div class="description-title">
-            Description:
-          </div>
+          <div class="description-title">Description:</div>
           <div class="description">
-            Description here asdfadfasdfasdfasdfasdfasdfasdfasdfasdfdafadfasfasdfasdfasdfasfafasdfasdfafdasdfafsdfasdf
-            asdjhfkajshdfjahsdfkjhaskdjhfkajsdhfkajhsdfkjsahfkajshdfjkhaskdjhfakjshdfkajshdfkajhdasdsdfasf
-            sdkjahfkjashdfkjahsdkjfhajksdhfkajshdfk
+            Description here asdfadfasdfasdfasdfasdfasdf
+            asdfasdfasdasdjhfkajshdfjahsdfkjhaskdjhfkajsdhfkajhsd
+            fkjsahfkajshdsdkjahfkjashdfkjahsdkjfhajksdhfkajshdfksadf
+            fkjsahfkajshdsdkjahfkjashdfkjahsdkjfhajksdhfkajshdfksadf
+            fkjsahfkajshdsdkjahfkjashdfkjahsdkjfhajksdhfkajshdfksadf
+          </div>
+        </div>
+
+        <!-- flexbox includes info, category and nutrient box-->
+        <div class="info-category-nutrient-box">
+          <!-- flexbox includes info and category box-->
+          <div class="info-category-box">
+            <!-- infomation box-->
+            <div class="info-box">
+              <div class="info-title">Info:</div>
+              <div class="info-list">
+                <ul>
+                  <li>Cost: $5 per serving</li>
+                  <li>Time: 40min</li>
+                  <li>Serving Size: 5</li>
+                </ul>
+              </div>
+            </div>
+            <!-- category box-->
+            <div class="category-box">
+              <div class="category-title">Categories:</div>
+              <div class="category-list">
+                <li>Vegan</li>
+                <li id="low-calories">Low Calories</li>
+              </div>
+            </div>
+          </div>
+          <!-- nutrient box-->
+          <div class="nutrient-box">
+            <div class="nutrient-title">Nutrients (per serving):</div>
+            <div class="nutrient-list">
+              <ul>
+                <li>250 Calories</li>
+                <li>4 grams of protein</li>
+                <li>3 grams of sugar</li>
+                <li>3 miligrams of salt</li>
+                <li>5 grams of protein</li>
+              </ul>
+            </div>
           </div>
         </div>
         <!-- ingredients box-->
-        <div class="ingredients">
-          <div class="ing-title">
-            Ingredients:
-          </div>
-          <div class="ing-list">
+        <div class="ingredients-box">
+          <div class="ingredients-title">Ingredients:</div>
+          <div class="ingredients-list">
             <ul>
               <li>3 cups of all purpose blour</li>
               <li>whatsup</li>
@@ -62,79 +99,40 @@
           </div>
         </div>
 
-        
-        <!-- infomation box-->
-        <div class="info-box">
-          <div class="info-title">
-            Info:
-          </div>
-          <div class="info-list">
-            <ul>
-              <li>Cost: $5 per serving</li>
-              <li>Time: 40min</li>
-              <li>Serving Size: 5</li>
-            </ul>
-          </div>
-        </div>
-        <!-- category box-->
-        <div class="category-box">
-          <div class="category-title">
-            Categories:
-          </div>
-          <div class="category-list">
-            <ul>
-              <li style="display: inline;">Vegan</li>
-            </ul>
-          </div>
-        </div>
-        <!-- nutrient box-->
-        <div class="nutrient-box">
-          <div class="nutrient-title">
-            Nutrients (per serving):
-          </div>
-          <div class="nutrient-list">
-            <ul>
-              <li>250 Calories</li>
-              <li>4 grams of protein</li>
-              <li>3 grams of sugar</li>
-              <li>3 miligrams of salt</li>
-              <li>5 grams of protein</li>
-            </ul>
-          </div>
-        </div>
         <!-- Direction box-->
         <div class="direction-box">
           <div class="direction-title">Directions:</div>
           <div class="direction-list">
-              <ol>
-                <li>3 cups of all purpose flour</li>
-                <li>Heat Milk-Butter: While egg is beating, place butter and mile ina heatproof jug</li>
-                <li>Whisk flour, baking powder and salt in a large bowl. Set aside</li>
-                <li>food</li>
-                <li>food</li>
-              </ol>
+            <ol>
+              <li>3 cups of all purpose flour</li>
+              <li>
+                Heat Milk-Butter: While egg is beating, place butter and mile
+                ina heatproof jug
+              </li>
+              <li>
+                Whisk flour, baking powder and salt in a large bowl. Set aside
+              </li>
+              <li>food</li>
+              <li>food</li>
+            </ol>
           </div>
         </div>
-        <!-- Direction box-->
-        <div id="comment-box">
-          <div id="comment-box1">
-            <div id="comment-box1-1"></div>
+        <!-- comment box-->
+        <div class="comment-box">
+          <div class="comment-box-input">
+            <div class="user-input">User input</div>
+            <div class="picture-box">pic</div>
+            <div class="submit-box">submit</div>
           </div>
-          <div id="comment-box2">
-            <div id="comment-box2-1"></div>
-            <div id="comment-box2-2"></div>
-          </div>
-        </div>
-        
 
+          <div class="comment-box-reply">
+            <div class="comment-box-reply1">display user input here</div>
+            <div class="comment-box-reply2">display user input here</div>
+          </div>
+        </div>
       </div>
     </main>
     <hr />
-    <footer>
-      <div class="footer-box"></div>
-      <div class="footer-text">
-        @Copyright 2021 Red Pandas
-      </div>
-    </footer>
+    <footer></footer>
   </body>
 </html>
