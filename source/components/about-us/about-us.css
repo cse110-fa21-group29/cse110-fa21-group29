@@ -1,0 +1,56 @@
+main {
+  max-width: 1024px;
+  margin: auto;
+  text-align: center;
+}
+/* *{
+    border:solid 1px
+} */
+
+#our-story,
+#our-team {
+  margin: 40px 0px;
+  font-family: Sofia;
+  font-size: 50px;
+}
+#our-story {
+  background-color: 41cad2;
+}
+#our-team {
+  background-color: 68a1f6;
+}
+
+#introduction-grid {
+  display: flex;
+}
+#team-img,
+#team-story {
+  width: 49%;
+  height: 200px;
+  padding: 50px;
+}
+#team-story {
+  text-align: left;
+}
+#box {
+  width: 24px;
+}
+
+#member-grid {
+  width: 1024px;
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+}
+.member-card {
+  width: 200px;
+  margin: auto;
+  padding-bottom: 20px;
+}
+.member-img {
+  height: 250px;
+  width: 100%;
+}
+.member-name,
+.member-position {
+  text-decoration: underline;
+}
