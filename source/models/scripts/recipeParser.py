@@ -154,10 +154,27 @@ def category_highProtein():
 
 # add categories healthy
 def category_healthy():
-    pass
+    file_read = 'source/models/json/0_parsedRecipes.json'
+    file_name = 'source/models/json/parsedRecipes.json'
+
+    with open(file_read) as jsonFile:
+        jsonObject = json.load(jsonFile)
+        healthy_amount = 100
+
+        # loop through and add healthy category
+        for index, recipe in enumerate(jsonObject):
+            recipe['categories']['healthy'] = False
+            health_score = recipe['info']['healthScore']
+
+            # set healthy category to True
+            if health_score >= healthy_amount:
+                recipe['categories']['healthy'] = True
+    
+    with open(file_name, 'w') as f:
+        json.dump(jsonObject, f)
 
 def main():
-    category_highProtein()
+    category_healthy()
 
 if __name__ == "__main__":
     main()
