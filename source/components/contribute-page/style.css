@@ -25,7 +25,7 @@
   cursor: pointer;
   font-size: 0px;
 }
-#submit-img::-webkit-file-upload-button {
+#submit-img::file-selector-button {
   display: none;
 }
 input,
@@ -40,7 +40,6 @@ textarea {
 
 #recipe-left-grid div {
   margin-left: 10px;
-  /* width: 40%; */
   height: 80px;
 }
 
