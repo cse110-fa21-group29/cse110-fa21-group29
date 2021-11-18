@@ -1,0 +1,36 @@
+/* navigation bar*/
+ul {
+    list-style-type: none;
+    display: inline-block;
+    position: fixed;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+    background: #FFA4A4;
+}
+
+/* left grid */
+#left {
+    float: left;
+    font-family: Snell Roundhand, cursive;
+    font-style: normal;
+    font-size: 3vh;
+}
+
+/* right grid */
+#right {
+    float: right;
+    margin: 1% 1%;
+}
+
+/* contents */
+li {
+	color: black;
+    display: flex;
+    align-items: center;
+    height: 5vh;
+}
+
