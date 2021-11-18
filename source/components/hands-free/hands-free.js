@@ -1,3 +1,10 @@
+var count = 0;
+var temp;
+var timer_is_on = 0;
+var step = 1;
+// step numbers
+var maxStep = 5;
+
 window.addEventListener("DOMContentLoaded", () => {
   document.getElementById("start-button").addEventListener("click", () => {
     startCount();
@@ -8,11 +15,14 @@ window.addEventListener("DOMContentLoaded", () => {
   document.getElementById("resume-button").addEventListener("click", () => {
     resumeCount();
   });
+  document.getElementById("next-button").addEventListener("click", () => {
+    nextStep();
+  });
+  document.getElementById("back-button").addEventListener("click", () => {
+    backStep();
+  });
+  hidebackButton();
 });
-
-var count = 0;
-var temp;
-var timer_is_on = 0;
 
 function timedCount() {
   setTime();
@@ -53,4 +63,35 @@ function setTime() {
   }
   document.getElementById("timer-display").innerText =
     hour + ":" + minute + ":" + second;
+}
+
+function nextStep() {
+  if (++step == maxStep) {
+    hideNextButton();
+  }
+  showbackButton();
+  document.getElementById("number").innerText = step;
+}
+
+function backStep() {
+  if (--step == 1) {
+    hidebackButton();
+  }
+  showNextButton();
+  document.getElementById("number").innerText = step;
+}
+
+function showbackButton() {
+  document.getElementById("back-button").style.visibility = "visible";
+}
+
+function hidebackButton() {
+  document.getElementById("back-button").style.visibility = "hidden";
+}
+function showNextButton() {
+  document.getElementById("next-button").style.visibility = "visible";
+}
+
+function hideNextButton() {
+  document.getElementById("next-button").style.visibility = "hidden";
 }
