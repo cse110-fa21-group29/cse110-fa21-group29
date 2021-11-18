@@ -1,27 +1,18 @@
 main {
-  max-width: 1024px;
-  margin: auto;
   text-align: center;
 }
-/* *{
-    border:solid 1px
-} */
-
-#our-story,
-#our-team {
-  margin: 40px 0px;
-  font-family: Sofia;
-  font-size: 50px;
-}
-#our-story {
-  background-color: 41cad2;
-}
-#our-team {
-  background-color: 68a1f6;
+* {
+  border: solid 1px;
 }
 
 #introduction-grid {
-  display: flex;
+  height: 1000px;
+}
+#introduction-title-grid {
+  height: 400px;
+  background-color: purple;
+}
+#introduction-bottom-grid {
 }
 #team-img,
 #team-story {
@@ -31,9 +22,6 @@ main {
 }
 #team-story {
   text-align: left;
-}
-#box {
-  width: 24px;
 }
 
 #member-grid {
