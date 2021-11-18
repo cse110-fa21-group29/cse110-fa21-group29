@@ -7,7 +7,13 @@
 
   <body>
     <section id="top-grid">
-      <div id="timer"></div>
+      <div id="timer">
+        <time id="timer-display">00:00:00</time>
+        <div id="timer-button-grid">
+        <button id="start-button"onclick="startCount()">Start</button><br>
+        <button id="pause-button"onclick="stopCount()">Pause</button><br>
+        <button id="resume-button"onclick="resumeCount()">Resume</button>
+      </div></div>
 
       <button id="back-button">Back</button>
       <button id="next-button">Next</button>

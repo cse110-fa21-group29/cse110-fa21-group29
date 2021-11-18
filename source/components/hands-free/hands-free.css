@@ -7,6 +7,23 @@
   width: 50vw;
   height: 30vh;
   border: solid black 1px;
+  display: flex;
+}
+
+#timer-display{
+  width: 80%;
+  font-size: 8vw;
+  line-height: 27vh;
+}
+#timer-button-grid{
+  width: 20%;
+}
+#timer-button-grid button{
+  width: 90%;
+  background-color: white;
+  height: 10%;
+  margin: 3vh 0px;
+  border-radius: 5px;
 }
 #back-button,
 #next-button {
@@ -38,3 +55,4 @@
   width: 30vw;
   margin: 10px;
 }
+
