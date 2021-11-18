@@ -13,7 +13,7 @@ ul {
 }
 
 /* left grid */
-#left {
+.left {
     float: left;
     font-family: Snell Roundhand, cursive;
     font-style: normal;
@@ -21,7 +21,7 @@ ul {
 }
 
 /* right grid */
-#right {
+.right {
     float: right;
     padding-left: 0.5%;
     padding-right: 0.5%;
@@ -36,3 +36,8 @@ li {
     height: 5vh;
 }
 
+
+/* recipe page only */
+.hidden {
+    display: none;
+}
