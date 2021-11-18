@@ -10,9 +10,17 @@ main {
 }
 #introduction-title-grid {
   height: 400px;
-  background-color: purple;
+  background-color: rgb(67, 201, 127);
+}
+#introduction-title-grid-title {
+  font-size: 100px;
+  line-height: 400px;
+  color: white;
+  font-family: "Montserrat", Sans-serif;
 }
 #introduction-bottom-grid {
+  height: 600px;
+  background: linear-gradient(110deg, #fff810 40%, #ff7ee3 40%);
 }
 #team-img,
 #team-story {
