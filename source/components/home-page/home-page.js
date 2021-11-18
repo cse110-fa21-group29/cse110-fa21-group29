@@ -1,5 +1,3 @@
-//import "@fortawesome/fontawesome-free/js/all.js";
-
 class HomePage extends HTMLElement {
   constructor() {
     super();
@@ -14,7 +12,7 @@ class HomePage extends HTMLElement {
   }
 
   setupElement() {
-    for (let i = 1; i < 4; i++) {
+    for (let i = 1; i < 5; i++) {
       let recippecardgrid = this.shadowRoot.getElementById(
         "recipe-card-grid-" + i
       );
@@ -41,6 +39,9 @@ class HomePage extends HTMLElement {
         .append(recipesample.cloneNode(true));
       this.shadowRoot
         .getElementById("recipe-card-grid-3")
+        .append(recipesample.cloneNode(true));
+      this.shadowRoot
+        .getElementById("recipe-card-grid-4")
         .append(recipesample.cloneNode(true));
     }
 
