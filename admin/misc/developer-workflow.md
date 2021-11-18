@@ -59,19 +59,31 @@
 		* `fix(ui): fix typo on hands-free mode (7)`
 
 ## Workflow When Complete
-1. When the feature is complete, create a new Pull Request for the feature branch
+1. It is important to keep your local branches up to date. In order to do this, before you start a PR, please do the following:
+```shell
+# Set 'git pull' to only fast forward. This ensures we do
+# not make any developmental changes to the 'develop' branch
+git config pull.ff only
+
+# Pull the remote 'develop' branch into your local 'develop' branch
+git pull origin develop
+
+# If there were any new commits, merge them from `develop` and update your branch
+git checkout new-feature
+git merge develop
+git push origin new-feature
+```
+2. When the feature is completed and up to date with the remote 'develop' branch, create a new Pull Request for the feature branch
 	* The PR should have a name and a short description of what the branch actually contains
 	* The PR should be labelled and linked to the relevant GitHub issue
 	* The developer should move the issue from "In Progress" to "Ready for Review"
-2. The developer should merge `main` into their feature branch and resolve merge conflicts if necessary
 3. If the automated checks on the PR (linter, tests) fail, the developer should investigate and commit any necessary changes
 4. When ready, the developer should request review from Justin
 5. Within 24 hours, Justin will review the PR and either approve it or suggest changes
 	* If changes are suggested, developers should implement changes or ask for clarification within 24 hours
 		* When changes are complete, the conversations should be marked as complete and the PR should be re-requested for review by Justin
-	* If PR is approved, Justin will merge the branch into `main`, which will close the PR and relevant issue
+	* If PR is approved, Justin will merge the branch into `develop`, which will close the PR and relevant issue
 		* This will automatically move the issue from “Ready for Review” to “Done”
-
 
 
 
