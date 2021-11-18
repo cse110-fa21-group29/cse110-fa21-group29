@@ -24,6 +24,8 @@
   height: 20%;
   margin: 2vh 0px;
   border-radius: 5px;
+  cursor: pointer;
+  font-size: 2vw;
 }
 #back-button,
 #next-button {
@@ -34,6 +36,9 @@
   border: none;
   font-size: xx-large;
   color: white;
+  cursor: pointer;
+  font-size: 5vw;
+
 }
 #back-button {
   background-color: F93F3F;
