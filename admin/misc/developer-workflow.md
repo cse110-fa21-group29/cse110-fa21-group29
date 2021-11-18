@@ -62,7 +62,8 @@
 1. It is important to keep your local branches up to date. In order to do this, before you start a PR, please do the following:
 ```shell
 # Set 'git pull' to only fast forward. This ensures we do
-# not make any developmental changes to the 'develop' branch
+# not make any developmental changes to the 'develop' branch.
+# Only run this command once.
 git config pull.ff only
 
 # Pull the remote 'develop' branch into your local 'develop' branch
