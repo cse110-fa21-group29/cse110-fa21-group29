@@ -1,9 +1,3 @@
-body {
-  min-width: 700px;
-  margin: 0px;
-  min-height: 600px;
-}
-
 .recipe-card-section {
   height: 45vh;
   position: relative;
@@ -92,13 +86,16 @@ body {
   width: 20%;
 }
 #recipe-category-1 {
-  background-color: orange;
+  background-color: rgb(18, 228, 200);
 }
 #recipe-category-2 {
-  background-color: greenyellow;
+  background-color: rgb(170, 221, 29);
 }
 #recipe-category-3 {
-  background-color: rgb(62, 248, 239);
+  background-color: rgb(60, 219, 20);
+}
+#recipe-category-4 {
+  background-color: rgb(131, 224, 24);
 }
 #home-header {
   background-image: url(../../static/home-page/headerimg.jpg);
