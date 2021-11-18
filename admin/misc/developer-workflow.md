@@ -11,9 +11,9 @@
 ## Workflow While Developing
 0. __NOTE__: For all non-development contributions, feel free to directly push to master (no need for branches, PRs, approvals), but please do follow the commit format without the issue #
    * `docs(admin): add meeting notes`
-1. __NOTE 2__: Please do frequent pulls! If you see that other features were merged into `main` and your feature branch isn’t up-to-date with those changes, feel free to merge `main` into your branch at any time and as many times as you need.
+1. __NOTE 2__: Please do frequent pulls! If you see that other features were merged into `develop` and your feature branch isn’t up-to-date with those changes, feel free to merge `develop` into your branch at any time and as many times as you need.
 	* The VSCode plugin “Git Graph” makes this process really easy!
-2. When a developer works on a new feature/issue, they will create a branch off of `main` 
+2. When a developer works on a new feature/issue, they will create a branch off of `develop` 
 	* The branch must have the following format: `type/[issue#]-up-to-six-words-about-issue`
 		* The type represents the overall type of the branch:
 			* `feat` — New feature
