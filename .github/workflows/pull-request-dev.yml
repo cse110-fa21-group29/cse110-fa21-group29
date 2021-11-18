@@ -35,7 +35,7 @@ jobs:
       - name: Create Docs
         uses: andstor/jsdoc-action@v1
         with:
-          source_dir: source/
+          source_dir: test/
           recurse: true
           output_dir: specs/documentation/
   
