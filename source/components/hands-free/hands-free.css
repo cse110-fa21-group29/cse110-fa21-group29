@@ -21,8 +21,8 @@
 #timer-button-grid button{
   width: 90%;
   background-color: white;
-  height: 10%;
-  margin: 3vh 0px;
+  height: 20%;
+  margin: 2vh 0px;
   border-radius: 5px;
 }
 #back-button,
