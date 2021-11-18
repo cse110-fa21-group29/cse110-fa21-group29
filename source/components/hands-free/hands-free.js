@@ -28,9 +28,9 @@ function resumeCount() {
 }
 
 function setTime() {
-    let hour = Math.round(count / 3600)
-    let minute = Math.round(count / 60);
-    let second = Math.round(count % 3600)
+    let hour = parseInt(count / 3600)
+    let minute = parseInt(count / 60);
+    let second = parseInt(count % 60)
     if (hour < 10) { hour = "0" + hour }
     if (minute < 10) { minute = "0" + minute }
     if (second < 10) { second = "0" + second }
