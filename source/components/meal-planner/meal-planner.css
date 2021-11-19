@@ -1,0 +1,38 @@
+main {
+  text-align: center;
+}
+
+#planner-grid {
+  margin: 20px auto;
+  width: 95vw;
+  height: 40vw;
+  display: grid;
+  justify-items: center;
+  grid-template-rows: 0.5fr 1fr 1fr 1fr;
+  grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+#print-button {
+  width: 40px;
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  cursor: pointer;
+}
+#planner-grid > div {
+  border: solid black 1px;
+  width: 100%;
+}
+
+.meal-card {
+  background-image: url(/static/meal-planner/circle-plus.png);
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+}
+.date {
+  line-height: 6vw;
+}
+.meal {
+  line-height: 12vw;
+}

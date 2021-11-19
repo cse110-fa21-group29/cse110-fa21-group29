@@ -19,7 +19,7 @@
 #submit-img {
   width: 30vw;
   height: 20vw;
-  background-image: url(../../static/defaultimg.jpeg);
+  background-image: url("/static/common/defaultimg.jpeg");
   background-position: center;
   background-size: cover;
   cursor: pointer;

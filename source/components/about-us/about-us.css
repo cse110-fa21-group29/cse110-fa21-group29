@@ -1,0 +1,81 @@
+main {
+  text-align: center;
+}
+/* * {
+  border: solid 1px;
+} */
+
+#introduction-grid {
+  height: 1000px;
+  margin: 100px;
+}
+#introduction-title-grid {
+  height: 400px;
+  background-color: #68a1f6;
+}
+#introduction-title-grid-title {
+  font-size: 100px;
+  line-height: 400px;
+  font-family: "Montserrat", Sans-serif;
+}
+#introduction-bottom-grid {
+  height: 600px;
+  background: linear-gradient(110deg, #ffd753 40%, #e990d6 40%);
+  display: flex;
+  justify-content: center;
+}
+
+#introduction-bottom-img {
+  height: 400px;
+  margin-top: 100px;
+  margin-left: 20px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+}
+#introduction-bottom-text {
+  width: 300px;
+  margin-top: 150px;
+  margin-left: 7vw;
+  text-align: left;
+}
+#our-team {
+  margin: 100px 100px 50px;
+  height: 400px;
+  font-size: 100px;
+  background-color: #41cad2;
+  line-height: 400px;
+}
+#team-img,
+#team-story {
+  width: 49%;
+  height: 200px;
+  padding: 50px;
+}
+#team-story {
+  text-align: left;
+}
+
+#member-grid {
+  width: 1024px;
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  margin: auto;
+}
+.member-card {
+  width: 200px;
+  margin: auto;
+  padding-bottom: 20px;
+}
+.member-img {
+  margin: 20px 0px;
+  height: 266px;
+  width: 100%;
+  border-radius: 20px;
+}
+.member-firstname,
+.member-secondname {
+  font-size: 20px;
+}
+.member-position {
+  margin: 20px 0px;
+  color: grey;
+}
