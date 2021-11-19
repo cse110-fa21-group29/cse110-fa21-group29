@@ -8,8 +8,9 @@
 }
 #recipe-box {
   display: flex;
+  flex-wrap: wrap;
 }
 .recipe-card {
-  height: 200px;
-  width: 150px;
+  height: 400px;
+  width: 300px;
 }
