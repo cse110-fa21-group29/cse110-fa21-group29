@@ -6,3 +6,10 @@
   height: 30px;
   width: 80%;
 }
+#recipe-box {
+  display: flex;
+}
+.recipe-card {
+  height: 200px;
+  width: 150px;
+}
