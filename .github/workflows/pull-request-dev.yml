@@ -63,8 +63,6 @@ jobs:
         with:
           source_dir: source/
           output_dir: specs/documentation/jsdocs/
-          config_file: conf.json
-          template: minami
           front_page: README.md
 
       - name: Deploy JSDocs
