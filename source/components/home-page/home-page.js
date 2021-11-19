@@ -72,7 +72,6 @@ class HomePage extends HTMLElement {
         });
     }
 
-    // copy recipe
     let proteinRecipeArr = [];
     let lowCalorieRecipeArr = [];
     let veganRecipeArr = [];
@@ -86,6 +85,17 @@ class HomePage extends HTMLElement {
       proteinRecipeArr[i].querySelector('#calories').innerHTML = parseInt(data[i].nutrients.calories);
       proteinRecipeArr[i].querySelector('#protein').innerHTML = data[i].nutrients.protein;
       proteinRecipeArr[i].querySelector('#score').innerHTML = data[i].info.healthScore;
+      proteinRecipeArr[i].addEventListener("click", () => {
+        const routerEvent = new CustomEvent("router-navigate", {
+          detail: {
+            route: "recipe-details",
+            params: [data[i].metadata.id],
+          },
+          bubbles: true,
+          composed: true,
+        });
+        proteinRecipeArr[i].dispatchEvent(routerEvent);
+      });
 
       lowCalorieRecipeArr[i] = this.shadowRoot.getElementById("recipe-card-sample").cloneNode(true);
       lowCalorieRecipeArr[i].querySelector('.recipe-card-name > div').innerHTML = lowCalorieRecipe[i].metadata.title;
@@ -94,6 +104,17 @@ class HomePage extends HTMLElement {
       lowCalorieRecipeArr[i].querySelector('#calories').innerHTML = parseInt(lowCalorieRecipe[i].nutrients.calories);
       lowCalorieRecipeArr[i].querySelector('#protein').innerHTML = lowCalorieRecipe[i].nutrients.protein;
       lowCalorieRecipeArr[i].querySelector('#score').innerHTML = lowCalorieRecipe[i].info.healthScore;
+      lowCalorieRecipeArr[i].addEventListener("click", () => {
+        const routerEvent = new CustomEvent("router-navigate", {
+          detail: {
+            route: "recipe-details",
+            params: [lowCalorieRecipe[i].metadata.id],
+          },
+          bubbles: true,
+          composed: true,
+        });
+        lowCalorieRecipeArr[i].dispatchEvent(routerEvent);
+      });
       
       veganRecipeArr[i] = this.shadowRoot.getElementById("recipe-card-sample").cloneNode(true);
       veganRecipeArr[i].querySelector('.recipe-card-name > div').innerHTML = veganRecipe[i].metadata.title;
@@ -102,6 +123,17 @@ class HomePage extends HTMLElement {
       veganRecipeArr[i].querySelector('#calories').innerHTML = parseInt(veganRecipe[i].nutrients.calories);
       veganRecipeArr[i].querySelector('#protein').innerHTML = veganRecipe[i].nutrients.protein;
       veganRecipeArr[i].querySelector('#score').innerHTML = veganRecipe[i].info.healthScore;
+      veganRecipeArr[i].addEventListener("click", () => {
+        const routerEvent = new CustomEvent("router-navigate", {
+          detail: {
+            route: "recipe-details",
+            params: [veganRecipe[i].metadata.id],
+          },
+          bubbles: true,
+          composed: true,
+        });
+        veganRecipeArr[i].dispatchEvent(routerEvent);
+      });
 
       vegetarianRecipeArr[i] = this.shadowRoot.getElementById("recipe-card-sample").cloneNode(true);
       vegetarianRecipeArr[i].querySelector('.recipe-card-name > div').innerHTML = vegetarianRecipe[i].metadata.title;
@@ -110,6 +142,17 @@ class HomePage extends HTMLElement {
       vegetarianRecipeArr[i].querySelector('#calories').innerHTML = parseInt(vegetarianRecipe[i].nutrients.calories);
       vegetarianRecipeArr[i].querySelector('#protein').innerHTML = vegetarianRecipe[i].nutrients.protein;
       vegetarianRecipeArr[i].querySelector('#score').innerHTML = vegetarianRecipe[i].info.healthScore;
+      vegetarianRecipeArr[i].addEventListener("click", () => {
+        const routerEvent = new CustomEvent("router-navigate", {
+          detail: {
+            route: "recipe-details",
+            params: [vegetarianRecipe[i].metadata.id],
+          },
+          bubbles: true,
+          composed: true,
+        });
+        vegetarianRecipeArr[i].dispatchEvent(routerEvent);
+      });
     }
 
     this.shadowRoot.getElementById("recipe-card-grid-1").innerHTML = '';
@@ -118,34 +161,11 @@ class HomePage extends HTMLElement {
     this.shadowRoot.getElementById("recipe-card-grid-4").innerHTML = '';
 
     for (let i = 0; i < 20; i++) {
-      this.shadowRoot
-        .getElementById("recipe-card-grid-1")
-        .append(proteinRecipeArr[i]);
-      this.shadowRoot
-        .getElementById("recipe-card-grid-2")
-        .append(lowCalorieRecipeArr[i]);
-      this.shadowRoot
-        .getElementById("recipe-card-grid-3")
-        .append(veganRecipeArr[i]);
-      this.shadowRoot
-        .getElementById("recipe-card-grid-4")
-        .append(vegetarianRecipeArr[i]);
+      this.shadowRoot.getElementById("recipe-card-grid-1").append(proteinRecipeArr[i]);
+      this.shadowRoot.getElementById("recipe-card-grid-2").append(lowCalorieRecipeArr[i]);
+      this.shadowRoot.getElementById("recipe-card-grid-3").append(veganRecipeArr[i]);
+      this.shadowRoot.getElementById("recipe-card-grid-4").append(vegetarianRecipeArr[i]);
     }
-
-    this.shadowRoot.querySelectorAll(".recipe-card").forEach((recipeCard) => {
-      recipeCard.addEventListener("click", () => {
-        // TODO: Add info about specific recipe card
-        const routerEvent = new CustomEvent("router-navigate", {
-          detail: {
-            route: "recipe-details",
-            params: [1],
-          },
-          bubbles: true,
-          composed: true,
-        });
-        recipeCard.dispatchEvent(routerEvent);
-      });
-    });
   }
 
   recipeScroll(scrollleft, recipegrid) {
