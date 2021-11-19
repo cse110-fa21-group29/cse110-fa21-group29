@@ -58,9 +58,9 @@ jobs:
       - name: Check out Git repository
         uses: actions/checkout@v2
 
-      - name: JSDoc Action
+      - name: Run JSDocs
         uses: andstor/jsdoc-action@v1.2.0
         with:
-          source_dir: source/
+          source_dir: .source/
           recurse: true
-          output_dir: specs/documentation/jsdocs/
+          output_dir: .specs/documentation/jsdocs/
