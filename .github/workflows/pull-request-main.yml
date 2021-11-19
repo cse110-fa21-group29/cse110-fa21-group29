@@ -31,13 +31,6 @@ jobs:
           eslint_dir: source/
           prettier: true
           prettier_dir: source/
-      
-      - name: Create Docs
-        uses: andstor/jsdoc-action@v1
-        with:
-          source_dir: source/
-          recurse: true
-          output_dir: specs/documentation/
   
   build-and-preview-firebase-hosting-main:
     name: Build and preview firebase hosting

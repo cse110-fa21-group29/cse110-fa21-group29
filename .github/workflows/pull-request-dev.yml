@@ -7,8 +7,16 @@ name: PR Pipeline DEV
     branches:
       - develop
 jobs:
+  install-npm-dev:
+    name: Install Node.js Dependencies
+    runs-on: ubuntu-latest
+
+      steps:
+      - name: Run 'npm ci'
+        run: npm ci
+
   run-linters-dev:
-    name: Run linters
+    name: Linting and Formatting
     runs-on: ubuntu-latest
 
     steps:
@@ -20,9 +28,9 @@ jobs:
         with:
           node-version: 12
 
-      # ESLint and Prettier must be in `package.json`
-      - name: Install Node.js dependencies
-        run: npm ci
+      # # ESLint and Prettier must be in `package.json`
+      # - name: Install Node.js dependencies
+      #   run: npm ci
 
       - name: Run linters
         uses: wearerequired/lint-action@v1
@@ -31,39 +39,22 @@ jobs:
           eslint_dir: source/
           prettier: true
           prettier_dir: source/
-      
-      - name: Create Docs
-        uses: andstor/jsdoc-action@v1
-        with:
-          source_dir: test/
-          recurse: true
-          output_dir: specs/documentation/
   
-  jest:
+  run-jest-dev:
+    name: Unit Testing
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [10.x, 12.x]
-
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Check out Git repository
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
       uses: actions/setup-node@v1
       with:
-        node-version: ${{ matrix.node-version }}
-    - run: npm ci
-    - run: npm run test
-  
-  codacy-analysis-cli:
-    name: Codacy Analysis CLI
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@main
+        node-version: 12
 
-      - name: Run Codacy Analysis CLI
-        uses: codacy/codacy-analysis-cli-action@master
+    - name: Run Unit Tests
+      run: npm run test
 
   build-and-preview-firebase-hosting-dev:
     name: Build and preview firebase hosting
