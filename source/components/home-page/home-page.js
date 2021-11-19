@@ -2,13 +2,14 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.1/firebase-app.js";
 import { child, get, getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.4.1/firebase-database.js";
 
-let response = await fetch('/config.json');
+let response = await fetch('../../config.json');
 response = await response.json();
 
 const app = initializeApp(response.firebaseConfig);
 const database = getDatabase(app);
 const dbRef = ref(getDatabase());
-let data = [];
+let data = undefined;
+
 await get(child(dbRef, `recipes`)).then((snapshot) => {
   if (snapshot.exists()) {
     data = snapshot.val();
@@ -19,20 +20,26 @@ await get(child(dbRef, `recipes`)).then((snapshot) => {
   console.error(error);
 });
 
-let chickenRecipe = [];
-let veganRecipe = [];
-let lowCalorieRecipe = [];
+data.sort(function (a, b) {
+  let aProtein = parseInt(a.nutrients.protein.substring(0, a.nutrients.protein.length - 1));
+  let bProtein = parseInt(b.nutrients.protein.substring(0, b.nutrients.protein.length - 1));
+  if (aProtein < bProtein) {
+    return 1;
+  } else if (aProtein > bProtein) {
+    return -1;
+  } else {
+    return 0;
+  }
+});
+
+const lowCalorieRecipe = [];
+const veganRecipe = [];
+const vegetarianRecipe = [];
+
 for (let i = 0; i < data.length; i++) {
-  let title = data[i].metadata.title.toLowerCase();
-  if (data[i].categories.vegan) {
-    veganRecipe.push(data[i])
-  }
-  if (title.search('chicken') != -1) {
-    chickenRecipe.push(data[i]);
-  }
-  if (parseInt(data[i].nutrients.calories) < 450) {
-    lowCalorieRecipe.push(data[i]);
-  }
+  if (parseInt(data[i].nutrients.calories) < 450) lowCalorieRecipe.push(data[i]);
+  if (data[i].categories.vegan) veganRecipe.push(data[i]);
+  if (data[i].categories.vegetarian) vegetarianRecipe.push(data[i]);
 }
 
 class HomePage extends HTMLElement {
@@ -66,54 +73,63 @@ class HomePage extends HTMLElement {
     }
 
     // copy recipe
-    let chickenRecipeArr = [];
-    let veganRecipeArr = [];
+    let proteinRecipeArr = [];
     let lowCalorieRecipeArr = [];
+    let veganRecipeArr = [];
+    let vegetarianRecipeArr = [];
 
     for (let i = 0; i < 20; i++) {
-      chickenRecipeArr[i] = this.shadowRoot.getElementById("recipe-card-sample").cloneNode(true);
-      chickenRecipeArr[i].querySelector('.recipe-card-name > div').innerHTML = chickenRecipe[i].metadata.title;
-      chickenRecipeArr[i].querySelector('.recipe-card-image').src = chickenRecipe[i].metadata.image;
-      chickenRecipeArr[i].querySelector('#time').innerHTML = chickenRecipe[i].info.readyInMinutes;
-      chickenRecipeArr[i].querySelector('#calories').innerHTML = chickenRecipe[i].nutrients.calories;
-      chickenRecipeArr[i].querySelector('#protein').innerHTML = chickenRecipe[i].nutrients.protein;
-      chickenRecipeArr[i].querySelector('#score').innerHTML = chickenRecipe[i].info.healthScore;
-      
-      veganRecipeArr[i] = this.shadowRoot.getElementById("recipe-card-sample").cloneNode(true);
-      veganRecipeArr[i].querySelector('.recipe-card-name > div').innerHTML = veganRecipe[i].metadata.title;
-      veganRecipeArr[i].querySelector('.recipe-card-image').src = veganRecipe[i].metadata.image;
-      veganRecipeArr[i].querySelector('#time').innerHTML = veganRecipe[i].info.readyInMinutes;
-      veganRecipeArr[i].querySelector('#calories').innerHTML = veganRecipe[i].nutrients.calories;
-      veganRecipeArr[i].querySelector('#protein').innerHTML = veganRecipe[i].nutrients.protein;
-      veganRecipeArr[i].querySelector('#score').innerHTML = veganRecipe[i].info.healthScore;
+      proteinRecipeArr[i] = this.shadowRoot.getElementById("recipe-card-sample").cloneNode(true);
+      proteinRecipeArr[i].querySelector('.recipe-card-name > div').innerHTML = data[i].metadata.title;
+      proteinRecipeArr[i].querySelector('.recipe-card-image').src = data[i].metadata.image;
+      proteinRecipeArr[i].querySelector('#time').innerHTML = data[i].info.readyInMinutes;
+      proteinRecipeArr[i].querySelector('#calories').innerHTML = parseInt(data[i].nutrients.calories);
+      proteinRecipeArr[i].querySelector('#protein').innerHTML = data[i].nutrients.protein;
+      proteinRecipeArr[i].querySelector('#score').innerHTML = data[i].info.healthScore;
 
       lowCalorieRecipeArr[i] = this.shadowRoot.getElementById("recipe-card-sample").cloneNode(true);
       lowCalorieRecipeArr[i].querySelector('.recipe-card-name > div').innerHTML = lowCalorieRecipe[i].metadata.title;
       lowCalorieRecipeArr[i].querySelector('.recipe-card-image').src = lowCalorieRecipe[i].metadata.image;
       lowCalorieRecipeArr[i].querySelector('#time').innerHTML = lowCalorieRecipe[i].info.readyInMinutes;
-      lowCalorieRecipeArr[i].querySelector('#calories').innerHTML = lowCalorieRecipe[i].nutrients.calories;
+      lowCalorieRecipeArr[i].querySelector('#calories').innerHTML = parseInt(lowCalorieRecipe[i].nutrients.calories);
       lowCalorieRecipeArr[i].querySelector('#protein').innerHTML = lowCalorieRecipe[i].nutrients.protein;
       lowCalorieRecipeArr[i].querySelector('#score').innerHTML = lowCalorieRecipe[i].info.healthScore;
+      
+      veganRecipeArr[i] = this.shadowRoot.getElementById("recipe-card-sample").cloneNode(true);
+      veganRecipeArr[i].querySelector('.recipe-card-name > div').innerHTML = veganRecipe[i].metadata.title;
+      veganRecipeArr[i].querySelector('.recipe-card-image').src = veganRecipe[i].metadata.image;
+      veganRecipeArr[i].querySelector('#time').innerHTML = veganRecipe[i].info.readyInMinutes;
+      veganRecipeArr[i].querySelector('#calories').innerHTML = parseInt(veganRecipe[i].nutrients.calories);
+      veganRecipeArr[i].querySelector('#protein').innerHTML = veganRecipe[i].nutrients.protein;
+      veganRecipeArr[i].querySelector('#score').innerHTML = veganRecipe[i].info.healthScore;
+
+      vegetarianRecipeArr[i] = this.shadowRoot.getElementById("recipe-card-sample").cloneNode(true);
+      vegetarianRecipeArr[i].querySelector('.recipe-card-name > div').innerHTML = vegetarianRecipe[i].metadata.title;
+      vegetarianRecipeArr[i].querySelector('.recipe-card-image').src = vegetarianRecipe[i].metadata.image;
+      vegetarianRecipeArr[i].querySelector('#time').innerHTML = vegetarianRecipe[i].info.readyInMinutes;
+      vegetarianRecipeArr[i].querySelector('#calories').innerHTML = parseInt(vegetarianRecipe[i].nutrients.calories);
+      vegetarianRecipeArr[i].querySelector('#protein').innerHTML = vegetarianRecipe[i].nutrients.protein;
+      vegetarianRecipeArr[i].querySelector('#score').innerHTML = vegetarianRecipe[i].info.healthScore;
     }
 
     this.shadowRoot.getElementById("recipe-card-grid-1").innerHTML = '';
     this.shadowRoot.getElementById("recipe-card-grid-2").innerHTML = '';
     this.shadowRoot.getElementById("recipe-card-grid-3").innerHTML = '';
+    this.shadowRoot.getElementById("recipe-card-grid-4").innerHTML = '';
 
     for (let i = 0; i < 20; i++) {
       this.shadowRoot
         .getElementById("recipe-card-grid-1")
-        .append(chickenRecipeArr[i]);
+        .append(proteinRecipeArr[i]);
       this.shadowRoot
         .getElementById("recipe-card-grid-2")
-        .append(veganRecipeArr[i]);
+        .append(lowCalorieRecipeArr[i]);
       this.shadowRoot
         .getElementById("recipe-card-grid-3")
-        .append(lowCalorieRecipeArr[i]);
-        .append(recipesample.cloneNode(true));
+        .append(veganRecipeArr[i]);
       this.shadowRoot
         .getElementById("recipe-card-grid-4")
-        .append(recipesample.cloneNode(true));
+        .append(vegetarianRecipeArr[i]);
     }
 
     this.shadowRoot.querySelectorAll(".recipe-card").forEach((recipeCard) => {
