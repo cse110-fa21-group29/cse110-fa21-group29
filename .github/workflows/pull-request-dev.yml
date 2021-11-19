@@ -65,7 +65,6 @@ jobs:
       
       - name: Install Node.js dependencies
         run: npm install -g jsdoc
-        run: npm install --save-dev jsdoc
       
       - name: Run JSDocs
         run: jsdoc -r -d specs/documentation/jsdocs/ source/
