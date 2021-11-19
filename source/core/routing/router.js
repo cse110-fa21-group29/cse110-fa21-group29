@@ -5,14 +5,33 @@
 /**
  * The router patterns for the different pages of the site.
  * Each route pattern is the URL with all parameters replaced with "_".
- * Key is name of component (route), value is URL.
+ * Key is name of component (route), value is object with component name and URL.
  */
 const routePatterns = {
-  "home-page": "#/",
-  "recipe-details": "#/recipes/_",
-  "recipe-contribute": "#/recipes/contribute",
-  "meal-planner": "#/meal-planner",
-  "about-us": "#/about-us",
+  "home-page": {
+    component: "home-page",
+    url: "#/",
+  },
+  "recipe-details": {
+    component: "recipe-details",
+    url: "#/recipes/_",
+  },
+  "recipe-contribute-add": {
+    component: "recipe-contribute",
+    url: "#/recipes/contribute",
+  },
+  "recipe-contribute-edit": {
+    component: "recipe-contribute",
+    url: "#/recipes/_/edit",
+  },
+  "meal-planner": {
+    component: "meal-planner",
+    url: "#/recipes/meal-planner",
+  },
+  "about-us": {
+    component: "about-us",
+    url: "#/about-us",
+  },
 };
 
 /**
@@ -43,7 +62,7 @@ function routerSetup() {
    * @listens router-navigate
    */
   document.addEventListener("router-navigate", (event) => {
-    loadRoute(event.detail.route);
+    loadRoute(event.detail.route, event.detail.params);
 
     // If we are pushing this route to the history state
     // AND we aren't already on the page, push the history state
@@ -97,10 +116,15 @@ function routerSetup() {
  * Loads the correct web component based on the given route.
  * We assume all web components are named the same as their routes.
  * @param {string} route - The route to load on the page (i.e. "home-page").
+ * @param {number[]} params - The parameters in the URL (i.e. [123]).
  */
-function loadRoute(route) {
+function loadRoute(route, params) {
   const contentElement = document.getElementById("content");
-  const newRouteElement = document.createElement(route);
+  const newRouteElement = document.createElement(
+    routePatterns[route].component
+  );
+  newRouteElement.params = params;
+  newRouteElement.route = route;
 
   // If there is an element loaded already, replace it with new one.
   // Otherwise, add new one.
@@ -126,7 +150,7 @@ function navigateFromUrl(url) {
   const initialRoute = getRoutefromUrl(url);
 
   if (initialRoute) {
-    loadRoute(initialRoute);
+    loadRoute(initialRoute, getParamsFromUrl(url));
     history.replaceState(initialRoute, initialRoute, url);
   } else {
     const routerEvent = new CustomEvent("router-navigate", {
@@ -149,7 +173,7 @@ function navigateFromUrl(url) {
  */
 function getUrlFromRoute(route, params) {
   // Replace all "_" in route's pattern with provided params
-  const urlPattern = routePatterns[route];
+  const urlPattern = routePatterns[route].url;
 
   let splitUrl = urlPattern.split("/");
   let currentParam = 0;
@@ -187,10 +211,27 @@ function getRoutefromUrl(url) {
   // Compare url pattern against all route patterns
   const urlPattern = splitUrl.join("/");
   for (const route in routePatterns) {
-    if (routePatterns[route] === urlPattern) {
+    if (routePatterns[route].url === urlPattern) {
       return route;
     }
   }
-
   return false;
+}
+
+// Gets list of parameters from URL.
+function getParamsFromUrl(url) {
+  if (url.length === 0) {
+    return [];
+  }
+
+  let params = [];
+  let splitUrl = url.split("/");
+  for (let i = 0; i < splitUrl.length; i++) {
+    const urlSection = splitUrl[i];
+    if (!isNaN(parseInt(urlSection))) {
+      params.push(urlSection);
+    }
+  }
+
+  return params;
 }

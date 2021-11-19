@@ -4,6 +4,13 @@ class ComponentName extends HTMLElement {
     this.attachShadow({ mode: "open" });
   }
 
+  set params(params) {
+    this.routeParams = params;
+  }
+  set route(route) {
+    this.routeName = route;
+  }
+
   async connectedCallback() {
     let elementContent = await fetch(
       "components/component-name/component-name.html"
