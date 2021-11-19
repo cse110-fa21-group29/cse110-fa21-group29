@@ -20,18 +20,18 @@ class HomePage extends HTMLElement {
 
   setupElement() {
     for (let i = 1; i < 5; i++) {
-      let recippecardgrid = this.shadowRoot.getElementById(
-        "recipe-card-grid-" + i
-      );
       this.shadowRoot
         .getElementById("prev-button-" + i)
         .addEventListener("click", () => {
-          this.recipeScroll(true, recippecardgrid);
+          this.recipeScroll(true, i);
         });
+      this.shadowRoot.getElementById("prev-button-" + i).style.visibility =
+        "hidden";
+
       this.shadowRoot
         .getElementById("next-button-" + i)
         .addEventListener("click", () => {
-          this.recipeScroll(false, recippecardgrid);
+          this.recipeScroll(false, i);
         });
     }
 
@@ -68,17 +68,25 @@ class HomePage extends HTMLElement {
     });
   }
 
-  recipeScroll(scrollleft, recipegrid) {
+  recipeScroll(scrollleft, i) {
+    let recipegrid = this.shadowRoot.getElementById("recipe-card-grid-" + i);
+    let prevbutton = this.shadowRoot.getElementById("prev-button-" + i);
+    let nextbutton = this.shadowRoot.getElementById("next-button-" + i);
     if (scrollleft) {
-      recipegrid.scroll({
-        left: recipegrid.scrollLeft - (recipegrid.clientWidth * 3) / 4,
-        behavior: "smooth",
-      });
+      recipegrid.scrollLeft -= (recipegrid.clientWidth * 3) / 4;
+      nextbutton.style.visibility = "visible";
+      if (recipegrid.scrollLeft < 5) {
+        prevbutton.style.visibility = "hidden";
+      }
     } else {
-      recipegrid.scroll({
-        left: recipegrid.scrollLeft + (recipegrid.clientWidth * 3) / 4,
-        behavior: "smooth",
-      });
+      recipegrid.scrollLeft += (recipegrid.clientWidth * 3) / 4;
+      prevbutton.style.visibility = "visible";
+      if (
+        recipegrid.scrollLeft ==
+        recipegrid.scrollWidth - recipegrid.clientWidth
+      ) {
+        nextbutton.style.visibility = "hidden";
+      }
     }
   }
 }
