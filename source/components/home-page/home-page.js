@@ -75,14 +75,14 @@ class HomePage extends HTMLElement {
     if (scrollleft) {
       recipegrid.scrollLeft -= (recipegrid.clientWidth * 3) / 4;
       nextbutton.style.visibility = "visible";
-      if (recipegrid.scrollLeft < 5) {
+      if (recipegrid.scrollLeft - (recipegrid.clientWidth * 3) / 4 < 5) {
         prevbutton.style.visibility = "hidden";
       }
     } else {
       recipegrid.scrollLeft += (recipegrid.clientWidth * 3) / 4;
       prevbutton.style.visibility = "visible";
       if (
-        recipegrid.scrollLeft ==
+        recipegrid.scrollLeft + (recipegrid.clientWidth * 3) / 4 >
         recipegrid.scrollWidth - recipegrid.clientWidth
       ) {
         nextbutton.style.visibility = "hidden";
