@@ -6,7 +6,7 @@
 .recipe-card-grid {
   margin: 0px 5% 30px 5%;
   height: 45vh;
-
+  scroll-behavior: smooth;
   overflow: hidden;
   display: flex;
   white-space: nowrap;
