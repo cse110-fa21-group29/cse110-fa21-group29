@@ -1,4 +1,4 @@
-class RecipeDetails extends HTMLElement {
+class ComponentName extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
@@ -6,7 +6,7 @@ class RecipeDetails extends HTMLElement {
 
   async connectedCallback() {
     let elementContent = await fetch(
-      "components/recipe-details/recipe-details.html"
+      "components/component-name/component-name.html"
     );
     let elementContentText = await elementContent.text();
     this.shadowRoot.innerHTML = elementContentText;
@@ -16,4 +16,4 @@ class RecipeDetails extends HTMLElement {
   setupElement() {}
 }
 
-customElements.define("recipe-details", RecipeDetails);
+customElements.define("component-name", ComponentName);
