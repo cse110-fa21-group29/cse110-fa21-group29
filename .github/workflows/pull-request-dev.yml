@@ -60,9 +60,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check out Git repository
-        uses: actions/checkout@v2
-
       - name: Run linters
         uses: wearerequired/lint-action@v1
         with:
@@ -76,16 +73,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Check out Git repository
-      uses: actions/checkout@v2
-
-    - name: Set up Node.js
-      uses: actions/setup-node@v1
-      with:
-        node-version: 12
-
-    - name: Run Unit Tests
-      run: npm run test
+      - name: Run Unit Tests
+        run: npm run test
 
   build-and-preview-firebase-hosting-dev:
     name: Build and preview firebase hosting
