@@ -9,7 +9,10 @@ const routePatterns = {
   "about-us": "#/about-us",
 };
 
-// Initial setup, runs on page loaded
+/**
+ * Runs on initial load of page.
+ * @listens DOMContentLoaded
+ */
 window.addEventListener("DOMContentLoaded", () => {
   routerSetup();
   navigateFromUrl(window.location.hash);
