@@ -29,6 +29,13 @@ class RecipeContribute extends HTMLElement {
     this.attachShadow({ mode: "open" });
   }
 
+  set params(params) {
+    this.routeParams = params;
+  }
+  set route(route) {
+    this.routeName = route;
+  }
+
   async connectedCallback() {
     let elementContent = await fetch(
       "components/recipe-contribute/recipe-contribute.html"
@@ -108,6 +115,10 @@ class RecipeContribute extends HTMLElement {
 
       writeUserData(customRecipe);
     });
+    console.log("this.routeName:");
+    console.log(this.routeName);
+    console.log("this.routeParams:");
+    console.log(this.routeParams);
   }
 
   uploadImg(event) {
