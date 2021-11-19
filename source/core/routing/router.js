@@ -30,6 +30,10 @@ const routePatterns = {
     component: "hands-free",
     url: "#/hands-free",
   },
+  "recipe-search": {
+    component: "recipe-search",
+    url: "#/recipe-search",
+  },
 };
 
 // Initial setup, runs on page loaded
