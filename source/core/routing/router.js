@@ -1,12 +1,31 @@
 // Route patterns for the different pages of the site.
 // Each route pattern is the URL with all parameters replaced with "_".
-// Key is name of component (route), value is URL.
+// Key is name of route, value is object with component name and URL.
 const routePatterns = {
-  "home-page": "#/",
-  "recipe-details": "#/recipes/_",
-  "recipe-contribute": "#/recipes/contribute",
-  "meal-planner": "#/meal-planner",
-  "about-us": "#/about-us",
+  "home-page": {
+    component: "home-page",
+    url: "#/",
+  },
+  "recipe-details": {
+    component: "recipe-details",
+    url: "#/recipes/_",
+  },
+  "recipe-contribute-add": {
+    component: "home-page",
+    url: "#/",
+  },
+  "recipe-contribute-edit": {
+    component: "home-page",
+    url: "#/",
+  },
+  "meal-planner": {
+    component: "meal-planner",
+    url: "#/recipes/meal-planner",
+  },
+  "about-us": {
+    component: "about-us",
+    url: "#/about-us",
+  },
 };
 
 // Initial setup, runs on page loaded
@@ -64,7 +83,9 @@ function routerSetup() {
 // We assume all web components are named the same as their routes.
 function loadRoute(route) {
   const contentElement = document.getElementById("content");
-  const newRouteElement = document.createElement(route);
+  const newRouteElement = document.createElement(
+    routePatterns[route].component
+  );
 
   // If there is an element loaded already, replace it with new one.
   // Otherwise, add new one.
@@ -105,7 +126,7 @@ function navigateFromUrl(url) {
 // Generates correct url for a particular route
 function getUrlFromRoute(route, params) {
   // Replace all "_" in route's pattern with provided params
-  const urlPattern = routePatterns[route];
+  const urlPattern = routePatterns[route].url;
 
   let splitUrl = urlPattern.split("/");
   let currentParam = 0;
@@ -139,7 +160,7 @@ function getRoutefromUrl(url) {
   // Compare url pattern against all route patterns
   const urlPattern = splitUrl.join("/");
   for (const route in routePatterns) {
-    if (routePatterns[route] === urlPattern) {
+    if (routePatterns[route].url === urlPattern) {
       return route;
     }
   }
