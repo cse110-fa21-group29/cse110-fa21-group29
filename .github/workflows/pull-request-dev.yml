@@ -58,5 +58,14 @@ jobs:
       - name: Check out Git repository
         uses: actions/checkout@v2
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      
+      - name: Install Node.js dependencies
+        run: npm install -g jsdoc
+        run: npm install --save-dev jsdoc
+      
       - name: Run JSDocs
-        uses: andstor/jsdoc-action@v1.2.0
+        run: jsdoc -r -d specs/documentation/jsdocs/ source/
