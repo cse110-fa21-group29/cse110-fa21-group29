@@ -8,7 +8,7 @@ name: PR Pipeline DEV
       - develop
 jobs:
   run-linters-dev:
-    name: Linting and Formatting
+    name: Run Linting/Formatting
     runs-on: ubuntu-latest
 
     steps:
@@ -49,3 +49,18 @@ jobs:
 
       - name: Run Unit Tests
         run: npm run test
+  
+  run-jsdocs-dev:
+    - name: Check out Git repository
+        uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12
+    
+    - name: Install Node.js dependencies
+      run: npm ci
+    
+    - name: Run JSDocs
+      run: jsdoc -r -d specs/documentation/ source/
