@@ -1,15 +1,24 @@
-// Route patterns for the different pages of the site.
-// Each route pattern is the URL with all parameters replaced with "_".
-// Key is name of component (route), value is URL.
+/** Router module.
+ * @module core/routing/router
+ */
+
+/**
+ * The router patterns for the different pages of the site.
+ * Each route pattern is the URL with all parameters replaced with "_".
+ * Key is name of component (route), value is URL.
+ */
 const routePatterns = {
-  "home-page": "#/",
-  "recipe-details": "#/recipes/_",
-  "recipe-contribute": "#/recipes/contribute",
-  "meal-planner": "#/meal-planner",
-  "about-us": "#/about-us",
+  "home-page": ["#/"],
+  "recipe-details": ["#/recipes/_"],
+  "recipe-contribute": ["#/recipes/contribute", "#/recipes/_/edit"],
+  "meal-planner": ["#/meal-planner"],
+  "about-us": ["#/about-us"],
 };
 
-// Initial setup, runs on page loaded
+/**
+ * Runs on initial load of page.
+ * @listens DOMContentLoaded
+ */
 window.addEventListener("DOMContentLoaded", () => {
   routerSetup();
   navigateFromUrl(window.location.hash);
@@ -19,7 +28,20 @@ window.addEventListener("DOMContentLoaded", () => {
 // Removes current child of <div id="content"></div>
 // and replaces it with child element relating to
 // new route.
+/**
+ * Sets up router event listeners.
+ */
 function routerSetup() {
+  /**
+   * Listens for when a page wants to navigate to a new route.
+   * Removes current child of content div and replaces it
+   * with new component element relating to the destination route.
+   * @param {Object} event - The event object
+   * @param {string} event.detail.route - The route to navigate to (i.e. "home-page").
+   * @param {number[]} event.detail.params - The parameters for the route (i.e. [123]).
+   * @param {boolean} event.detail.preventStatePush - Whether to push this entry to the browser's history log.
+   * @listens router-navigate
+   */
   document.addEventListener("router-navigate", (event) => {
     loadRoute(event.detail.route);
 
@@ -43,6 +65,17 @@ function routerSetup() {
   // and hit enter, so we navigate to the url as a backup.
   // If state exists, we emit a router-navigate event without pushing
   // the route's state.
+  /**
+   * Listens for whenever back/forward arrows on browser are clicked.
+   * If state is null, this means the user typed a new hash in the url
+   * and hit enter, so we navigate to the url as a backup.
+   * If state exists, we emit a router-navigate event without pushing
+   * the route's state.
+   * @param {Object} event - The event object
+   * @param {string} event.state.route - The route to navigate to (i.e. "home-page").
+   * @param {number[]} event.state.params - The parameters for the route (i.e. [123]).
+   * @listens popstate
+   */
   window.addEventListener("popstate", (event) => {
     if (event.state) {
       const routerEvent = new CustomEvent("router-navigate", {
@@ -60,8 +93,11 @@ function routerSetup() {
   });
 }
 
-// Load the correct web component based on the given route.
-// We assume all web components are named the same as their routes.
+/**
+ * Loads the correct web component based on the given route.
+ * We assume all web components are named the same as their routes.
+ * @param {string} route - The route to load on the page (i.e. "home-page").
+ */
 function loadRoute(route) {
   const contentElement = document.getElementById("content");
   const newRouteElement = document.createElement(route);
@@ -76,13 +112,16 @@ function loadRoute(route) {
   }
 }
 
-// Navigate to a page based on only the URL.
-// Used when we are navigating without a state.
-// If we can match the url to a route pattern,
-// we load the route onto the page and store its state in
-// the current history entry.
-// If we cannot match the url to a route pattern,
-// we redirect to the home page.
+/**
+ * Navigate to a page based on only the URL.
+ * Used when we are navigating without a state.
+ * If we can match the url to a route pattern,
+ * we load the route onto the page and store its state in
+ * the current history entry.
+ * If we cannot match the url to a route pattern,
+ * we redirect to the home page.
+ * @param {string} url - The URL to navigate to (i.e. "#/recipes/1").
+ */
 function navigateFromUrl(url) {
   const initialRoute = getRoutefromUrl(url);
 
@@ -102,7 +141,12 @@ function navigateFromUrl(url) {
   }
 }
 
-// Generates correct url for a particular route
+/**
+ * Generates correct url for a particular route
+ * @param {string} route - The route (i.e. "home-page").
+ * @param {number[]} params - The parameters for the route (i.e. [123]).
+ * @returns {string} The URL for that particular route/params.
+ */
 function getUrlFromRoute(route, params) {
   // Replace all "_" in route's pattern with provided params
   const urlPattern = routePatterns[route];
@@ -119,8 +163,12 @@ function getUrlFromRoute(route, params) {
   return splitUrl.join("/");
 }
 
-// Generate correct route for a particular URL.
-// If no routes match the URL, returns false.
+/**
+ * Generate correct route for a particular URL.
+ * If no routes match the URL, returns false.
+ * @param {string} url - The URL to generate the route from.
+ * @returns {string|boolean} The route for the provided URL (i.e. "home-page") or false if not found.
+ */
 function getRoutefromUrl(url) {
   // No URL at all is the same as the home page
   if (url.length === 0) {
