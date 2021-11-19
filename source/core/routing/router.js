@@ -8,11 +8,11 @@
  * Key is name of component (route), value is URL.
  */
 const routePatterns = {
-  "home-page": ["#/"],
-  "recipe-details": ["#/recipes/_"],
-  "recipe-contribute": ["#/recipes/contribute", "#/recipes/_/edit"],
-  "meal-planner": ["#/meal-planner"],
-  "about-us": ["#/about-us"],
+  "home-page": "#/",
+  "recipe-details": "#/recipes/_",
+  "recipe-contribute": "#/recipes/contribute",
+  "meal-planner": "#/meal-planner",
+  "about-us": "#/about-us",
 };
 
 /**
