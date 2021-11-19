@@ -1,3 +1,22 @@
+class HandsFree extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: "open" });
+  }
+
+  async connectedCallback() {
+    let elementContent = await fetch("components/hands-free/hands-free.html");
+    let elementContentText = await elementContent.text();
+    this.shadowRoot.innerHTML = elementContentText;
+    this.setupElement();
+  }
+
+  setupElement() {}
+}
+
+customElements.define("hands-free", HandsFree);
+
+// move below codes into class
 var count = 0;
 var temp;
 var timeron = 0;
@@ -6,21 +25,31 @@ var step = 1;
 var maxStep = 5;
 
 window.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("start-button").addEventListener("click", () => {
-    startCount();
-  });
-  document.getElementById("pause-button").addEventListener("click", () => {
-    stopCount();
-  });
-  document.getElementById("resume-button").addEventListener("click", () => {
-    resumeCount();
-  });
-  document.getElementById("next-button").addEventListener("click", () => {
-    nextStep();
-  });
-  document.getElementById("back-button").addEventListener("click", () => {
-    backStep();
-  });
+  this.shadowRoot
+    .getElementById("start-button")
+    .addEventListener("click", () => {
+      startCount();
+    });
+  this.shadowRoot
+    .getElementById("pause-button")
+    .addEventListener("click", () => {
+      stopCount();
+    });
+  this.shadowRoot
+    .getElementById("resume-button")
+    .addEventListener("click", () => {
+      resumeCount();
+    });
+  this.shadowRoot
+    .getElementById("next-button")
+    .addEventListener("click", () => {
+      nextStep();
+    });
+  this.shadowRoot
+    .getElementById("back-button")
+    .addEventListener("click", () => {
+      backStep();
+    });
   hidebackButton();
 });
 
@@ -61,7 +90,7 @@ function setTime() {
   if (second < 10) {
     second = "0" + second;
   }
-  document.getElementById("timer-display").innerText =
+  this.shadowRoot.getElementById("timer-display").innerText =
     hour + ":" + minute + ":" + second;
 }
 
@@ -70,7 +99,7 @@ function nextStep() {
     hideNextButton();
   }
   showbackButton();
-  document.getElementById("number").innerText = step;
+  this.shadowRoot.getElementById("number").innerText = step;
 }
 
 function backStep() {
@@ -78,20 +107,20 @@ function backStep() {
     hidebackButton();
   }
   showNextButton();
-  document.getElementById("number").innerText = step;
+  this.shadowRoot.getElementById("number").innerText = step;
 }
 
 function showbackButton() {
-  document.getElementById("back-button").style.visibility = "visible";
+  this.shadowRoot.getElementById("back-button").style.visibility = "visible";
 }
 
 function hidebackButton() {
-  document.getElementById("back-button").style.visibility = "hidden";
+  this.shadowRoot.getElementById("back-button").style.visibility = "hidden";
 }
 function showNextButton() {
-  document.getElementById("next-button").style.visibility = "visible";
+  this.shadowRoot.getElementById("next-button").style.visibility = "visible";
 }
 
 function hideNextButton() {
-  document.getElementById("next-button").style.visibility = "hidden";
+  this.shadowRoot.getElementById("next-button").style.visibility = "hidden";
 }
