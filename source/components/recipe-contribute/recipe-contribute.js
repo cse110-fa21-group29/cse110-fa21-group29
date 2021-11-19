@@ -19,66 +19,6 @@ await get(child(dbRef, `recipes`)).then((snapshot) => {
   console.error(error);
 });
 
-const object = {
-  "categories": {
-    "vegan": false,
-    "vegetarian": false,
-    "glutenFree": false
-  },
-  "description": "",
-  "info": {
-    "readyInMinutes": 0,
-    "pricePerServings": 0,
-    "weightWatcherSmartPoints": 0,
-    "healthScore": 0
-  },
-  "ingredients": [],
-  "metadata": {
-    "id": 0,
-    "title": "",
-    "author": "",
-    "image": ""
-  },
- "nutrients": {
-    "totalServings": 0,
-    "calories": "0",
-    "protein": "0g",
-    "fat": "0g"
- },
- "spoonacularSourceUrl": "",
- "steps": "<ol>",
- };
-
-document.getElementById("submit-button").addEventListener("click", () => {
-  object.categories.vegan = document.getElementById("input-vegan").checked;
-  object.categories.vegetarian = document.getElementById("input-vegetarian").checked;
-  object.categories.glutenFree = document.getElementById("input-gluten-free").checked;
-
-  object.description = document.getElementById("input-description").value;
-
-  const ingredients = document.getElementById("input-ingredient").value.split('\n');
-  object.ingredients = ingredients;
-  
-  object.metadata.id = data.length;
-  object.metadata.title = document.getElementById("input-recipe-title").value;
-  object.metadata.author = document.getElementById("input-author").value;
-  object.metadata.image = document.getElementById("submit-img").value;
-
-  object.nutrients.totalServings = document.getElementById("input-number-of-servings").value;
-  object.nutrients.calories = document.getElementById("input-colories").value;
-  object.nutrients.protein = document.getElementById("input-protein").value;
-  object.nutrients.fat = document.getElementById("input-fat").value;
-
-  const steps = document.getElementById('input-direction').value.split('\n');
-
-  for (let i = 0; i < steps.length; i++) {
-    object.steps = object.steps + "<li>" + steps[i] + "</li>";
-  }
-  object.steps = object.steps + "</ol>";
-
-  writeUserData(object);
-});
-
 function writeUserData(object) {
   set(ref(database, "recipes/" + data.length), object);
 }
@@ -98,7 +38,77 @@ class RecipeContribute extends HTMLElement {
     this.setupElement();
   }
 
-  setupElement() {}
+  setupElement() {
+    const customRecipe = {
+      "categories": {
+        "vegan": false,
+        "vegetarian": false,
+        "glutenFree": false
+      },
+      "description": "",
+      "info": {
+        "readyInMinutes": 0,
+        "pricePerServings": 0,
+        "weightWatcherSmartPoints": 0,
+        "healthScore": 0
+      },
+      "ingredients": [],
+      "metadata": {
+        "id": 0,
+        "title": "",
+        "author": "",
+        "image": ""
+      },
+    "nutrients": {
+        "totalServings": 0,
+        "calories": "0",
+        "protein": "0g",
+        "fat": "0g"
+    },
+    "spoonacularSourceUrl": "",
+    "steps": "<ol>",
+    };
+
+    this.shadowRoot.querySelector("#submit-button").addEventListener("click", () => {
+      // Nutrients
+      customRecipe.nutrients.totalServings = this.shadowRoot.querySelector("#input-number-of-servings").value;
+      customRecipe.nutrients.calories = this.shadowRoot.querySelector("#input-colories").value;
+      customRecipe.nutrients.protein = this.shadowRoot.querySelector("#input-protein").value;
+      customRecipe.nutrients.fat = this.shadowRoot.querySelector("#input-fat").value;
+
+      // Categories
+      customRecipe.categories.vegan = this.shadowRoot.querySelector("#input-vegan").checked;
+      customRecipe.categories.vegetarian = this.shadowRoot.querySelector("#input-vegetarian").checked;
+      customRecipe.categories.glutenFree = this.shadowRoot.querySelector("#input-gluten-free").checked;
+      
+      // Recipe General Information
+      customRecipe.metadata.title = this.shadowRoot.querySelector("#input-recipe-title").value;
+      customRecipe.metadata.author = this.shadowRoot.querySelector("#input-author").value;
+      customRecipe.metadata.readyInMinutes = this.shadowRoot.querySelector("#input-time").value;
+      customRecipe.metadata.pricePerServings = this.shadowRoot.querySelector("#input-cost").value;
+
+      // Description
+      customRecipe.description = this.shadowRoot.querySelector("#input-description").value;
+
+      // Ingredients
+      const ingredients = this.shadowRoot.querySelector("#input-ingredient").value.split('\n');
+      customRecipe.ingredients = ingredients;
+
+      // Directions
+      const steps = this.shadowRoot.querySelector('#input-direction').value.split('\n');
+
+      for (let i = 0; i < steps.length; i++) {
+        customRecipe.steps = customRecipe.steps + "<li>" + steps[i] + "</li>";
+      }
+
+      customRecipe.steps = customRecipe.steps + "</ol>";
+
+      // Generate recipe ID for use in routing
+      customRecipe.metadata.id = data.length;
+
+      writeUserData(customRecipe);
+    });
+  }
 
   uploadImg(event) {
     this.shadowRoot.getElementById("submit-img").style.backgroundImage =
