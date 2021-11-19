@@ -1,5 +1,3 @@
-//import "@fortawesome/fontawesome-free/js/all.js";
-
 class HomePage extends HTMLElement {
   constructor() {
     super();

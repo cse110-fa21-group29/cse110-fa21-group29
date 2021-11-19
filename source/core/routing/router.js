@@ -1,5 +1,6 @@
 // Route patterns for the different pages of the site.
 // Each route pattern is the URL with all parameters replaced with "_".
+// Key is name of component (route), value is URL.
 const routePatterns = {
   "home-page": "#/",
   "recipe-details": "#/recipes/_",
