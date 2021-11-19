@@ -1,6 +1,6 @@
 var count = 0;
 var temp;
-var timer_is_on = 0;
+var timeron = 0;
 var step = 1;
 // step numbers
 var maxStep = 5;
@@ -31,15 +31,15 @@ function timedCount() {
 }
 
 function startCount() {
-  if (!timer_is_on) {
-    timer_is_on = 1;
+  if (!timeron) {
+    timeron = 1;
     timedCount();
   }
 }
 
 function stopCount() {
   clearTimeout(temp);
-  timer_is_on = 0;
+  timeron = 0;
 }
 
 function resumeCount() {
