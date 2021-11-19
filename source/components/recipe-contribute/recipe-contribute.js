@@ -7,6 +7,9 @@ class RecipeContribute extends HTMLElement {
   set params(params) {
     this.routeParams = params;
   }
+  set route(route) {
+    this.routeName = route;
+  }
 
   async connectedCallback() {
     let elementContent = await fetch(
@@ -17,7 +20,12 @@ class RecipeContribute extends HTMLElement {
     this.setupElement();
   }
 
-  setupElement() {}
+  setupElement() {
+    console.log("this.routeName:");
+    console.log(this.routeName);
+    console.log("this.routeParams:");
+    console.log(this.routeParams);
+  }
 
   uploadImg(event) {
     this.shadowRoot.getElementById("submit-img").style.backgroundImage =

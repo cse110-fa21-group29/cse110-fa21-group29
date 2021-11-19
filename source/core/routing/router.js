@@ -11,12 +11,12 @@ const routePatterns = {
     url: "#/recipes/_",
   },
   "recipe-contribute-add": {
-    component: "home-page",
-    url: "#/",
+    component: "recipe-contribute",
+    url: "#/recipes/contribute",
   },
   "recipe-contribute-edit": {
-    component: "home-page",
-    url: "#/",
+    component: "recipe-contribute",
+    url: "#/recipes/_/edit",
   },
   "meal-planner": {
     component: "meal-planner",
@@ -86,6 +86,7 @@ function loadRoute(route, params) {
     routePatterns[route].component
   );
   newRouteElement.params = params;
+  newRouteElement.route = route;
 
   // If there is an element loaded already, replace it with new one.
   // Otherwise, add new one.

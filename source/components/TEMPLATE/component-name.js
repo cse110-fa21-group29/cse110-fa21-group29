@@ -7,6 +7,9 @@ class ComponentName extends HTMLElement {
   set params(params) {
     this.routeParams = params;
   }
+  set route(route) {
+    this.routeName = route;
+  }
 
   async connectedCallback() {
     let elementContent = await fetch(
