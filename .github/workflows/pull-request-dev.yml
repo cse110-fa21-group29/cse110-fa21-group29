@@ -11,7 +11,7 @@ jobs:
     name: Install Node.js Dependencies
     runs-on: ubuntu-latest
 
-      steps:
+    steps:
       - name: Run 'npm ci'
         run: npm ci
 
