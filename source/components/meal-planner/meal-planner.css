@@ -1,4 +1,4 @@
-body {
+main {
   text-align: center;
 }
 
@@ -24,7 +24,7 @@ body {
 }
 
 .meal-card {
-  background-image: url(../../static/circle-plus.png);
+  background-image: url(/static/meal-planner/circle-plus.png);
   background-size: 50%;
   background-repeat: no-repeat;
   background-position: center;
