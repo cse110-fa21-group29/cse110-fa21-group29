@@ -64,7 +64,7 @@ jobs:
           node-version: 12
       
       - name: Install Node.js dependencies
-        run: npm ci
+        run: npm install
       
       - name: Run JSDocs
         run: jsdoc -r -d specs/documentation/jsdocs/ source/
