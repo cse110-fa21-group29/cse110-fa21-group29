@@ -7,6 +7,7 @@ main {
 
 #introduction-grid {
   height: 1000px;
+  margin: 100px;
 }
 #introduction-title-grid {
   height: 400px;
@@ -20,6 +21,28 @@ main {
 #introduction-bottom-grid {
   height: 600px;
   background: linear-gradient(110deg, #ffd753 40%, #e990d6 40%);
+  display: flex;
+  justify-content: center;
+}
+
+#introduction-bottom-img {
+  height: 400px;
+  margin-top: 100px;
+  margin-left: 20px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+}
+#introduction-bottom-text {
+  width: 300px;
+  margin-top: 150px;
+  margin-left: 7vw;
+  text-align: left;
+}
+#our-team {
+  margin: 100px 100px 50px;
+  height: 400px;
+  font-size: 100px;
+  background-color: #41cad2;
+  line-height: 400px;
 }
 #team-img,
 #team-story {
@@ -35,6 +58,7 @@ main {
   width: 1024px;
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
+  margin: auto;
 }
 .member-card {
   width: 200px;
@@ -42,10 +66,16 @@ main {
   padding-bottom: 20px;
 }
 .member-img {
-  height: 250px;
+  margin: 20px 0px;
+  height: 266px;
   width: 100%;
+  border-radius: 20px;
 }
-.member-name,
+.member-firstname,
+.member-secondname {
+  font-size: 20px;
+}
 .member-position {
-  text-decoration: underline;
+  margin: 20px 0px;
+  color: grey;
 }
