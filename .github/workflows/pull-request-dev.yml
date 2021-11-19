@@ -54,16 +54,17 @@ jobs:
     name: Running JSDocs
     runs-on: ubuntu-latest
 
-    - name: Check out Git repository
-      uses: actions/checkout@v2
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v2
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v1
-      with:
-        node-version: 12
-    
-    - name: Install Node.js dependencies
-      run: npm ci
-    
-    - name: Run JSDocs
-      run: jsdoc -r -d specs/documentation/jsdocs/ source/
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      
+      - name: Install Node.js dependencies
+        run: npm ci
+      
+      - name: Run JSDocs
+        run: jsdoc -r -d specs/documentation/jsdocs/ source/
