@@ -7,7 +7,7 @@ const routePatterns = {
   "recipe-contribute": "#/recipes/contribute",
   "meal-planner": "#/meal-planner",
   "about-us": "#/about-us",
-  search: "#/search",
+  "recipe-search": "#/search",
 };
 
 // Initial setup, runs on page loaded

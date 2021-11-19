@@ -1,11 +1,13 @@
-class Search extends HTMLElement {
+class RecipeSearch extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
   }
 
   async connectedCallback() {
-    let elementContent = await fetch("components/search/search.html");
+    let elementContent = await fetch(
+      "components/recipe-search/recipe-search.html"
+    );
     let elementContentText = await elementContent.text();
     this.shadowRoot.innerHTML = elementContentText;
     this.setupElement();
@@ -14,4 +16,4 @@ class Search extends HTMLElement {
   setupElement() {}
 }
 
-customElements.define("search", Search);
+customElements.define("recipe-search", RecipeSearch);
