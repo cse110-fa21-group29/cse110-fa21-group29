@@ -1,43 +1,41 @@
 /* navigation bar*/
 #nav-bar {
-    list-style-type: none;
-    display: inline-block;
-    position: fixed;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    top: 0;
-    width: 100%;
-    z-index: 9999;
-    background: #FFA4A4;
+  list-style-type: none;
+  display: inline-block;
+  position: fixed;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+  background: #ffa4a4;
 }
 
 /* left grid */
 .left {
-    float: left;
-    font-family: Snell Roundhand, cursive;
-    font-style: normal;
-    font-size: 3vh;
+  float: left;
+  font-family: Snell Roundhand, cursive;
+  font-style: normal;
+  font-size: 3vh;
 }
 
 /* right grid */
 .right {
-    float: right;
-    padding-left: 0.5%;
-    padding-right: 0.5%;
-    
+  float: right;
+  padding-left: 0.5%;
+  padding-right: 0.5%;
 }
 
 /* contents */
 li {
-	color: black;
-    display: flex;
-    align-items: center;
-    height: 5vh;
+  color: black;
+  display: flex;
+  align-items: center;
+  height: 5vh;
 }
-
 
 /* recipe page only */
 .hidden {
-    display: none;
+  display: none;
 }
