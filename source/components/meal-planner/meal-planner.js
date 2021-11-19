@@ -4,6 +4,10 @@ class MealPlanner extends HTMLElement {
     this.attachShadow({ mode: "open" });
   }
 
+  set params(params) {
+    this.routeParams = params;
+  }
+
   async connectedCallback() {
     let elementContent = await fetch(
       "components/meal-planner/meal-planner.html"

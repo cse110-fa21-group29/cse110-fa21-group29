@@ -40,7 +40,7 @@ window.addEventListener("DOMContentLoaded", () => {
 // new route.
 function routerSetup() {
   document.addEventListener("router-navigate", (event) => {
-    loadRoute(event.detail.route);
+    loadRoute(event.detail.route, event.detail.params);
 
     // If we are pushing this route to the history state
     // AND we aren't already on the page, push the history state
@@ -79,13 +79,13 @@ function routerSetup() {
   });
 }
 
-// Load the correct web component based on the given route.
-// We assume all web components are named the same as their routes.
-function loadRoute(route) {
+// Load the correct web component based on the given route and params.
+function loadRoute(route, params) {
   const contentElement = document.getElementById("content");
   const newRouteElement = document.createElement(
     routePatterns[route].component
   );
+  newRouteElement.params = params;
 
   // If there is an element loaded already, replace it with new one.
   // Otherwise, add new one.
@@ -108,7 +108,7 @@ function navigateFromUrl(url) {
   const initialRoute = getRoutefromUrl(url);
 
   if (initialRoute) {
-    loadRoute(initialRoute);
+    loadRoute(initialRoute, getParamsFromUrl(url));
     history.replaceState(initialRoute, initialRoute, url);
   } else {
     const routerEvent = new CustomEvent("router-navigate", {
@@ -164,6 +164,23 @@ function getRoutefromUrl(url) {
       return route;
     }
   }
-
   return false;
+}
+
+// Gets list of parameters from URL.
+function getParamsFromUrl(url) {
+  if (url.length === 0) {
+    return [];
+  }
+
+  let params = [];
+  let splitUrl = url.split("/");
+  for (let i = 0; i < splitUrl.length; i++) {
+    const urlSection = splitUrl[i];
+    if (!isNaN(parseInt(urlSection))) {
+      params.push(urlSection);
+    }
+  }
+
+  return params;
 }

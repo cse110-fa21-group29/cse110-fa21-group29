@@ -4,6 +4,10 @@ class RecipeContribute extends HTMLElement {
     this.attachShadow({ mode: "open" });
   }
 
+  set params(params) {
+    this.routeParams = params;
+  }
+
   async connectedCallback() {
     let elementContent = await fetch(
       "components/recipe-contribute/recipe-contribute.html"

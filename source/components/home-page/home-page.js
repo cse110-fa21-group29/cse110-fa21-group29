@@ -4,6 +4,10 @@ class HomePage extends HTMLElement {
     this.attachShadow({ mode: "open" });
   }
 
+  set params(params) {
+    this.routeParams = params;
+  }
+
   async connectedCallback() {
     let elementContent = await fetch("components/home-page/home-page.html");
     let elementContentText = await elementContent.text();

@@ -4,6 +4,10 @@ class RecipeDetails extends HTMLElement {
     this.attachShadow({ mode: "open" });
   }
 
+  set params(params) {
+    this.routeParams = params;
+  }
+
   async connectedCallback() {
     let elementContent = await fetch(
       "components/recipe-details/recipe-details.html"
