@@ -26,6 +26,10 @@ const routePatterns = {
     component: "about-us",
     url: "#/about-us",
   },
+  "recipe-search": {
+    component: "recipe-search",
+    url: "#/recipe-search",
+  },
 };
 
 // Initial setup, runs on page loaded
