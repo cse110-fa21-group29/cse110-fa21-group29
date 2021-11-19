@@ -26,6 +26,10 @@ const routePatterns = {
     component: "about-us",
     url: "#/about-us",
   },
+  "hands-free": {
+    component: "hands-free",
+    url: "#/hands-free",
+  },
   "recipe-search": {
     component: "recipe-search",
     url: "#/recipe-search",
