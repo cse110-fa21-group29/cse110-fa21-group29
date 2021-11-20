@@ -1,7 +1,10 @@
 # CSE 110 - Red Pandas - Branching and Committing
 
 ## Overview
-This documentation covers the standards we are using to organize our branches and commits.
+This documentation covers the standards we are using to organize our branches and commits. It will discuss the following topics:
+1. Branches
+2. Branch naming
+3. Commit naming
 
 ## Branches
 We have 6 branch types in our repo:
@@ -31,7 +34,7 @@ We have 6 branch types in our repo:
 6. `gh-pages`: This branch represents our documentation. Right now, this is currently a WORK-IN-PROGRESS.
    1. This branch represents the latest JSDocs, and will be visible at docs.yummyrecipesapp.com. It is hosted via GitHub pages.
 
-## Branch Naming
+## Branch naming
 All feature and fix branches (1st and 2nd types listed above) should follow this naming scheme:
 
 `feat/123-around-six-words-about-the-issue`
@@ -40,7 +43,7 @@ All feature and fix branches (1st and 2nd types listed above) should follow this
 
 The number represents the GitHub issue number for the feature or bug report.
 
-## Commit Naming
+## Commit naming
 All commits should follow the naming scheme below. This is loosely based off of the commitlint standard:
 
 `type(scope): a short message about the changes`
