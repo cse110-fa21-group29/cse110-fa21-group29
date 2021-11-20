@@ -3,6 +3,8 @@ module.exports = {
         "browser": true,
         "es2021": true,
         "jquery": true,
+        "node": true,
+        "jest/globals": true,
     },
     "extends": [
         "eslint:recommended",
@@ -15,5 +17,6 @@ module.exports = {
     "rules": {
         "no-unused-vars": "off",
     },
-    "ignorePatterns": [".github/**/*"]
+    "ignorePatterns": [".github/**/*"],
+    "plugins": ["jest"]
 };
