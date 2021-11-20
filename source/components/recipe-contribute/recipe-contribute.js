@@ -1,27 +1,4 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.1/firebase-app.js";
-import { child, get, getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.4.1/firebase-database.js";
-
-let response = await fetch("../../config.json");
-response = await response.json();
-
-const app = initializeApp(response.firebaseConfig);
-const database = getDatabase(app);
-const dbRef = ref(getDatabase());
-
-let data = undefined;
-await get(child(dbRef, `recipes`)).then((snapshot) => {
-  if (snapshot.exists()) {
-    data = snapshot.val();
-  } else {
-    console.log("No data available");
-  }
-}).catch((error) => {
-  console.error(error);
-});
-
-function writeUserData(object) {
-  set(ref(database, "recipes/" + data.length), object);
-}
+import { Database } from "../../core/database/database.js"
 
 class RecipeContribute extends HTMLElement {
   constructor() {
@@ -45,7 +22,7 @@ class RecipeContribute extends HTMLElement {
     this.setupElement();
   }
 
-  setupElement() {
+  async setupElement() {
     const customRecipe = {
       "categories": {
         "vegan": false,
@@ -110,10 +87,7 @@ class RecipeContribute extends HTMLElement {
 
       customRecipe.steps = customRecipe.steps + "</ol>";
 
-      // Generate recipe ID for use in routing
-      customRecipe.metadata.id = data.length;
-
-      writeUserData(customRecipe);
+      new Database().writeUserData(customRecipe);
     });
     console.log("this.routeName:");
     console.log(this.routeName);

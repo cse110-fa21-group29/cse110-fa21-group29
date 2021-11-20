@@ -1,46 +1,5 @@
 //import "@fortawesome/fontawesome-free/js/all.js";
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.1/firebase-app.js";
-import { child, get, getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.4.1/firebase-database.js";
-
-let response = await fetch('../../config.json');
-response = await response.json();
-
-const app = initializeApp(response.firebaseConfig);
-const database = getDatabase(app);
-const dbRef = ref(getDatabase());
-let data = undefined;
-
-await get(child(dbRef, `recipes`)).then((snapshot) => {
-  if (snapshot.exists()) {
-    data = snapshot.val();
-  } else {
-    console.log("No data available");
-  }
-}).catch((error) => {
-  console.error(error);
-});
-
-data.sort(function (a, b) {
-  let aProtein = parseInt(a.nutrients.protein.substring(0, a.nutrients.protein.length - 1));
-  let bProtein = parseInt(b.nutrients.protein.substring(0, b.nutrients.protein.length - 1));
-  if (aProtein < bProtein) {
-    return 1;
-  } else if (aProtein > bProtein) {
-    return -1;
-  } else {
-    return 0;
-  }
-});
-
-const lowCalorieRecipe = [];
-const veganRecipe = [];
-const vegetarianRecipe = [];
-
-for (let i = 0; i < data.length; i++) {
-  if (parseInt(data[i].nutrients.calories) < 450) lowCalorieRecipe.push(data[i]);
-  if (data[i].categories.vegan) veganRecipe.push(data[i]);
-  if (data[i].categories.vegetarian) vegetarianRecipe.push(data[i]);
-}
+import { Database } from "../../core/database/database.js"
 
 class HomePage extends HTMLElement {
   constructor() {
@@ -62,7 +21,7 @@ class HomePage extends HTMLElement {
     this.setupElement();
   }
 
-  setupElement() {
+  async setupElement() {
     for (let i = 1; i < 5; i++) {
       let recippecardgrid = this.shadowRoot.getElementById(
         "recipe-card-grid-" + i
@@ -77,6 +36,31 @@ class HomePage extends HTMLElement {
         .addEventListener("click", () => {
           this.recipeScroll(false, recippecardgrid);
         });
+    }
+
+    const database = new Database();
+    const data = await database.getRecipes();
+
+    data.sort(function (a, b) {
+      let aProtein = parseInt(a.nutrients.protein.substring(0, a.nutrients.protein.length - 1));
+      let bProtein = parseInt(b.nutrients.protein.substring(0, b.nutrients.protein.length - 1));
+      if (aProtein < bProtein) {
+        return 1;
+      } else if (aProtein > bProtein) {
+        return -1;
+      } else {
+        return 0;
+      }
+    });
+    
+    const lowCalorieRecipe = [];
+    const veganRecipe = [];
+    const vegetarianRecipe = [];
+    
+    for (let i = 0; i < data.length; i++) {
+      if (parseInt(data[i].nutrients.calories) < 450) lowCalorieRecipe.push(data[i]);
+      if (data[i].categories.vegan) veganRecipe.push(data[i]);
+      if (data[i].categories.vegetarian) vegetarianRecipe.push(data[i]);
     }
 
     let proteinRecipeArr = [];

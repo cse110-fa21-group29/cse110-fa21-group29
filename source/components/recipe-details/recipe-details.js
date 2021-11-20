@@ -1,23 +1,4 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.1/firebase-app.js";
-import { child, get, getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.4.1/firebase-database.js";
-
-let response = await fetch('../../config.json');
-response = await response.json();
-
-const app = initializeApp(response.firebaseConfig);
-const database = getDatabase(app);
-const dbRef = ref(getDatabase());
-let data = undefined;
-
-await get(child(dbRef, `recipes`)).then((snapshot) => {
-  if (snapshot.exists()) {
-    data = snapshot.val();
-  } else {
-    console.log("No data available");
-  }
-}).catch((error) => {
-  console.error(error);
-});
+import { Database } from "../../core/database/database.js"
 
 class RecipeDetails extends HTMLElement {
   constructor() {
@@ -41,9 +22,11 @@ class RecipeDetails extends HTMLElement {
     this.setupElement();
   }
 
-  setupElement() {
+  async setupElement() {
+    const database = new Database();
     const url = window.location.href.split("/");
     const url_id = url[url.length - 1];
+    let data = await database.getRecipes();
     let recipe = undefined;
 
     for (let i = 0; i < data.length; i++) {
