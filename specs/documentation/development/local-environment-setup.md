@@ -19,6 +19,8 @@ git config pull.ff only
 ## Linter setup
 NOTE: Please ensure you had `npm` installed. If you do not, please install it.
 
+NOTE 2: By setting up the linters, whenever you _commit_ (run `git commit`), `eslint` (JS linter) and `prettier` (HTML/CSS/JS formatter) will **automatically** run on your machine and format your code.
+
 Please run the following commands to ensure that your npm setup and linter setup is correct:
 ```shell
 # Install all required packages from 'package.json'.
