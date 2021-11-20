@@ -1,14 +1,8 @@
 module.exports = { getRoutefromUrl };
 
-/** Router module.
- * @module core/routing/router
- */
-
-/**
- * The router patterns for the different pages of the site.
- * Each route pattern is the URL with all parameters replaced with "_".
- * Key is name of component (route), value is object with component name and URL.
- */
+// Route patterns for the different pages of the site.
+// Each route pattern is the URL with all parameters replaced with "_".
+// Key is name of route, value is object with component name and URL.
 const routePatterns = {
   "home-page": {
     component: "home-page",
