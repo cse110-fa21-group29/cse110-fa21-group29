@@ -1,5 +1,7 @@
 # CSE 110 - Red Pandas - Development Workflow
 
+[Back to Table of Contents](TABLE-OF-CONTENTS.md)
+
 ## Overview
 This document covers the workflow that all developers should follow. It will discuss the following topics in order:
 1. Issue creation
