@@ -8,7 +8,7 @@
 * [Branching and Committing](branching-and-committing.md)
 
 ## Repo Structure Documentation
-* _IN PROGRESS_ [Development Folder Structure](development-folder-structure.md)
+* [Development Folder Structure](development-folder-structure.md)
 * _IN PROGRESS_ [Component Structure](component-structure.md)
 
 ## Code Explanations

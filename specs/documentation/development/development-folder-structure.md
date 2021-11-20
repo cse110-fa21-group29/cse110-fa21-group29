@@ -20,7 +20,7 @@ Inside the `source/` folder, we have the following files/folders:
   * `static/common/`: Common static files (default recipe image, etc.)
   * `static/font-awesome/`: Font awesome icon pack library
   * `static/[component-name]/`: Any images, etc. that are specific to that component.
-* `index.html`: The initial HTML file that is rendered when the user goes to the site. It imports the global styling, core JS files, and component JS files.
+* `index.html`: The initial HTML file that is rendered when the user goes to the site. It imports the global styling, core JS files, and component JS files (see [router explanation](./router-explanation.md)).
 * `main.js`: Any global JS that should be run (unused at the moment).
 * `styles.css`: Any global styling that should apply to the whole page.
 
