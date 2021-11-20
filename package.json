@@ -12,5 +12,8 @@
   "lint-staged": {
     "./source/**/*.js": "eslint --fix",
     "./source/**": "prettier --write --ignore-unknown"
+  },
+  "scripts": {
+    "test": "jest"
   }
 }
