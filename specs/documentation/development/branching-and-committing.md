@@ -3,7 +3,9 @@
 [Back to Table of Contents](TABLE-OF-CONTENTS.md)
 
 ## Overview
-This documentation covers the standards we are using to organize our branches and commits. It will discuss the following topics:
+This documentation covers the standards we are using to organize our branches and commits.
+
+### Topics discussed
 1. Branches
 2. Branch naming
 3. Commit naming
