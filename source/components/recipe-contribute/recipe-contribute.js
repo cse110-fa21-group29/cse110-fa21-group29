@@ -4,6 +4,13 @@ class RecipeContribute extends HTMLElement {
     this.attachShadow({ mode: "open" });
   }
 
+  set params(params) {
+    this.routeParams = params;
+  }
+  set route(route) {
+    this.routeName = route;
+  }
+
   async connectedCallback() {
     let elementContent = await fetch(
       "components/recipe-contribute/recipe-contribute.html"
@@ -13,7 +20,12 @@ class RecipeContribute extends HTMLElement {
     this.setupElement();
   }
 
-  setupElement() {}
+  setupElement() {
+    console.log("this.routeName:");
+    console.log(this.routeName);
+    console.log("this.routeParams:");
+    console.log(this.routeParams);
+  }
 
   uploadImg(event) {
     this.shadowRoot.getElementById("submit-img").style.backgroundImage =

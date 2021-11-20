@@ -1,4 +1,9 @@
 <link rel="stylesheet" href="components/recipe-details/recipe-details.css" />
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin"
+/>
 
 <div class="recipe">
   <!-- This is the first row of the page, including the image and the author box-->
@@ -45,8 +50,8 @@
       <div class="category-box">
         <div class="category-title">Categories:</div>
         <div class="category-list">
-          <li>Vegan</li>
-          <li id="low-calories">Low Calories</li>
+          <li style="color: #3aad53">Vegan</li>
+          <li style="color: #097d37">Low Calories</li>
         </div>
       </div>
     </div>
@@ -101,9 +106,12 @@
   <!-- comment box-->
   <div class="comment-box">
     <div class="comment-box-input">
-      <div class="user-input">User input</div>
-      <div class="picture-box">pic</div>
-      <div class="submit-box">submit</div>
+      <textarea rows="4" cols="50" style="font-size: 18pt">
+User input here</textarea
+      >
+      <div class="submit-box">
+        <button class="submit-button">Submit</button>
+      </div>
     </div>
 
     <div class="comment-box-reply-container">
