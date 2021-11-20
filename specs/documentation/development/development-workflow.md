@@ -23,7 +23,8 @@ This document covers the workflow that all developers should follow. It will dis
   # Ensure you are currently on the 'develop' branch.
   git checkout develop
 
-  # Pull the remote 'develop' branch into your local 'develop' branch. This updates your local branch with the latest changes.
+  # Pull the remote 'develop' branch into your local 'develop' branch. 
+  # This updates your local branch with the latest changes.
   git pull origin develop
   ```
 2. Create a new feature branch off of `develop`.
@@ -37,7 +38,8 @@ This document covers the workflow that all developers should follow. It will dis
   # Ensure you are currently on the 'develop' branch.
   git checkout develop
 
-  # Pull the remote 'develop' branch into your local 'develop' branch. This updates your local branch with the latest changes.
+  # Pull the remote 'develop' branch into your local 'develop' branch. 
+  # This updates your local branch with the latest changes.
   git pull origin develop
 
   # If there were any new commits, merge them from `develop` and update your branch.
@@ -53,7 +55,8 @@ This document covers the workflow that all developers should follow. It will dis
   # Ensure you are currently on the 'develop' branch.
   git checkout develop
 
-  # Pull the remote 'develop' branch into your local 'develop' branch. This updates your local branch with the latest changes.
+  # Pull the remote 'develop' branch into your local 'develop' branch. 
+  # This updates your local branch with the latest changes.
   git pull origin develop
 
   # If there were any new commits, merge them from `develop` and update your branch.
