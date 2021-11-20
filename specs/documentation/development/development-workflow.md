@@ -1,4 +1,4 @@
-# CSE 110 - Red Pandas - General Development Workflow
+# CSE 110 - Red Pandas - Development Workflow
 
 ## Overview
 This document covers the workflow that all developers should follow. It will discuss the following topics in order:
@@ -61,11 +61,11 @@ This document covers the workflow that all developers should follow. It will dis
   git merge develop
   git push origin feat/123-my-feature
   ```
-2. When the branch is up to date, the developer will open a new Pull Request (PR).
+2. When the branch is up to date, the developer will open a new Pull Request (PR) and move the issue to "Ready for Review".
   2. The PR should be merging `feat/123-my-feature` into `develop` (NOT `main`).
   3. The PR should have a name and basic description.
   4. The PR should have the phrase "Closes #123" at the end of the description.
 3. The developer will request Justin (and/or any other developer) as a PR reviewer.
 4. If a reviewer has provided suggestions, the developer will fix them.
 5. If a reviewer has approved the PR, Justin will merge the PR into `develop` once all of the checks are passing.
-6. The issue will be closed and moved to Done on the board.
+6. The related issue will be closed and moved to "Done" on the board.
