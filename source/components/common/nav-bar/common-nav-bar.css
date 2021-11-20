@@ -3,10 +3,9 @@
   list-style-type: none;
   display: inline-block;
   position: fixed;
-  padding: 0px;
+  padding: 0;
   overflow: hidden;
-  margin: 0px;
-  /* top: 0; */
+  margin: 0;
   width: 100%;
   z-index: 9999;
   background: #ffa4a4;
@@ -37,14 +36,15 @@ li {
 }
 
 /* recipe page only */
-.hidden {
-  /* display: none; */
-}
+/* .hidden {
+  display: none;
+} */
 
 #place-holder {
   height: 50px;
 }
+
 .link {
   display: inline-block;
-  margin: 0px 20px;
+  margin: 0 20px;
 }
