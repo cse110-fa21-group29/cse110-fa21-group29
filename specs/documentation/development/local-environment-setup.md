@@ -3,7 +3,9 @@
 [Back to Table of Contents](TABLE-OF-CONTENTS.md)
 
 ## Overview
-This document covers the necessary requirements to get your local environment up and running. It will cover the following topics:
+This document covers the necessary requirements to get your local environment up and running.
+
+### Topics discussed
 1. Git setup
 2. Linter setup (`eslint` and `prettier`)
 

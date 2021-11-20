@@ -3,7 +3,9 @@
 [Back to Table of Contents](TABLE-OF-CONTENTS.md)
 
 ## Overview
-This document covers the workflow that all developers should follow. It will discuss the following topics in order:
+This document covers the workflow that all developers should follow.
+
+### Topics discussed
 1. Issue creation
 2. Feature branch creation
 3. Creating a PR
