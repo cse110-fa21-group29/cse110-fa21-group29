@@ -105,14 +105,23 @@
   </div>
   <!-- comment box-->
   <div class="comment-box">
-    <div class="comment-box-input">
-      <textarea rows="4" cols="50" style="font-size: 18pt">
-User input here</textarea
-      >
+    <form class="comment-box-input">
+      <textarea
+        rows="4"
+        cols="50"
+        style="font-size: 18pt"
+        placeholder="User input here"
+      ></textarea>
+      <input type="file" id="submit-img" onchange="this.uploadImg(event)" />
       <div class="submit-box">
-        <button class="submit-button">Submit</button>
+        <input
+          type="submit"
+          class="submit-button"
+          id="submit-comment-button"
+          onclick="return confirm('Are you sure?')"
+        />
       </div>
-    </div>
+    </form>
 
     <div class="comment-box-reply-container">
       <div class="comment-box-reply">display user input here</div>

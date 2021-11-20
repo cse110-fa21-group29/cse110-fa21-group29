@@ -21,6 +21,11 @@ class RecipeDetails extends HTMLElement {
   }
 
   setupElement() {}
+
+  uploadImg(event) {
+    this.shadowRoot.getElementById("submit-img").style.backgroundImage =
+      "url(" + URL.createObjectURL(event.target.files[0]) + ")";
+  }
 }
 
 customElements.define("recipe-details", RecipeDetails);

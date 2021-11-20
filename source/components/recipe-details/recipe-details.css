@@ -2,6 +2,7 @@
   max-width: 1024px;
   margin: auto;
   width: 80vw;
+  margin-top: 80px;
 }
 .first-row {
   display: flex;
@@ -53,7 +54,7 @@
 
 .description-box {
   width: 98.5%;
-  height: 75%;
+  /* height: 75%; */
   margin-top: 3%;
   margin-left: 1%;
   border: 0.1em solid grey;
@@ -237,7 +238,7 @@ textarea {
   margin: auto;
 }
 
-button {
+#submit-comment-button {
   border: 1px solid grey;
   padding: 15px 32px;
   text-align: center;
@@ -266,4 +267,17 @@ button {
   border: 1px solid grey;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   padding: 1%;
+}
+
+#submit-img::file-selector-button {
+  display: none;
+}
+#submit-img {
+  font-size: 0px;
+  width: 200px;
+  background-image: url("/static/common/defaultimg.jpeg");
+  background-position: center;
+  background-size: cover;
+  cursor: pointer;
+  margin: 10px;
 }
