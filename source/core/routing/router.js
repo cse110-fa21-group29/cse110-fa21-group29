@@ -144,3 +144,5 @@ function getRoutefromUrl(url) {
 
   return false;
 }
+
+module.exports = { getRoutefromUrl };
