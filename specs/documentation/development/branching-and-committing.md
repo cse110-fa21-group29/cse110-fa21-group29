@@ -1,6 +1,6 @@
-# CSE 110 - Red Pandas - Branch & Commit Naming
+# CSE 110 - Red Pandas - Branching and Committing
 
-## Context
+## Overview
 This documentation covers the standards we are using to organize our branches and commits.
 
 ## Branches
