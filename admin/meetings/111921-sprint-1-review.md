@@ -1,7 +1,7 @@
 # Team Meeting Minutes #
-Team Name/Number: Red Pands/29<br>
-Date: November 19, 2021<br>
-Time: 3:05pm<br>
+Team Name/Number: Red Pands/29  
+Date: November 19, 2021  
+Time: 3:05pm  
 Location: Zoom
 
 Present:
@@ -19,18 +19,17 @@ Present:
 Absent: 
 - Zhuoran
 
-<br>
-
 # Purpose of Meeting #
 Completing the Agile - Sprint Review Meeting Assignment
-<br>
 
 # Decisions Made #
-
-<br>
+N/A
 
 # Agenda and Meeting Notes #
 
+Demo Video [GitHub](./111921-sprint-1-review.mp4) [YouTube](https://www.youtube.com/watch?v=EBLRAbV_s6s)
+
+Summary of video
 - Avery
     - Made the Meal Planner Page with Viki
     - Made the About Us Page
