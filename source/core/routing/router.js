@@ -36,7 +36,10 @@ const routePatterns = {
   },
 };
 
-// Initial setup, runs on page loaded
+/**
+ * Runs on initial load of page.
+ * @listens DOMContentLoaded
+ */
 window.addEventListener("DOMContentLoaded", () => {
   routerSetup();
   navigateFromUrl(window.location.hash);
