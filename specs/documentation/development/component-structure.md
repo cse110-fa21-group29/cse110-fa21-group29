@@ -37,10 +37,10 @@ To add a new component to the site, follow the steps below (for example, let's c
    * **If you want to select anything in the DOM:** Use `this.shadowRoot.getElementById()` instead of `document.getElementById()`. Using `document` will not work here.
      * If you want to select on a class, element name, type, etc. (anything besides ID), please use `this.shadowRoot.querySelector()` or `this.shadowRoot.querySelectorAll()`. For some reason `this.shadowRoot` does not have any methods besides `getElementById()`.
 7. Add a route in the `routePatterns` const at the top of the `core/routing/router.js` file.
-  * The key is the name of the route (a unique string describing it).
-  * The value is an object with the component name and the URL.
-  * Please begin the URL with `#/` and put `_` anywhere a parameter in the URL occurs.
-  * Example:
+   * The key is the name of the route (a unique string describing it).
+   * The value is an object with the component name and the URL.
+   * Please begin the URL with `#/` and put `_` anywhere a parameter in the URL occurs.
+   * Example:
     ```javascript
     const routePatterns = [
       ...
@@ -51,4 +51,4 @@ To add a new component to the site, follow the steps below (for example, let's c
     ];
     ```
 8. Lastly, please add your component's JS file in the `source/index.html`.
-  * You'll see a bunch of `<script>` tags under the comment `<!-- Component JS -->`, so copy one of them and change the path to your component's JS file.
+   * You'll see a bunch of `<script>` tags under the comment `<!-- Component JS -->`, so copy one of them and change the path to your component's JS file.
