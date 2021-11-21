@@ -43,10 +43,12 @@ npx husky install
    1. The `eslint` error is first, and it says there's a "Parsing error: Unexpected token ." on line 14 of `about-us.js`.
    2. The `prettier` error is next, and it also says there's a "SyntaxError: Unexpected token" on line 14 of `about-us.js`. Prettier also gives a snippet of the code in that area as well.
 5. Here's what it looks like if it worked correctly:
+  
   ![eslint-prettier-success](screenshots/eslint-prettier-success.png)
+
 6. To fix `commitlint` errors, you need to modify your commit message to follow our standard, then try again. You'll know it worked because it was successfully committed to your branch.
 7. If it errors out, here's an example of what you'll see:
-  ![commitlint-fail](screenshots/commitlint-fail].png)
+  ![commitlint-fail](screenshots/commitlint-fail.png)
 
 ## Bypassing linters & commitlint
 1. If in the event of an emergency and you NEED to get the commit onto GitHub, please run the following command:
