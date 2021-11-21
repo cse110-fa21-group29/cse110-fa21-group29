@@ -1,6 +1,6 @@
 # CSE 110 - Red Pandas - Development Workflow
 
-[Back to Table of Contents](TABLE-OF-CONTENTS.md)
+[Back to Table of Contents](README.md)
 
 ## Overview
 This document covers the workflow that all developers should follow.

@@ -1,5 +1,7 @@
 # CSE 110 - Red Pandas - Development Folder Structure
 
+[Back to Table of Contents](README.md)
+
 ## Overview
 This document covers the way our repo is structured from a development standpoint.
 

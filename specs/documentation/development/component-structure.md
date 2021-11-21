@@ -1,6 +1,6 @@
 # CSE 110 - Red Pandas - Component Structure
 
-[Back to Table of Contents](TABLE-OF-CONTENTS.md)
+[Back to Table of Contents](README.md)
 
 ## Overview
 This document will cover the file/folder structure of a component, along with how to add a new component.

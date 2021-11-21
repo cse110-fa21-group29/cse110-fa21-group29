@@ -1,6 +1,6 @@
 # CSE 110 - Red Pandas - Local Environment Setup
 
-[Back to Table of Contents](TABLE-OF-CONTENTS.md)
+[Back to Table of Contents](README.md)
 
 ## Overview
 This document covers the necessary requirements to get your local environment up and running.

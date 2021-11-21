@@ -1,6 +1,6 @@
 # CSE 110 - Red Pandas - Branching and Committing
 
-[Back to Table of Contents](TABLE-OF-CONTENTS.md)
+[Back to Table of Contents](README.md)
 
 ## Overview
 This documentation covers the standards we are using to organize our branches and commits.
