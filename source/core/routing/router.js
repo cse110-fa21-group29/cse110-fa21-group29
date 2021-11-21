@@ -51,10 +51,6 @@ window.addEventListener("DOMContentLoaded", () => {
   navigateFromUrl(window.location.hash);
 });
 
-// Set up router navigate event listener.
-// Removes current child of <div id="content"></div>
-// and replaces it with child element relating to
-// new route.
 /**
  * Sets up router event listeners.
  */
@@ -87,11 +83,6 @@ function routerSetup() {
     }
   });
 
-  // Popstate event runs whenever back/forward arrows are clicked.
-  // If state is null, this means the user typed a new hash in the url
-  // and hit enter, so we navigate to the url as a backup.
-  // If state exists, we emit a router-navigate event without pushing
-  // the route's state.
   /**
    * Listens for whenever back/forward arrows on browser are clicked.
    * If state is null, this means the user typed a new hash in the url
@@ -226,7 +217,11 @@ function getRoutefromUrl(url) {
   return false;
 }
 
-// Gets list of parameters from URL.
+/**
+ * Gets the parameters from a given URL.
+ * @param {string} url - The provided URL to extract params from.
+ * @returns {number[]} Params from the URL.
+ */
 function getParamsFromUrl(url) {
   if (url.length === 0) {
     return [];
