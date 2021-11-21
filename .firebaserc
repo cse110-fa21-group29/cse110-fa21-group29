@@ -2,6 +2,7 @@
   "projects": {
     "prod": "cse110group29",
     "dev": "cse110group29dev",
+    "docs": "cse110group29docs",
     "default": "cse110group29"
   },
   "targets": {}
