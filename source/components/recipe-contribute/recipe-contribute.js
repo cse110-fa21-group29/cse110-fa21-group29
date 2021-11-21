@@ -105,7 +105,11 @@ class RecipeContribute extends HTMLElement {
       }
     }
 
-    // Use recipes properties to pre-populate the form
+    // Display current recipe image
+    this.shadowRoot.getElementById("submit-img").style.backgroundImage =
+      "url(" + recipe.metadata.image + ")";
+
+    // Pre-populate form with nutrients
     this.shadowRoot.querySelector("#input-number-of-servings").value =
       recipe.nutrients.totalServings;
     this.shadowRoot.querySelector("#input-colories").value =
@@ -114,6 +118,7 @@ class RecipeContribute extends HTMLElement {
       recipe.nutrients.protein;
     this.shadowRoot.querySelector("#input-fat").value = recipe.nutrients.fat;
 
+    // Pre-populate form with categories
     this.shadowRoot.querySelector("#input-vegan").checked =
       recipe.categories.vegan;
     this.shadowRoot.querySelector("#input-vegetarian").checked =
@@ -121,6 +126,7 @@ class RecipeContribute extends HTMLElement {
     this.shadowRoot.querySelector("#input-gluten-free").checked =
       recipe.categories.glutenFree;
 
+    // Pre-populate form with general information
     this.shadowRoot.querySelector("#input-recipe-title").value =
       recipe.metadata.title;
     this.shadowRoot.querySelector("#input-author").value =
@@ -130,16 +136,24 @@ class RecipeContribute extends HTMLElement {
     this.shadowRoot.querySelector("#input-cost").value =
       recipe.info.pricePerServings;
 
+    // Pre-populate form with description
     this.shadowRoot.querySelector("#input-description").innerText =
       recipe.description;
 
+    // Pre-populate form with ingredients
     const ingredients = recipe.ingredients.join("\n");
     this.shadowRoot.querySelector("#input-ingredient").innerHTML = ingredients;
 
-    //this.shadowRoot.querySelector("#input-direction").innerHTML = recipe.steps;
+    // Pre-populate form with directions
+    const stepsArr = recipe.steps.split("</li>");
 
-    this.shadowRoot.getElementById("submit-img").style.backgroundImage =
-      "url(" + recipe.metadata.image + ")";
+    for (let i = 0; i < stepsArr.length; i++) {
+      stepsArr[i] = stepsArr[i].replace(/(<([^>]+)>)/gi, "");
+    }
+
+    const steps = stepsArr.join("\n");
+
+    this.shadowRoot.querySelector("#input-direction").innerHTML = steps;
 
     // Update edited recipe in database on submit button click
     this.shadowRoot
@@ -202,6 +216,8 @@ class RecipeContribute extends HTMLElement {
     const steps = this.shadowRoot
       .querySelector("#input-direction")
       .value.split("\n");
+
+    recipe.steps = "";
 
     for (let i = 0; i < steps.length; i++) {
       recipe.steps = recipe.steps + "<li>" + steps[i] + "</li>";

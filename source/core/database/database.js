@@ -15,7 +15,7 @@ export class Database {
     const app = initializeApp(response.firebaseConfig);
     const database = getDatabase(app);
     const dbRef = ref(getDatabase());
-    let data = undefined;
+    let data = [];
 
     await get(child(dbRef, `recipes`))
       .then((snapshot) => {
