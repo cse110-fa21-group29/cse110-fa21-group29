@@ -64,6 +64,7 @@ jobs:
         with:
           source_dir: ./source/
           output_dir: ./specs/documentation/jsdocs/
+          recurse: true
           template: minami
           front_page: ./specs/documentation/jsdocs/docHomepage.md
 
