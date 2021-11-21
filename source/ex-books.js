@@ -5,5 +5,5 @@
  * @param {string} author - The author of the book.
  */
 function Book(title, author) {
-  this.isInvalidJS;
+  //   function();
 }
