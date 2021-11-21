@@ -1,4 +1,4 @@
-import { Database } from "../../core/database/database.js"
+import { Database } from "../../core/database/database.js";
 
 class RecipeDetails extends HTMLElement {
   constructor() {
@@ -23,43 +23,48 @@ class RecipeDetails extends HTMLElement {
   }
 
   async setupElement() {
+    // Grab recipe from database based on routing parameter
     const database = new Database();
-    const url = window.location.href.split("/");
-    const url_id = url[url.length - 1];
     let data = await database.getRecipes();
-    let recipe = undefined;
-
-    for (let i = 0; i < data.length; i++) {
-      if (data[i].metadata.id == url_id) {
-        recipe = data[i];
-        break;
-      }
-    }
+    let recipe = data[this.routeParams[0]];
 
     // This is the first row of the page, including the image and the author box
     this.shadowRoot.querySelector(".recipe-image").src = recipe.metadata.image;
-    this.shadowRoot.querySelector(".dish-name").innerHTML = recipe.metadata.title;
-    this.shadowRoot.querySelector(".author-name").innerHTML = recipe.metadata.author;
-    this.shadowRoot.querySelector(".recipe-url").innerHTML = recipe.spoonacularSourceUrl;
+    this.shadowRoot.querySelector(".dish-name").innerHTML =
+      recipe.metadata.title;
+    this.shadowRoot.querySelector(".author-name").innerHTML =
+      recipe.metadata.author;
+    this.shadowRoot.querySelector(".recipe-url").innerHTML =
+      recipe.spoonacularSourceUrl;
 
     // Description box
-    this.shadowRoot.querySelector(".description").innerHTML = recipe.description;
+    this.shadowRoot.querySelector(".description").innerHTML =
+      recipe.description;
 
     // Information box
-    this.shadowRoot.querySelector("#cost").innerHTML = recipe.info.pricePerServings;
-    this.shadowRoot.querySelector("#time").innerHTML = recipe.info.readyInMinutes;
-    this.shadowRoot.querySelector("#servings").innerHTML = recipe.nutrients.totalServings;
+    this.shadowRoot.querySelector("#cost").innerHTML =
+      recipe.info.pricePerServings;
+    this.shadowRoot.querySelector("#time").innerHTML =
+      recipe.info.readyInMinutes;
+    this.shadowRoot.querySelector("#servings").innerHTML =
+      recipe.nutrients.totalServings;
 
     // Category box
-    if (recipe.categories.vegan == false) this.shadowRoot.querySelector("#vegan").style.display = "none";
-    if (recipe.categories.vegetarian == false) this.shadowRoot.querySelector("#vegetarian").style.display = "none";
-    if (recipe.nutrients.calories > 450) this.shadowRoot.querySelector("#low-calorie").style.display = "none";
-    if (recipe.categories.glutenFree == false) this.shadowRoot.querySelector("#gluten-free").style.display = "none";
+    if (recipe.categories.vegan == false)
+      this.shadowRoot.querySelector("#vegan").style.display = "none";
+    if (recipe.categories.vegetarian == false)
+      this.shadowRoot.querySelector("#vegetarian").style.display = "none";
+    if (recipe.nutrients.calories > 450)
+      this.shadowRoot.querySelector("#low-calorie").style.display = "none";
+    if (recipe.categories.glutenFree == false)
+      this.shadowRoot.querySelector("#gluten-free").style.display = "none";
 
     // Nutrient box
-    this.shadowRoot.querySelector("#calories").innerHTML = recipe.nutrients.calories;
+    this.shadowRoot.querySelector("#calories").innerHTML =
+      recipe.nutrients.calories;
     this.shadowRoot.querySelector("#fat").innerHTML = recipe.nutrients.fat;
-    this.shadowRoot.querySelector("#protein").innerHTML = recipe.nutrients.protein;
+    this.shadowRoot.querySelector("#protein").innerHTML =
+      recipe.nutrients.protein;
 
     // Ingredients box
     let ingredients = "";
@@ -68,7 +73,8 @@ class RecipeDetails extends HTMLElement {
       ingredients = ingredients + "<li>" + recipe.ingredients[i] + "</li>";
     }
 
-    this.shadowRoot.querySelector(".ingredients-list").innerHTML = "<ul>" + ingredients + "</ul>";
+    this.shadowRoot.querySelector(".ingredients-list").innerHTML =
+      "<ul>" + ingredients + "</ul>";
 
     // Direction box
     this.shadowRoot.querySelector(".direction-list").innerHTML = recipe.steps;

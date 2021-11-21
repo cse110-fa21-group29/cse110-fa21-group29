@@ -23,17 +23,12 @@ class RecipeContribute extends HTMLElement {
   }
 
   async setupElement() {
-    // Set up page for adding recipe or editing recipe
+    // Set up page for adding recipe or editing recipe depending on route
     if (this.routeName === "recipe-contribute-add") {
       this.addRecipe();
     } else {
       this.editRecipe();
     }
-
-    // console.log("this.routeName:");
-    // console.log(this.routeName);
-    // console.log("this.routeParams:");
-    // console.log(this.routeParams);
   }
 
   uploadImg(event) {
@@ -91,19 +86,10 @@ class RecipeContribute extends HTMLElement {
    * Sets up the page for editing an existing recipe
    */
   async editRecipe() {
-    // Get recipes from database
+    // Get recipe from database
     const db = new Database();
     const data = await db.getRecipes();
-
-    // Get specific recipe
-    let recipe = {};
-
-    for (let i = 0; i < data.length; i++) {
-      if (data[i].metadata.id == this.routeParams[0]) {
-        recipe = data[i];
-        break;
-      }
-    }
+    const recipe = data[this.routeParams[0]];
 
     // Display current recipe image
     this.shadowRoot.getElementById("submit-img").style.backgroundImage =
@@ -231,7 +217,7 @@ class RecipeContribute extends HTMLElement {
     if (add == true) {
       db.pushRecipe(recipe);
     } else {
-      db.updateRecipe(recipe, recipe.metadata.id);
+      db.updateRecipe(recipe, this.routeParams[0]);
     }
   }
 }

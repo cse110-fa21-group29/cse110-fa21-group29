@@ -7,20 +7,33 @@ import {
   set,
 } from "https://www.gstatic.com/firebasejs/9.4.1/firebase-database.js";
 
+// Database credential file
+const configFile = "../../../config.json";
+
 export class Database {
+  /**
+  /**
+   * Fetches all recipe objects from database
+   *
+   * @return array of recipe objects
+   */
   async getRecipes() {
-    let response = await fetch("../../../config.json");
-    response = await response.json();
+    // Fetch database credentials
+    let config = await fetch(configFile);
+    config = await config.json();
 
-    const app = initializeApp(response.firebaseConfig);
+    // Initialize database connection
+    const app = initializeApp(config.firebaseConfig);
     const database = getDatabase(app);
     const dbRef = ref(getDatabase());
-    let data = [];
+
+    // Get all recipes
+    let recipes = [];
 
     await get(child(dbRef, `recipes`))
       .then((snapshot) => {
         if (snapshot.exists()) {
-          data = snapshot.val();
+          recipes = snapshot.val();
         } else {
           console.log("No data available");
         }
@@ -29,22 +42,31 @@ export class Database {
         console.error(error);
       });
 
-    return data;
+    return recipes;
   }
 
+  /**
+   * Pushes recipe object to database in the next index
+   *
+   * @param recipe an object that contains the recipe data
+   */
   async pushRecipe(recipe) {
-    let response = await fetch("../../../config.json");
-    response = await response.json();
+    // Fetch database credentials
+    let config = await fetch(configFile);
+    config = await config.json();
 
-    const app = initializeApp(response.firebaseConfig);
+    // Initialize database connection
+    const app = initializeApp(config.firebaseConfig);
     const database = getDatabase(app);
     const dbRef = ref(getDatabase());
-    let data = [];
+
+    // Get all recipes to assess the length of the object
+    let recipes = [];
 
     await get(child(dbRef, `recipes`))
       .then((snapshot) => {
         if (snapshot.exists()) {
-          data = snapshot.val();
+          recipes = snapshot.val();
         } else {
           console.log("No data available");
         }
@@ -53,36 +75,27 @@ export class Database {
         console.error(error);
       });
 
-    recipe.metadata.id = data.length;
-    set(ref(database, "recipes/" + data.length), recipe);
+    // Write parameter recipe object to the next index
+    set(ref(database, "recipes/" + recipes.length), recipe);
   }
 
-  async updateRecipe(recipe, id) {
-    let response = await fetch("../../../config.json");
-    response = await response.json();
+  /**
+   * Replaces recipe data at index with object specified in the parameter
+   *
+   * @param recipe an object that contains the recipe data
+   * @param index  the int index of the recipe to replace
+   */
+  async updateRecipe(recipe, index) {
+    // Fetch database credentials
+    let config = await fetch(configFile);
+    config = await config.json();
 
-    const app = initializeApp(response.firebaseConfig);
+    // Initialize database connection
+    const app = initializeApp(config.firebaseConfig);
     const database = getDatabase(app);
     const dbRef = ref(getDatabase());
-    let data = [];
 
-    await get(child(dbRef, `recipes`))
-      .then((snapshot) => {
-        if (snapshot.exists()) {
-          data = snapshot.val();
-        } else {
-          console.log("No data available");
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-
-    for (let i = 0; i < data.length; i++) {
-      if (data[i].metadata.id == recipe.metadata.id) {
-        set(ref(database, "recipes/" + i), recipe);
-        break;
-      }
-    }
+    // Replace recipe data at index with parameter recipe object
+    set(ref(database, "recipes/" + index), recipe);
   }
 }

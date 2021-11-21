@@ -38,175 +38,185 @@ class HomePage extends HTMLElement {
         });
     }
 
+    // Get recipes from database
     const database = new Database();
-    const data = await database.getRecipes();
+    const recipes = await database.getRecipes();
 
-    data.sort(function (a, b) {
-      let aProtein = parseInt(
-        a.nutrients.protein.substring(0, a.nutrients.protein.length - 1)
-      );
-      let bProtein = parseInt(
-        b.nutrients.protein.substring(0, b.nutrients.protein.length - 1)
-      );
-      if (aProtein < bProtein) {
-        return 1;
-      } else if (aProtein > bProtein) {
-        return -1;
-      } else {
-        return 0;
+    // Arrays to store recipe subsets and their index in database
+    const highProtein = [];
+    const highProteinIndex = [];
+    const healthy = [];
+    const healthyIndex = [];
+    const vegan = [];
+    const veganIndex = [];
+    const vegetarian = [];
+    const vegetarianIndex = [];
+
+    // Loop through recipe data and push to subset arrays
+    for (let i = 0; i < recipes.length; i++) {
+      if (recipes[i].categories.highProtein) {
+        highProtein.push(recipes[i]);
+        highProteinIndex.push(i);
       }
-    });
-
-    const lowCalorieRecipe = [];
-    const veganRecipe = [];
-    const vegetarianRecipe = [];
-
-    for (let i = 0; i < data.length; i++) {
-      if (parseInt(data[i].nutrients.calories) < 450)
-        lowCalorieRecipe.push(data[i]);
-      if (data[i].categories.vegan) veganRecipe.push(data[i]);
-      if (data[i].categories.vegetarian) vegetarianRecipe.push(data[i]);
+      if (recipes[i].categories.healthy) {
+        healthy.push(recipes[i]);
+        healthyIndex.push(i);
+      }
+      if (recipes[i].categories.vegan) {
+        vegan.push(recipes[i]);
+        veganIndex.push(i);
+      }
+      if (recipes[i].categories.vegetarian) {
+        vegetarian.push(recipes[i]);
+        vegetarianIndex.push(i);
+      }
     }
 
-    let proteinRecipeArr = [];
-    let lowCalorieRecipeArr = [];
-    let veganRecipeArr = [];
-    let vegetarianRecipeArr = [];
+    // Arrays to hold generate recipe cards
+    const highProteinCards = [];
+    const healthyCards = [];
+    const veganCards = [];
+    const vegetarianCards = [];
 
+    // Create 20 recipe cards that are populated with data from recipe subset arrays
     for (let i = 0; i < 20; i++) {
-      proteinRecipeArr[i] = this.shadowRoot
+      // High protein recipe card
+      highProteinCards[i] = this.shadowRoot
         .getElementById("recipe-card-sample")
         .cloneNode(true);
-      proteinRecipeArr[i].querySelector(".recipe-card-name > div").innerHTML =
-        data[i].metadata.title;
-      proteinRecipeArr[i].querySelector(".recipe-card-image").src =
-        data[i].metadata.image;
-      proteinRecipeArr[i].querySelector("#time").innerHTML =
-        data[i].info.readyInMinutes;
-      proteinRecipeArr[i].querySelector("#calories").innerHTML = parseInt(
-        data[i].nutrients.calories
+      highProteinCards[i].querySelector(".recipe-card-name > div").innerHTML =
+        highProtein[i].metadata.title;
+      highProteinCards[i].querySelector(".recipe-card-image").src =
+        highProtein[i].metadata.image;
+      highProteinCards[i].querySelector("#time").innerHTML =
+        highProtein[i].info.readyInMinutes;
+      highProteinCards[i].querySelector("#calories").innerHTML = parseInt(
+        highProtein[i].nutrients.calories
       );
-      proteinRecipeArr[i].querySelector("#protein").innerHTML =
-        data[i].nutrients.protein;
-      proteinRecipeArr[i].querySelector("#score").innerHTML =
-        data[i].info.healthScore;
-      proteinRecipeArr[i].addEventListener("click", () => {
+      highProteinCards[i].querySelector("#protein").innerHTML =
+        highProtein[i].nutrients.protein;
+      highProteinCards[i].querySelector("#score").innerHTML =
+        highProtein[i].info.healthScore;
+      highProteinCards[i].addEventListener("click", () => {
         const routerEvent = new CustomEvent("router-navigate", {
           detail: {
             route: "recipe-details",
-            params: [data[i].metadata.id],
+            params: [highProteinIndex[i]],
           },
           bubbles: true,
           composed: true,
         });
-        proteinRecipeArr[i].dispatchEvent(routerEvent);
+        highProteinCards[i].dispatchEvent(routerEvent);
       });
 
-      lowCalorieRecipeArr[i] = this.shadowRoot
+      // Healthy recipe card
+      healthyCards[i] = this.shadowRoot
         .getElementById("recipe-card-sample")
         .cloneNode(true);
-      lowCalorieRecipeArr[i].querySelector(
-        ".recipe-card-name > div"
-      ).innerHTML = lowCalorieRecipe[i].metadata.title;
-      lowCalorieRecipeArr[i].querySelector(".recipe-card-image").src =
-        lowCalorieRecipe[i].metadata.image;
-      lowCalorieRecipeArr[i].querySelector("#time").innerHTML =
-        lowCalorieRecipe[i].info.readyInMinutes;
-      lowCalorieRecipeArr[i].querySelector("#calories").innerHTML = parseInt(
-        lowCalorieRecipe[i].nutrients.calories
+      healthyCards[i].querySelector(".recipe-card-name > div").innerHTML =
+        healthy[i].metadata.title;
+      healthyCards[i].querySelector(".recipe-card-image").src =
+        healthy[i].metadata.image;
+      healthyCards[i].querySelector("#time").innerHTML =
+        healthy[i].info.readyInMinutes;
+      healthyCards[i].querySelector("#calories").innerHTML = parseInt(
+        healthy[i].nutrients.calories
       );
-      lowCalorieRecipeArr[i].querySelector("#protein").innerHTML =
-        lowCalorieRecipe[i].nutrients.protein;
-      lowCalorieRecipeArr[i].querySelector("#score").innerHTML =
-        lowCalorieRecipe[i].info.healthScore;
-      lowCalorieRecipeArr[i].addEventListener("click", () => {
+      healthyCards[i].querySelector("#protein").innerHTML =
+        healthy[i].nutrients.protein;
+      healthyCards[i].querySelector("#score").innerHTML =
+        healthy[i].info.healthScore;
+      healthyCards[i].addEventListener("click", () => {
         const routerEvent = new CustomEvent("router-navigate", {
           detail: {
             route: "recipe-details",
-            params: [lowCalorieRecipe[i].metadata.id],
+            params: [healthyIndex[i]],
           },
           bubbles: true,
           composed: true,
         });
-        lowCalorieRecipeArr[i].dispatchEvent(routerEvent);
+        healthyCards[i].dispatchEvent(routerEvent);
       });
 
-      veganRecipeArr[i] = this.shadowRoot
+      // Vegan recipe card
+      veganCards[i] = this.shadowRoot
         .getElementById("recipe-card-sample")
         .cloneNode(true);
-      veganRecipeArr[i].querySelector(".recipe-card-name > div").innerHTML =
-        veganRecipe[i].metadata.title;
-      veganRecipeArr[i].querySelector(".recipe-card-image").src =
-        veganRecipe[i].metadata.image;
-      veganRecipeArr[i].querySelector("#time").innerHTML =
-        veganRecipe[i].info.readyInMinutes;
-      veganRecipeArr[i].querySelector("#calories").innerHTML = parseInt(
-        veganRecipe[i].nutrients.calories
+      veganCards[i].querySelector(".recipe-card-name > div").innerHTML =
+        vegan[i].metadata.title;
+      veganCards[i].querySelector(".recipe-card-image").src =
+        vegan[i].metadata.image;
+      veganCards[i].querySelector("#time").innerHTML =
+        vegan[i].info.readyInMinutes;
+      veganCards[i].querySelector("#calories").innerHTML = parseInt(
+        vegan[i].nutrients.calories
       );
-      veganRecipeArr[i].querySelector("#protein").innerHTML =
-        veganRecipe[i].nutrients.protein;
-      veganRecipeArr[i].querySelector("#score").innerHTML =
-        veganRecipe[i].info.healthScore;
-      veganRecipeArr[i].addEventListener("click", () => {
+      veganCards[i].querySelector("#protein").innerHTML =
+        vegan[i].nutrients.protein;
+      veganCards[i].querySelector("#score").innerHTML =
+        vegan[i].info.healthScore;
+      veganCards[i].addEventListener("click", () => {
         const routerEvent = new CustomEvent("router-navigate", {
           detail: {
             route: "recipe-details",
-            params: [veganRecipe[i].metadata.id],
+            params: [veganIndex[i]],
           },
           bubbles: true,
           composed: true,
         });
-        veganRecipeArr[i].dispatchEvent(routerEvent);
+        veganCards[i].dispatchEvent(routerEvent);
       });
 
-      vegetarianRecipeArr[i] = this.shadowRoot
+      // Vegetarian recipe card
+      vegetarianCards[i] = this.shadowRoot
         .getElementById("recipe-card-sample")
         .cloneNode(true);
-      vegetarianRecipeArr[i].querySelector(
-        ".recipe-card-name > div"
-      ).innerHTML = vegetarianRecipe[i].metadata.title;
-      vegetarianRecipeArr[i].querySelector(".recipe-card-image").src =
-        vegetarianRecipe[i].metadata.image;
-      vegetarianRecipeArr[i].querySelector("#time").innerHTML =
-        vegetarianRecipe[i].info.readyInMinutes;
-      vegetarianRecipeArr[i].querySelector("#calories").innerHTML = parseInt(
-        vegetarianRecipe[i].nutrients.calories
+      vegetarianCards[i].querySelector(".recipe-card-name > div").innerHTML =
+        vegetarian[i].metadata.title;
+      vegetarianCards[i].querySelector(".recipe-card-image").src =
+        vegetarian[i].metadata.image;
+      vegetarianCards[i].querySelector("#time").innerHTML =
+        vegetarian[i].info.readyInMinutes;
+      vegetarianCards[i].querySelector("#calories").innerHTML = parseInt(
+        vegetarian[i].nutrients.calories
       );
-      vegetarianRecipeArr[i].querySelector("#protein").innerHTML =
-        vegetarianRecipe[i].nutrients.protein;
-      vegetarianRecipeArr[i].querySelector("#score").innerHTML =
-        vegetarianRecipe[i].info.healthScore;
-      vegetarianRecipeArr[i].addEventListener("click", () => {
+      vegetarianCards[i].querySelector("#protein").innerHTML =
+        vegetarian[i].nutrients.protein;
+      vegetarianCards[i].querySelector("#score").innerHTML =
+        vegetarian[i].info.healthScore;
+      vegetarianCards[i].addEventListener("click", () => {
         const routerEvent = new CustomEvent("router-navigate", {
           detail: {
             route: "recipe-details",
-            params: [vegetarianRecipe[i].metadata.id],
+            params: [vegetarianIndex[i]],
           },
           bubbles: true,
           composed: true,
         });
-        vegetarianRecipeArr[i].dispatchEvent(routerEvent);
+        vegetarianCards[i].dispatchEvent(routerEvent);
       });
     }
 
+    // Clear out recipe card grids before we append new cards
     this.shadowRoot.getElementById("recipe-card-grid-1").innerHTML = "";
     this.shadowRoot.getElementById("recipe-card-grid-2").innerHTML = "";
     this.shadowRoot.getElementById("recipe-card-grid-3").innerHTML = "";
     this.shadowRoot.getElementById("recipe-card-grid-4").innerHTML = "";
 
+    // Append new cards
     for (let i = 0; i < 20; i++) {
       this.shadowRoot
         .getElementById("recipe-card-grid-1")
-        .append(proteinRecipeArr[i]);
+        .append(highProteinCards[i]);
       this.shadowRoot
         .getElementById("recipe-card-grid-2")
-        .append(lowCalorieRecipeArr[i]);
+        .append(healthyCards[i]);
       this.shadowRoot
         .getElementById("recipe-card-grid-3")
-        .append(veganRecipeArr[i]);
+        .append(veganCards[i]);
       this.shadowRoot
         .getElementById("recipe-card-grid-4")
-        .append(vegetarianRecipeArr[i]);
+        .append(vegetarianCards[i]);
     }
   }
 
