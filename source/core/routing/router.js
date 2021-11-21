@@ -95,11 +95,7 @@ function routerSetup() {
    * @listens popstate
    */
   window.addEventListener("popstate", (event) => {
-    console.log("popstate");
-    console.log(event);
     if (event.state) {
-      console.log("has state");
-      console.log(event.state);
       const routerEvent = new CustomEvent("router-navigate", {
         detail: {
           ...event.state,
@@ -110,8 +106,6 @@ function routerSetup() {
       });
       document.dispatchEvent(routerEvent);
     } else {
-      console.log("no state");
-      console.log(window.location.hash);
       navigateFromUrl(window.location.hash);
     }
   });
