@@ -226,9 +226,35 @@ class RecipeContribute extends HTMLElement {
     const db = new Database();
 
     if (add == true) {
-      db.pushRecipe(recipe);
+      // Push recipe to database and grab index of the new recipe
+      const index = await db.pushRecipe(recipe);
+
+      // Route to new recipe page
+      const routerEvent = new CustomEvent("router-navigate", {
+        detail: {
+          route: "recipe-details",
+          params: [index],
+        },
+        bubbles: true,
+        composed: true,
+      });
+
+      document.dispatchEvent(routerEvent);
     } else {
-      db.updateRecipe(recipe, this.routeParams[0]);
+      // Push edited recipe to database
+      await db.updateRecipe(recipe, this.routeParams[0]);
+
+      // Route to edited recipe page
+      const routerEvent = new CustomEvent("router-navigate", {
+        detail: {
+          route: "recipe-details",
+          params: [this.routeParams[0]],
+        },
+        bubbles: true,
+        composed: true,
+      });
+
+      document.dispatchEvent(routerEvent);
     }
   }
 }

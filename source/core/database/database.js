@@ -48,7 +48,8 @@ export class Database {
   /**
    * Pushes recipe object to database in the next index
    *
-   * @param recipe an object that contains the recipe data
+   * @param  recipe an object that contains the recipe data
+   * @return index of pushed recipe in database
    */
   async pushRecipe(recipe) {
     // Fetch database credentials
@@ -77,6 +78,8 @@ export class Database {
 
     // Write parameter recipe object to the next index
     set(ref(database, "recipes/" + recipes.length), recipe);
+
+    return recipes.length;
   }
 
   /**
