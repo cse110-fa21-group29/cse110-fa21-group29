@@ -24,11 +24,11 @@ We have 6 branch types in our repo:
    3. These MUST follow the naming scheme described below.
    4. The workflow to create and merge a fix branch is the same as a feature branch.
 
-3. `develop`: Represents the DEVELOPMENT codebase. This is directly linked to the subdomain dev.yummyrecipesapp.com so any push to `develop` automatically deploys the changes to the DEV website.
+3. `develop`: Represents the DEVELOPMENT codebase. This is directly linked to the subdomain [dev.yummyrecipesapp.com](dev.yummyrecipesapp.com) so any push to `develop` automatically deploys the changes to the DEV website (see [firebase explanation](firebase-explanation.md)).
    1. This branch is NOT protected, meaning any one can push to it directly without creating a PR first.
    2. However, please ONLY push non-development files directly to `develop`. All development changes should be made with PRs.
    
-4. `main`: Represents the MAIN (LIVE) codebase. This is directly linked to the domain yummyrecipesapp.com so any push to `main` automatically deploys the changes to the MAIN website.
+4. `main`: Represents the MAIN (LIVE) codebase. This is directly linked to the domain [yummyrecipesapp.com](yummyrecipesapp.com) so any push to `main` automatically deploys the changes to the MAIN website (see [firebase explanation](firebase-explanation.md)).
    1. This branch is _protected_, meaning no one can push to it directly without creating a PR first.
 
 5. `releases/[number]`: These branches don't exist just yet, but will be used as a "bridge" between the `develop` and `main` branches when we actually want to go live.
@@ -36,7 +36,7 @@ We have 6 branch types in our repo:
    2. All commits on these branches will be merged into both `develop` and `main`.
 
 6. `gh-pages`: This branch represents our documentation. Right now, this is currently a WORK-IN-PROGRESS.
-   1. This branch represents the latest JSDocs, and will be visible at docs.yummyrecipesapp.com. It is hosted via GitHub pages.
+   1. This branch represents the latest JSDocs, and will be visible at [docs.yummyrecipesapp.com](docs.yummyrecipesapp.com). It is hosted via GitHub pages.
 
 ## Branch naming
 All feature and fix branches (1st and 2nd types listed above) should follow this naming scheme:
