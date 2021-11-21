@@ -12,5 +12,5 @@
 * [Component Structure](component-structure.md)
 
 ## Code Explanations
-* _IN PROGRESS_ [Router Explanation](router-explanation.md)
+* Router Explanation: See comments in [`core/routing/router.js`](/source/core/routing/router.js)
 * _IN PROGRESS_ [Firebase Explanation](firebase-explanation.md)
