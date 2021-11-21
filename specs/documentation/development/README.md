@@ -13,4 +13,4 @@
 
 ## Code Explanations
 * Router Explanation: See comments in [`core/routing/router.js`](/source/core/routing/router.js)
-* _IN PROGRESS_ [Firebase Explanation](firebase-explanation.md)
+* [Firebase Explanation](firebase-explanation.md)
