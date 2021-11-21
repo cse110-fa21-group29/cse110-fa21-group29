@@ -68,11 +68,12 @@ jobs:
           template: minami
           front_page: ./specs/documentation/jsdocs/docHomepage.md
 
-      - name: Deploy Documentation
-        uses: peaceiris/actions-gh-pages@v3.7.3
+      - name: Build and preview firebase docs hosting
+        uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./specs/documentation/jsdocs/
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_CSE110GROUP29DOCS }}'
+          projectId: cse110group29docs
 
   build-and-preview-firebase-hosting-dev:
     name: Build and preview firebase hosting
