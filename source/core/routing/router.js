@@ -1,3 +1,5 @@
+module.exports = { getRoutefromUrl };
+
 /** Router module.
  * @module core/routing/router
  */

@@ -32,6 +32,25 @@ jobs:
           prettier: true
           prettier_dir: source/
   
+  run-jest-dev:
+    name: Running Unit Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      
+      - name: Install Node.js dependencies
+        run: npm ci
+
+      - name: Run Unit Tests
+        run: npm run test
+  
   build-and-preview-firebase-hosting-main:
     name: Build and preview firebase hosting
     if: '${{ github.event.pull_request.head.repo.full_name == github.repository }}'
