@@ -1,5 +1,6 @@
 import { Database } from "../../core/database/database.js";
 
+/** Class that provides functionality to the recipe contribute page. */
 class RecipeContribute extends HTMLElement {
   constructor() {
     super();
@@ -9,19 +10,32 @@ class RecipeContribute extends HTMLElement {
   set params(params) {
     this.routeParams = params;
   }
+
   set route(route) {
     this.routeName = route;
   }
 
+  /**
+   * Fires when this component is inserted into the DOM.
+   *
+   * @async
+   */
   async connectedCallback() {
-    let elementContent = await fetch(
+    const elementContent = await fetch(
       "components/recipe-contribute/recipe-contribute.html"
     );
-    let elementContentText = await elementContent.text();
+    const elementContentText = await elementContent.text();
+
     this.shadowRoot.innerHTML = elementContentText;
     this.setupElement();
   }
 
+  /**
+   * Sets up contribute page functionality depending on if creating or updating
+   * recipe.
+   *
+   * @async
+   */
   async setupElement() {
     // Set up page for adding recipe or editing recipe depending on route
     if (this.routeName === "recipe-contribute-add") {
@@ -37,7 +51,9 @@ class RecipeContribute extends HTMLElement {
   }
 
   /**
-   * Sets up the page for adding a new recipe
+   * Sets up the page for adding a new recipe.
+   *
+   * @async
    */
   async addRecipe() {
     // Empty object that will get populated using form values
@@ -83,7 +99,9 @@ class RecipeContribute extends HTMLElement {
   }
 
   /**
-   * Sets up the page for editing an existing recipe
+   * Sets up the page for editing an existing recipe.
+   *
+   * @async
    */
   async editRecipe() {
     // Get recipe from database
@@ -160,8 +178,8 @@ class RecipeContribute extends HTMLElement {
    * The add parameter should be true if you are adding a new recipe or false
    * if you are updating an existing recipe.
    *
-   * @param recipe an object that contains the recipe data
-   * @param add    a boolean that toggles adding a new recipe
+   * @param {Object} recipe - an object that contains the recipe data
+   * @param {boolean} add - toggles between creating and updating recipe
    */
   async saveRecipe(recipe, add) {
     // Nutrients

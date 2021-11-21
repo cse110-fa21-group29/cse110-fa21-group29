@@ -10,12 +10,13 @@ import {
 // Database credential file
 const configFile = "../../../config.json";
 
+/** Class that interfaces with the Firebase realtime database. */
 export class Database {
   /**
-  /**
-   * Fetches all recipe objects from database
+   * Fetches all recipe objects from database.
    *
-   * @return array of recipe objects
+   * @async
+   * @returns {Array} An array of recipe objects.
    */
   async getRecipes() {
     // Fetch database credentials
@@ -46,10 +47,11 @@ export class Database {
   }
 
   /**
-   * Pushes recipe object to database in the next index
+   * Pushes recipe object to database in the next index.
    *
-   * @param  recipe an object that contains the recipe data
-   * @return index of pushed recipe in database
+   * @async
+   * @param {Object} recipe - An object that contains the recipe data.
+   * @returns {number} Index of pushed recipe in database.
    */
   async pushRecipe(recipe) {
     // Fetch database credentials
@@ -83,10 +85,11 @@ export class Database {
   }
 
   /**
-   * Replaces recipe data at index with object specified in the parameter
+   * Replaces recipe data at index with object specified in the parameter.
    *
-   * @param recipe an object that contains the recipe data
-   * @param index  the int index of the recipe to replace
+   * @async
+   * @param {Object} recipe - An object that contains the recipe data.
+   * @param {number} index - The index of the recipe to replace.
    */
   async updateRecipe(recipe, index) {
     // Fetch database credentials

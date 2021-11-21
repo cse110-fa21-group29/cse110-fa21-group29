@@ -1,6 +1,7 @@
 //import "@fortawesome/fontawesome-free/js/all.js";
 import { Database } from "../../core/database/database.js";
 
+/** Class that provides functionality to the homepage. */
 class HomePage extends HTMLElement {
   constructor() {
     super();
@@ -10,17 +11,29 @@ class HomePage extends HTMLElement {
   set params(params) {
     this.routeParams = params;
   }
+
   set route(route) {
     this.routeName = route;
   }
 
+  /**
+   * Fires when this component is inserted into the DOM.
+   *
+   * @async
+   */
   async connectedCallback() {
-    let elementContent = await fetch("components/home-page/home-page.html");
-    let elementContentText = await elementContent.text();
+    const elementContent = await fetch("components/home-page/home-page.html");
+    const elementContentText = await elementContent.text();
+
     this.shadowRoot.innerHTML = elementContentText;
     this.setupElement();
   }
 
+  /**
+   * Populates homepage recipe card with information from the database.
+   *
+   * @async
+   */
   async setupElement() {
     for (let i = 1; i < 5; i++) {
       this.shadowRoot

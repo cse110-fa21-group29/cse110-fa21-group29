@@ -1,5 +1,6 @@
 import { Database } from "../../core/database/database.js";
 
+/** Class that provides functionality to the recipe details page. */
 class RecipeDetails extends HTMLElement {
   constructor() {
     super();
@@ -9,19 +10,31 @@ class RecipeDetails extends HTMLElement {
   set params(params) {
     this.routeParams = params;
   }
+
   set route(route) {
     this.routeName = route;
   }
 
+  /**
+   * Fires when this component is inserted into the DOM.
+   *
+   * @async
+   */
   async connectedCallback() {
-    let elementContent = await fetch(
+    const elementContent = await fetch(
       "components/recipe-details/recipe-details.html"
     );
-    let elementContentText = await elementContent.text();
+    const elementContentText = await elementContent.text();
+
     this.shadowRoot.innerHTML = elementContentText;
     this.setupElement();
   }
 
+  /**
+   * Populates recipe details page with information from the database
+   *
+   * @async
+   */
   async setupElement() {
     // Grab recipe from database based on routing parameter
     const database = new Database();
