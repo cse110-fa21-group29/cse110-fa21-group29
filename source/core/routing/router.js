@@ -147,10 +147,18 @@ function loadRoute(route, params) {
  */
 function navigateFromUrl(url) {
   const initialRoute = getRoutefromUrl(url);
+  const routeParams = getParamsFromUrl(url);
 
   if (initialRoute) {
-    loadRoute(initialRoute, getParamsFromUrl(url));
-    history.replaceState(initialRoute, initialRoute, url);
+    loadRoute(initialRoute, routeParams);
+    history.replaceState(
+      {
+        route: initialRoute,
+        params: routeParams,
+      },
+      initialRoute,
+      url
+    );
   } else {
     const routerEvent = new CustomEvent("router-navigate", {
       detail: {
