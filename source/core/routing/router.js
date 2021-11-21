@@ -95,7 +95,11 @@ function routerSetup() {
    * @listens popstate
    */
   window.addEventListener("popstate", (event) => {
+    console.log("popstate");
+    console.log(event);
     if (event.state) {
+      console.log("has state");
+      console.log(event.state);
       const routerEvent = new CustomEvent("router-navigate", {
         detail: {
           ...event.state,
@@ -106,6 +110,8 @@ function routerSetup() {
       });
       document.dispatchEvent(routerEvent);
     } else {
+      console.log("no state");
+      console.log(window.location.hash);
       navigateFromUrl(window.location.hash);
     }
   });
@@ -147,10 +153,18 @@ function loadRoute(route, params) {
  */
 function navigateFromUrl(url) {
   const initialRoute = getRoutefromUrl(url);
+  const routeParams = getParamsFromUrl(url);
 
   if (initialRoute) {
-    loadRoute(initialRoute, getParamsFromUrl(url));
-    history.replaceState(initialRoute, initialRoute, url);
+    loadRoute(initialRoute, routeParams);
+    history.replaceState(
+      {
+        route: initialRoute,
+        params: routeParams,
+      },
+      initialRoute,
+      url
+    );
   } else {
     const routerEvent = new CustomEvent("router-navigate", {
       detail: {
