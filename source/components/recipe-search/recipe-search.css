@@ -1,0 +1,16 @@
+/* Include component-specific CSS here */
+* {
+  border: solid;
+}
+#search-bar {
+  height: 30px;
+  width: 80%;
+}
+#recipe-box {
+  display: flex;
+  flex-wrap: wrap;
+}
+.recipe-card {
+  height: 400px;
+  width: 300px;
+}

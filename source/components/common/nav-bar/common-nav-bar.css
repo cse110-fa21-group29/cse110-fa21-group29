@@ -3,13 +3,13 @@
   list-style-type: none;
   display: inline-block;
   position: fixed;
-  margin: 0;
   padding: 0;
   overflow: hidden;
-  top: 0;
+  margin: 0;
   width: 100%;
   z-index: 9999;
   background: #ffa4a4;
+  height: 50px;
 }
 
 /* left grid */
@@ -17,7 +17,7 @@
   float: left;
   font-family: Snell Roundhand, cursive;
   font-style: normal;
-  font-size: 3vh;
+  font-size: 30px;
 }
 
 /* right grid */
@@ -32,10 +32,19 @@ li {
   color: black;
   display: flex;
   align-items: center;
-  height: 5vh;
+  height: 50px;
 }
 
 /* recipe page only */
-.hidden {
+/* .hidden {
   display: none;
+} */
+
+#place-holder {
+  height: 50px;
+}
+
+.link {
+  display: inline-block;
+  margin: 0 20px;
 }
