@@ -47,40 +47,43 @@ class RecipeContribute extends HTMLElement {
   async addRecipe() {
     // Empty object that will get populated using form values
     const recipe = {
-      categories: {
-        vegan: false,
-        vegetarian: false,
-        glutenFree: false,
+      metadata: {
+        id: -1,
+        title: "",
+        author: "",
+        image: "static/common/demorecipe.jpg",
       },
-      description: "",
       info: {
         readyInMinutes: 0,
         pricePerServings: 0,
         weightWatcherSmartPoints: 0,
-        healthScore: 0,
+        healthScore: 100,
       },
-      ingredients: [],
-      metadata: {
-        id: 0,
-        title: "",
-        author: "",
-        image: "",
+      categories: {
+        vegan: false,
+        vegetarian: false,
+        glutenFree: false,
+        highProtein: false,
+        healthy: false,
       },
       nutrients: {
         totalServings: 0,
-        calories: "0",
+        calories: 0,
         protein: "0g",
         fat: "0g",
       },
-      spoonacularSourceUrl: "",
+      description: "",
+      ingredients: [],
       steps: "<ol>",
+      spoonacularSourceUrl: "",
     };
 
     // Assign saveRecipe function to submit button
     this.shadowRoot
       .querySelector("#submit-button")
-      .addEventListener("click", () => {
+      .addEventListener("click", (e) => {
         this.saveRecipe(recipe, true);
+        e.preventDefault();
       });
   }
 
@@ -141,8 +144,9 @@ class RecipeContribute extends HTMLElement {
     // Update edited recipe in database on submit button click
     this.shadowRoot
       .querySelector("#submit-button")
-      .addEventListener("click", () => {
+      .addEventListener("click", (e) => {
         this.saveRecipe(recipe, false);
+        e.preventDefault();
       });
   }
 
