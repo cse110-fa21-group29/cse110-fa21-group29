@@ -88,8 +88,8 @@ class RecipeContribute extends HTMLElement {
   async editRecipe() {
     // Get recipe from database
     const db = new Database();
-    const data = await db.getRecipes();
-    const recipe = data[this.routeParams[0]];
+    const recipes = await db.getRecipes();
+    const recipe = recipes[this.routeParams[0]];
 
     // Display current recipe image
     this.shadowRoot.getElementById("submit-img").style.backgroundImage =
@@ -111,6 +111,10 @@ class RecipeContribute extends HTMLElement {
       recipe.categories.vegetarian;
     this.shadowRoot.querySelector("#input-gluten-free").checked =
       recipe.categories.glutenFree;
+    this.shadowRoot.querySelector("#input-healthy").checked =
+      recipe.categories.healthy;
+    this.shadowRoot.querySelector("#input-high-protein").checked =
+      recipe.categories.highProtein;
 
     // Pre-populate form with general information
     this.shadowRoot.querySelector("#input-recipe-title").value =
@@ -176,6 +180,11 @@ class RecipeContribute extends HTMLElement {
       this.shadowRoot.querySelector("#input-vegetarian").checked;
     recipe.categories.glutenFree =
       this.shadowRoot.querySelector("#input-gluten-free").checked;
+    recipe.categories.highProtein = this.shadowRoot.querySelector(
+      "#input-high-protein"
+    ).checked;
+    recipe.categories.healthy =
+      this.shadowRoot.querySelector("#input-healthy").checked;
 
     // Recipe General Information
     recipe.metadata.title = this.shadowRoot.querySelector(

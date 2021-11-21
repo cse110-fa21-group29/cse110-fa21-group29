@@ -25,8 +25,8 @@ class RecipeDetails extends HTMLElement {
   async setupElement() {
     // Grab recipe from database based on routing parameter
     const database = new Database();
-    let data = await database.getRecipes();
-    let recipe = data[this.routeParams[0]];
+    let recipes = await database.getRecipes();
+    let recipe = recipes[this.routeParams[0]];
 
     // This is the first row of the page, including the image and the author box
     this.shadowRoot.querySelector(".recipe-image").src = recipe.metadata.image;
@@ -50,14 +50,21 @@ class RecipeDetails extends HTMLElement {
       recipe.nutrients.totalServings;
 
     // Category box
-    if (recipe.categories.vegan == false)
+    if (recipe.categories.vegan == false) {
       this.shadowRoot.querySelector("#vegan").style.display = "none";
-    if (recipe.categories.vegetarian == false)
+    }
+    if (recipe.categories.vegetarian == false) {
       this.shadowRoot.querySelector("#vegetarian").style.display = "none";
-    if (recipe.nutrients.calories > 450)
-      this.shadowRoot.querySelector("#low-calorie").style.display = "none";
-    if (recipe.categories.glutenFree == false)
+    }
+    if (recipe.categories.glutenFree == false) {
       this.shadowRoot.querySelector("#gluten-free").style.display = "none";
+    }
+    if (recipe.categories.highProtein == false) {
+      this.shadowRoot.querySelector("#high-protein").style.display = "none";
+    }
+    if (recipe.categories.healthy == false) {
+      this.shadowRoot.querySelector("#healthy").style.display = "none";
+    }
 
     // Nutrient box
     this.shadowRoot.querySelector("#calories").innerHTML =
