@@ -64,8 +64,8 @@ class RecipeContribute extends HTMLElement {
       nutrients: {
         totalServings: 0,
         calories: 0,
-        protein: "0g",
-        fat: "0g",
+        protein: "",
+        fat: "",
       },
       description: "",
       ingredients: [],
@@ -101,8 +101,9 @@ class RecipeContribute extends HTMLElement {
     this.shadowRoot.querySelector("#input-colories").value =
       recipe.nutrients.calories;
     this.shadowRoot.querySelector("#input-protein").value =
-      recipe.nutrients.protein;
-    this.shadowRoot.querySelector("#input-fat").value = recipe.nutrients.fat;
+      recipe.nutrients.protein.slice(0, -1);
+    this.shadowRoot.querySelector("#input-fat").value =
+      recipe.nutrients.fat.slice(0, -1);
 
     // Pre-populate form with categories
     this.shadowRoot.querySelector("#input-vegan").checked =
@@ -170,8 +171,9 @@ class RecipeContribute extends HTMLElement {
     recipe.nutrients.calories =
       this.shadowRoot.querySelector("#input-colories").value;
     recipe.nutrients.protein =
-      this.shadowRoot.querySelector("#input-protein").value;
-    recipe.nutrients.fat = this.shadowRoot.querySelector("#input-fat").value;
+      this.shadowRoot.querySelector("#input-protein").value + "g";
+    recipe.nutrients.fat =
+      this.shadowRoot.querySelector("#input-fat").value + "g";
 
     // Categories
     recipe.categories.vegan =
