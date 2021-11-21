@@ -1,0 +1,10 @@
+---
+exclude_paths:
+  - ".github/**"
+  - ".husky/**"
+  - ".vscode/**"
+  - "admin/**"
+  - "exploratory-programming/**"
+  - "specs/**"
+  - "unit-tests/**"
+  - "README.md"
