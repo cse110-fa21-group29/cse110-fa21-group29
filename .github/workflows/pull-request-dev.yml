@@ -65,6 +65,7 @@ jobs:
           source_dir: ./source/
           output_dir: ./specs/documentation/jsdocs/
           template: minami
+          front_page: ./specs/documentation/jsdocs/docHomepage.md
 
       - name: Deploy Documentation
         uses: peaceiris/actions-gh-pages@v3.7.3
