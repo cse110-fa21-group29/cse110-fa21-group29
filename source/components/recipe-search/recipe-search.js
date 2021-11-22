@@ -20,9 +20,10 @@ class RecipeSearch extends HTMLElement {
     this.shadowRoot.getElementById("submit-button").addEventListener("click", () => { this.clickSubmit() })
     this.shadowRoot.getElementById("reset-button").addEventListener("click", () => { this.clickReset() })
 
-    
-  };
 
+  };
+  // put button actions here, for search and submit button, they both have submit action now, for clear button, 
+  // it has a clear action, feel free to change them by change input type to button
   clickFilter() {
     this.shadowRoot.getElementById("filter-form").style.display = "initial";
   }

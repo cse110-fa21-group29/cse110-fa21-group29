@@ -34,12 +34,11 @@
 
 #filter-form {
   border: solid;
-  width: 50%;
-  height: 50%;
   position: fixed;
   top: 25%;
   left: 25%;
   background-color: white;
+  
   display: none;
 }
 
