@@ -7,14 +7,18 @@
   5 buttons and all inputs are all in #search-form, submit and clear button will apply to whole form -->
   <form id="search-form">
     <div id="search-box">
-      <input type="text" id="search-input">
-      <img src="static/common/filter-icon.png" id="filter-button" alt="filter">
+      <input type="text" id="search-input" />
+      <img
+        src="static/common/filter-icon.png"
+        id="filter-button"
+        alt="filter"
+      />
     </div>
 
-    <input type="submit" id="search-button">
+    <input type="submit" id="search-button" />
 
     <div id="filter-form">
-      <img id="close-button" src="static/common/close-icon.png">
+      <img id="close-button" src="static/common/close-icon.png" />
       <div id="cost-form">
         <h3>Cost</h3>
         <div>
@@ -30,23 +34,31 @@
       <div id="category-form">
         <h3>Categories</h3>
         <div>
-          <input type="checkbox" id="input-gluten-free" class="input-category">
+          <input
+            type="checkbox"
+            id="input-gluten-free"
+            class="input-category"
+          />
           <label for="input-gluten-free">gluten-free</label>
         </div>
         <div>
-          <input type="checkbox" id="input-healthy" class="input-category">
+          <input type="checkbox" id="input-healthy" class="input-category" />
           <label for="input-healthy">healthy</label>
         </div>
         <div>
-          <input type="checkbox" id="input-high-protein" class="input-category">
+          <input
+            type="checkbox"
+            id="input-high-protein"
+            class="input-category"
+          />
           <label for="input-high-protein">high-protein</label>
         </div>
         <div>
-          <input type="checkbox" id="input-vegan" class="input-category">
+          <input type="checkbox" id="input-vegan" class="input-category" />
           <label for="input-vegan">vegan</label>
         </div>
         <div>
-          <input type="checkbox" id="input-vegetarian" class="input-category">
+          <input type="checkbox" id="input-vegetarian" class="input-category" />
           <label for="input-vegetarian">vegetarian</label>
         </div>
       </div>
@@ -55,34 +67,52 @@
       <div id="sort-form">
         <h3>Sort</h3>
         <div>
-          <input type="radio" id="sort-time-descending" class="input-sort" name="sort-type"
-            value="sort-time-descending">
+          <input
+            type="radio"
+            id="sort-time-descending"
+            class="input-sort"
+            name="sort-type"
+            value="sort-time-descending"
+          />
           <label for="sort-time-descending">time ↓</label>
         </div>
         <div>
-          <input type="radio" id="sort-time-ascending" class="input-sort" name="sort-type" value="sort-time-ascending">
+          <input
+            type="radio"
+            id="sort-time-ascending"
+            class="input-sort"
+            name="sort-type"
+            value="sort-time-ascending"
+          />
           <label for="sort-time-ascending">time ↑</label>
         </div>
         <div>
-          <input type="radio" id="sort-cost-descending" class="input-sort" name="sort-type"
-            value="sort-cost-descending">
+          <input
+            type="radio"
+            id="sort-cost-descending"
+            class="input-sort"
+            name="sort-type"
+            value="sort-cost-descending"
+          />
           <label for="sort-cost-descending">cost ↓</label>
         </div>
         <div>
-          <input type="radio" id="sort-cost-ascending" class="input-sort" name="sort-type" value="sort-cost-ascending">
+          <input
+            type="radio"
+            id="sort-cost-ascending"
+            class="input-sort"
+            name="sort-type"
+            value="sort-cost-ascending"
+          />
           <label for="sort-cost-ascending">cost ↑</label>
         </div>
-
       </div>
-      <input type="submit" id="submit-button">
-      <input type="reset" id="reset-button">
+      <input type="submit" id="submit-button" />
+      <input type="reset" id="reset-button" />
     </div>
-
   </form>
 
   <div id="recipe-cart-grid">
     <!-- put recipe cards here -->
   </div>
-
-
 </main>
