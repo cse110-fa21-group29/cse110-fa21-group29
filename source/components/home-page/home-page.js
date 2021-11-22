@@ -1,4 +1,3 @@
-//import "@fortawesome/fontawesome-free/js/all.js";
 import { Database } from "../../core/database/database.js";
 
 /** Class that provides functionality to the homepage. */
