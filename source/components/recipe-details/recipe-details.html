@@ -5,6 +5,7 @@
   href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin"
 />
 
+<button class="submit-button" id="delete-button">Delete</button>
 <div class="recipe">
   <!-- This is the first row of the page, including the image and the author box-->
   <div class="first-row">
@@ -14,7 +15,6 @@
       <div class="dish-name">Vegetable Dish</div>
       <!-- recipe name, author, date and the url-->
       <div class="author-name">by Anonymous</div>
-      <div class="author-date">11-11-2021</div>
       <div class="recipe-url">https://amazingrecipe.com</div>
     </div>
   </div>
@@ -40,9 +40,9 @@
         <div class="info-title">Info:</div>
         <div class="info-list">
           <ul>
-            <li>Cost: $5 per serving</li>
-            <li>Time: 40min</li>
-            <li>Serving Size: 5</li>
+            <li>Cost: $<span id="cost">5</span> per serving</li>
+            <li>Time: <span id="time">40</span> min</li>
+            <li>Serving Size: <span id="servings">5</span></li>
           </ul>
         </div>
       </div>
@@ -50,8 +50,11 @@
       <div class="category-box">
         <div class="category-title">Categories:</div>
         <div class="category-list">
-          <li style="color: #3aad53">Vegan</li>
-          <li style="color: #097d37">Low Calories</li>
+          <li id="vegan" style="color: #3aad53">Vegan</li>
+          <li id="vegetarian" style="color: #3aad53">Vegetarian</li>
+          <li id="gluten-free" style="color: #b78727">Gluten-Free</li>
+          <li id="high-protein" style="color: #964b00">High Protein</li>
+          <li id="healthy" style="color: #097d37">Healthy</li>
         </div>
       </div>
     </div>
@@ -60,11 +63,9 @@
       <div class="nutrient-title">Nutrients (per serving):</div>
       <div class="nutrient-list">
         <ul>
-          <li>250 Calories</li>
-          <li>4 grams of protein</li>
-          <li>3 grams of sugar</li>
-          <li>3 miligrams of salt</li>
-          <li>5 grams of protein</li>
+          <li><span id="calories">250</span> Calories</li>
+          <li><span id="fat">3g</span> of fat</li>
+          <li><span id="protein">4g</span> of protein</li>
         </ul>
       </div>
     </div>

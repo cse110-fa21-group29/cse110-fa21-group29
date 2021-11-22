@@ -1,4 +1,6 @@
-module.exports = { getRoutefromUrl };
+if (typeof module !== "undefined" && module.exports) {
+  module.exports = { getRoutefromUrl };
+}
 
 /** Router module.
  * @module core/routing/router

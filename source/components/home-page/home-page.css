@@ -43,7 +43,9 @@
 
 .recipe-card-name div {
   margin: auto;
-  font-size: x-large;
+  font-size: large;
+  overflow: hidden;
+  margin-bottom: 2px;
 }
 .recipe-card-stats {
   margin: 0px;
