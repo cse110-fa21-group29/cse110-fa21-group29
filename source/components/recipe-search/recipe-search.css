@@ -6,6 +6,7 @@
   margin: 50px auto;
   display: flex;
 }
+
 #search-box {
   display: flex;
   height: 50px;
@@ -38,7 +39,7 @@
   top: 25%;
   left: 25%;
   background-color: white;
-  
+
   display: none;
 }
 
