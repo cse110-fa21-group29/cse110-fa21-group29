@@ -42,7 +42,7 @@ const routePatterns = {
   },
   "recipe-search": {
     component: "recipe-search",
-    url: "#/recipe-search",
+    url: "#/recipes/search",
   },
 };
 

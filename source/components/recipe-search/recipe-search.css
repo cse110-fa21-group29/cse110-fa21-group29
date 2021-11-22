@@ -1,16 +1,56 @@
-/* Include component-specific CSS here */
-* {
-  border: solid;
-}
-#search-bar {
-  height: 30px;
+/* main {
+} */
+#search-form {
+  height: 50px;
   width: 80%;
-}
-#recipe-box {
+  margin: 50px auto;
   display: flex;
-  flex-wrap: wrap;
 }
+#search-box {
+  display: flex;
+  height: 50px;
+  border: solid 1px black;
+}
+#search-input {
+  border: none;
+  font-size: 30px;
+  width: 60vw;
+}
+#filter-button {
+  height: 100%;
+  cursor: pointer;
+}
+#search-button {
+  margin-left: 20px;
+  width: 150px;
+  cursor: pointer;
+}
+
 .recipe-card {
   height: 400px;
   width: 300px;
+  border: solid;
+}
+
+#filter-form {
+  border: solid;
+  width: 50%;
+  height: 50%;
+  position: fixed;
+  top: 25%;
+  left: 25%;
+  background-color: white;
+  display: none;
+}
+
+#close-button {
+  height: 30px;
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+}
+
+#recipe-card-grid {
+  display: flex;
+  flex-wrap: wrap;
 }
