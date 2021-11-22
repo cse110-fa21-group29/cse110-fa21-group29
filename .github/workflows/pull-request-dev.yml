@@ -73,6 +73,7 @@ jobs:
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_CSE110GROUP29DOCS }}'
+          channelId: live
           projectId: cse110group29docs
 
   build-and-preview-firebase-hosting-dev:
@@ -85,5 +86,4 @@ jobs:
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_CSE110GROUP29DEV }}'
-          channelId: live
           projectId: cse110group29dev
