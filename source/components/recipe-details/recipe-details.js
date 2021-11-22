@@ -47,12 +47,30 @@ class RecipeDetails extends HTMLElement {
       return;
     }
 
+    // Recipe edit button
+    this.shadowRoot
+      .querySelector("#edit-button")
+      .addEventListener("click", () => {
+        // Route to edit page
+        const routerEvent = new CustomEvent("router-navigate", {
+          detail: {
+            route: "recipe-contribute-edit",
+            params: [this.routeParams[0]],
+          },
+          bubbles: true,
+          composed: true,
+        });
+        document.dispatchEvent(routerEvent);
+      });
+
     // Recipe delete button
     this.shadowRoot
       .querySelector("#delete-button")
       .addEventListener("click", () => {
         // Delete recipe from button
         database.deleteRecipe(this.routeParams[0]);
+
+        // Route to home-page
         const routerEvent = new CustomEvent("router-navigate", {
           detail: {
             route: "home-page",
@@ -62,6 +80,8 @@ class RecipeDetails extends HTMLElement {
           composed: true,
         });
         document.dispatchEvent(routerEvent);
+
+        // Notify user that recipe was deleted
         alert("Recipe deleted");
       });
 
