@@ -96,22 +96,9 @@ class HomePage extends HTMLElement {
     // Create 20 recipe cards that are populated with data from recipe subset arrays
     for (let i = 0; i < 20; i++) {
       // High protein recipe card
-      highProteinCards[i] = this.shadowRoot
-        .getElementById("recipe-card-sample")
-        .cloneNode(true);
-      highProteinCards[i].querySelector(".recipe-card-name > div").innerHTML =
-        highProtein[i].metadata.title;
-      highProteinCards[i].querySelector(".recipe-card-image").src =
-        highProtein[i].metadata.image;
-      highProteinCards[i].querySelector("#time").innerHTML =
-        highProtein[i].info.readyInMinutes;
-      highProteinCards[i].querySelector("#calories").innerHTML = parseInt(
-        highProtein[i].nutrients.calories
-      );
-      highProteinCards[i].querySelector("#protein").innerHTML =
-        highProtein[i].nutrients.protein;
-      highProteinCards[i].querySelector("#score").innerHTML =
-        highProtein[i].info.healthScore;
+      highProteinCards[i] = document.createElement("common-recipe-card");
+      highProteinCards[i].recipeData = highProtein[i];
+
       highProteinCards[i].addEventListener("click", () => {
         const routerEvent = new CustomEvent("router-navigate", {
           detail: {
@@ -125,22 +112,9 @@ class HomePage extends HTMLElement {
       });
 
       // Healthy recipe card
-      healthyCards[i] = this.shadowRoot
-        .getElementById("recipe-card-sample")
-        .cloneNode(true);
-      healthyCards[i].querySelector(".recipe-card-name > div").innerHTML =
-        healthy[i].metadata.title;
-      healthyCards[i].querySelector(".recipe-card-image").src =
-        healthy[i].metadata.image;
-      healthyCards[i].querySelector("#time").innerHTML =
-        healthy[i].info.readyInMinutes;
-      healthyCards[i].querySelector("#calories").innerHTML = parseInt(
-        healthy[i].nutrients.calories
-      );
-      healthyCards[i].querySelector("#protein").innerHTML =
-        healthy[i].nutrients.protein;
-      healthyCards[i].querySelector("#score").innerHTML =
-        healthy[i].info.healthScore;
+      healthyCards[i] = document.createElement("common-recipe-card");
+      healthyCards[i].recipeData = healthy[i];
+
       healthyCards[i].addEventListener("click", () => {
         const routerEvent = new CustomEvent("router-navigate", {
           detail: {
@@ -154,22 +128,9 @@ class HomePage extends HTMLElement {
       });
 
       // Vegan recipe card
-      veganCards[i] = this.shadowRoot
-        .getElementById("recipe-card-sample")
-        .cloneNode(true);
-      veganCards[i].querySelector(".recipe-card-name > div").innerHTML =
-        vegan[i].metadata.title;
-      veganCards[i].querySelector(".recipe-card-image").src =
-        vegan[i].metadata.image;
-      veganCards[i].querySelector("#time").innerHTML =
-        vegan[i].info.readyInMinutes;
-      veganCards[i].querySelector("#calories").innerHTML = parseInt(
-        vegan[i].nutrients.calories
-      );
-      veganCards[i].querySelector("#protein").innerHTML =
-        vegan[i].nutrients.protein;
-      veganCards[i].querySelector("#score").innerHTML =
-        vegan[i].info.healthScore;
+      veganCards[i] = document.createElement("common-recipe-card");
+      veganCards[i].recipeData = vegan[i];
+
       veganCards[i].addEventListener("click", () => {
         const routerEvent = new CustomEvent("router-navigate", {
           detail: {
@@ -183,22 +144,9 @@ class HomePage extends HTMLElement {
       });
 
       // Vegetarian recipe card
-      vegetarianCards[i] = this.shadowRoot
-        .getElementById("recipe-card-sample")
-        .cloneNode(true);
-      vegetarianCards[i].querySelector(".recipe-card-name > div").innerHTML =
-        vegetarian[i].metadata.title;
-      vegetarianCards[i].querySelector(".recipe-card-image").src =
-        vegetarian[i].metadata.image;
-      vegetarianCards[i].querySelector("#time").innerHTML =
-        vegetarian[i].info.readyInMinutes;
-      vegetarianCards[i].querySelector("#calories").innerHTML = parseInt(
-        vegetarian[i].nutrients.calories
-      );
-      vegetarianCards[i].querySelector("#protein").innerHTML =
-        vegetarian[i].nutrients.protein;
-      vegetarianCards[i].querySelector("#score").innerHTML =
-        vegetarian[i].info.healthScore;
+      vegetarianCards[i] = document.createElement("common-recipe-card");
+      vegetarianCards[i].recipeData = vegetarian[i];
+
       vegetarianCards[i].addEventListener("click", () => {
         const routerEvent = new CustomEvent("router-navigate", {
           detail: {
