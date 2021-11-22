@@ -104,4 +104,24 @@ export class Database {
     // Replace recipe data at index with parameter recipe object
     set(ref(database, "recipes/" + index), recipe);
   }
+
+  /**
+   * Deletes recipe data at index specified in the parameter.
+   *
+   * @async
+   * @param {number} index - The index of the recipe to delete.
+   */
+  async deleteRecipe(index) {
+    // Fetch database credentials
+    let config = await fetch(configFile);
+    config = await config.json();
+
+    // Initialize database connection
+    const app = initializeApp(config.firebaseConfig);
+    const database = getDatabase(app);
+    const dbRef = ref(getDatabase());
+
+    // Delete recipe data at index with parameter
+    set(ref(database, "recipes/" + index), null);
+  }
 }

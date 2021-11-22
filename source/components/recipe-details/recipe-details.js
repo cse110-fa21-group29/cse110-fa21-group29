@@ -31,7 +31,8 @@ class RecipeDetails extends HTMLElement {
   }
 
   /**
-   * Populates recipe details page with information from the database
+   * Populates recipe details page with information from the database and adds
+   * delete functionality.
    *
    * @async
    */
@@ -40,6 +41,29 @@ class RecipeDetails extends HTMLElement {
     const database = new Database();
     let recipes = await database.getRecipes();
     let recipe = recipes[this.routeParams[0]];
+
+    // If recipe does not exist, then skip page setup.
+    if (recipe == null) {
+      return;
+    }
+
+    // Recipe delete button
+    this.shadowRoot
+      .querySelector("#delete-button")
+      .addEventListener("click", () => {
+        // Delete recipe from button
+        database.deleteRecipe(this.routeParams[0]);
+        const routerEvent = new CustomEvent("router-navigate", {
+          detail: {
+            route: "home-page",
+            params: [],
+          },
+          bubbles: true,
+          composed: true,
+        });
+        document.dispatchEvent(routerEvent);
+        alert("Recipe deleted");
+      });
 
     // This is the first row of the page, including the image and the author box
     this.shadowRoot.querySelector(".recipe-image").src = recipe.metadata.image;

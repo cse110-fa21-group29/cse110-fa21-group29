@@ -67,6 +67,9 @@ class HomePage extends HTMLElement {
 
     // Loop through recipe data and push to subset arrays
     for (let i = 0; i < recipes.length; i++) {
+      if (recipes[i] == null) {
+        continue;
+      }
       if (recipes[i].categories.highProtein) {
         highProtein.push(recipes[i]);
         highProteinIndex.push(i);
