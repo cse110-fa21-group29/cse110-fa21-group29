@@ -2,7 +2,7 @@
   "hosting": [
     {
       "public": "source",
-      "site": "cse110group29",
+      "site": "prod",
       "ignore": [
         "firebase.json",
         "**/.*",
@@ -17,7 +17,7 @@
     },
     {
       "public": "source",
-      "site": "cse110group29dev",
+      "site": "dev",
       "ignore": [
         "firebase.json",
         "**/.*",
@@ -32,7 +32,7 @@
     },
     {
       "public": "specs/documentation/jsdocs",
-      "site": "cse110group29docs",
+      "site": "docs",
       "ignore": [
         "firebase.json",
         "**/.*",
