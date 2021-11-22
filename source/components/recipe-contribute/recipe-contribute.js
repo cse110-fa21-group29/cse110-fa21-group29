@@ -85,7 +85,7 @@ class RecipeContribute extends HTMLElement {
       },
       description: "",
       ingredients: [],
-      steps: "<ol>",
+      steps: "",
       spoonacularSourceUrl: "",
     };
 
@@ -232,7 +232,7 @@ class RecipeContribute extends HTMLElement {
       .querySelector("#input-direction")
       .value.split("\n");
 
-    recipe.steps = "";
+    recipe.steps = "<ol>";
 
     for (let i = 0; i < steps.length; i++) {
       recipe.steps = recipe.steps + "<li>" + steps[i] + "</li>";
