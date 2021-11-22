@@ -4,28 +4,5 @@
     "dev": "cse110group29dev",
     "docs": "cse110group29docs",
     "default": "cse110group29"
-  },
-  "targets": {
-    "cse110group29": {
-      "hosting": {
-        "prod": [
-          "cse110group29"
-        ]
-      }
-    },
-    "cse110group29dev": {
-      "hosting": {
-        "dev": [
-          "cse110group29dev"
-        ]
-      }
-    },
-    "cse110group29docs": {
-      "hosting": {
-        "docs": [
-          "cse110group29docs"
-        ]
-      }
-    }
   }
 }
