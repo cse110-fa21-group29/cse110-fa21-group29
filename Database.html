@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>core/routing/router - Documentation</title>
+    <title>Database - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">core/routing/router</h1>
+    <h1 class="page-title">Database</h1>
     
 
     
@@ -41,8 +41,11 @@
 
 <header>
     
+        <h2>
+        Database
+        </h2>
         
-            
+            <div class="class-description">Class that interfaces with the Firebase realtime database.</div>
         
     
 </header>
@@ -51,12 +54,15 @@
     <div class="container-overview">
     
         
-            <div class="description">Router module.</div>
-        
-
-        
-            
 <div class="section-method">
+
+    
+    <h2>Constructor</h2>
+    
+
+    <h4 class="name" id="Database"><span class="type-signature"></span>new Database<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
 
 
 
@@ -93,7 +99,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="core_routing_router.js.html">core/routing/router.js</a>, <a href="core_routing_router.js.html#line3">line 3</a>
+        <a href="core_database_database.js.html">core/database/database.js</a>, <a href="core_database_database.js.html#line14">line 14</a>
     </li></ul></dd>
     
 
@@ -127,7 +133,6 @@
 
 
 </div>
-        
     
     </div>
 
@@ -142,76 +147,6 @@
     
 
     
-        <h3 class="subsection-title">Members</h3>
-
-        
-            
-<div class="section-members">
-<h4 class="name" id="~routePatterns"><span class="type-signature">(inner, constant) </span>routePatterns<span class="type-signature"></span></h4>
-
-
-
-
-<div class="description">
-    The router patterns for the different pages of the site.
-Each route pattern is the URL with all parameters replaced with "_".
-Key is name of component (route), value is object with component name and URL.
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="core_routing_router.js.html">core/routing/router.js</a>, <a href="core_routing_router.js.html#line12">line 12</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-</div>
-
-        
-    
 
     
         <h3 class="subsection-title">Methods</h3>
@@ -222,14 +157,14 @@ Key is name of component (route), value is object with component name and URL.
 
     
 
-    <h4 class="name" id="~getParamsFromUrl"><span class="type-signature">(inner) </span>getParamsFromUrl<span class="signature">(url)</span><span class="type-signature"> &rarr; {Array.&lt;number>}</span></h4>
+    <h4 class="name" id="deleteRecipe"><span class="type-signature">(async) </span>deleteRecipe<span class="signature">(index)</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    Gets the parameters from a given URL.
+    Deletes recipe data at index specified in the parameter.
 </div>
 
 
@@ -265,7 +200,7 @@ Key is name of component (route), value is object with component name and URL.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="core_routing_router.js.html">core/routing/router.js</a>, <a href="core_routing_router.js.html#line235">line 235</a>
+        <a href="core_database_database.js.html">core/database/database.js</a>, <a href="core_database_database.js.html#line114">line 114</a>
     </li></ul></dd>
     
 
@@ -309,13 +244,13 @@ Key is name of component (route), value is object with component name and URL.
 
         <tr>
             
-                <td class="name"><code>url</code></td>
+                <td class="name"><code>index</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><code>string</code></span>
+<span class="param-type"><code>number</code></span>
 
 
             
@@ -326,7 +261,250 @@ Key is name of component (route), value is object with component name and URL.
             
 
             <td class="description last">
-                The provided URL to extract params from.
+                The index of the recipe to delete.
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="getRecipes"><span class="type-signature">(async) </span>getRecipes<span class="signature">()</span><span class="type-signature"> &rarr; {Array}</span></h4>
+
+    
+
+
+
+<div class="description">
+    Fetches all recipe objects from database.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="core_database_database.js.html">core/database/database.js</a>, <a href="core_database_database.js.html#line21">line 21</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="section-returns">
+<h5>Returns:</h5>
+
+        
+
+<dl class="param-type">
+    <dt>
+        Type:
+    </dt>
+    <dd>
+        
+<span class="param-type"><code>Array</code></span>
+
+
+    </dd>
+</dl>
+
+
+<div class="param-desc">
+    An array of recipe objects.
+</div>
+
+    
+</div>
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="pushRecipe"><span class="type-signature">(async) </span>pushRecipe<span class="signature">(recipe)</span><span class="type-signature"> &rarr; {number}</span></h4>
+
+    
+
+
+
+<div class="description">
+    Pushes recipe object to database in the next index.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="core_database_database.js.html">core/database/database.js</a>, <a href="core_database_database.js.html#line56">line 56</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>recipe</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>Object</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                An object that contains the recipe data.
                 
             </td>
         </tr>
@@ -359,7 +537,7 @@ Key is name of component (route), value is object with component name and URL.
     </dt>
     <dd>
         
-<span class="param-type"><code>Array.&lt;number></code></span>
+<span class="param-type"><code>number</code></span>
 
 
     </dd>
@@ -367,7 +545,7 @@ Key is name of component (route), value is object with component name and URL.
 
 
 <div class="param-desc">
-    Params from the URL.
+    Index of pushed recipe in database.
 </div>
 
     
@@ -382,15 +560,14 @@ Key is name of component (route), value is object with component name and URL.
 
     
 
-    <h4 class="name" id="~getRoutefromUrl"><span class="type-signature">(inner) </span>getRoutefromUrl<span class="signature">(url)</span><span class="type-signature"> &rarr; {string|boolean}</span></h4>
+    <h4 class="name" id="updateRecipe"><span class="type-signature">(async) </span>updateRecipe<span class="signature">(recipe, index)</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    Generate correct route for a particular URL.
-If no routes match the URL, returns false.
+    Replaces recipe data at index with object specified in the parameter.
 </div>
 
 
@@ -426,7 +603,7 @@ If no routes match the URL, returns false.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="core_routing_router.js.html">core/routing/router.js</a>, <a href="core_routing_router.js.html#line205">line 205</a>
+        <a href="core_database_database.js.html">core/database/database.js</a>, <a href="core_database_database.js.html#line94">line 94</a>
     </li></ul></dd>
     
 
@@ -470,13 +647,13 @@ If no routes match the URL, returns false.
 
         <tr>
             
-                <td class="name"><code>url</code></td>
+                <td class="name"><code>recipe</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><code>string</code></span>
+<span class="param-type"><code>Object</code></span>
 
 
             
@@ -487,7 +664,33 @@ If no routes match the URL, returns false.
             
 
             <td class="description last">
-                The URL to generate the route from.
+                An object that contains the recipe data.
+                
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>index</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>number</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                The index of the recipe to replace.
                 
             </td>
         </tr>
@@ -495,606 +698,6 @@ If no routes match the URL, returns false.
     
     </tbody>
 </table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="section-returns">
-<h5>Returns:</h5>
-
-        
-
-<dl class="param-type">
-    <dt>
-        Type:
-    </dt>
-    <dd>
-        
-<span class="param-type"><code>string</code></span>
-|
-
-<span class="param-type"><code>boolean</code></span>
-
-
-    </dd>
-</dl>
-
-
-<div class="param-desc">
-    The route for the provided URL (i.e. "home-page") or false if not found.
-</div>
-
-    
-</div>
-
-
-
-</div>
-        
-            
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="~getUrlFromRoute"><span class="type-signature">(inner) </span>getUrlFromRoute<span class="signature">(route, params)</span><span class="type-signature"> &rarr; {string}</span></h4>
-
-    
-
-
-
-<div class="description">
-    Generates correct url for a particular route
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="core_routing_router.js.html">core/routing/router.js</a>, <a href="core_routing_router.js.html#line183">line 183</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>route</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>string</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">
-                The route (i.e. "home-page").
-                
-            </td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>params</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>Array.&lt;number></code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">
-                The parameters for the route (i.e. [123]).
-                
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="section-returns">
-<h5>Returns:</h5>
-
-        
-
-<dl class="param-type">
-    <dt>
-        Type:
-    </dt>
-    <dd>
-        
-<span class="param-type"><code>string</code></span>
-
-
-    </dd>
-</dl>
-
-
-<div class="param-desc">
-    The URL for that particular route/params.
-</div>
-
-    
-</div>
-
-
-
-</div>
-        
-            
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="~loadRoute"><span class="type-signature">(inner) </span>loadRoute<span class="signature">(route, params)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    Loads the correct web component based on the given route.
-We assume all web components are named the same as their routes.
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="core_routing_router.js.html">core/routing/router.js</a>, <a href="core_routing_router.js.html#line122">line 122</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>route</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>string</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">
-                The route to load on the page (i.e. "home-page").
-                
-            </td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>params</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>Array.&lt;number></code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">
-                The parameters in the URL (i.e. [123]).
-                
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-        
-            
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="~navigateFromUrl"><span class="type-signature">(inner) </span>navigateFromUrl<span class="signature">(url)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    Navigate to a page based on only the URL.
-Used when we are navigating without a state.
-If we can match the url to a route pattern,
-we load the route onto the page and store its state in
-the current history entry.
-If we cannot match the url to a route pattern,
-we redirect to the home page.
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="core_routing_router.js.html">core/routing/router.js</a>, <a href="core_routing_router.js.html#line150">line 150</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>url</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>string</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">
-                The URL to navigate to (i.e. "#/recipes/1").
-                
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-        
-            
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="~routerSetup"><span class="type-signature">(inner) </span>routerSetup<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    Sets up router event listeners.
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="core_routing_router.js.html">core/routing/router.js</a>, <a href="core_routing_router.js.html#line59">line 59</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
 
 
 
