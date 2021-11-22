@@ -48,6 +48,9 @@
 #recipe-category-4 {
   background-color: rgb(131, 224, 24);
 }
+#recipe-category-5 {
+  background-color: #b78727;
+}
 #home-header {
   background-image: url(../../static/home-page/headerimg.jpg);
   height: 40%;

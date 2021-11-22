@@ -34,7 +34,7 @@ class HomePage extends HTMLElement {
    * @async
    */
   async setupElement() {
-    for (let i = 1; i < 5; i++) {
+    for (let i = 1; i < 6; i++) {
       this.shadowRoot
         .getElementById("prev-button-" + i)
         .addEventListener("click", () => {
@@ -63,6 +63,8 @@ class HomePage extends HTMLElement {
     const veganIndex = [];
     const vegetarian = [];
     const vegetarianIndex = [];
+    const glutenFree = [];
+    const glutenFreeIndex = [];
 
     // Loop through recipe data and push to subset arrays
     for (let i = 0; i < recipes.length; i++) {
@@ -85,6 +87,10 @@ class HomePage extends HTMLElement {
         vegetarian.push(recipes[i]);
         vegetarianIndex.push(i);
       }
+      if (recipes[i].categories.glutenFree) {
+        glutenFree.push(recipes[i]);
+        glutenFreeIndex.push(i);
+      }
     }
 
     // Arrays to hold generate recipe cards
@@ -92,6 +98,7 @@ class HomePage extends HTMLElement {
     const healthyCards = [];
     const veganCards = [];
     const vegetarianCards = [];
+    const glutenFreeCards = [];
 
     // Create 20 recipe cards that are populated with data from recipe subset arrays
     for (let i = 0; i < 20; i++) {
@@ -158,6 +165,22 @@ class HomePage extends HTMLElement {
         });
         vegetarianCards[i].dispatchEvent(routerEvent);
       });
+
+      // Gluten free recipe card
+      glutenFreeCards[i] = document.createElement("common-recipe-card");
+      glutenFreeCards[i].recipeData = glutenFree[i];
+
+      glutenFreeCards[i].addEventListener("click", () => {
+        const routerEvent = new CustomEvent("router-navigate", {
+          detail: {
+            route: "recipe-details",
+            params: [glutenFreeIndex[i]],
+          },
+          bubbles: true,
+          composed: true,
+        });
+        glutenFreeCards[i].dispatchEvent(routerEvent);
+      });
     }
 
     // Clear out recipe card grids before we append new cards
@@ -165,6 +188,7 @@ class HomePage extends HTMLElement {
     this.shadowRoot.getElementById("recipe-card-grid-2").innerHTML = "";
     this.shadowRoot.getElementById("recipe-card-grid-3").innerHTML = "";
     this.shadowRoot.getElementById("recipe-card-grid-4").innerHTML = "";
+    this.shadowRoot.getElementById("recipe-card-grid-5").innerHTML = "";
 
     // Append new cards
     for (let i = 0; i < 20; i++) {
@@ -180,6 +204,9 @@ class HomePage extends HTMLElement {
       this.shadowRoot
         .getElementById("recipe-card-grid-4")
         .append(vegetarianCards[i]);
+      this.shadowRoot
+        .getElementById("recipe-card-grid-5")
+        .append(glutenFreeCards[i]);
     }
   }
 
