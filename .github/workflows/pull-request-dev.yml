@@ -31,6 +31,48 @@ jobs:
           eslint_dir: source/
           prettier: true
           prettier_dir: source/
+  
+  run-jest-dev:
+    name: Running Unit Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      
+      - name: Install Node.js dependencies
+        run: npm ci
+
+      - name: Run Unit Tests
+        run: npm run test
+  
+  run-jsdocs-dev:
+    name: Running JSDocs
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run JSDocs
+        uses: andstor/jsdoc-action@v1
+        with:
+          source_dir: ./source/
+          output_dir: ./specs/documentation/jsdocs/
+          recurse: true
+          template: minami
+          front_page: ./specs/documentation/jsdocs/docHomepage.md
+
+      - name: Deploy Documentation
+        uses: peaceiris/actions-gh-pages@v3.7.3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./specs/documentation/jsdocs/
 
   build-and-preview-firebase-hosting-dev:
     name: Build and preview firebase hosting

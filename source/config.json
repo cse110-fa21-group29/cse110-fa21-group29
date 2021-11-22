@@ -1,0 +1,8 @@
+{
+  "firebaseConfig": {
+    "apiKey": "AIzaSyDHrmw9eUjQgjafO_0EsGUwGEa7iO-gyIA",
+    "authDomain": "cse110group29.firebaseapp.com",
+    "databaseURL": "https://cse110group29-default-rtdb.firebaseio.com",
+    "storageBucket": "cse110group29.appspot.com"
+  }
+}

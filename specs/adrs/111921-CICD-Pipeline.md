@@ -1,4 +1,4 @@
-# {short title of solved problem and solution}
+# {CI/CD Pipeline}
 
 * Status: {accepted} <!-- optional -->
 * Deciders: {Primary Deciders: Baha, Justin. All other members were able to contribute} 
