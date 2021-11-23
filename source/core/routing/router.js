@@ -1,3 +1,7 @@
+if (typeof module !== "undefined" && module.exports) {
+  module.exports = { getRoutefromUrl };
+}
+
 /** Router module.
  * @module core/routing/router
  */
@@ -38,7 +42,7 @@ const routePatterns = {
   },
   "recipe-search": {
     component: "recipe-search",
-    url: "#/recipe-search",
+    url: "#/recipes/search",
   },
 };
 

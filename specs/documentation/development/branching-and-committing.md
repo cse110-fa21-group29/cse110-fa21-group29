@@ -36,7 +36,7 @@ We have 6 branch types in our repo:
    2. All commits on these branches will be merged into both `develop` and `main`.
 
 6. `gh-pages`: This branch represents our documentation. Right now, this is currently a WORK-IN-PROGRESS.
-   1. This branch represents the latest JSDocs, and will be visible at [docs.yummyrecipesapp.com](docs.yummyrecipesapp.com). It is hosted via GitHub pages.
+   1. This branch represents the latest JSDocs, is currently hosted on [https://cse110-fa21-group29.github.io/cse110-fa21-group29/](https://cse110-fa21-group29.github.io/cse110-fa21-group29/), and will hopefully be moved to [docs.yummyrecipesapp.com](docs.yummyrecipesapp.com) in the coming days.
 
 ## Branch naming
 All feature and fix branches (1st and 2nd types listed above) should follow this naming scheme:
