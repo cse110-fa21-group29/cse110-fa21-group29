@@ -19,6 +19,11 @@
   font-style: normal;
   font-size: 30px;
 }
+#home-page-link,
+.nav-link{
+  text-decoration: none;
+  color: black;
+}
 
 /* right grid */
 .right {
@@ -46,5 +51,16 @@ li {
 
 .link {
   display: inline-block;
-  margin: 0 20px;
+  margin: 0 0 0 40px;
+  line-height: 50px;
+}
+.link:hover{
+  background-color: #da8888;
+}
+#search-icon{
+  height: 20px;
+  cursor: pointer;
+}
+#search-grid{
+  margin-right: 10px;
 }
