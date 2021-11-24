@@ -84,7 +84,7 @@ jobs:
       - name: Run Codacy Analysis CLI
         uses: codacy/codacy-analysis-cli-action@master
         with:
-          directory: ./source
+          working-directory: ./source
           output: results.sarif
           format: sarif
           # Adjust severity of non-security issues
