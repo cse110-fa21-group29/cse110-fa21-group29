@@ -1,6 +1,9 @@
 ---
 languages:
-  js
+  css:
+    - ".css"
+  javascript:
+    - ".js"
 
 exclude_paths:
   - ".github/**"
@@ -11,3 +14,4 @@ exclude_paths:
   - "specs/**"
   - "unit-tests/**"
   - "README.md"
+  - "package-lock.json"
