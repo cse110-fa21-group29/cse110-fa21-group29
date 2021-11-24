@@ -1,10 +1,4 @@
 ---
-languages:
-  css:
-    - ".css"
-  javascript:
-    - ".js"
-
 exclude_paths:
   - ".github/**"
   - ".husky/**"
