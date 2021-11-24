@@ -1,4 +1,7 @@
 ---
+languages:
+  js
+
 exclude_paths:
   - ".github/**"
   - ".husky/**"
