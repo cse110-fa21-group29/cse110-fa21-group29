@@ -1,5 +1,6 @@
 #contribute-form {
   display: flex;
+  margin-bottom: 200px;
 }
 #left-side,
 #right-side {

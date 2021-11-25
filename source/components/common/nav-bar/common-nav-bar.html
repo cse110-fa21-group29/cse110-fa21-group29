@@ -1,31 +1,23 @@
 <link rel="stylesheet" href="components/common/nav-bar/common-nav-bar.css" />
-
-<ul id="nav-bar">
-  <li class="left">
-    <img src="static/nav-bar/logo.png" alt="logo" width="60" />
-  </li>
-  <li class="left"><a id="home-page-link"href="#/">Yummy Recipes</a></li>
-  <!-- <li class="right">
-    <img src="static/nav-bar/menu.png" alt="menu" width="30" />
-  </li> -->
-
-  <!-- <li class="link"><a href="#/">home page</a></li> -->
-  <li class="link"><a class="nav-link"href="#/recipes/contribute">contribute recipe</a></li>
-  <li class="link"><a class="nav-link"href="#/recipes/meal-planner">meal planner</a></li>
-  <li class="link"><a class="nav-link"href="#/about-us">about us</a></li>
-  <!-- <li class="link"><a href="#/hands-free">hands-free</a></li>
-  <li class="link"><a href="#/recipes/search">recipe-search</a></li> -->
-
-  <!-- <li class="right hidden" id="hand">
-    <img src="static/nav-bar/handsfree.png" alt="hands-free" width="30" />
-  </li>
-  <li class="right hidden" id="timer">
-    <img src="static/nav-bar/timer.png" alt="timer" width="30" />
-  </li> -->
-  <li class="right" id="search-grid">
-    <input type="text" placeholder="search"/>
-    <img src="static/common/search-icon.png" id="search-icon">
-  </li>
-</ul>
+<div id="nav-bar">
+  <img id="logo" src="static/nav-bar/logo.png" alt="logo" />
+  <a id="home-page-link" href="#/">Yummy Recipes</a>
+  <div id="category-dropdown">
+    <div id="category-button">Category</div>
+    <a class="category-link" href="#/">High Protein</a>
+    <a class="category-link" href="#/">Healthy</a>
+    <a class="category-link" href="#/">Vegan</a>
+    <a class="category-link" href="#/">Vegatarian</a>
+    <a class="category-link" href="#/">Gluten-Free</a>
+  </div>
+  <a class="nav-link" href="#/recipes/contribute">contribute recipe</a>
+  <a class="nav-link" href="#/recipes/meal-planner">meal planner</a>
+  <a class="nav-link" href="#/about-us">about us</a>
+  <form id="search-grid">
+    <input id="search-input" type="text" placeholder="search" />
+    <!-- <img src="static/common/search-icon.png" id="search-icon"> -->
+    <input type="submit" id="search-button" value="Search" />
+  </form>
+</div>
 
 <div id="place-holder"></div>
