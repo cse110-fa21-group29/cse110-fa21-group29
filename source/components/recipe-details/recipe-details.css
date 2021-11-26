@@ -20,6 +20,7 @@
   height: 350px;
   margin-left: 1%;
   margin-top: 5%;
+  padding: 20px;
   border: 0.1em solid grey;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
@@ -27,16 +28,16 @@
 .dish-name {
   font-family: Ubuntu;
   font-size: 350%;
-  margin-left: 3%;
-  margin-top: 5%;
+  /* margin-left: 3%;
+  margin-top: 5%; */
   line-height: 1em;
 }
 
 .author-name {
   font-family: Ubuntu;
   font-size: 150%;
-  margin-left: 3%;
-  margin-top: 23%;
+  /* margin-left: 3%; */
+  margin-top: 15%;
 }
 
 .author-date {
@@ -48,12 +49,12 @@
 .recipe-url {
   font-family: Ubuntu;
   font-size: 150%;
-  margin-left: 3%;
+  /* margin-left: 3%; */
 }
 
 .description-box {
   width: 98.5%;
-  height: 75%;
+  /* height: 75%; */
   margin-top: 3%;
   margin-left: 1%;
   border: 0.1em solid grey;
@@ -71,10 +72,10 @@
 .description {
   font-family: Ubuntu;
   font-size: 140%;
-  margin-left: 3%;
   margin-top: 2%;
   overflow: hidden;
   margin-bottom: 3%;
+  padding: 3%;
 }
 
 .info-category-nutrient-box {
@@ -185,6 +186,7 @@ li {
   width: 98.5%;
   margin-top: 3%;
   margin-left: 1%;
+  margin-bottom: 5%;
   border: 1px solid grey;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
@@ -201,6 +203,7 @@ li {
   font-family: Ubuntu;
   font-size: 140%;
   margin-left: 2%;
+  padding: 20px;
 }
 
 .comment-box {
@@ -266,4 +269,24 @@ button {
   border: 1px solid grey;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   padding: 1%;
+}
+
+#timer {
+  height: 300px;
+  border: 0.1em solid grey;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin: 20px auto 0 1%;
+  display: none;
+  padding: 20px;
+}
+#timer-display {
+  font-size: 200px;
+}
+#timer-button-grid {
+  margin: auto;
+}
+#start-button,
+#reset-button {
+  width: 100px;
+  margin: 40px 0;
 }

@@ -29,7 +29,9 @@ class RecipeDetails extends HTMLElement {
     this.shadowRoot.innerHTML = elementContentText;
     this.setupElement();
   }
-
+  count = 0;
+  temp;
+  timeron = 0;
   /**
    * Populates recipe details page with information from the database and adds
    * delete functionality.
@@ -37,6 +39,37 @@ class RecipeDetails extends HTMLElement {
    * @async
    */
   async setupElement() {
+    this.shadowRoot
+      .getElementById("timer-button")
+      .addEventListener("click", () => {
+        if (this.shadowRoot.getElementById("timer").style.display == "") {
+          this.shadowRoot.getElementById("timer").style.display = "flex";
+        } else {
+          this.shadowRoot.getElementById("timer").style.display = "";
+        }
+      });
+    this.shadowRoot
+      .getElementById("start-button")
+      .addEventListener("click", () => {
+        if (!this.timeron) {
+          this.timeron = 1;
+          this.timedCount();
+          this.shadowRoot.getElementById("start-button").innerHTML = "Stop";
+        } else {
+          this.shadowRoot.getElementById("start-button").innerHTML = "Start";
+          clearTimeout(this.temp);
+          this.timeron = 0;
+        }
+      });
+    this.shadowRoot
+      .getElementById("reset-button")
+      .addEventListener("click", () => {
+        clearTimeout(this.temp);
+        this.timeron = 0;
+        this.count = 0;
+        this.setTime();
+      });
+
     // Grab recipe from database based on routing parameter
     const database = new Database();
     let recipes = await database.getRecipes();
@@ -142,6 +175,32 @@ class RecipeDetails extends HTMLElement {
 
     // Direction box
     this.shadowRoot.querySelector(".direction-list").innerHTML = recipe.steps;
+  }
+
+  timedCount() {
+    this.setTime();
+    this.count = this.count + 1;
+    this.temp = setTimeout(this.timedCount.bind(this), 1000);
+  }
+
+  /**
+   * set timer
+   */
+  setTime() {
+    let hour = parseInt(this.count / 3600);
+    let minute = parseInt(this.count / 60);
+    let second = parseInt(this.count % 60);
+    if (hour < 10) {
+      hour = "0" + hour;
+    }
+    if (minute < 10) {
+      minute = "0" + minute;
+    }
+    if (second < 10) {
+      second = "0" + second;
+    }
+    this.shadowRoot.getElementById("timer-display").innerText =
+      hour + ":" + minute + ":" + second;
   }
 }
 
