@@ -176,7 +176,9 @@ class RecipeDetails extends HTMLElement {
     // Direction box
     this.shadowRoot.querySelector(".direction-list").innerHTML = recipe.steps;
   }
-
+  /**
+   * help function for timer
+   */
   timedCount() {
     this.setTime();
     this.count = this.count + 1;
