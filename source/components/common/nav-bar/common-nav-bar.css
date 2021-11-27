@@ -1,50 +1,85 @@
-/* navigation bar*/
 #nav-bar {
-  list-style-type: none;
-  display: inline-block;
+  color: black;
   position: fixed;
-  padding: 0;
-  overflow: hidden;
-  margin: 0;
   width: 100%;
-  z-index: 9999;
+  z-index: 99;
   background: #ffa4a4;
+  height: 50px;
+  text-align: center;
+  display: flex;
+}
+
+#logo {
   height: 50px;
 }
 
-/* left grid */
-.left {
-  float: left;
+#home-page-link {
   font-family: Snell Roundhand, cursive;
   font-style: normal;
   font-size: 30px;
+  line-height: 50px;
 }
 
-/* right grid */
-.right {
-  float: right;
-  padding-left: 0.5%;
-  padding-right: 0.5%;
-}
-
-/* contents */
-li {
+a {
   color: black;
-  display: flex;
-  align-items: center;
+  text-decoration: none;
+}
+
+.nav-link {
+  display: inline-block;
+  line-height: 50px;
+  width: 150px;
   height: 50px;
 }
 
-/* recipe page only */
-/* .hidden {
-  display: none;
-} */
+.nav-link:hover,
+#category-button:hover {
+  background: #dd8e8e;
+}
 
+#category-button {
+  height: 50px;
+  width: 150px;
+  line-height: 50px;
+}
+
+.category-link {
+  display: none;
+  height: 50px;
+  line-height: 50px;
+  background-color: white;
+  box-shadow: 5px 5px 2px 1px rgba(0, 0, 255, 0.2);
+}
+.category-link:hover {
+  background-color: rgb(255, 249, 197);
+}
+
+#category-dropdown:hover .category-link {
+  display: block;
+}
+#search-grid {
+  right: 10px;
+  position: absolute;
+  border: 1px solid rgb(155, 155, 155);
+  top: 10px;
+  height: 30px;
+  display: flex;
+}
+
+#search-button {
+  height: 30px;
+  cursor: pointer;
+  background-color: white;
+  color: white;
+  background-color: rgb(118, 118, 255);
+  border: none;
+}
+
+#search-input {
+  display: inline-block;
+  border: none;
+  height: 30px;
+}
 #place-holder {
   height: 50px;
-}
-
-.link {
-  display: inline-block;
-  margin: 0 20px;
 }
