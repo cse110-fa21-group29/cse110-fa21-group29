@@ -3,7 +3,7 @@ main {
 }
 
 #planner-grid {
-  margin: 20px auto;
+  margin: 20px auto 200px;
   width: 95vw;
   height: 40vw;
   display: grid;

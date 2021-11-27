@@ -210,8 +210,15 @@ function getRoutefromUrl(url) {
     return "home-page";
   }
 
+  // Remove all GET parameters from URL
+  let baseUrl = url;
+  const getParamsStart = url.indexOf("?");
+  if (getParamsStart !== -1) {
+    baseUrl = url.slice(0, getParamsStart);
+  }
+
   // Replace all numbers in URL with "_"
-  let splitUrl = url.split("/");
+  let splitUrl = baseUrl.split("/");
   for (let i = 0; i < splitUrl.length; i++) {
     const urlSection = splitUrl[i];
     if (!isNaN(parseInt(urlSection))) {
@@ -235,12 +242,21 @@ function getRoutefromUrl(url) {
  * @returns {number[]} Params from the URL.
  */
 function getParamsFromUrl(url) {
+  // If home page, return no params immediately
   if (url.length === 0) {
     return [];
   }
 
+  // Remove all GET parameters from URL
+  let baseUrl = url;
+  const getParamsStart = url.indexOf("?");
+  if (getParamsStart !== -1) {
+    baseUrl = url.slice(0, getParamsStart);
+  }
+
+  // Push all integer sections of URL into params array
   let params = [];
-  let splitUrl = url.split("/");
+  let splitUrl = baseUrl.split("/");
   for (let i = 0; i < splitUrl.length; i++) {
     const urlSection = splitUrl[i];
     if (!isNaN(parseInt(urlSection))) {
