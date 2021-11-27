@@ -1,25 +1,13 @@
-class ComponentName extends HTMLElement {
+import { YummyRecipesComponent } from "/components/core/yummy-recipes-component.js";
+
+class ComponentName extends YummyRecipesComponent {
   constructor() {
     super();
-    this.attachShadow({ mode: "open" });
+    this.htmlPath = "components/component-name/component-name.html";
   }
 
-  set params(params) {
-    this.routeParams = params;
-  }
-  set route(route) {
-    this.routeName = route;
-  }
-
-  async connectedCallback() {
-    let elementContent = await fetch(
-      "components/component-name/component-name.html"
-    );
-    let elementContentText = await elementContent.text();
-    this.shadowRoot.innerHTML = elementContentText;
-    this.setupElement();
-  }
-
+  // Optional function, please remove if unused.
+  // Runs when element is initially loaded into page.
   setupElement() {}
 }
 

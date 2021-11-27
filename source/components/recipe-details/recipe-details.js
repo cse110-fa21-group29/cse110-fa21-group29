@@ -1,33 +1,11 @@
 import { Database } from "../../core/database/database.js";
+import { YummyRecipesComponent } from "/components/core/yummy-recipes-component.js";
 
 /** Class that provides functionality to the recipe details page. */
-class RecipeDetails extends HTMLElement {
+class RecipeDetails extends YummyRecipesComponent {
   constructor() {
     super();
-    this.attachShadow({ mode: "open" });
-  }
-
-  set params(params) {
-    this.routeParams = params;
-  }
-
-  set route(route) {
-    this.routeName = route;
-  }
-
-  /**
-   * Fires when this component is inserted into the DOM.
-   *
-   * @async
-   */
-  async connectedCallback() {
-    const elementContent = await fetch(
-      "components/recipe-details/recipe-details.html"
-    );
-    const elementContentText = await elementContent.text();
-
-    this.shadowRoot.innerHTML = elementContentText;
-    this.setupElement();
+    this.htmlPath = "components/recipe-details/recipe-details.html";
   }
   count = 0;
   timeoutID;
@@ -133,6 +111,7 @@ class RecipeDetails extends HTMLElement {
 
     // This is the first row of the page, including the image and the author box
     this.shadowRoot.querySelector(".recipe-image").src = recipe.metadata.image;
+    this.shadowRoot.querySelector(".recipe-image").alt = recipe.metadata.title;
     this.shadowRoot.querySelector(".dish-name").innerHTML =
       recipe.metadata.title;
     this.shadowRoot.querySelector(".author-name").innerHTML =
