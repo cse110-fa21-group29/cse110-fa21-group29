@@ -30,7 +30,7 @@ class RecipeDetails extends HTMLElement {
     this.setupElement();
   }
   count = 0;
-  temp;
+  timeoutID;
   timeron = 0;
   /**
    * Populates recipe details page with information from the database and adds
@@ -39,6 +39,19 @@ class RecipeDetails extends HTMLElement {
    * @async
    */
   async setupElement() {
+    this.shadowRoot
+      .getElementById("hands-free-button")
+      .addEventListener("click", () => {
+        const routerEvent = new CustomEvent("router-navigate", {
+          detail: {
+            route: "hands-free",
+            params: [this.routeParams[0]], // TODO: Add recipe ID in URL
+          },
+          bubbles: true,
+          composed: true,
+        });
+        document.dispatchEvent(routerEvent);
+      });
     this.shadowRoot
       .getElementById("timer-button")
       .addEventListener("click", () => {
@@ -57,14 +70,14 @@ class RecipeDetails extends HTMLElement {
           this.shadowRoot.getElementById("start-button").innerHTML = "Stop";
         } else {
           this.shadowRoot.getElementById("start-button").innerHTML = "Start";
-          clearTimeout(this.temp);
+          clearTimeout(this.timeoutID);
           this.timeron = 0;
         }
       });
     this.shadowRoot
       .getElementById("reset-button")
       .addEventListener("click", () => {
-        clearTimeout(this.temp);
+        clearTimeout(this.timeoutID);
         this.timeron = 0;
         this.count = 0;
         this.setTime();
@@ -182,7 +195,7 @@ class RecipeDetails extends HTMLElement {
   timedCount() {
     this.setTime();
     this.count = this.count + 1;
-    this.temp = setTimeout(this.timedCount.bind(this), 1000);
+    this.timeoutID = setTimeout(this.timedCount.bind(this), 1000);
   }
 
   /**

@@ -290,3 +290,19 @@ button {
   width: 100px;
   margin: 40px 0;
 }
+
+#vegan {
+  color: rgb(90, 240, 232);
+}
+#vegetarian {
+  color: rgb(131, 224, 24);
+}
+#gluten-free {
+  color: #b78727;
+}
+#high-protein {
+  color: violet;
+}
+#healthy {
+  color: lightblue;
+}
