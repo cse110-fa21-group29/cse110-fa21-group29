@@ -1,33 +1,11 @@
 import { Database } from "../../core/database/database.js";
+import { YummyRecipesComponent } from "/components/core/yummy-recipes-component.js";
 
 /** Class that provides functionality to the recipe details page. */
-class RecipeDetails extends HTMLElement {
+class RecipeDetails extends YummyRecipesComponent {
   constructor() {
     super();
-    this.attachShadow({ mode: "open" });
-  }
-
-  set params(params) {
-    this.routeParams = params;
-  }
-
-  set route(route) {
-    this.routeName = route;
-  }
-
-  /**
-   * Fires when this component is inserted into the DOM.
-   *
-   * @async
-   */
-  async connectedCallback() {
-    const elementContent = await fetch(
-      "components/recipe-details/recipe-details.html"
-    );
-    const elementContentText = await elementContent.text();
-
-    this.shadowRoot.innerHTML = elementContentText;
-    this.setupElement();
+    this.htmlPath = "components/recipe-details/recipe-details.html";
   }
 
   /**

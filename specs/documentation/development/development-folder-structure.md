@@ -12,6 +12,7 @@ This document covers the way our repo is structured from a development standpoin
 ## Source folder structure
 Inside the `source/` folder, we have the following files/folders:
 * `components/`: All of the interface code (HTML/CSS/JS) for every page on the site. Each component of the site has its own folder inside `source/components/`.
+  * `components/core/`: Contains the yummy recipes generic component that all pages inherit from. The generic component contains boilerplate code to make the component work so it doesn't have to be repeated on every page.
 * `core/`: All of the core functionality of the site (code that applies everywhere).
   * `core/routing/`: The router functionality (see [router explanation](./router-explanation.md)).
   * `core/database/`: The database functionality (see [firebase explanation](./firebase-explanation.md)).
