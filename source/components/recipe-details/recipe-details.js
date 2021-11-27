@@ -65,6 +65,7 @@ class RecipeDetails extends YummyRecipesComponent {
 
     // This is the first row of the page, including the image and the author box
     this.shadowRoot.querySelector(".recipe-image").src = recipe.metadata.image;
+    this.shadowRoot.querySelector(".recipe-image").alt = recipe.metadata.title;
     this.shadowRoot.querySelector(".dish-name").innerHTML =
       recipe.metadata.title;
     this.shadowRoot.querySelector(".author-name").innerHTML =
