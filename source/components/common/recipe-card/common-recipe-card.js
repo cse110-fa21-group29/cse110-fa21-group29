@@ -1,20 +1,13 @@
-class CommonRecipeCard extends HTMLElement {
+import { YummyRecipesComponent } from "/components/core/yummy-recipes-component.js";
+
+class CommonRecipeCard extends YummyRecipesComponent {
   constructor() {
     super();
-    this.attachShadow({ mode: "open" });
+    this.htmlPath = "components/common/recipe-card/common-recipe-card.html";
   }
 
   set recipeData(recipeData) {
     this.recipe = recipeData;
-  }
-
-  async connectedCallback() {
-    let elementContent = await fetch(
-      "components/common/recipe-card/common-recipe-card.html"
-    );
-    let elementContentText = await elementContent.text();
-    this.shadowRoot.innerHTML = elementContentText;
-    this.setupElement();
   }
 
   setupElement() {
