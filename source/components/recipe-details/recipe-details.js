@@ -7,7 +7,9 @@ class RecipeDetails extends YummyRecipesComponent {
     super();
     this.htmlPath = "components/recipe-details/recipe-details.html";
   }
-
+  count = 0;
+  timeoutID;
+  timeron = 0;
   /**
    * Populates recipe details page with information from the database and adds
    * delete functionality.
@@ -15,6 +17,50 @@ class RecipeDetails extends YummyRecipesComponent {
    * @async
    */
   async setupElement() {
+    this.shadowRoot
+      .getElementById("hands-free-button")
+      .addEventListener("click", () => {
+        const routerEvent = new CustomEvent("router-navigate", {
+          detail: {
+            route: "hands-free",
+            params: [this.routeParams[0]], // TODO: Add recipe ID in URL
+          },
+          bubbles: true,
+          composed: true,
+        });
+        document.dispatchEvent(routerEvent);
+      });
+    this.shadowRoot
+      .getElementById("timer-button")
+      .addEventListener("click", () => {
+        if (this.shadowRoot.getElementById("timer").style.display == "") {
+          this.shadowRoot.getElementById("timer").style.display = "flex";
+        } else {
+          this.shadowRoot.getElementById("timer").style.display = "";
+        }
+      });
+    this.shadowRoot
+      .getElementById("start-button")
+      .addEventListener("click", () => {
+        if (!this.timeron) {
+          this.timeron = 1;
+          this.timedCount();
+          this.shadowRoot.getElementById("start-button").innerHTML = "Stop";
+        } else {
+          this.shadowRoot.getElementById("start-button").innerHTML = "Start";
+          clearTimeout(this.timeoutID);
+          this.timeron = 0;
+        }
+      });
+    this.shadowRoot
+      .getElementById("reset-button")
+      .addEventListener("click", () => {
+        clearTimeout(this.timeoutID);
+        this.timeron = 0;
+        this.count = 0;
+        this.setTime();
+      });
+
     // Grab recipe from database based on routing parameter
     const database = new Database();
     let recipes = await database.getRecipes();
@@ -121,6 +167,34 @@ class RecipeDetails extends YummyRecipesComponent {
 
     // Direction box
     this.shadowRoot.querySelector(".direction-list").innerHTML = recipe.steps;
+  }
+  /**
+   * help function for timer
+   */
+  timedCount() {
+    this.setTime();
+    this.count = this.count + 1;
+    this.timeoutID = setTimeout(this.timedCount.bind(this), 1000);
+  }
+
+  /**
+   * set timer
+   */
+  setTime() {
+    let hour = parseInt(this.count / 3600);
+    let minute = parseInt(this.count / 60);
+    let second = parseInt(this.count % 60);
+    if (hour < 10) {
+      hour = "0" + hour;
+    }
+    if (minute < 10) {
+      minute = "0" + minute;
+    }
+    if (second < 10) {
+      second = "0" + second;
+    }
+    this.shadowRoot.getElementById("timer-display").innerText =
+      hour + ":" + minute + ":" + second;
   }
 }
 
