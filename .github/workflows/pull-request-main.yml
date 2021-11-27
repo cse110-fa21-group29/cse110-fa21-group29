@@ -74,19 +74,19 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./specs/documentation/jsdocs/
 
-  codacy-analysis-cli:
-    name: Codacy Analysis CLI
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@main
+  # codacy-analysis-cli:
+  #   name: Codacy Analysis CLI
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@main
 
-      - name: Run Codacy Analysis CLI
-        uses: codacy/codacy-analysis-cli-action@master
-        with:
-          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
-          upload: true
-          max-allowed-issues: 2147483647
+  #     - name: Run Codacy Analysis CLI
+  #       uses: codacy/codacy-analysis-cli-action@master
+  #       with:
+  #         project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+  #         upload: true
+  #         max-allowed-issues: 2147483647
   
   build-and-preview-firebase-hosting-main:
     name: Build and preview firebase hosting
