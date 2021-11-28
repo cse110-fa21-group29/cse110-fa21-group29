@@ -1,4 +1,5 @@
-import { Database } from "../../core/database/database.js";
+import { Database } from "/core/database/database.js";
+import { Storage } from "/core/storage/storage.js";
 import { YummyRecipesComponent } from "/components/core/yummy-recipes-component.js";
 
 /** Class that provides functionality to the recipe details page. */
@@ -91,22 +92,31 @@ class RecipeDetails extends YummyRecipesComponent {
     this.shadowRoot
       .querySelector("#delete-button")
       .addEventListener("click", () => {
-        // Delete recipe from button
-        database.deleteRecipe(this.routeParams[0]);
+        if (confirm("Are you sure you want to delete this recipe?")) {
+          // Get recipe index in database from route param
+          const index = this.routeParams[0];
 
-        // Route to home-page
-        const routerEvent = new CustomEvent("router-navigate", {
-          detail: {
-            route: "home-page",
-            params: [],
-          },
-          bubbles: true,
-          composed: true,
-        });
-        document.dispatchEvent(routerEvent);
+          // Delete recipe in database
+          database.deleteRecipe(index);
 
-        // Notify user that recipe was deleted
-        alert("Recipe deleted");
+          // Delete recipe image
+          const storage = new Storage();
+          storage.deleteImage(index);
+
+          // Route to home-page
+          const routerEvent = new CustomEvent("router-navigate", {
+            detail: {
+              route: "home-page",
+              params: [],
+            },
+            bubbles: true,
+            composed: true,
+          });
+          document.dispatchEvent(routerEvent);
+
+          // Notify user that recipe was deleted
+          alert("Recipe deleted");
+        }
       });
 
     // This is the first row of the page, including the image and the author box

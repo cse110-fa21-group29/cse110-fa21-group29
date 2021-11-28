@@ -266,11 +266,8 @@ class RecipeContribute extends YummyRecipesComponent {
 
       // Upload recipe image if applicable
       if (this["imageChanged"]) {
-        // Get file extension
-        const ext = file.name.match(/\.[0-9a-z]+$/i)[0];
-
         // Upload file named after index in database
-        const imageUrl = await storage.uploadImage(file, index + ext);
+        const imageUrl = await storage.uploadImage(file, index);
 
         // Set image url in recipe
         await db.writeData(imageUrl, index, "metadata/image");
@@ -296,11 +293,8 @@ class RecipeContribute extends YummyRecipesComponent {
 
       // Upload recipe image if image updated
       if (this["imageChanged"]) {
-        // Get file extension
-        const ext = file.name.match(/\.[0-9a-z]+$/i)[0];
-
         // Upload file named after index in database
-        const imageUrl = await storage.uploadImage(file, index + ext);
+        const imageUrl = await storage.uploadImage(file, index);
 
         // Set image url in recipe
         await db.writeData(imageUrl, index, "metadata/image");

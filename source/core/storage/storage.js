@@ -1,5 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.1/firebase-app.js";
 import {
+  deleteObject,
   getDownloadURL,
   getStorage,
   ref,
@@ -12,7 +13,7 @@ const configFile = "/config.json";
 /** Class that provides interface with Firebase Storage. */
 export class Storage {
   /**
-   * Uploads a file to the "image" folder in the storage.
+   * Uploads a file to the "images" folder in the storage.
    *
    * @async
    * @param {Object} file - An object that represents a file.
@@ -31,12 +32,34 @@ export class Storage {
     // Create a reference to where the file will be stored
     const storageRef = ref(storage, "images/" + name);
 
-    // Upload image to directory specified by reference
+    // Upload file to directory specified by reference
     const image = await uploadBytes(storageRef, file);
 
-    // Get uploaded image URL
+    // Get uploaded file URL
     const url = await getDownloadURL(ref(storage, image.metadata.fullPath));
 
     return url;
+  }
+
+  /**
+   * Deletes file in "images" folder in the storage.
+   *
+   * @async
+   * @param {string} name - The name of the file without extension.
+   */
+  async deleteImage(name) {
+    // Fetch Firebase credentials
+    let config = await fetch(configFile);
+    config = await config.json();
+
+    // Initialize storage connection
+    const firebaseApp = initializeApp(config.firebaseConfig);
+    const storage = getStorage(firebaseApp);
+
+    // Create reference to the file to delete
+    const imageRef = ref(storage, "images/" + name);
+
+    // Delete file
+    await deleteObject(imageRef);
   }
 }
