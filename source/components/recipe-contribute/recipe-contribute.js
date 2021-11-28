@@ -9,7 +9,7 @@ class RecipeContribute extends YummyRecipesComponent {
     this.htmlPath = "components/recipe-contribute/recipe-contribute.html";
 
     // Flag to determine if image was input in the form
-    this["imageChanged"] = false;
+    this.imageChanged = false;
   }
 
   /**
@@ -29,9 +29,9 @@ class RecipeContribute extends YummyRecipesComponent {
     // Change event listener for file button
     this.shadowRoot
       .getElementById("submit-img")
-      .addEventListener("change", (e) => {
+      .addEventListener("change", (event) => {
         // Get selected file object
-        const file = e.target.files[0];
+        const file = event.target.files[0];
 
         // Regex to check if valid image
         const validExt = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
@@ -40,20 +40,20 @@ class RecipeContribute extends YummyRecipesComponent {
         if (file != undefined && validExt.exec(file.name)) {
           // Preview image selected using button background
           const img = URL.createObjectURL(file);
-          e.target.style.backgroundImage = "url(" + img + ")";
+          event.target.style.backgroundImage = "url(" + img + ")";
 
           // Image file was input into form so set flag to true
-          this["imageChanged"] = true;
+          this.imageChanged = true;
         } else {
           // Reset preview
-          e.target.style.backgroundImage =
+          event.target.style.backgroundImage =
             "url('/static/common/defaultimg.jpeg')";
 
           // Set flag to false
-          this["imageChanged"] = false;
+          this.imageChanged = false;
 
           // If file was invalid instead of user hitting cancel
-          if (!validExt.exec(file.name)) {
+          if (file != undefined && !validExt.exec(file.name)) {
             alert("File must be .jpg, .jpeg, .png, or .gif");
           }
         }
@@ -102,9 +102,9 @@ class RecipeContribute extends YummyRecipesComponent {
     // Assign saveRecipe function to submit button
     this.shadowRoot
       .querySelector("#submit-button")
-      .addEventListener("click", (e) => {
+      .addEventListener("click", (event) => {
         this.saveRecipe(recipe, true);
-        e.preventDefault();
+        event.preventDefault();
       });
   }
 
@@ -177,9 +177,9 @@ class RecipeContribute extends YummyRecipesComponent {
     // Update edited recipe in database on submit button click
     this.shadowRoot
       .querySelector("#submit-button")
-      .addEventListener("click", (e) => {
+      .addEventListener("click", (event) => {
         this.saveRecipe(recipe, false);
-        e.preventDefault();
+        event.preventDefault();
       });
   }
 
@@ -195,7 +195,7 @@ class RecipeContribute extends YummyRecipesComponent {
     // Image
     const storage = new Storage();
     let file = {};
-    if (this["imageChanged"]) {
+    if (this.imageChanged) {
       file = this.shadowRoot.getElementById("submit-img").files[0];
     }
 
@@ -265,7 +265,7 @@ class RecipeContribute extends YummyRecipesComponent {
       const index = await db.pushRecipe(recipe);
 
       // Upload recipe image if applicable
-      if (this["imageChanged"]) {
+      if (this.imageChanged) {
         // Upload file named after index in database
         const imageUrl = await storage.uploadImage(file, index);
 
@@ -292,7 +292,7 @@ class RecipeContribute extends YummyRecipesComponent {
       await db.updateRecipe(recipe, index);
 
       // Upload recipe image if image updated
-      if (this["imageChanged"]) {
+      if (this.imageChanged) {
         // Upload file named after index in database
         const imageUrl = await storage.uploadImage(file, index);
 
