@@ -30,11 +30,14 @@ class RecipeContribute extends YummyRecipesComponent {
     this.shadowRoot
       .getElementById("submit-img")
       .addEventListener("change", (e) => {
-        // Get selected file
+        // Get selected file object
         const file = e.target.files[0];
 
-        // File was selected succesfully
-        if (file != undefined) {
+        // Regex to check if valid image
+        const validExt = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+
+        // File was selected successfully and is valid image
+        if (file != undefined && validExt.exec(file.name)) {
           // Preview image selected using button background
           const img = URL.createObjectURL(file);
           e.target.style.backgroundImage = "url(" + img + ")";
@@ -42,12 +45,17 @@ class RecipeContribute extends YummyRecipesComponent {
           // Image file was input into form so set flag to true
           this["imageChanged"] = true;
         } else {
-          // Cancel button was hit so reset preview
+          // Reset preview
           e.target.style.backgroundImage =
             "url('/static/common/defaultimg.jpeg')";
 
-          // Image file was removed from form so set flag to false
+          // Set flag to false
           this["imageChanged"] = false;
+
+          // If file was invalid instead of user hitting cancel
+          if (!validExt.exec(file.name)) {
+            alert("File must be .jpg, .jpeg, .png, or .gif");
+          }
         }
       });
   }
