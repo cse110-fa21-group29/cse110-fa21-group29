@@ -8,7 +8,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.4.1/firebase-database.js";
 
 // Database credential file
-const configFile = "../../../config.json";
+const configFile = "/config.json";
 
 /** Class that interfaces with the Firebase realtime database. */
 export class Database {
@@ -103,6 +103,28 @@ export class Database {
 
     // Replace recipe data at index with parameter recipe object
     set(ref(database, "recipes/" + index), recipe);
+  }
+
+  /**
+   * Write a value to a key in a recipe.
+   *
+   * @async
+   * @param {string} data - A string that contains the data to write.
+   * @param {number} index - The index of the recipe in the database.
+   * @param {string} path - The path of the key in the recipe (e.g. "metadata/title").
+   */
+  async writeData(data, index, path) {
+    // Fetch database credentials
+    let config = await fetch(configFile);
+    config = await config.json();
+
+    // Initialize database connection
+    const app = initializeApp(config.firebaseConfig);
+    const database = getDatabase(app);
+    const dbRef = ref(getDatabase());
+
+    // Update key with new value
+    set(ref(database, "recipes/" + index + "/" + path), data);
   }
 
   /**
