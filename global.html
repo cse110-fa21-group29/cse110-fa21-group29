@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>components/core/yummy-recipes-component.js - Documentation</title>
+    <title>Global - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,64 +29,180 @@
 
 <div id="main">
     
-    <h1 class="page-title">components/core/yummy-recipes-component.js</h1>
+    <h1 class="page-title">Global</h1>
     
 
     
 
 
 
+
+<section>
+
+<header>
     
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>export class YummyRecipesComponent extends HTMLElement {
-  /**
-   * Constructor to set up shadow DOM for the component.
-   */
-  constructor() {
-    super();
-    this.attachShadow({ mode: "open" });
-  }
+        <h2>
+        
+        </h2>
+        
+    
+</header>
 
-  /**
-   * Sets the routeParams instance variable to an array of route parameters.
-   * @param {number[]} params - Array of route parameters.
-   */
-  set params(params) {
-    this.routeParams = params;
-  }
+<article>
+    <div class="container-overview">
+    
+        
 
-  /**
-   * Sets the routeName instance variable to the route's name.
-   * @param {string} route - The route name.
-   */
-  set route(route) {
-    this.routeName = route;
-  }
+        
 
-  /**
-   * Fires when this component is inserted into the DOM.
-   *
-   * @async
-   */
-  async connectedCallback() {
-    const elementContent = await fetch(this.htmlPath);
-    const elementContentText = await elementContent.text();
 
-    this.shadowRoot.innerHTML = elementContentText;
-    this.setupElement();
-  }
+<dl class="details">
 
-  /**
-   * Setup code for this component
-   *
-   * @async
-   */
-  async setupElement() {}
-}
-</code></pre>
-        </article>
-    </section>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="foo"><span class="type-signature"></span>foo<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    This is a description of the foo function.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="iAmWill.js.html">iAmWill.js</a>, <a href="iAmWill.js.html#line2">line 2</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 
