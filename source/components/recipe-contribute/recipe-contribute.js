@@ -1,4 +1,5 @@
-import { Database } from "../../core/database/database.js";
+import { Database } from "/core/database/database.js";
+import { Storage } from "/core/storage/storage.js";
 import { YummyRecipesComponent } from "/components/core/yummy-recipes-component.js";
 
 /** Class that provides functionality to the recipe contribute page. */
@@ -6,6 +7,9 @@ class RecipeContribute extends YummyRecipesComponent {
   constructor() {
     super();
     this.htmlPath = "components/recipe-contribute/recipe-contribute.html";
+
+    // Flag to determine if image was input in the form
+    this["imageChanged"] = false;
   }
 
   /**
@@ -21,11 +25,31 @@ class RecipeContribute extends YummyRecipesComponent {
     } else {
       this.editRecipe();
     }
-  }
 
-  uploadImg(event) {
-    this.shadowRoot.getElementById("submit-img").style.backgroundImage =
-      "url(" + URL.createObjectURL(event.target.files[0]) + ")";
+    // Change event listener for file button
+    this.shadowRoot
+      .getElementById("submit-img")
+      .addEventListener("change", (e) => {
+        // Get selected file
+        const file = e.target.files[0];
+
+        // File was selected succesfully
+        if (file != undefined) {
+          // Preview image selected using button background
+          const img = URL.createObjectURL(file);
+          e.target.style.backgroundImage = "url(" + img + ")";
+
+          // Image file was input into form so set flag to true
+          this["imageChanged"] = true;
+        } else {
+          // Cancel button was hit so reset preview
+          e.target.style.backgroundImage =
+            "url('/static/common/defaultimg.jpeg')";
+
+          // Image file was removed from form so set flag to false
+          this["imageChanged"] = false;
+        }
+      });
   }
 
   /**
@@ -160,6 +184,13 @@ class RecipeContribute extends YummyRecipesComponent {
    * @param {boolean} add - toggles between creating and updating recipe
    */
   async saveRecipe(recipe, add) {
+    // Image
+    const storage = new Storage();
+    let file = {};
+    if (this["imageChanged"]) {
+      file = this.shadowRoot.getElementById("submit-img").files[0];
+    }
+
     // Nutrients
     recipe.nutrients.totalServings = this.shadowRoot.querySelector(
       "#input-number-of-servings"
@@ -225,6 +256,18 @@ class RecipeContribute extends YummyRecipesComponent {
       // Push recipe to database and grab index of the new recipe
       const index = await db.pushRecipe(recipe);
 
+      // Upload recipe image if applicable
+      if (this["imageChanged"]) {
+        // Get file extension
+        const ext = file.name.match(/\.[0-9a-z]+$/i)[0];
+
+        // Upload file named after index in database
+        const imageUrl = await storage.uploadImage(file, index + ext);
+
+        // Set image url in recipe
+        await db.writeData(imageUrl, index, "metadata/image");
+      }
+
       // Route to new recipe page
       const routerEvent = new CustomEvent("router-navigate", {
         detail: {
@@ -237,14 +280,29 @@ class RecipeContribute extends YummyRecipesComponent {
 
       document.dispatchEvent(routerEvent);
     } else {
+      // Get recipe index in database from route param
+      const index = this.routeParams[0];
+
       // Push edited recipe to database
-      await db.updateRecipe(recipe, this.routeParams[0]);
+      await db.updateRecipe(recipe, index);
+
+      // Upload recipe image if image updated
+      if (this["imageChanged"]) {
+        // Get file extension
+        const ext = file.name.match(/\.[0-9a-z]+$/i)[0];
+
+        // Upload file named after index in database
+        const imageUrl = await storage.uploadImage(file, index + ext);
+
+        // Set image url in recipe
+        await db.writeData(imageUrl, index, "metadata/image");
+      }
 
       // Route to edited recipe page
       const routerEvent = new CustomEvent("router-navigate", {
         detail: {
           route: "recipe-details",
-          params: [this.routeParams[0]],
+          params: [index],
         },
         bubbles: true,
         composed: true,
