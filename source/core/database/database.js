@@ -1,4 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.1/firebase-app.js";
+import { collection, getDocs, limit, query, where } from "https://www.gstatic.com/firebasejs/9.4.1/firebase-firestore.js";
 import {
   child,
   get,
@@ -124,4 +125,34 @@ export class Database {
     // Delete recipe data at index with parameter
     set(ref(database, "recipes/" + index), null);
   }
+
+  /**
+   * Brute force search that returns all recipes for which
+   * any words in the input string match.
+   * @param {string} phrase - group of words to match in search
+   * @return {Array} Array of recipes
+   */
+  async searchByName(phrase) {
+    // get all recipes
+    const recipes = await this.getRecipes();
+
+    // split input phrase into array of words
+    const words = phrase.toLowerCase().split(' ');
+
+    const matchingRecipes = [];
+
+    // loop through all recipes, add any for which the title inclues one of the input words to the output
+    for (let i = 0; i < recipes.length; ++i) {
+      if (recipes[i] !== null
+          && typeof(recipes[i]) !== 'undefined'
+          && Object.prototype.hasOwnProperty.call(recipes[i], 'metadata')
+          && Object.prototype.hasOwnProperty.call(recipes[i].metadata, 'title')
+          && words.some(w => recipes[i].metadata.title.toLowerCase().includes(w))) {
+        matchingRecipes.push(recipes[i]);
+      }
+    }
+
+    return matchingRecipes;
+  }
+
 }
