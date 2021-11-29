@@ -103,8 +103,17 @@ class RecipeContribute extends YummyRecipesComponent {
     this.shadowRoot
       .querySelector("#submit-button")
       .addEventListener("click", (event) => {
-        this.saveRecipe(recipe, true);
         event.preventDefault();
+
+        // Display form validation
+        const formElement = this.shadowRoot.querySelector("#contribute-form");
+        const isFormValid = formElement.checkValidity();
+        formElement.reportValidity();
+
+        // Add recipe if form is valid
+        if (isFormValid) {
+          this.saveRecipe(recipe, true);
+        }
       });
   }
 
@@ -178,8 +187,17 @@ class RecipeContribute extends YummyRecipesComponent {
     this.shadowRoot
       .querySelector("#submit-button")
       .addEventListener("click", (event) => {
-        this.saveRecipe(recipe, false);
         event.preventDefault();
+
+        // Display form validation
+        const formElement = this.shadowRoot.querySelector("#contribute-form");
+        const isFormValid = formElement.checkValidity();
+        formElement.reportValidity();
+
+        // Update recipe if form is valid
+        if (isFormValid) {
+          this.saveRecipe(recipe, false);
+        }
       });
   }
 
