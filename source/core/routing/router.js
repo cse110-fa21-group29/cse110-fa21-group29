@@ -210,6 +210,8 @@ function getRoutefromUrl(url) {
     return "home-page";
   }
 
+  console.log(url);
+
   // Remove all GET parameters from URL
   let baseUrl = url;
   const getParamsStart = url.indexOf("?");
