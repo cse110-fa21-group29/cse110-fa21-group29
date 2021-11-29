@@ -1,5 +1,9 @@
 /* GLOBAL STYLES */
 
+html {
+  scroll-padding-top: 75px;
+}
+
 body {
   min-width: 700px;
   margin: 0px;
