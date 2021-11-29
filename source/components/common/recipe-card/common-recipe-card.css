@@ -34,7 +34,6 @@
   margin: auto;
   font-size: large;
   white-space: normal;
-
   position: relative;
   top: 50%;
   left: 50%;
@@ -54,6 +53,7 @@
   color: grey;
   font-size: small;
 }
+
 .stat-unit {
   margin-left: 5px;
 }
