@@ -1,11 +1,9 @@
 :host {
   height: 35vh;
-  /* width: 20vh; */
   min-width: 20vh;
   margin: 3vw 30px;
   transition: 0.5s ease;
   cursor: pointer;
-  /* display: grid; */
   border-radius: 18px;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
   text-align: center;
@@ -30,26 +28,23 @@
   margin: 0px;
   height: 20%;
   padding: 0 10px;
-  /* display: flex; */
 }
 
 .recipe-card-name div {
   margin: auto;
   font-size: large;
-  /* overflow: hidden; */
   white-space: normal;
 
   position: relative;
   top: 50%;
   left: 50%;
-  /* -ms-transform: translate(-50%, -50%); */
   transform: translate(-50%, -50%);
 }
 .recipe-card-stats {
   margin: 0px;
   height: 15%;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 50% 50%;
 }
 
 .recipe-card-stats .stat {
@@ -58,9 +53,6 @@
   justify-content: center;
   color: grey;
   font-size: small;
-  /* border: 0.5px solid rgb(214, 212, 212);
-  border-bottom: none;
-  border-right: none; */
 }
 .stat-unit {
   margin-left: 5px;
