@@ -58,6 +58,26 @@ class RecipeContribute extends YummyRecipesComponent {
           }
         }
       });
+
+    // Add cancel button functionality
+    this.shadowRoot
+      .querySelector("#cancel-button")
+      .addEventListener("click", (event) => {
+        event.preventDefault();
+        if (confirm("Are you sure you want to cancel?")) {
+          // Route to home page
+          const routerEvent = new CustomEvent("router-navigate", {
+            detail: {
+              route: "home-page",
+              params: [],
+            },
+            bubbles: true,
+            composed: true,
+          });
+
+          document.dispatchEvent(routerEvent);
+        }
+      });
   }
 
   /**
