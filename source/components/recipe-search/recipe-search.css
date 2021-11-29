@@ -36,21 +36,35 @@
 #filter-form {
   border: solid;
   position: fixed;
-  top: 25%;
-  left: 25%;
+  margin: auto;
   background-color: white;
-
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   display: none;
+  padding: 30px 80px;
 }
 
 #close-button {
   height: 30px;
   position: absolute;
   right: 0;
+  top: 0;
   cursor: pointer;
 }
 
 #recipe-card-grid {
   display: flex;
   flex-wrap: wrap;
+}
+
+#submit-button,
+#reset-button {
+  width: 100px;
+  height: 40px;
+  cursor: pointer;
+  margin-top: 30px;
+}
+#submit-button {
+  margin-left: 50px;
 }
