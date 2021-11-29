@@ -1,5 +1,5 @@
 if (typeof module !== "undefined" && module.exports) {
-  module.exports = { getRoutefromUrl };
+  module.exports = { getRoutefromUrl, getUrlFromRoute };
 }
 
 /** Router module.
@@ -185,6 +185,9 @@ function navigateFromUrl(url) {
 function getUrlFromRoute(route, params) {
   // Replace all "_" in route's pattern with provided params
   const urlPattern = routePatterns[route].url;
+
+  console.log(route);
+  console.log(params);
 
   let splitUrl = urlPattern.split("/");
   let currentParam = 0;
