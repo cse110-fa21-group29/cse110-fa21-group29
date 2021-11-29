@@ -58,26 +58,6 @@ class RecipeContribute extends YummyRecipesComponent {
           }
         }
       });
-
-    // Add cancel button functionality
-    this.shadowRoot
-      .querySelector("#cancel-button")
-      .addEventListener("click", (event) => {
-        event.preventDefault();
-        if (confirm("Are you sure you want to cancel?")) {
-          // Route to home page
-          const routerEvent = new CustomEvent("router-navigate", {
-            detail: {
-              route: "home-page",
-              params: [],
-            },
-            bubbles: true,
-            composed: true,
-          });
-
-          document.dispatchEvent(routerEvent);
-        }
-      });
   }
 
   /**
@@ -133,6 +113,26 @@ class RecipeContribute extends YummyRecipesComponent {
         // Add recipe if form is valid
         if (isFormValid) {
           this.saveRecipe(recipe, true);
+        }
+      });
+
+    // Add cancel button functionality
+    this.shadowRoot
+      .querySelector("#cancel-button")
+      .addEventListener("click", (event) => {
+        event.preventDefault();
+        if (confirm("Are you sure you want to cancel?")) {
+          // Route to home page
+          const routerEvent = new CustomEvent("router-navigate", {
+            detail: {
+              route: "home-page",
+              params: [],
+            },
+            bubbles: true,
+            composed: true,
+          });
+
+          document.dispatchEvent(routerEvent);
         }
       });
   }
@@ -217,6 +217,26 @@ class RecipeContribute extends YummyRecipesComponent {
         // Update recipe if form is valid
         if (isFormValid) {
           this.saveRecipe(recipe, false);
+        }
+      });
+
+    // Add cancel button functionality
+    this.shadowRoot
+      .querySelector("#cancel-button")
+      .addEventListener("click", (event) => {
+        event.preventDefault();
+        if (confirm("Are you sure you want to cancel?")) {
+          // Route to recipe details page
+          const routerEvent = new CustomEvent("router-navigate", {
+            detail: {
+              route: "recipe-details",
+              params: [this.routeParams[0]],
+            },
+            bubbles: true,
+            composed: true,
+          });
+
+          document.dispatchEvent(routerEvent);
         }
       });
   }
