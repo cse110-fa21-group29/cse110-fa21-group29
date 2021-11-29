@@ -52,7 +52,7 @@
   flex-direction: column;
   color: grey;
   font-size: small;
-  border: 0.5px solid rgb(214, 212, 212);
+  /* border: 0.5px solid rgb(214, 212, 212);
   border-bottom: none;
-  border-right: none;
+  border-right: none; */
 }
