@@ -5,7 +5,7 @@
     "eslint": "^8.2.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-jest": "^25.2.4",
-    "husky": "^7.0.4",
+    "husky": "^7.0.0",
     "jest": "^27.3.1",
     "jsdoc": "~3.6.7",
     "lint-staged": "^11.2.6",
@@ -16,7 +16,8 @@
     "./source/**": "prettier --write --ignore-unknown"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "prepare": "husky install"
   },
   "jest": {
     "verbose": true
