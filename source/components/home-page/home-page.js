@@ -33,10 +33,10 @@ class HomePage extends YummyRecipesComponent {
     // Get recipes from database
     const database = new Database();
     const recipes = await database.getRecipes();
-    
+
     // Clear out recipe card grids before we append new cards
-    for(let i = 1; i < 6; i++) {
-      this.shadowRoot.getElementById("recipe-card-grid-"+i).innerHTML = "";
+    for (let i = 1; i < 6; i++) {
+      this.shadowRoot.getElementById("recipe-card-grid-" + i).innerHTML = "";
     }
 
     // Counters for recipe card populating
@@ -45,7 +45,7 @@ class HomePage extends YummyRecipesComponent {
     let veganCount = 0;
     let vegetarianCount = 0;
     let glutenFreeCount = 0;
-    
+
     // Create 20 recipe cards that are populated with data from recipe subset arrays
     for (let i = 0; i < recipes.length; i++) {
       // Check if grid 1 has less than 20 recipe cards and if current recipe is high protein
@@ -56,8 +56,8 @@ class HomePage extends YummyRecipesComponent {
         this.shadowRoot
           .getElementById("recipe-card-grid-1")
           .append(this.createRecipeCard(recipes[i], i));
-      } 
-      
+      }
+
       // Check if grid 2 has less than 20 recipe cards and if current recipe is healthy
       if (healthyCount < 20 && recipes[i].categories.healthy) {
         // Increment healthy counter
@@ -99,7 +99,7 @@ class HomePage extends YummyRecipesComponent {
       }
     }
   }
-  
+
   recipeScroll(scrollleft, i) {
     let recipegrid = this.shadowRoot.getElementById("recipe-card-grid-" + i);
     let prevbutton = this.shadowRoot.getElementById("prev-button-" + i);
@@ -121,7 +121,7 @@ class HomePage extends YummyRecipesComponent {
       }
     }
   }
-  
+
   /**
    * Creates recipe card with information and routing.
    *
@@ -142,7 +142,7 @@ class HomePage extends YummyRecipesComponent {
         composed: true,
       });
       card.dispatchEvent(routerEvent);
-    })
+    });
     return card;
   }
 }
