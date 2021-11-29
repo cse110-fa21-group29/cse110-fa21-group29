@@ -4,7 +4,11 @@
 const router = require("../source/core/routing/router.js");
 
 /**
- * All navigateFromUrl Unit Tests
+ * All loadRoute Unit Tests (no return)
+ */
+
+/**
+ * All navigateFromUrl Unit Tests (no return)
  */
 
 /**
@@ -20,5 +24,5 @@ test("getRoutefromUrl: testing home-page", () => {
 });
 
 /**
- * All getParamsFromUrl Unit Tests
+ * All getParamsFromUrl Unit Tests (no return)
  */
