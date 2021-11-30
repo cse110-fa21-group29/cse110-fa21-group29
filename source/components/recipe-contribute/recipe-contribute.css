@@ -14,7 +14,7 @@
 }
 #recipe-left-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 50% 50%;
 }
 
 #submit-img {
@@ -85,6 +85,7 @@ textarea {
   margin-bottom: 30px;
   margin-right: 10px;
 }
+
 .category-label {
   cursor: pointer;
   font-size: 20px;
