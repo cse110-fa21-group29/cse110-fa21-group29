@@ -14,7 +14,7 @@ main {
 #print-button {
   width: 40px;
   position: absolute;
-  top: 50px;
+  top: 100px;
   right: 50px;
   cursor: pointer;
 }
