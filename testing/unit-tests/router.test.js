@@ -1,14 +1,14 @@
 /**
  * @jest-environment jsdom
  */
-const router = require("../source/core/routing/router.js");
+const router = require("../../source/core/routing/router.js");
 
 /**
- * All loadRoute Unit Tests (no return)
+ * All loadRoute - No Unit Tests (edits DOM)
  */
 
 /**
- * All navigateFromUrl Unit Tests (no return)
+ * All navigateFromUrl Unit - No Unit Tests (edits History API)
  */
 
 /**
@@ -68,5 +68,5 @@ describe('Tests getRoutefromUrl from routing.js', () => {
 });
 
 /**
- * All getParamsFromUrl Unit Tests (no return)
+ * All getParamsFromUrl Unit Tests
  */

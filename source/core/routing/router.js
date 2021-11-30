@@ -186,9 +186,6 @@ function getUrlFromRoute(route, params) {
   // Replace all "_" in route's pattern with provided params
   const urlPattern = routePatterns[route].url;
 
-  console.log(route);
-  console.log(params);
-
   let splitUrl = urlPattern.split("/");
   let currentParam = 0;
   for (let i = 0; i < splitUrl.length; i++) {
@@ -212,8 +209,6 @@ function getRoutefromUrl(url) {
   if (url.length === 0) {
     return "home-page";
   }
-
-  console.log(url);
 
   // Remove all GET parameters from URL
   let baseUrl = url;
