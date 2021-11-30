@@ -58,39 +58,39 @@ describe('Tests getUrlFromRoute from routing.js', () => {
  */
 
 describe('Tests getRoutefromUrl from routing.js', () => {
-  test("getRoutefromUrl: testing home-page '#/'", () => {
+  test("getRoutefromUrl: testing '#/' returns 'home-page'", () => {
     expect(router.getRoutefromUrl("#/")).toBe("home-page");
   });
   
-  test("getRoutefromUrl: testing home-page ''", () => {
+  test("getRoutefromUrl: testing '' returns 'home-page'", () => {
     expect(router.getRoutefromUrl("")).toBe("home-page");
   });
   
-  test("getRoutefromUrl: testing recipe-details '#/recipes/3'", () => {
+  test("getRoutefromUrl: testing '#/recipes/3' returns 'recipe-details'", () => {
     expect(router.getRoutefromUrl("#/recipes/3")).toBe("recipe-details");
   });
   
-  test("getRoutefromUrl: testing recipe-contribute-add '#/recipes/contribute'", () => {
+  test("getRoutefromUrl: testing '#/recipes/contribute' returns 'recipe-contribute-add'", () => {
     expect(router.getRoutefromUrl("#/recipes/contribute")).toBe("recipe-contribute-add");
   });
   
-  test("getRoutefromUrl: testing recipe-contribute-edit '#/recipes/3/edit'", () => {
+  test("getRoutefromUrl: testing '#/recipes/3/edit' returns 'recipe-contribute-edit'", () => {
     expect(router.getRoutefromUrl("#/recipes/3/edit")).toBe("recipe-contribute-edit");
   });
   
-  test("getRoutefromUrl: testing meal-planner '#/recipes/meal-planner'", () => {
+  test("getRoutefromUrl: testing '#/recipes/meal-planner' returns 'meal-planner'", () => {
     expect(router.getRoutefromUrl("#/recipes/meal-planner")).toBe("meal-planner");
   });
   
-  test("getRoutefromUrl: testing about-us '#/about-us'", () => {
+  test("getRoutefromUrl: testing '#/about-us' returns 'about-us'", () => {
     expect(router.getRoutefromUrl("#/about-us")).toBe("about-us");
   });
   
-  test("getRoutefromUrl: testing hands-free '#/hands-free'", () => {
+  test("getRoutefromUrl: testing '#/hands-free' returns 'hands-free'", () => {
     expect(router.getRoutefromUrl("#/hands-free")).toBe("hands-free");
   });
   
-  test("getRoutefromUrl: testing recipe-search '#/recipes/search'", () => {
+  test("getRoutefromUrl: testing '#/recipes/search' returns 'recipe-search'", () => {
     expect(router.getRoutefromUrl("#/recipes/search")).toBe("recipe-search");
   });
 });
@@ -98,3 +98,41 @@ describe('Tests getRoutefromUrl from routing.js', () => {
 /**
  * All getParamsFromUrl Unit Tests
  */
+
+describe('Tests getParamsFromUrl from routing.js', () => {
+  test("getParamsFromUrl: testing '#/' returns '[]'", () => {
+    expect(router.getParamsFromUrl("#/")).toStrictEqual([]);
+  });
+  
+  test("getParamsFromUrl: testing '' returns '[]'", () => {
+    expect(router.getParamsFromUrl("")).toStrictEqual([]);
+  });
+  
+  test("getParamsFromUrl: testing '#/recipes/3' returns '['3']'", () => {
+    expect(router.getParamsFromUrl("#/recipes/3")).toStrictEqual(['3']);
+  });
+  
+  test("getParamsFromUrl: testing '#/recipes/contribute' returns '[]'", () => {
+    expect(router.getParamsFromUrl("#/recipes/contribute")).toStrictEqual([]);
+  });
+  
+  test("getParamsFromUrl: testing '#/recipes/3/edit' returns '['3']'", () => {
+    expect(router.getParamsFromUrl("#/recipes/3/edit")).toStrictEqual(['3']);
+  });
+  
+  test("getParamsFromUrl: testing '#/recipes/meal-planner' returns '[]'", () => {
+    expect(router.getParamsFromUrl("#/recipes/meal-planner")).toStrictEqual([]);
+  });
+  
+  test("getParamsFromUrl: testing '#/about-us' returns '[]'", () => {
+    expect(router.getParamsFromUrl("#/about-us")).toStrictEqual([]);
+  });
+  
+  test("getParamsFromUrl: testing '#/hands-free' returns '[]'", () => {
+    expect(router.getParamsFromUrl("#/hands-free")).toStrictEqual([]);
+  });
+  
+  test("getParamsFromUrl: testing '#/recipes/search' returns '[]'", () => {
+    expect(router.getParamsFromUrl("#/recipes/search")).toStrictEqual([]);
+  });
+});
