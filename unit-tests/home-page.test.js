@@ -1,4 +1,4 @@
 /**
  * @jest-environment jsdom
  */
-import { HomePage } from '../source/components/home-page/home-page.js';
+import { HomePage } from '/components/home-page/home-page.js';
