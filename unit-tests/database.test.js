@@ -1,7 +1,7 @@
 /**
  * @jest-environment jsdom
  */
-import { Database } from "/core/database/database.js";
+import { Database } from "../source/core/database/database.js";
 
 /**
  * getRecipes, return recipe
