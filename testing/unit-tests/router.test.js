@@ -16,12 +16,40 @@ const router = require("../../source/core/routing/router.js");
  */
 
 describe('Tests getUrlFromRoute from routing.js', () => {
-  test("getUrlFromRoute: testing '#/' returns 'home-page'", () => {
+  test("getUrlFromRoute: testing 'home-page' returns '#/'", () => {
     expect(router.getUrlFromRoute("home-page")).toBe("#/");
   });
   
-  test("getUrlFromRoute: testing '#/' returns 'home-page' '[]'", () => {
+  test("getUrlFromRoute: testing 'home-page' '[]' returns '#/'", () => {
     expect(router.getUrlFromRoute("home-page", [])).toBe("#/");
+  });
+
+  test("getUrlFromRoute: testing 'recipe-details' '[3]' returns '#/recipes/3'", () => {
+    expect(router.getUrlFromRoute('recipe-details', [3])).toBe("#/recipes/3");
+  });
+
+  test("getUrlFromRoute: testing 'recipe-contribute-add' '[]' returns '#/recipes/contribute'", () => {
+    expect(router.getUrlFromRoute("recipe-contribute-add", [])).toBe("#/recipes/contribute");
+  });
+
+  test("getUrlFromRoute: testing 'recipe-contribute-edit' '[3]' returns '#/recipes/3/edit'", () => {
+    expect(router.getUrlFromRoute("recipe-contribute-edit", [3])).toBe("#/recipes/3/edit");
+  });
+
+  test("getUrlFromRoute: testing 'meal-planner' '[]' returns '#/recipes/meal-planner'", () => {
+    expect(router.getUrlFromRoute("meal-planner", [])).toBe("#/recipes/meal-planner");
+  });
+
+  test("getUrlFromRoute: testing 'about-us' '[]' returns '#/about-us'", () => {
+    expect(router.getUrlFromRoute("about-us", [])).toBe("#/about-us");
+  });
+
+  test("getUrlFromRoute: testing 'hands-free' '[]' returns '#/hands-free'", () => {
+    expect(router.getUrlFromRoute("hands-free", [])).toBe("#/hands-free");
+  });
+
+  test("getUrlFromRoute: testing 'recipe-search' '[]' returns '#/recipes/search'", () => {
+    expect(router.getUrlFromRoute("recipe-search", [])).toBe("#/recipes/search");
   });
 });
 
