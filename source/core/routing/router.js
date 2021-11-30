@@ -137,10 +137,6 @@ function loadRoute(route, params) {
   } else {
     contentElement.appendChild(newRouteElement);
   }
-
-  console.log(route);
-  console.log(params);
-  console.log(contentElement);
 }
 
 /**
