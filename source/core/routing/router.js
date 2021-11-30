@@ -1,5 +1,10 @@
 if (typeof module !== "undefined" && module.exports) {
-  module.exports = { getRoutefromUrl, getUrlFromRoute, getParamsFromUrl };
+  module.exports = {
+    getRoutefromUrl,
+    getUrlFromRoute,
+    getParamsFromUrl,
+    loadRoute,
+  };
 }
 
 /** Router module.
@@ -263,6 +268,6 @@ function getParamsFromUrl(url) {
       params.push(urlSection);
     }
   }
-  console.log(params);
+
   return params;
 }

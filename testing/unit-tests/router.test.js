@@ -4,8 +4,18 @@
 const router = require("../../source/core/routing/router.js");
 
 /**
- * All loadRoute - No Unit Tests (edits DOM)
+ * All loadRoute (edits DOM)
  */
+
+test('loadRoute: testing ', () => {
+  // Set up our document body
+  document.body.innerHTML =
+    '<div id="content">' +
+    '</div>';
+
+  router.loadRoute("home-page", []);
+  console.log(document.querySelector('div'))
+});
 
 /**
  * All navigateFromUrl Unit - No Unit Tests (edits History API)
