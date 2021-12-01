@@ -43,13 +43,14 @@
   margin: 0px;
   height: 15%;
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 25% 25% 25% 25%;
 }
 
 .recipe-card-stats .stat {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   color: grey;
   font-size: small;
 }
