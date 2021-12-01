@@ -73,6 +73,7 @@ class RecipeContribute extends YummyRecipesComponent {
         title: "",
         author: "",
         image: "static/common/demorecipe.jpg",
+        video: "",
       },
       info: {
         readyInMinutes: 0,
@@ -179,6 +180,10 @@ class RecipeContribute extends YummyRecipesComponent {
       recipe.metadata.title;
     this.shadowRoot.querySelector("#input-author").value =
       recipe.metadata.author;
+    if (recipe.metadata.video != undefined) {
+      this.shadowRoot.querySelector("#input-video-url").value =
+        recipe.metadata.video;
+    }
     this.shadowRoot.querySelector("#input-time").value =
       recipe.info.readyInMinutes;
     this.shadowRoot.querySelector("#input-cost").value =
@@ -287,6 +292,8 @@ class RecipeContribute extends YummyRecipesComponent {
     ).value;
     recipe.metadata.author =
       this.shadowRoot.querySelector("#input-author").value;
+    recipe.metadata.video =
+      this.shadowRoot.querySelector("#input-video-url").value;
     recipe.info.readyInMinutes =
       this.shadowRoot.querySelector("#input-time").value;
     recipe.info.pricePerServings =
