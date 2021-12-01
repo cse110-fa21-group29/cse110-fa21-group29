@@ -35,8 +35,9 @@
 .recipe-card-name div {
   margin: auto;
   font-size: large;
-  overflow: hidden;
   margin-bottom: 2px;
+  white-space: initial;
+  line-clamp: 2;
 }
 .recipe-card-stats {
   margin: 0px;
