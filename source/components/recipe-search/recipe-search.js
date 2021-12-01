@@ -14,7 +14,6 @@ class RecipeSearch extends YummyRecipesComponent {
     for (let p of queryString) {
       paramArray.push(p);
     }
-    console.log(paramArray);
 
     this.shadowRoot
       .getElementById("filter-button")

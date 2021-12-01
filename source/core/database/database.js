@@ -295,7 +295,6 @@ export class Database {
     let updateRecipe = [];
     for (const recipe of recipePriority) {
       if (recipe.categoryCount > 0) {
-        console.log(recipe.categoryCount);
         updateRecipe.push(recipe.recipe);
       }
     }
