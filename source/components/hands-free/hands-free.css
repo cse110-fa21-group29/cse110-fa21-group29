@@ -89,3 +89,8 @@
   font-size: 2vw;
   line-height: 5vw;
 }
+
+main {
+  min-height: 100%;
+  padding: 10px;
+}
