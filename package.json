@@ -1,15 +1,20 @@
 {
   "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
     "@commitlint/cli": "^15.0.0",
     "@commitlint/config-conventional": "^15.0.0",
+    "babel-jest": "^27.4.2",
     "eslint": "^8.2.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-jest": "^25.2.4",
     "husky": "^7.0.4",
-    "jest": "^27.3.1",
+    "jest": "^27.4.2",
+    "jest-puppeteer": "^6.0.2",
     "jsdoc": "~3.6.7",
     "lint-staged": "^11.2.6",
-    "prettier": "2.4.1"
+    "prettier": "2.4.1",
+    "puppeteer": "^12.0.1"
   },
   "lint-staged": {
     "./source/**/*.js": "eslint --fix",
@@ -19,6 +24,7 @@
     "test": "jest"
   },
   "jest": {
+    "preset": "jest-puppeteer",
     "verbose": true
   }
 }
