@@ -1,11 +1,6 @@
 /**
  * @jest-environment jsdom
  */
-import { JSDOM } from "jsdom";
-const router = require("../../source/core/routing/router.js");
-const dom = new JSDOM()
-global.document = dom.window.document
-global.window = dom.window
 
 /**
  * All loadRoute Tests - E2E Testing (edits DOM)
