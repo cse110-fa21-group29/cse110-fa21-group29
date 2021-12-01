@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>core/storage/storage.js - Documentation</title>
+    <title>components/recipe-search/recipe-search.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">core/storage/storage.js</h1>
+    <h1 class="page-title">components/recipe-search/recipe-search.js</h1>
     
 
     
@@ -39,71 +39,115 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.1/firebase-app.js";
-import {
-  deleteObject,
-  getDownloadURL,
-  getStorage,
-  ref,
-  uploadBytes,
-} from "https://www.gstatic.com/firebasejs/9.4.1/firebase-storage.js";
+            <pre class="prettyprint source linenums"><code>import { YummyRecipesComponent } from "/components/core/yummy-recipes-component.js";
+import { Database } from "/core/database/database.js";
 
-// Firebase credential file
-const configFile = "/config.json";
-
-/** Class that provides interface with Firebase Storage. */
-export class Storage {
-  /**
-   * Uploads a file to the "images" folder in the storage.
-   *
-   * @async
-   * @param {Object} file - An object that represents a file.
-   * @param {string} name - The name of the file.
-   * @returns {string} URL of uploaded file.
-   */
-  async uploadImage(file, name) {
-    // Fetch Firebase credentials
-    let config = await fetch(configFile);
-    config = await config.json();
-
-    // Initialize storage connection
-    const firebaseApp = initializeApp(config.firebaseConfig);
-    const storage = getStorage(firebaseApp);
-
-    // Create a reference to where the file will be stored
-    const storageRef = ref(storage, "images/" + name);
-
-    // Upload file to directory specified by reference
-    const image = await uploadBytes(storageRef, file);
-
-    // Get uploaded file URL
-    const url = await getDownloadURL(ref(storage, image.metadata.fullPath));
-
-    return url;
+class RecipeSearch extends YummyRecipesComponent {
+  constructor() {
+    super();
+    this.htmlPath = "components/recipe-search/recipe-search.html";
   }
 
+  async setupElement() {
+    let paramString = window.location.href.split("?")[1];
+    let queryString = new URLSearchParams(paramString);
+    let paramArray = [];
+    for (let p of queryString) {
+      paramArray.push(p);
+    }
+
+    this.shadowRoot
+      .getElementById("filter-button")
+      .addEventListener("click", (event) => {
+        event.preventDefault();
+        this.clickFilter();
+      });
+    this.shadowRoot
+      .getElementById("search-button")
+      .addEventListener("click", (event) => {
+        event.preventDefault();
+        this.clickSearch();
+      });
+    this.shadowRoot
+      .getElementById("close-button")
+      .addEventListener("click", (event) => {
+        event.preventDefault();
+        this.clickClose();
+      });
+    this.shadowRoot
+      .getElementById("submit-button")
+      .addEventListener("click", (event) => {
+        event.preventDefault();
+        this.clickSubmit();
+      });
+    this.shadowRoot
+      .getElementById("reset-button")
+      .addEventListener("click", (event) => {
+        event.preventDefault();
+        this.clickReset();
+      });
+  }
+
+  // put button actions here, for search and submit button, they both have submit action now, for clear button,
+  // it has a clear action, feel free to change them by change input type to button
+  clickFilter() {
+    this.shadowRoot.getElementById("filter-form").style.display = "initial";
+  }
+
+  async clickSearch() {
+    const database = new Database();
+
+    let paramString = window.location.href.split("?")[1];
+    let queryString = new URLSearchParams(paramString);
+
+    let paramArray = [];
+    for (let p of queryString) {
+      paramArray.push(p);
+    }
+
+    let searchRecipe = await database.searchByName(paramArray);
+
+    // Clear out recipe card grid before we append new cards
+    this.shadowRoot.getElementById("recipe-card-grid").innerHTML = "";
+
+    for (const recipe of searchRecipe) {
+      this.shadowRoot
+        .getElementById("recipe-card-grid")
+        .appendChild(this.createRecipeCard(recipe.recipe, recipe.index));
+    }
+  }
+  clickClose() {
+    this.shadowRoot.getElementById("filter-form").style.display = "none";
+  }
+  clickSubmit() {}
+  clickReset() {}
+
   /**
-   * Deletes file in "images" folder in the storage.
+   * Creates recipe card with information and routing.
    *
-   * @async
-   * @param {string} name - The name of the file without extension.
+   * @param {Object} recipe - Object that contains recipe data.
+   * @param {number} index - Index of recipe card in database to set route.
+   * @returns {Object} Generated recipe card.
    */
-  async deleteImage(name) {
-    // Fetch Firebase credentials
-    let config = await fetch(configFile);
-    config = await config.json();
-
-    // Initialize storage connection
-    const firebaseApp = initializeApp(config.firebaseConfig);
-    const storage = getStorage(firebaseApp);
-
-    // Create reference to the file to delete
-    const imageRef = ref(storage, "images/" + name);
-
-    // Delete file
-    await deleteObject(imageRef);
+  createRecipeCard(recipe, index) {
+    const card = document.createElement("common-recipe-card");
+    card.recipeData = recipe;
+    card.addEventListener("click", () => {
+      const routerEvent = new CustomEvent("router-navigate", {
+        detail: {
+          route: "recipe-details",
+          params: [index],
+        },
+        bubbles: true,
+        composed: true,
+      });
+      card.dispatchEvent(routerEvent);
+    });
+    return card;
   }
 }
+
+customElements.define("recipe-search", RecipeSearch);
 </code></pre>
         </article>
     </section>
