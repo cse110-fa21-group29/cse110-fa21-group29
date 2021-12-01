@@ -8,15 +8,20 @@ describe('E2E Testing loading web components and navigating pages', () => {
         await new Promise((r) => setTimeout(r, 2000));
     });
 
-    // Test to see we land on home page
+    /**
+     * Test to see we land on home page
+     */
     it('Check we land on home page', async () => {
+        // get the home page
         const homePage = await page.$$('#content > home-page');
+
         expect(homePage.length).toBe(1);
     }, 2500);
 
-    // Test to see if we go to recipe-details page
+    /**
+     * Test to see if we go to recipe-details page
+     */
     it('Check if we move to recipe-detail page', async () => {
-        
         // get the shadow root of the home page
         let homePage = await page.waitForSelector('home-page');
         let shadowRoot = await homePage.getProperty('shadowRoot');
