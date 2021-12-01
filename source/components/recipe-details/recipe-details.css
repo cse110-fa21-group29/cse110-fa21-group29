@@ -3,9 +3,11 @@
   margin: 5vh auto;
   width: 80vw;
 }
+
 .first-row {
   display: flex;
 }
+
 .recipe-image {
   object-fit: cover;
   width: 40%;
@@ -13,13 +15,13 @@
 }
 
 .title-author-box {
-  width: 59%;
+  width: 60%;
   height: 350px;
-  margin-left: 1%;
-  padding: 30px;
-  border: 0.1em solid grey;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin-left: 30px;
   position: relative;
+  border: 1px solid grey;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  padding: 30px;
 }
 
 .dish-name {
@@ -36,218 +38,44 @@
   bottom: 30px;
 }
 
-.recipe-url {
-  font-size: 150%;
-}
-
-.description-box {
-  margin-top: 30px;
-  border: 0.1em solid grey;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  padding: 30px;
-}
-
-.description-title {
-  text-decoration: underline;
-  font-size: 200%;
-}
-
-.description {
-  font-size: 140%;
-  margin-top: 10px;
-}
-
-.info-category-nutrient-box {
+.info-nutrient-box {
   display: flex;
-  margin-top: 30px;
-}
-.info-category-box {
-  display: flex;
-  flex-flow: row wrap;
-  width: 60%;
 }
 
 .info-box {
-  border: 1px solid grey;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-.category-box {
-  border: 1px solid grey;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  width: 49.5%;
 }
 
 .nutrient-box {
-  width: 40%;
-  border: 1px solid grey;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-.info-title {
-  text-decoration: underline;
-
-  font-size: 180%;
-}
-
-.info-list {
-  font-size: 140%;
-}
-
-.category-title {
-  text-decoration: underline;
-
-  font-size: 180%;
+  width: 49.5%;
+  margin-left: 30px;
 }
 
 .category-list {
   display: flex;
-  gap: 5%;
-
-  font-size: 140%;
-}
-
-.nutrient-title {
-  text-decoration: underline;
-
-  font-size: 180%;
-}
-
-.nutrient-list {
-  text-align: left;
-
-  font-size: 140%;
-}
-
-.ingredients-box {
-  width: 98.5%;
-  margin-top: 3%;
-  margin-left: 1%;
-  border: 1px solid grey;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-.ingredients-title {
-  text-align: center;
-  text-decoration: underline;
-
-  font-size: 240%;
-  margin-top: 3%;
-}
-
-.ingredients-list {
-  font-size: 140%;
-}
-
-li {
-  margin: 3% 0;
-}
-
-.direction-box {
-  width: 98.5%;
-  margin-top: 3%;
-  margin-left: 1%;
-  margin-bottom: 5%;
-  border: 1px solid grey;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-.direction-title {
-  text-align: center;
-  text-decoration: underline;
-
-  font-size: 200%;
-  margin-top: 3%;
-}
-
-.direction-list {
-  font-size: 140%;
-  margin-left: 2%;
-  padding: 20px;
-}
-
-.comment-box {
-  width: 98.5%;
-  margin-top: 3%;
-  margin-left: 1%;
-  border: 1px solid grey;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  flex-flow: row wrap;
-
-  font-size: 140%;
-}
-
-.comment-box-input {
-  display: flex;
-  margin-top: 1%;
-  margin-left: 1%;
-  margin-right: 1%;
-  border: 1px solid grey;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-textarea {
-  margin-top: 1%;
-  margin-left: 1%;
-  margin-right: 1%;
-  margin-bottom: 1%;
-  border: 1px solid grey;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  padding: 1%;
-}
-
-.submit-box {
-  margin: auto;
-}
-
-button {
-  border: 1px solid grey;
-  padding: 15px 32px;
-  text-align: center;
-
-  font-size: 80%;
-  background-color: white;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  cursor: pointer;
-}
-
-.comment-box-reply-container {
-  margin-top: 1%;
-  margin-left: 1%;
-  margin-right: 1%;
-  margin-bottom: 1%;
-  border: 1px solid grey;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  padding-bottom: 1%;
-}
-
-.comment-box-reply {
-  height: 10vh;
-  margin-top: 1%;
-  margin-left: 1%;
-  margin-right: 1%;
-  border: 1px solid grey;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  padding: 1%;
 }
 
 #timer {
   height: 300px;
-  border: 0.1em solid grey;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  margin: 20px auto 0 1%;
   display: none;
-  padding: 20px;
 }
+
 #timer-display {
   font-size: 200px;
 }
+
 #timer-button-grid {
   margin: auto;
 }
-#start-button,
-#reset-button {
+
+.timer-control-button {
+  padding: 10px;
   width: 100px;
-  margin: 40px 0;
+  cursor: pointer;
+}
+
+#reset-button {
+  margin-top: 30px;
 }
 
 #vegan {
@@ -264,4 +92,35 @@ button {
 }
 #healthy {
   color: lightblue;
+}
+
+.detail-box {
+  border: 1px solid grey;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  padding: 30px;
+  margin-top: 30px;
+}
+
+.detail-box-title {
+  text-decoration: underline;
+  font-size: 30px;
+}
+
+.detail-box-content {
+  font-size: 20px;
+}
+
+.ingredients-box li {
+  margin: 10px 0;
+}
+
+.category-box li {
+  margin-right: 40px;
+}
+
+.first-row-button {
+  cursor: pointer;
+  padding: 10px;
+  font-size: 20px;
+  margin: 5px 10px 0 0;
 }
