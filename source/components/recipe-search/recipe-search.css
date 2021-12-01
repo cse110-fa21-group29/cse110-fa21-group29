@@ -1,5 +1,7 @@
-/* main {
-} */
+main {
+  min-height: 100%;
+}
+
 #search-form {
   height: 50px;
   width: 80%;
