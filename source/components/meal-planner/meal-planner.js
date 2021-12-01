@@ -8,7 +8,7 @@ class MealPlanner extends YummyRecipesComponent {
 
   setupElement() {
     let samplemeal = this.shadowRoot.getElementById("sample-meal");
-    samplemeal.style.backgroundImage = "url(static/home-page/demorecipe.jpg)";
+    samplemeal.style.backgroundImage = "url(static/common/demorecipe.jpg)";
     samplemeal.style.backgroundSize = "cover";
     let mealcards = this.shadowRoot.querySelectorAll(".meal-card");
     for (let i = 0; i < 21; i++) {

@@ -1,6 +1,6 @@
 #contribute-form {
   display: flex;
-  margin-bottom: 200px;
+  min-height: 100%;
 }
 #left-side,
 #right-side {
