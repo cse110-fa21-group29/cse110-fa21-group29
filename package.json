@@ -17,7 +17,6 @@
     "./source/**/*.js": "eslint --fix",
     "./source/**": "prettier --write --ignore-unknown"
   },
-  "type": "module",
   "scripts": {
     "test": "jest"
   },
