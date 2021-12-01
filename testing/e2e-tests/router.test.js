@@ -11,7 +11,7 @@ describe('E2E Testing loading web components and navigating pages', () => {
     /**
      * Test to see we land on home page
      */
-    it('Check we land on home page', async () => {
+    it('Check if we land on home page', async () => {
         // get the home page
         const homePage = await page.$$('#content > home-page');
 

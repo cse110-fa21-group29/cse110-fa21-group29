@@ -48,7 +48,7 @@ jobs:
       - name: Install Node.js dependencies
         run: npm ci
 
-      - name: Run Unit Tests
+      - name: Run Unit & E2E Tests
         run: npm run test
   
   run-jsdocs-dev:
