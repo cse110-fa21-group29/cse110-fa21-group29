@@ -23,16 +23,16 @@ describe('E2E Testing loading web components and navigating pages', () => {
      */
     it('Check if we move to recipe-detail page', async () => {
         // get the shadow root of the home page
-        let homePage = await page.waitForSelector('home-page');
-        let shadowRoot = await homePage.getProperty('shadowRoot');
+        const homePage = await page.waitForSelector('home-page');
+        const shadowRoot = await homePage.getProperty('shadowRoot');
         
         // click on a recipe card
-        let recipe = await shadowRoot.$('common-recipe-card');
+        const recipe = await shadowRoot.$('common-recipe-card');
         recipe.click();
 
         // wait for the page to load then get the recipe-details page
         await new Promise((r) => setTimeout(r, 1000));
-        let recipeDetailsPage = await page.$$('recipe-details');
+        const recipeDetailsPage = await page.$$('recipe-details');
 
         expect(recipeDetailsPage.length).toBe(1);
     }, 2500);
