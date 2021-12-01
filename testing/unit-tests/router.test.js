@@ -1,28 +1,22 @@
 /**
  * @jest-environment jsdom
  */
+import { JSDOM } from "jsdom";
 const router = require("../../source/core/routing/router.js");
+const dom = new JSDOM()
+global.document = dom.window.document
+global.window = dom.window
 
 /**
- * All loadRoute (edits DOM)
- */
-
-test('loadRoute: testing ', () => {
-  // Set up our document body
-  document.body.innerHTML =
-    '<div id="content">' +
-    '</div>';
-
-  router.loadRoute("home-page", []);
-  console.log(document.querySelector('div'))
-});
-
-/**
- * All navigateFromUrl Unit - No Unit Tests (edits History API)
+ * All loadRoute Tests - E2E Testing (edits DOM)
  */
 
 /**
- * All getUrlFromRoute Unit Tests
+ * All navigateFromUrl Tests - E2E Testing (edits History API)
+ */
+
+/**
+ * All getUrlFromRoute Tests -  Unit Testing
  */
 
 describe('Tests getUrlFromRoute from routing.js', () => {
@@ -64,7 +58,7 @@ describe('Tests getUrlFromRoute from routing.js', () => {
 });
 
 /**
- * All getRoutefromUrl Unit Tests
+ * All getRoutefromUrl Tests - Unit Testing
  */
 
 describe('Tests getRoutefromUrl from routing.js', () => {
@@ -106,7 +100,7 @@ describe('Tests getRoutefromUrl from routing.js', () => {
 });
 
 /**
- * All getParamsFromUrl Unit Tests
+ * All getParamsFromUrl Tests - Unit Testing
  */
 
 describe('Tests getParamsFromUrl from routing.js', () => {
