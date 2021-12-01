@@ -8,10 +8,7 @@ describe('E2E Testing loading web components and navigating pages', () => {
     });
 
     it('Check we land on home page', async () => {
-        const homePage = await page.$('home-page');
-        const shadowRoot = await homePage.getProperty('shadowRoot');
-        const protein = await shadowRoot.$('#recipe-card-section-1');
-        
-        console.log(protein);
+        const homePage = await page.$$('#content > home-page');
+        expect(homePage.length).toBe(1);
     }, 2500);
 });
