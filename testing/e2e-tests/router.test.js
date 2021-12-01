@@ -16,7 +16,7 @@ describe('E2E Testing loading web components and navigating pages', () => {
         const homePage = await page.$$('#content > home-page');
 
         expect(homePage.length).toBe(1);
-    }, 2500);
+    }, 5000);
 
     /**
      * Test to see if we go to recipe-details page
@@ -31,9 +31,9 @@ describe('E2E Testing loading web components and navigating pages', () => {
         recipe.click();
 
         // wait for the page to load then get the recipe-details page
-        await new Promise((r) => setTimeout(r, 1000));
+        await new Promise((r) => setTimeout(r, 2000));
         const recipeDetailsPage = await page.$$('recipe-details');
 
         expect(recipeDetailsPage.length).toBe(1);
-    }, 2500);
+    }, 5000);
 });
