@@ -1,10 +1,10 @@
-/** Router module.
- * @module core/routing/router
- */
-
 if (typeof module !== "undefined" && module.exports) {
   module.exports = { getUrlFromRoute, getRoutefromUrl, getParamsFromUrl };
 }
+
+/** Router module.
+ * @module core/routing/router
+ */
 
 /**
  * The router patterns for the different pages of the site.
