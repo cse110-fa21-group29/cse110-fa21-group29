@@ -1,7 +1,21 @@
 /* GLOBAL STYLES */
 
+html {
+  scroll-padding-top: 75px;
+}
+
 body {
   min-width: 700px;
   margin: 0px;
   min-height: 600px;
+}
+
+@font-face {
+  font-family: Snell Roundhand;
+  src: url(static/font/SnellRoundhand-BlackScript.otf);
+}
+
+@font-face {
+  font-family: Montserrat;
+  src: url(static/font/Montserrat-Black.ttf);
 }

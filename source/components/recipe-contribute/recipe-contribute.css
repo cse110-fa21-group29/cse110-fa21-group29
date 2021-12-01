@@ -13,8 +13,8 @@
   width: 70%;
 }
 #recipe-left-grid {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 50% 50%;
 }
 
 #submit-img {
@@ -37,9 +37,10 @@ textarea {
 }
 .input-left-text {
   height: 50%;
+  width: 80%;
 }
 
-#recipe-left-grid div {
+#recipe-left-grid > div {
   margin-left: 10px;
   height: 80px;
 }
@@ -51,7 +52,7 @@ textarea {
 }
 .right-textarea {
   width: 95%;
-  height: 100px;
+  height: 150px;
 }
 
 #submit-button {
@@ -75,4 +76,22 @@ textarea {
 }
 .red-star {
   color: red;
+}
+
+.category-checkbox {
+  cursor: pointer;
+  height: 25px;
+  width: 25px;
+  margin-bottom: 30px;
+  margin-right: 10px;
+}
+
+.category-label {
+  cursor: pointer;
+  font-size: 20px;
+}
+
+textarea,
+input[type="text"] {
+  padding: 20px;
 }
