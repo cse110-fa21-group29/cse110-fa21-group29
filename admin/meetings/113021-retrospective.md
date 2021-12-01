@@ -1,38 +1,38 @@
-# Team Meeting Minutes #
-Team Name/Number: Red Pands/29<br>
-Date: November 23, 2021<br>
-Time: 1:30pm<br> 
+# Team Meeting Minutes
+Team Name/Number: Red Pandas/29  
+Date: November 30, 2021  
+Time: 1:30pm  
 Location: Biomedical Library 204
 
 Present:
 - Tri
 - Edbert
-- Haonan
-- Fangcheng
+- Avery
+- Baha (Zoom)
 - Enzo
+- Fangcheng
+- Haonan
+- Jeffrey (Zoom)
 - Justin
 - Viki
-- Avery
 - Zhuoran
-- Baha (Zoom)
-- Jeffrey (Zoom)
 
-<br>
-
-# Purpose of Meeting #
+## Purpose of Meeting
 Complete the 2nd Retrospective Assignment
-<br>
 
-# Decisions Made #
+## Decisions Made
 
-<br>
+N/A
 
-# Agenda and Meeting Notes #
+## Agenda and Meeting Notes
 - Scrum Values
+
 ![scrumValues](retro2ScrumValues.png)
 
 - Mad, Sad, Glad
+
 ![retrospectiveFormat](retro2Format.png)
 
 - Action Plan
+
 ![actionPlan](retro2ActionPlan.png)
