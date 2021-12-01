@@ -1,5 +1,5 @@
 if (typeof module !== "undefined" && module.exports) {
-  module.exports = { getRoutefromUrl };
+  module.exports = { getUrlFromRoute, getRoutefromUrl, getParamsFromUrl };
 }
 
 /** Router module.
