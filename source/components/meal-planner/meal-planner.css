@@ -1,9 +1,10 @@
 main {
   text-align: center;
+  min-height: 100%;
 }
 
 #planner-grid {
-  margin: 20px auto 200px;
+  margin: 20px auto;
   width: 95vw;
   height: 40vw;
   display: grid;
