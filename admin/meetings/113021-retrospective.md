@@ -35,4 +35,4 @@ Complete the 2nd Retrospective Assignment
 ![retrospectiveFormat](retro2Format.png)
 
 - Action Plan
-![actionPlan](retro2actionPlan.png)
+![actionPlan](retro2ActionPlan.png)
