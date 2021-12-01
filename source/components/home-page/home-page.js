@@ -103,7 +103,7 @@ class HomePage extends YummyRecipesComponent {
       }
 
       // If every grid has been filled then break
-      if (gridCount.every((val) => val == 20)) {
+      if (gridCount.every((val) => val === 20)) {
         break;
       }
     }
