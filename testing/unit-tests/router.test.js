@@ -1,6 +1,7 @@
 /**
  * @jest-environment jsdom
  */
+const router = require("../../source/core/routing/router.js");
 
 /**
  * All loadRoute Tests - E2E Testing (edits DOM)
