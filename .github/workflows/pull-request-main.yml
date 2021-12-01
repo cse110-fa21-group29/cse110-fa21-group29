@@ -8,7 +8,7 @@ name: PR Pipeline MAIN
       - main
 jobs:
   run-linters-main:
-    name: Run linters
+    name: Running linters
     runs-on: ubuntu-latest
 
     steps:
@@ -33,7 +33,7 @@ jobs:
           prettier_dir: source/
   
   run-jest-dev:
-    name: Running Unit Tests
+    name: Running Unit & E2E Tests
     runs-on: ubuntu-latest
 
     steps:
