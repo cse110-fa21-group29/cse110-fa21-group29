@@ -29,10 +29,13 @@ Complete the 2nd Retrospective Assignment
 
 # Agenda and Meeting Notes #
 - Scrum Values
+
 ![scrumValues](retro2ScrumValues.png)
 
 - Mad, Sad, Glad
+
 ![retrospectiveFormat](retro2Format.png)
 
 - Action Plan
+
 ![actionPlan](retro2ActionPlan.png)
