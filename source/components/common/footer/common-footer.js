@@ -1,26 +1,10 @@
-class CommonFooter extends HTMLElement {
+import { YummyRecipesComponent } from "/components/core/yummy-recipes-component.js";
+
+class CommonFooter extends YummyRecipesComponent {
   constructor() {
     super();
-    this.attachShadow({ mode: "open" });
+    this.htmlPath = "components/common/footer/common-footer.html";
   }
-
-  set params(params) {
-    this.routeParams = params;
-  }
-  set route(route) {
-    this.routeName = route;
-  }
-
-  async connectedCallback() {
-    let elementContent = await fetch(
-      "components/common/footer/common-footer.html"
-    );
-    let elementContentText = await elementContent.text();
-    this.shadowRoot.innerHTML = elementContentText;
-    this.setupElement();
-  }
-
-  setupElement() {}
 }
 
 customElements.define("common-footer", CommonFooter);

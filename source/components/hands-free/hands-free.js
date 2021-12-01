@@ -1,14 +1,9 @@
-class HandsFree extends HTMLElement {
+import { YummyRecipesComponent } from "/components/core/yummy-recipes-component.js";
+
+class HandsFree extends YummyRecipesComponent {
   constructor() {
     super();
-    this.attachShadow({ mode: "open" });
-  }
-
-  async connectedCallback() {
-    let elementContent = await fetch("components/hands-free/hands-free.html");
-    let elementContentText = await elementContent.text();
-    this.shadowRoot.innerHTML = elementContentText;
-    this.setupElement();
+    this.htmlPath = "components/hands-free/hands-free.html";
   }
 
   count = 0;

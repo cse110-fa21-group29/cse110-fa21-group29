@@ -5,28 +5,28 @@
 
 <form id="contribute-form">
   <section id="left-side">
-    <h1>Recipe Cover Image<span class="red-star">*</span></h1>
-    <input type="file" id="submit-img" onchange="uploadImg(event)" />
+    <h1>Recipe Cover Image</h1>
+    <input type="file" id="submit-img" />
 
     <h1>Nutrients</h1>
     <div id="recipe-left-grid">
       <div>
         <label for="input-colories">Calories</label><br />
-        <input type="text" id="input-colories" class="input-left-text" />
+        <input type="number" id="input-colories" class="input-left-text" />
       </div>
       <div>
         <label for="input-protein">Protein (in grams)</label><br />
-        <input type="text" id="input-protein" class="input-left-text" />
+        <input type="number" id="input-protein" class="input-left-text" />
       </div>
 
       <div>
         <label for="input-fat">Fat (in grams)</label><br />
-        <input type="text" id="input-fat" class="input-left-text" />
+        <input type="number" id="input-fat" class="input-left-text" />
       </div>
       <div>
         <label for="input-number-of-servings">Number of servings</label><br />
         <input
-          type="text"
+          type="number"
           id="input-number-of-servings"
           class="input-left-text"
         />
@@ -34,25 +34,36 @@
     </div>
     <h1>Categories</h1>
 
-    <input type="checkbox" id="input-vegan" /><label for="input-vegan"
+    <input type="checkbox" id="input-vegan" class="category-checkbox" /><label
+      for="input-vegan"
+      class="category-label"
       >Vegan</label
     ><br />
 
-    <input type="checkbox" id="input-vegetarian" /><label for="input-vegetarian"
-      >Vegetarian</label
+    <input
+      type="checkbox"
+      id="input-vegetarian"
+      class="category-checkbox"
+    /><label for="input-vegetarian" class="category-label">Vegetarian</label
     ><br />
 
-    <input type="checkbox" id="input-gluten-free" /><label
-      for="input-gluten-free"
-      >Gluten-Free</label
+    <input
+      type="checkbox"
+      id="input-gluten-free"
+      class="category-checkbox"
+    /><label for="input-gluten-free" class="category-label">Gluten-Free</label
     ><br />
 
-    <input type="checkbox" id="input-high-protein" /><label
-      for="input-high-protein"
-      >High Protein</label
+    <input
+      type="checkbox"
+      id="input-high-protein"
+      class="category-checkbox"
+    /><label for="input-high-protein" class="category-label">High Protein</label
     ><br />
 
-    <input type="checkbox" id="input-healthy" /><label for="input-healthy"
+    <input type="checkbox" id="input-healthy" class="category-checkbox" /><label
+      for="input-healthy"
+      class="category-label"
       >Healthy</label
     >
   </section>
@@ -79,14 +90,16 @@
       <input type="text" id="input-video-url" class="input-right-text" />
     </div>
     <div>
-      <label for="input-time">Time<span class="red-star">*</span></label
+      <label for="input-time"
+        >Time (in minutes)<span class="red-star">*</span></label
       ><br />
-      <input type="text" id="input-time" class="input-right-text" required />
+      <input type="number" id="input-time" class="input-right-text" required />
     </div>
     <div>
-      <label for="input-cost">Cost<span class="red-star">*</span></label
+      <label for="input-cost"
+        >Cost (in USD)<span class="red-star">*</span></label
       ><br />
-      <input type="text" id="input-cost" class="input-right-text" required />
+      <input type="number" id="input-cost" class="input-right-text" required />
     </div>
     <div>
       <label for="input-description"
@@ -114,7 +127,7 @@
       placeholder="Put each step on its own line."
     ></textarea>
 
-    <button id="submit-button" onclick="confirm('submit?')">Submit</button>
-    <button id="cancel-button" onclick="confirm('cancel?')">Cancel</button>
+    <button id="submit-button">Submit</button>
+    <button id="cancel-button">Cancel</button>
   </section>
 </form>

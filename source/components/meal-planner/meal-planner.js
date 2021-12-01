@@ -1,23 +1,9 @@
-class MealPlanner extends HTMLElement {
+import { YummyRecipesComponent } from "/components/core/yummy-recipes-component.js";
+
+class MealPlanner extends YummyRecipesComponent {
   constructor() {
     super();
-    this.attachShadow({ mode: "open" });
-  }
-
-  set params(params) {
-    this.routeParams = params;
-  }
-  set route(route) {
-    this.routeName = route;
-  }
-
-  async connectedCallback() {
-    let elementContent = await fetch(
-      "components/meal-planner/meal-planner.html"
-    );
-    let elementContentText = await elementContent.text();
-    this.shadowRoot.innerHTML = elementContentText;
-    this.setupElement();
+    this.htmlPath = "components/meal-planner/meal-planner.html";
   }
 
   setupElement() {
