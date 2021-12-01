@@ -1,4 +1,4 @@
-import { Database } from "/core/database/database.js";
+import { Database } from "../../core/database/database.js";
 import { YummyRecipesComponent } from "/components/core/yummy-recipes-component.js";
 
 /** Class that provides functionality to the homepage. */
