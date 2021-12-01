@@ -1,63 +1,42 @@
-# Team Meeting Minutes #
+# Team Meeting Minutes
+Team Name/Number: 29  
+Date: October 12, 2021  
+Time: 1:05pm  
+Location: Zoom  
 
-<br>
+## Attendance
 
-Team Name/Number: 29 <br>
-Date: October 12, 2021<br>
-Time: 1:05pm<br>
-Location: Zoom<br>
+### Present
+- Tri Dao 
+- Edbert Dai
+- Avery Pham
+- Enzo De-Oliveira
+- Fangcheng Dou
+- Haonan Jiang
+- Jeffrey Morales
+- Jiayi Zhao
+- Justin Butera
+- Zhuoran Tang
 
-<br>
+### Absent
+- Baha Keskin
 
-## Attendance ##
+## Purpose Of Meeting
+To complete the assignments due this week (Branding, Contract, Bonding).
 
-- ### Present ###
-    1. Tri Dao 
-    2. Edbert Dai
-    3. Avery Pham
-    4. Fangcheng Dou
-    5. Haonan Jiang
-    6. Jiayi Zhao
-    7. Justin Butera
-    8. Zhuoran Tang
-    9. Jeffrey Morales
-    10. Enzo Del Oliveira
-
-- ### Abesent ###
-    1. Baha Keskin
-
-<br>
-
-## Purpose Of Meeting ##
-
-To complete the assignments due this week.(Branding, Contract, Bonding).
-
-<br>
-
-## Decisions Made ##
-
+## Decisions Made
 - Jiayi will create the branding page.
 - Contract has been mostly outlined and decided.
 - Deadlines announced in Slack general chat.
 
-<br>
-
-## Agenda and Meeting Notes ##
-
-### Tasks To Be Completed ###
-
+## Agenda and Meeting Notes
+### Tasks To Be Completed
 - Team Branding: 
     - Video: We will introduce ourselves and wave. Meme for virtual background. Record the video, and send to Edbert by Wednesdady night.
     - Name: Talk on Slack, for ideas. Submit name ideas on Slack by tonight, we'll all vote on the favorite ones.
-  
-<br>
-
 -  Team Page: 
    - Values: Take from responsibilities page.
    - Overview: Each member will write an overview of themselves by Wednesday afternoon.
-
-<br>
-
 - Team Contract:
     - Ways to Communicate:
       - Talk about progress beginning of week and ending of week

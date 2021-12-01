@@ -1,69 +1,51 @@
-# Team Meeting Minutes #
+# Team Meeting Minutes
+Team Name/Number: Red Pandas/29  
+Date: October 27, 2021  
+Time: 4:00pm  
+Location: Zoom  
 
-<br>
+## Attendance
 
-Team Name/Number: Red Pandas/29 <br>
-Date: October 27, 2021<br>
-Time: 4:00pm<br>
-Location: Zoom<br>
+### Present
+- Tri
+- Edbert
+- Fangcheng
+- Justin
+- Zhuoran
 
-<br>
+### Absent
+N/A
 
-## Attendance ##
-
-- ### Present ###
-  - Tri
-  - Edbert
-  - Fangcheng
-  - Zhuoran
-  - Justin
-
-- ### Abesent ###
-
-<br>
-
-## Purpose Of Meeting ##
-
+## Purpose Of Meeting
 Discussing the Systems Diagram assignment
 
-<br>
-
-## Decisions Made ##
+## Decisions Made
 
 Went with an Event Modeling Diagram for Systems Diagram
 
-<br>
-
-## Agenda and Meeting Notes ##
-
+## Agenda and Meeting Notes
 - Went with an Event Modeling Diagram
-  - Posted on miro, called User Flow
-
-<br>
-
+  - Posted on Miro, called User Flow
 - Deploy website on Github pages
   - Database: Firebase
-    - No SQL
-
-<br>
-
+    - NoSQL
 - Github Policies For Developers:
   - For any dev feature:
     - Make a new github issue for each sprint item
       - Add Labels
     - Make a new branch off main
       - Branch naming conventions?
-      - Directly ties to github issues
+      - Directly ties to GitHub issues
     - Develop only that specific feature in it
       - Linting
     - Make commits for that feature
       - Consistent naming standard
-        - Commitlint
+        - commitlint
     - When you're ready, create a PR and ask for approval
       - Create a PR
       - Add Labels
       - Include a basic desc
-      - Link the relevant github issue
+      - Link the relevant GitHub issue
       - Request approval
         - All approvals go to Justin
         - Will approve within 24 hours

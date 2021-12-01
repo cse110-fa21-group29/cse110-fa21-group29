@@ -1,20 +1,23 @@
-# Team Meeting Minutes #
-Team Name/Number: Red Pands/29<br>
-Date: December 1, 2021<br>
-Time: 1:00pm<br> 
+# Team Meeting Minutes
+Team Name/Number: Red Pandas/29  
+Date: December 1, 2021  
+Time: 1:00pm  
 Location: Zoom
 
-Present:
-- Jeffrey 
+## Attendance
+
+### Present
+- Jeffrey
 - Fangcheng
-- Viki 
+- Viki
 
-<br>
+### Absent
+N/A
 
-# Purpose of Meeting 
+## Purpose of Meeting 
 - Go over styling of each page
 
-# Home Page 
+### Home Page 
 - Move stats up vertically on recipe cards 
 - Make recipe cards closer to top category and farther from bottom category
 - Look into showing 5 full recipes and no clipped 6th recipe
@@ -23,7 +26,7 @@ Present:
 - Try to remove about us section and we will vote on it
 - Change "Welcome to Yummy Recipes!"
 
-# Meal Planner 
+### Meal Planner 
 - Looking into drag and drop or pop up page.
 - Hoping to use search page functionality
 - When a recipe is filled in, every other day will fill in a color. 
@@ -32,7 +35,7 @@ Present:
 - Image shown originally. Hover show title and remove button.
 - Aggregated stats at the bottom
 
-# Contribute Recipe
+### Contribute Recipe
 - Time and Cost not indented
 - Make categories line up 
 - Indent titles

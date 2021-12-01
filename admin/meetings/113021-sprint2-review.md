@@ -4,7 +4,9 @@ Date: November 30, 2021
 Time: 1:30pm  
 Location: Biomedical Library 204
 
-Present:
+## Attendance
+
+### Present
 - Tri
 - Edbert
 - Avery
@@ -17,6 +19,9 @@ Present:
 - Viki
 - Zhuoran
 
+### Absent
+Everyone was in attendance.
+
 ## Purpose of Meeting
 Completing the Agile - Sprint Review Meeting Assignment
 
@@ -24,8 +29,7 @@ Completing the Agile - Sprint Review Meeting Assignment
 N/A
 
 ## Agenda and Meeting Notes
-
-Demo Video: [GitHub](./113021-sprint-2-review.mp4) [YouTube](https://www.youtube.com/watch?v=2d5K2TpasB0)
+Demo Video: [GitHub](../videos/113021-sprint-2-review.mp4) [YouTube](https://www.youtube.com/watch?v=2d5K2TpasB0)
 
 Summary of video
 - Most of the team worked on styling this sprint
