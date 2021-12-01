@@ -1,6 +1,11 @@
 # CI/CD Pipeline Phase 2
 
 
+## Phase 2 Diagram
+
+![phase 2 diagram](phase2.drawio.png)
+
+
 ## What is Currently Functional
 We have the following elements currently functional in our pipeline:
 

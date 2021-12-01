@@ -1,31 +1,29 @@
-# Team Meeting Minutes #
-Team Name/Number: Red Pands/29  
-Date: November 19, 2021  
+# Team Meeting Minutes
+Team Name/Number: Red Pandas/29  
+Date: November 30, 2021  
 Time: 1:30pm  
 Location: Biomedical Library 204
 
 Present:
 - Tri
 - Edbert
-- Haonan
-- Fangcheng
+- Avery
+- Baha (Zoom)
 - Enzo
+- Fangcheng
+- Haonan
+- Jeffrey (Zoom)
 - Justin
 - Viki
-- Avery
 - Zhuoran
-- Baha (Zoom)
-- Jeffrey (Zoom)
 
-<br>
-
-# Purpose of Meeting #
+## Purpose of Meeting
 Completing the Agile - Sprint Review Meeting Assignment
 
-# Decisions Made #
+## Decisions Made
 N/A
 
-# Agenda and Meeting Notes #
+## Agenda and Meeting Notes
 
 Demo Video: [GitHub](./113021-sprint-2-review.mp4) [YouTube](https://www.youtube.com/watch?v=2d5K2TpasB0)
 
@@ -33,7 +31,7 @@ Summary of video
 - Most of the team worked on styling this sprint
 - Navbar is in the right place
 - Style adjustments to home page
-    - Title of recipe card does not overlfow outside of card
+    - Title of recipe card does not overflow outside of card
 - Recipe Details have CRUD buttons 
 - Contribute Recipe
     - Image Uploading now works
