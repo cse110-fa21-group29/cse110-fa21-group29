@@ -29,10 +29,8 @@ main {
   cursor: pointer;
 }
 
-.recipe-card {
-  height: 400px;
-  width: 300px;
-  border: solid;
+common-recipe-card {
+  max-width: 200px;
 }
 
 #filter-form {
