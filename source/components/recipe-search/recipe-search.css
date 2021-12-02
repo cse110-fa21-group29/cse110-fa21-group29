@@ -29,10 +29,9 @@ main {
   cursor: pointer;
 }
 
-.recipe-card {
-  height: 400px;
-  width: 300px;
-  border: solid;
+/* stylelint-disable selector-type-no-unknown */
+common-recipe-card {
+  max-width: 200px;
 }
 
 #filter-form {
@@ -45,6 +44,7 @@ main {
   transform: translate(-50%, -50%);
   display: none;
   padding: 30px 80px;
+  z-index: 999;
 }
 
 #close-button {
