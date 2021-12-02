@@ -58,6 +58,35 @@ class RecipeContribute extends YummyRecipesComponent {
           }
         }
       });
+
+    /**
+     * Video field handler to check if link is valid YouTube video or field
+     * is empty. Regex from https://stackoverflow.com/a/9102270.
+     */
+    const videoUrlInput = this.shadowRoot.getElementById("input-video-url");
+
+    videoUrlInput.addEventListener("input", () => {
+      // Get form value
+      const url = videoUrlInput.value;
+
+      // If video field is blank then allow it and return
+      if (url == "") {
+        videoUrlInput.setCustomValidity("");
+        return;
+      }
+
+      // Get regex
+      const regExp =
+        /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+      const match = url.match(regExp);
+
+      // If regex worked and video ID is 11 characters then link is valid
+      if (match && match[2].length === 11) {
+        videoUrlInput.setCustomValidity("");
+      } else {
+        videoUrlInput.setCustomValidity("Video link is not valid.");
+      }
+    });
   }
 
   /**
@@ -111,15 +140,10 @@ class RecipeContribute extends YummyRecipesComponent {
         const isFormValid = formElement.checkValidity();
         formElement.reportValidity();
 
-        // If video is invalid then alert user and do not continue
-        if (!this.checkVideoValidity()) {
-          alert("Video link is not valid");
-          return;
-        }
-
         // Add recipe if form is valid
         if (isFormValid) {
-          this.saveRecipe(recipe, true);
+          //this.saveRecipe(recipe, true);
+          alert("yay");
         }
       });
 
@@ -224,12 +248,6 @@ class RecipeContribute extends YummyRecipesComponent {
         const formElement = this.shadowRoot.querySelector("#contribute-form");
         const isFormValid = formElement.checkValidity();
         formElement.reportValidity();
-
-        // If video is invalid then alert user and do not continue
-        if (!this.checkVideoValidity()) {
-          alert("Video link is not valid");
-          return;
-        }
 
         // Update recipe if form is valid
         if (isFormValid) {
@@ -389,27 +407,6 @@ class RecipeContribute extends YummyRecipesComponent {
       });
 
       document.dispatchEvent(routerEvent);
-    }
-  }
-
-  /**
-   * Checks if YouTube video link in form is a valid link or empty string.
-   * Regex from https://stackoverflow.com/a/9102270.
-   *
-   * @returns {boolean} True if valid video link or empty string, false otherwise.
-   */
-  checkVideoValidity() {
-    const url = this.shadowRoot.getElementById("input-video-url").value;
-    if (url == "") {
-      return true;
-    }
-    const regExp =
-      /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
-    const match = url.match(regExp);
-    if (match && match[2].length === 11) {
-      return true;
-    } else {
-      return false;
     }
   }
 
