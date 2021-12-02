@@ -2,9 +2,7 @@
 
 * Status: {accepted} <!-- optional -->
 * Deciders: {Primary Deciders: Baha, Justin. All other members were able to contribute} 
-* Date: {2021-11-18 when the decision was last updated} <!-- optional -->
-
-Technical Story: {description | ticket/issue URL} <!-- optional -->
+* Date: {2021-12-02 when the decision was last updated} <!-- optional -->
 
 ## Context and Problem Statement
 
@@ -23,7 +21,7 @@ For the purpose of this project, we must have these infrastructures established:
 ## Decisions
 
 1. **commitlint** for commit styling standards. **eslint** and **prettier** for linting (Decided 11/6/2021)
-2. TBD as of 11/19/2021.
+2. Codacy finalized 11/29.
 3. Justin will conduct human review for code quality. (Decided 11/6/2021)
 4. Jests for automated unit tests. (Decided 11/18/2021)
 5. JSDocs for automated documentation generation. (Decided 11/18/2021)
@@ -70,6 +68,9 @@ Jest will be the chosen unit testing tool
 
 JSDocs will be the automated documentation generation tool used. 
 
-* Good, because {argument a}
-* Good, because {argument b}
-* Bad, because {argument c}
+* Pro: Recommended by class 
+* Pro: Unit Testing tool that the team is most familiar with 
+
+### Code Quality via Tool 
+* Pro: Recommended by class 
+* Pro: Unit Testing tool that the team is most familiar with 
