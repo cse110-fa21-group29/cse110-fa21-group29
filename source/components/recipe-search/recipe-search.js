@@ -15,6 +15,10 @@ class RecipeSearch extends YummyRecipesComponent {
       paramArray.push(p);
     }
 
+    if (paramArray.length > 0) {
+      this.populateForm();
+      this.getSearchResults();
+    }
     this.shadowRoot
       .getElementById("filter-button")
       .addEventListener("click", (event) => {
@@ -119,7 +123,91 @@ class RecipeSearch extends YummyRecipesComponent {
     this.shadowRoot.getElementById("filter-form").style.display = "initial";
   }
 
-  async clickSearch() {
+  /**
+   * Set search URL parameters when clicking on search button.
+   */
+  clickSearch() {
+    const searchParams = {};
+
+    // Query
+    if (this.shadowRoot.getElementById("search-input").value != "") {
+      searchParams["query"] =
+        this.shadowRoot.getElementById("search-input").value;
+    }
+
+    // Gluten free
+    if (this.shadowRoot.getElementById("input-gluten-free").checked) {
+      searchParams["glutenFree"] = true;
+    }
+
+    // Healthy
+    if (this.shadowRoot.getElementById("input-healthy").checked) {
+      searchParams["healthy"] = true;
+    }
+
+    // High protein
+    if (this.shadowRoot.getElementById("input-high-protein").checked) {
+      searchParams["highProtein"] = true;
+    }
+
+    // Vegan
+    if (this.shadowRoot.getElementById("input-vegan").checked) {
+      searchParams["vegan"] = true;
+    }
+
+    // Vegetarian
+    if (this.shadowRoot.getElementById("input-vegetarian").checked) {
+      searchParams["vegetarian"] = true;
+    }
+
+    // Cost min
+    if (this.shadowRoot.getElementById("input-cost-min").value != "") {
+      searchParams["costmin"] =
+        this.shadowRoot.getElementById("input-cost-min").value;
+    }
+
+    // Cost max
+    if (this.shadowRoot.getElementById("input-cost-max").value != "") {
+      searchParams["costmax"] =
+        this.shadowRoot.getElementById("input-cost-max").value;
+    }
+
+    // Sorting
+    const sortSelectedElement = this.shadowRoot.querySelector(
+      "input[name=sort-type]:checked"
+    );
+    if (sortSelectedElement) {
+      const sortSelectedValue = sortSelectedElement.value;
+      if (sortSelectedValue === "sort-time-descending") {
+        searchParams["sorttime"] = "desc";
+      } else if (sortSelectedValue === "sort-time-ascending") {
+        searchParams["sorttime"] = "asc";
+      } else if (sortSelectedValue === "sort-cost-descending") {
+        searchParams["sortcost"] = "desc";
+      } else if (sortSelectedValue === "sort-cost-ascending") {
+        searchParams["sortcost"] = "asc";
+      }
+    }
+
+    // Route to search page
+    const routerEvent = new CustomEvent("router-navigate", {
+      detail: {
+        route: "recipe-search",
+        params: [],
+        searchParams: searchParams,
+      },
+      bubbles: true,
+      composed: true,
+    });
+
+    document.dispatchEvent(routerEvent);
+  }
+
+  /**
+   * Gets search results given URL parameters for filters and query.
+   * @async
+   */
+  async getSearchResults() {
     const database = new Database();
 
     let paramString = window.location.href.split("?")[1];
