@@ -142,8 +142,7 @@ class RecipeContribute extends YummyRecipesComponent {
 
         // Add recipe if form is valid
         if (isFormValid) {
-          //this.saveRecipe(recipe, true);
-          alert("yay");
+          this.saveRecipe(recipe, true);
         }
       });
 
