@@ -41,7 +41,7 @@ class RecipeSearch extends YummyRecipesComponent {
       .getElementById("submit-button")
       .addEventListener("click", (event) => {
         event.preventDefault();
-        this.clickSubmit();
+        this.clickSearch();
       });
     this.shadowRoot
       .getElementById("reset-button")
