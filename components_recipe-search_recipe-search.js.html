@@ -48,6 +48,9 @@ class RecipeSearch extends YummyRecipesComponent {
     this.htmlPath = "components/recipe-search/recipe-search.html";
   }
 
+  /**
+   * Initializes the search page.
+   */
   async setupElement() {
     let paramString = window.location.href.split("?")[1];
     let queryString = new URLSearchParams(paramString);
@@ -56,30 +59,45 @@ class RecipeSearch extends YummyRecipesComponent {
       paramArray.push(p);
     }
 
+    if (paramArray.length > 0) {
+      this.populateForm();
+      this.getSearchResults();
+    }
+
+    // Click event handler for the filter icon button
     this.shadowRoot
       .getElementById("filter-button")
       .addEventListener("click", (event) => {
         event.preventDefault();
         this.clickFilter();
       });
+
+    // Click event handler for the search button
     this.shadowRoot
       .getElementById("search-button")
       .addEventListener("click", (event) => {
         event.preventDefault();
         this.clickSearch();
       });
+
+    // Click event handler for the filter close button
     this.shadowRoot
       .getElementById("close-button")
       .addEventListener("click", (event) => {
         event.preventDefault();
         this.clickClose();
       });
+
+    // Click event handler for the filter submit button
+    // Performs the same functionality as the search button
     this.shadowRoot
       .getElementById("submit-button")
       .addEventListener("click", (event) => {
         event.preventDefault();
-        this.clickSubmit();
+        this.clickSearch();
       });
+
+    // Click event handler for the filter reset button
     this.shadowRoot
       .getElementById("reset-button")
       .addEventListener("click", (event) => {
@@ -88,13 +106,167 @@ class RecipeSearch extends YummyRecipesComponent {
       });
   }
 
-  // put button actions here, for search and submit button, they both have submit action now, for clear button,
-  // it has a clear action, feel free to change them by change input type to button
+  /**
+   * Populates the query box and filters form based on URL parameters.
+   */
+  populateForm() {
+    const paramString = window.location.href.split("?")[1];
+    const searchParams = new URLSearchParams(paramString);
+
+    // Query
+    if (searchParams.has("query")) {
+      this.shadowRoot.getElementById("search-input").value =
+        searchParams.get("query");
+    }
+
+    // Gluten free
+    if (searchParams.get("glutenFree")) {
+      this.shadowRoot.getElementById("input-gluten-free").checked = true;
+    }
+
+    // Healthy
+    if (searchParams.get("healthy")) {
+      this.shadowRoot.getElementById("input-healthy").checked = true;
+    }
+
+    // High protein
+    if (searchParams.get("highProtein")) {
+      this.shadowRoot.getElementById("input-high-protein").checked = true;
+    }
+
+    // Vegan
+    if (searchParams.get("vegan")) {
+      this.shadowRoot.getElementById("input-vegan").checked = true;
+    }
+
+    // Vegetarian
+    if (searchParams.get("vegetarian")) {
+      this.shadowRoot.getElementById("input-vegetarian").checked = true;
+    }
+
+    // Cost min
+    if (searchParams.has("costmin")) {
+      this.shadowRoot.getElementById("input-cost-min").value =
+        searchParams.get("costmin");
+    }
+
+    // Cost max
+    if (searchParams.has("costmax")) {
+      this.shadowRoot.getElementById("input-cost-max").value =
+        searchParams.get("costmax");
+    }
+
+    // Sort cost
+    if (searchParams.has("sortcost")) {
+      if (searchParams.get("sortcost") === "desc") {
+        this.shadowRoot.getElementById("sort-cost-descending").checked = true;
+      } else if (searchParams.get("sortcost") === "asc") {
+        this.shadowRoot.getElementById("sort-cost-ascending").checked = true;
+      }
+    }
+
+    // Sort time
+    if (searchParams.has("sorttime")) {
+      if (searchParams.get("sorttime") === "desc") {
+        this.shadowRoot.getElementById("sort-time-descending").checked = true;
+      } else if (searchParams.get("sorttime") === "asc") {
+        this.shadowRoot.getElementById("sort-time-ascending").checked = true;
+      }
+    }
+  }
+
+  /**
+   * Display filters form when clicking on filter icon.
+   */
   clickFilter() {
     this.shadowRoot.getElementById("filter-form").style.display = "initial";
   }
 
-  async clickSearch() {
+  /**
+   * Set search URL parameters when clicking on search button.
+   */
+  clickSearch() {
+    const searchParams = {};
+
+    // Query
+    if (this.shadowRoot.getElementById("search-input").value != "") {
+      searchParams["query"] =
+        this.shadowRoot.getElementById("search-input").value;
+    }
+
+    // Gluten free
+    if (this.shadowRoot.getElementById("input-gluten-free").checked) {
+      searchParams["glutenFree"] = true;
+    }
+
+    // Healthy
+    if (this.shadowRoot.getElementById("input-healthy").checked) {
+      searchParams["healthy"] = true;
+    }
+
+    // High protein
+    if (this.shadowRoot.getElementById("input-high-protein").checked) {
+      searchParams["highProtein"] = true;
+    }
+
+    // Vegan
+    if (this.shadowRoot.getElementById("input-vegan").checked) {
+      searchParams["vegan"] = true;
+    }
+
+    // Vegetarian
+    if (this.shadowRoot.getElementById("input-vegetarian").checked) {
+      searchParams["vegetarian"] = true;
+    }
+
+    // Cost min
+    if (this.shadowRoot.getElementById("input-cost-min").value != "") {
+      searchParams["costmin"] =
+        this.shadowRoot.getElementById("input-cost-min").value;
+    }
+
+    // Cost max
+    if (this.shadowRoot.getElementById("input-cost-max").value != "") {
+      searchParams["costmax"] =
+        this.shadowRoot.getElementById("input-cost-max").value;
+    }
+
+    // Sorting
+    const sortSelectedElement = this.shadowRoot.querySelector(
+      "input[name=sort-type]:checked"
+    );
+    if (sortSelectedElement) {
+      const sortSelectedValue = sortSelectedElement.value;
+      if (sortSelectedValue === "sort-time-descending") {
+        searchParams["sorttime"] = "desc";
+      } else if (sortSelectedValue === "sort-time-ascending") {
+        searchParams["sorttime"] = "asc";
+      } else if (sortSelectedValue === "sort-cost-descending") {
+        searchParams["sortcost"] = "desc";
+      } else if (sortSelectedValue === "sort-cost-ascending") {
+        searchParams["sortcost"] = "asc";
+      }
+    }
+
+    // Route to search page
+    const routerEvent = new CustomEvent("router-navigate", {
+      detail: {
+        route: "recipe-search",
+        params: [],
+        searchParams: searchParams,
+      },
+      bubbles: true,
+      composed: true,
+    });
+
+    document.dispatchEvent(routerEvent);
+  }
+
+  /**
+   * Gets search results given URL parameters for filters and query.
+   * @async
+   */
+  async getSearchResults() {
     const database = new Database();
 
     let paramString = window.location.href.split("?")[1];
@@ -111,6 +283,9 @@ class RecipeSearch extends YummyRecipesComponent {
     this.shadowRoot.getElementById("recipe-card-grid").innerHTML = "";
 
     for (const recipe of searchRecipe) {
+      /**
+       * Closes filters form when clicking on "X" icon.
+       */
       this.shadowRoot
         .getElementById("recipe-card-grid")
         .appendChild(this.createRecipeCard(recipe.recipe, recipe.index));
@@ -119,8 +294,28 @@ class RecipeSearch extends YummyRecipesComponent {
   clickClose() {
     this.shadowRoot.getElementById("filter-form").style.display = "none";
   }
-  clickSubmit() {}
-  clickReset() {}
+
+  /**
+   * Resets filters form to blank fields (except all categories are true).
+   */
+  clickReset() {
+    // Set all categories to true
+    this.shadowRoot.getElementById("input-gluten-free").checked = true;
+    this.shadowRoot.getElementById("input-healthy").checked = true;
+    this.shadowRoot.getElementById("input-high-protein").checked = true;
+    this.shadowRoot.getElementById("input-vegan").checked = true;
+    this.shadowRoot.getElementById("input-vegetarian").checked = true;
+
+    // Clear cost min/max fields
+    this.shadowRoot.getElementById("input-cost-min").value = "";
+    this.shadowRoot.getElementById("input-cost-max").value = "";
+
+    // Clear sort radio buttons
+    this.shadowRoot.getElementById("sort-cost-descending").checked = false;
+    this.shadowRoot.getElementById("sort-cost-ascending").checked = false;
+    this.shadowRoot.getElementById("sort-time-descending").checked = false;
+    this.shadowRoot.getElementById("sort-time-ascending").checked = false;
+  }
 
   /**
    * Creates recipe card with information and routing.
@@ -160,7 +355,7 @@ customElements.define("recipe-search", RecipeSearch);
 <br class="clear">
 
 <footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.4</a> on Thu Dec 02 2021 02:51:12 GMT+0000 (Coordinated Universal Time) using the Minami theme.
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.4</a> on Thu Dec 02 2021 05:50:25 GMT+0000 (Coordinated Universal Time) using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>
