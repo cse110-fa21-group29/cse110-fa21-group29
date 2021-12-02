@@ -232,8 +232,28 @@ class RecipeSearch extends YummyRecipesComponent {
   clickClose() {
     this.shadowRoot.getElementById("filter-form").style.display = "none";
   }
-  clickSubmit() {}
-  clickReset() {}
+
+  /**
+   * Resets filters form to blank fields (except all categories are true).
+   */
+  clickReset() {
+    // Set all categories to true
+    this.shadowRoot.getElementById("input-gluten-free").checked = true;
+    this.shadowRoot.getElementById("input-healthy").checked = true;
+    this.shadowRoot.getElementById("input-high-protein").checked = true;
+    this.shadowRoot.getElementById("input-vegan").checked = true;
+    this.shadowRoot.getElementById("input-vegetarian").checked = true;
+
+    // Clear cost min/max fields
+    this.shadowRoot.getElementById("input-cost-min").value = "";
+    this.shadowRoot.getElementById("input-cost-max").value = "";
+
+    // Clear sort radio buttons
+    this.shadowRoot.getElementById("sort-cost-descending").checked = false;
+    this.shadowRoot.getElementById("sort-cost-ascending").checked = false;
+    this.shadowRoot.getElementById("sort-time-descending").checked = false;
+    this.shadowRoot.getElementById("sort-time-ascending").checked = false;
+  }
 
   /**
    * Creates recipe card with information and routing.
