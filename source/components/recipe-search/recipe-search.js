@@ -7,6 +7,9 @@ class RecipeSearch extends YummyRecipesComponent {
     this.htmlPath = "components/recipe-search/recipe-search.html";
   }
 
+  /**
+   * Initializes the search page.
+   */
   async setupElement() {
     let paramString = window.location.href.split("?")[1];
     let queryString = new URLSearchParams(paramString);
@@ -19,30 +22,41 @@ class RecipeSearch extends YummyRecipesComponent {
       this.populateForm();
       this.getSearchResults();
     }
+
+    // Click event handler for the filter icon button
     this.shadowRoot
       .getElementById("filter-button")
       .addEventListener("click", (event) => {
         event.preventDefault();
         this.clickFilter();
       });
+
+    // Click event handler for the search button
     this.shadowRoot
       .getElementById("search-button")
       .addEventListener("click", (event) => {
         event.preventDefault();
         this.clickSearch();
       });
+
+    // Click event handler for the filter close button
     this.shadowRoot
       .getElementById("close-button")
       .addEventListener("click", (event) => {
         event.preventDefault();
         this.clickClose();
       });
+
+    // Click event handler for the filter submit button
+    // Performs the same functionality as the search button
     this.shadowRoot
       .getElementById("submit-button")
       .addEventListener("click", (event) => {
         event.preventDefault();
         this.clickSearch();
       });
+
+    // Click event handler for the filter reset button
     this.shadowRoot
       .getElementById("reset-button")
       .addEventListener("click", (event) => {
@@ -119,6 +133,10 @@ class RecipeSearch extends YummyRecipesComponent {
       }
     }
   }
+
+  /**
+   * Display filters form when clicking on filter icon.
+   */
   clickFilter() {
     this.shadowRoot.getElementById("filter-form").style.display = "initial";
   }
@@ -224,6 +242,9 @@ class RecipeSearch extends YummyRecipesComponent {
     this.shadowRoot.getElementById("recipe-card-grid").innerHTML = "";
 
     for (const recipe of searchRecipe) {
+      /**
+       * Closes filters form when clicking on "X" icon.
+       */
       this.shadowRoot
         .getElementById("recipe-card-grid")
         .appendChild(this.createRecipeCard(recipe.recipe, recipe.index));
