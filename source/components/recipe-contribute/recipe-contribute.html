@@ -12,21 +12,41 @@
     <div id="recipe-left-grid">
       <div>
         <label for="input-colories">Calories</label><br />
-        <input type="number" id="input-colories" class="input-left-text" />
+        <input
+          type="number"
+          min="0"
+          step="0.01"
+          id="input-colories"
+          class="input-left-text"
+        />
       </div>
       <div>
         <label for="input-protein">Protein (in grams)</label><br />
-        <input type="number" id="input-protein" class="input-left-text" />
+        <input
+          type="number"
+          min="0"
+          step="0.01"
+          id="input-protein"
+          class="input-left-text"
+        />
       </div>
 
       <div>
         <label for="input-fat">Fat (in grams)</label><br />
-        <input type="number" id="input-fat" class="input-left-text" />
+        <input
+          type="number"
+          min="0"
+          step="0.01"
+          id="input-fat"
+          class="input-left-text"
+        />
       </div>
       <div>
         <label for="input-number-of-servings">Number of servings</label><br />
         <input
           type="number"
+          min="0"
+          step="0.1"
           id="input-number-of-servings"
           class="input-left-text"
         />
@@ -93,13 +113,27 @@
       <label for="input-time"
         >Time (in minutes)<span class="red-star">*</span></label
       ><br />
-      <input type="number" id="input-time" class="input-right-text" required />
+      <input
+        type="number"
+        min="0"
+        step="0.1"
+        id="input-time"
+        class="input-right-text"
+        required
+      />
     </div>
     <div>
       <label for="input-cost"
         >Cost (in USD)<span class="red-star">*</span></label
       ><br />
-      <input type="number" id="input-cost" class="input-right-text" required />
+      <input
+        type="number"
+        min="0"
+        step="0.01"
+        id="input-cost"
+        class="input-right-text"
+        required
+      />
     </div>
     <div>
       <label for="input-description"
