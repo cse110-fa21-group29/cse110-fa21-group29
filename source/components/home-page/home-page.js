@@ -39,19 +39,23 @@ class HomePage extends YummyRecipesComponent {
       this.shadowRoot.getElementById("recipe-card-grid-" + i).innerHTML = "";
     }
 
-    // Counters for recipe card populating
-    let highProteinCount = 0;
-    let healthyCount = 0;
-    let veganCount = 0;
-    let vegetarianCount = 0;
-    let glutenFreeCount = 0;
+    /**
+     * Counter array for each grid with each index being:
+     * 0: highProtein, 1: healthy, 2: vegan, 3: vegetarian, 4: glutenFree
+     */
+    const gridCount = [0, 0, 0, 0, 0];
 
-    // Create 20 recipe cards that are populated with data from recipe subset arrays
+    // Create 20 recipe cards for each category grid populated with database info
     for (let i = 0; i < recipes.length; i++) {
+      // If recipe does not exist at index, then skip to prevent page from breaking
+      if (recipes[i] == undefined) {
+        continue;
+      }
+
       // Check if grid 1 has less than 20 recipe cards and if current recipe is high protein
-      if (highProteinCount < 20 && recipes[i].categories.highProtein) {
+      if (gridCount[0] < 20 && recipes[i].categories.highProtein) {
         // Increment protein counter
-        highProteinCount++;
+        gridCount[0]++;
         // Add high protein recipe card to grid 1
         this.shadowRoot
           .getElementById("recipe-card-grid-1")
@@ -59,9 +63,9 @@ class HomePage extends YummyRecipesComponent {
       }
 
       // Check if grid 2 has less than 20 recipe cards and if current recipe is healthy
-      if (healthyCount < 20 && recipes[i].categories.healthy) {
+      if (gridCount[1] < 20 && recipes[i].categories.healthy) {
         // Increment healthy counter
-        healthyCount++;
+        gridCount[1]++;
         // Add high protein recipe card to grid 2
         this.shadowRoot
           .getElementById("recipe-card-grid-2")
@@ -69,9 +73,9 @@ class HomePage extends YummyRecipesComponent {
       }
 
       // Check if grid 3 has less than 20 recipe cards and if current recipe is vegan
-      if (veganCount < 20 && recipes[i].categories.vegan) {
+      if (gridCount[2] < 20 && recipes[i].categories.vegan) {
         // Increment vegan counter
-        veganCount++;
+        gridCount[2]++;
         // Add high protein recipe card to grid 3
         this.shadowRoot
           .getElementById("recipe-card-grid-3")
@@ -79,9 +83,9 @@ class HomePage extends YummyRecipesComponent {
       }
 
       // Check if grid 4 has less than 20 recipe cards and if current recipe is vegetarian
-      if (vegetarianCount < 20 && recipes[i].categories.vegetarian) {
+      if (gridCount[3] < 20 && recipes[i].categories.vegetarian) {
         // Increment vegetarian counter
-        vegetarianCount++;
+        gridCount[3]++;
         // Add high protein recipe card to grid 4
         this.shadowRoot
           .getElementById("recipe-card-grid-4")
@@ -89,13 +93,18 @@ class HomePage extends YummyRecipesComponent {
       }
 
       // Check if grid 5 has less than 20 recipe cards and if current recipe is gluten free
-      if (glutenFreeCount < 20 && recipes[i].categories.glutenFree) {
+      if (gridCount[4] < 20 && recipes[i].categories.glutenFree) {
         // Increment gluten free counter
-        glutenFreeCount++;
+        gridCount[4]++;
         // Add high protein recipe card to grid 5
         this.shadowRoot
           .getElementById("recipe-card-grid-5")
           .append(this.createRecipeCard(recipes[i], i));
+      }
+
+      // If every grid has been filled then break
+      if (gridCount.every((val) => val === 20)) {
+        break;
       }
     }
   }
