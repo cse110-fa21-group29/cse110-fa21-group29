@@ -29,6 +29,7 @@ main {
   cursor: pointer;
 }
 
+/* stylelint-disable selector-type-no-unknown */
 common-recipe-card {
   max-width: 200px;
 }
