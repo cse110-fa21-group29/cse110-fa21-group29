@@ -47,8 +47,74 @@ class RecipeSearch extends YummyRecipesComponent {
       });
   }
 
-  // put button actions here, for search and submit button, they both have submit action now, for clear button,
-  // it has a clear action, feel free to change them by change input type to button
+  /**
+   * Populates the query box and filters form based on URL parameters.
+   */
+  populateForm() {
+    const paramString = window.location.href.split("?")[1];
+    const searchParams = new URLSearchParams(paramString);
+
+    // Query
+    if (searchParams.has("query")) {
+      this.shadowRoot.getElementById("search-input").value =
+        searchParams.get("query");
+    }
+
+    // Gluten free
+    if (searchParams.get("glutenFree")) {
+      this.shadowRoot.getElementById("input-gluten-free").checked = true;
+    }
+
+    // Healthy
+    if (searchParams.get("healthy")) {
+      this.shadowRoot.getElementById("input-healthy").checked = true;
+    }
+
+    // High protein
+    if (searchParams.get("highProtein")) {
+      this.shadowRoot.getElementById("input-high-protein").checked = true;
+    }
+
+    // Vegan
+    if (searchParams.get("vegan")) {
+      this.shadowRoot.getElementById("input-vegan").checked = true;
+    }
+
+    // Vegetarian
+    if (searchParams.get("vegetarian")) {
+      this.shadowRoot.getElementById("input-vegetarian").checked = true;
+    }
+
+    // Cost min
+    if (searchParams.has("costmin")) {
+      this.shadowRoot.getElementById("input-cost-min").value =
+        searchParams.get("costmin");
+    }
+
+    // Cost max
+    if (searchParams.has("costmax")) {
+      this.shadowRoot.getElementById("input-cost-max").value =
+        searchParams.get("costmax");
+    }
+
+    // Sort cost
+    if (searchParams.has("sortcost")) {
+      if (searchParams.get("sortcost") === "desc") {
+        this.shadowRoot.getElementById("sort-cost-descending").checked = true;
+      } else if (searchParams.get("sortcost") === "asc") {
+        this.shadowRoot.getElementById("sort-cost-ascending").checked = true;
+      }
+    }
+
+    // Sort time
+    if (searchParams.has("sorttime")) {
+      if (searchParams.get("sorttime") === "desc") {
+        this.shadowRoot.getElementById("sort-time-descending").checked = true;
+      } else if (searchParams.get("sorttime") === "asc") {
+        this.shadowRoot.getElementById("sort-time-ascending").checked = true;
+      }
+    }
+  }
   clickFilter() {
     this.shadowRoot.getElementById("filter-form").style.display = "initial";
   }
