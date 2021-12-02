@@ -45,6 +45,7 @@ main {
   transform: translate(-50%, -50%);
   display: none;
   padding: 30px 80px;
+  z-index: 999;
 }
 
 #close-button {
