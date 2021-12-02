@@ -111,6 +111,12 @@ class RecipeContribute extends YummyRecipesComponent {
         const isFormValid = formElement.checkValidity();
         formElement.reportValidity();
 
+        // If video is invalid then alert user and do not continue
+        if (!this.checkVideoValidity()) {
+          alert("Video link is not valid");
+          return;
+        }
+
         // Add recipe if form is valid
         if (isFormValid) {
           this.saveRecipe(recipe, true);
@@ -219,6 +225,12 @@ class RecipeContribute extends YummyRecipesComponent {
         const isFormValid = formElement.checkValidity();
         formElement.reportValidity();
 
+        // If video is invalid then alert user and do not continue
+        if (!this.checkVideoValidity()) {
+          alert("Video link is not valid");
+          return;
+        }
+
         // Update recipe if form is valid
         if (isFormValid) {
           this.saveRecipe(recipe, false);
@@ -292,8 +304,9 @@ class RecipeContribute extends YummyRecipesComponent {
     ).value;
     recipe.metadata.author =
       this.shadowRoot.querySelector("#input-author").value;
-    recipe.metadata.video =
-      this.shadowRoot.querySelector("#input-video-url").value;
+    recipe.metadata.video = this.getVideoEmbedURL(
+      this.shadowRoot.querySelector("#input-video-url").value
+    );
     recipe.info.readyInMinutes =
       this.shadowRoot.querySelector("#input-time").value;
     recipe.info.pricePerServings =
@@ -376,6 +389,45 @@ class RecipeContribute extends YummyRecipesComponent {
       });
 
       document.dispatchEvent(routerEvent);
+    }
+  }
+
+  /**
+   * Checks if YouTube video link in form is a valid link or empty string.
+   * Regex from https://stackoverflow.com/a/9102270.
+   *
+   * @returns {boolean} True if valid video link or empty string, false otherwise.
+   */
+  checkVideoValidity() {
+    const url = this.shadowRoot.getElementById("input-video-url").value;
+    if (url == "") {
+      return true;
+    }
+    const regExp =
+      /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    const match = url.match(regExp);
+    if (match && match[2].length == 11) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  /**
+   * Converts a valid YouTube video link into a valid embed link.
+   * Regex from https://stackoverflow.com/a/9102270.
+   *
+   * @param {string} url - A string that represents a YouTube video link.
+   * @returns {string} Returns YouTube embed link or empty string if not a valid video URL.
+   */
+  getVideoEmbedURL(url) {
+    const regExp =
+      /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    const match = url.match(regExp);
+    if (match && match[2].length == 11) {
+      return "https://www.youtube.com/embed/" + match[2];
+    } else {
+      return "";
     }
   }
 }
