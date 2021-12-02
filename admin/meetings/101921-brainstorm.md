@@ -1,54 +1,41 @@
-# Team Meeting Minutes #
+# Team Meeting Minutes
+Team Name/Number: Red Pandas/29  
+Date: October 19, 2021  
+Time: 1:30pm  
+Location: Zoom  
 
-<br>
+## Attendance
 
-Team Name/Number: Red Pandas/29 <br>
-Date: October 19, 2021<br>
-Time: 1:30pm<br>
-Location: Zoom<br>
+### Present
+- Tri
+- Edbert
+- Avery
+- Baha
+- Enzo
+- Fangcheng
+- Haonan
+- Jeffrey
+- Jiayi
+- Justin
 
-<br>
+### Absent
+- Zhuoran
 
-## Attendance ##
+## Purpose Of Meeting
 
-- ### Present ###
-  - Tri
-  - Edbert
-  - Baha
-  - Enzo
-  - Jiayi
-  - Justin
-  - Haonan
-  - Fangcheng
-  - Avery
-  - Jeffrey
+To complete the brainstorming activity.
 
-- ### Abesent ###
-  - Zhouran
-
-<br>
-
-## Purpose Of Meeting ##
-
-To complete the brainstorming activity. 
-
-<br>
-
-## Decisions Made ##
-
+## Decisions Made
 N/A
 
-<br>
-
-## Agenda and Meeting Notes ##
-
+## Agenda and Meeting Notes
 - Features
   - Add/remove/edit recipes
   - Add pictures to recipes
   - Built in timer
   - Categories tied to the recipe
   - Cost of meals
-  - Handsfree recipe mode
+  - Hands-free recipe mode
   - Homepage showing recipes
   - Review System
     - Comments
@@ -60,9 +47,6 @@ N/A
   - User login system or aggregator?
     - Saving recipes
   - Video for each recipe
-
-<br>
-
 - Target Market: 
   - College Students?
     - Affordable meals
@@ -73,30 +57,18 @@ N/A
     - Healthy, high protein meals
   - Office workers?
     - Tired after work, straight forward, simple recipes
-
-<br>
-
 - Theme: 
   - Light theme
   - Simple at glance
-
-<br>
-
 - Our Inspiration
   - AllRecipes
   - Tasty
-
-<br>
-
 - Our Competition
   - RecipeBox
   - Epicurious
-
-<br>
-
 - User expectations:
   - Straight to the point 
   - No recipe backstories
   - Easy to use/follow along
   - Variety of foods/culture
-  - Not Laggy
+  - Not laggy

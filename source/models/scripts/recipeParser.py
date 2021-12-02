@@ -15,6 +15,11 @@ def parse_recipes():
             jsonObject = json.load(jsonFile)
 
             for recipe in jsonObject:
+                
+                # if there are more than 2 steps, do not include the recipe
+                if len(recipe['analyzedInstructions']) >= 2:
+                    print(recipe['id'])
+                    continue
 
                 # create recipe json
                 currentRecipe = {}
@@ -26,7 +31,7 @@ def parse_recipes():
                 currentRecipe['nutrients'] = {}
                 currentRecipe['description'] = ''
                 currentRecipe['ingredients'] = []
-                currentRecipe['steps'] = ''
+                currentRecipe['steps'] = []
                 
                 # add the spoonacularSourceURL
                 currentRecipe['spoonacularSourceUrl'] = recipe['spoonacularSourceUrl']
@@ -120,14 +125,17 @@ def parse_recipes():
                 # no instructions given by the recipe, do not add recipe
                 if len(instructions) == 0: continue
 
-                currentRecipe['steps'] = recipe['instructions']
+                # parse analyzed instructions into a list
+                instructions = instructions[0]['steps']
+                for step in instructions:
+                    currentRecipe['steps'].append(step['step'])
 
                 # add current recipe to the list
                 recipes.append(currentRecipe)
 
     # writes the json file as one line, not sure why but to format it I copied the one liner and pasted
     # it into a json linter online and then pasted back into the file
-    with open("{}parsedRecipes.json".format(source_dir), 'w') as f:
+    with open("{}newParsedRecipes.json".format(source_dir), 'w') as f:
         json.dump(recipes, f)
 
 
@@ -174,7 +182,7 @@ def category_healthy():
         json.dump(jsonObject, f)
 
 def main():
-    category_healthy()
+    parse_recipes()
 
 if __name__ == "__main__":
     main()
