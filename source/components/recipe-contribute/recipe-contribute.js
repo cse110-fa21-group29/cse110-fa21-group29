@@ -58,6 +58,35 @@ class RecipeContribute extends YummyRecipesComponent {
           }
         }
       });
+
+    /**
+     * Video field handler to check if link is valid YouTube video or field
+     * is empty. Regex from https://stackoverflow.com/a/9102270.
+     */
+    const videoUrlInput = this.shadowRoot.getElementById("input-video-url");
+
+    videoUrlInput.addEventListener("input", () => {
+      // Get form value
+      const url = videoUrlInput.value;
+
+      // If video field is blank then allow it and return
+      if (url == "") {
+        videoUrlInput.setCustomValidity("");
+        return;
+      }
+
+      // Get regex
+      const regExp =
+        /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+      const match = url.match(regExp);
+
+      // If regex worked and video ID is 11 characters then link is valid
+      if (match && match[2].length === 11) {
+        videoUrlInput.setCustomValidity("");
+      } else {
+        videoUrlInput.setCustomValidity("Video link is not valid.");
+      }
+    });
   }
 
   /**
@@ -73,6 +102,7 @@ class RecipeContribute extends YummyRecipesComponent {
         title: "",
         author: "",
         image: "static/common/demorecipe.jpg",
+        video: "",
       },
       info: {
         readyInMinutes: 0,
@@ -103,8 +133,37 @@ class RecipeContribute extends YummyRecipesComponent {
     this.shadowRoot
       .querySelector("#submit-button")
       .addEventListener("click", (event) => {
-        this.saveRecipe(recipe, true);
         event.preventDefault();
+
+        // Display form validation
+        const formElement = this.shadowRoot.querySelector("#contribute-form");
+        const isFormValid = formElement.checkValidity();
+        formElement.reportValidity();
+
+        // Add recipe if form is valid
+        if (isFormValid) {
+          this.saveRecipe(recipe, true);
+        }
+      });
+
+    // Add cancel button functionality
+    this.shadowRoot
+      .querySelector("#cancel-button")
+      .addEventListener("click", (event) => {
+        event.preventDefault();
+        if (confirm("Are you sure you want to cancel?")) {
+          // Route to home page
+          const routerEvent = new CustomEvent("router-navigate", {
+            detail: {
+              route: "home-page",
+              params: [],
+            },
+            bubbles: true,
+            composed: true,
+          });
+
+          document.dispatchEvent(routerEvent);
+        }
       });
   }
 
@@ -150,6 +209,10 @@ class RecipeContribute extends YummyRecipesComponent {
       recipe.metadata.title;
     this.shadowRoot.querySelector("#input-author").value =
       recipe.metadata.author;
+    if (recipe.metadata.video != undefined) {
+      this.shadowRoot.querySelector("#input-video-url").value =
+        recipe.metadata.video;
+    }
     this.shadowRoot.querySelector("#input-time").value =
       recipe.info.readyInMinutes;
     this.shadowRoot.querySelector("#input-cost").value =
@@ -178,8 +241,37 @@ class RecipeContribute extends YummyRecipesComponent {
     this.shadowRoot
       .querySelector("#submit-button")
       .addEventListener("click", (event) => {
-        this.saveRecipe(recipe, false);
         event.preventDefault();
+
+        // Display form validation
+        const formElement = this.shadowRoot.querySelector("#contribute-form");
+        const isFormValid = formElement.checkValidity();
+        formElement.reportValidity();
+
+        // Update recipe if form is valid
+        if (isFormValid) {
+          this.saveRecipe(recipe, false);
+        }
+      });
+
+    // Add cancel button functionality
+    this.shadowRoot
+      .querySelector("#cancel-button")
+      .addEventListener("click", (event) => {
+        event.preventDefault();
+        if (confirm("Are you sure you want to cancel?")) {
+          // Route to recipe details page
+          const routerEvent = new CustomEvent("router-navigate", {
+            detail: {
+              route: "recipe-details",
+              params: [this.routeParams[0]],
+            },
+            bubbles: true,
+            composed: true,
+          });
+
+          document.dispatchEvent(routerEvent);
+        }
       });
   }
 
@@ -229,6 +321,9 @@ class RecipeContribute extends YummyRecipesComponent {
     ).value;
     recipe.metadata.author =
       this.shadowRoot.querySelector("#input-author").value;
+    recipe.metadata.video = this.getVideoEmbedURL(
+      this.shadowRoot.querySelector("#input-video-url").value
+    );
     recipe.info.readyInMinutes =
       this.shadowRoot.querySelector("#input-time").value;
     recipe.info.pricePerServings =
@@ -311,6 +406,24 @@ class RecipeContribute extends YummyRecipesComponent {
       });
 
       document.dispatchEvent(routerEvent);
+    }
+  }
+
+  /**
+   * Converts a valid YouTube video link into a valid embed link.
+   * Regex from https://stackoverflow.com/a/9102270.
+   *
+   * @param {string} url - A string that represents a YouTube video link.
+   * @returns {string} Returns YouTube embed link or empty string if not a valid video URL.
+   */
+  getVideoEmbedURL(url) {
+    const regExp =
+      /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    const match = url.match(regExp);
+    if (match && match[2].length === 11) {
+      return "https://www.youtube.com/embed/" + match[2];
+    } else {
+      return "";
     }
   }
 }

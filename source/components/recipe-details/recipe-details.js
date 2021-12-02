@@ -119,6 +119,13 @@ class RecipeDetails extends YummyRecipesComponent {
         }
       });
 
+    // Display recipe video if the recipe has a link
+    if (recipe.metadata.video != undefined && recipe.metadata.video != "") {
+      this.shadowRoot.getElementById("recipe-video").style.display = "block";
+      this.shadowRoot.getElementById("recipe-video").src =
+        recipe.metadata.video;
+    }
+
     // This is the first row of the page, including the image and the author box
     this.shadowRoot.querySelector(".recipe-image").src = recipe.metadata.image;
     this.shadowRoot.querySelector(".recipe-image").alt = recipe.metadata.title;
