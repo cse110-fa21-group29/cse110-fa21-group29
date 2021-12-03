@@ -25,6 +25,7 @@ class MealPlanner extends YummyRecipesComponent {
    * Asks for user input of recipe link and checks if valid. If valid, create
    * recipe card and append to meal card.
    *
+   * @async
    * @param {Object} mealCard - Meal card in planner to append to.
    */
   async createRecipeCard(mealCard) {
