@@ -45,7 +45,7 @@ class MealPlanner extends YummyRecipesComponent {
 
     // Split input and grab last split
     const url = prompt.split("/");
-    const index = parseInt(url[url.length - 1]);
+    const index = parseInt(url[url.length - 1], 10);
 
     // Object to hold recipe if found
     let recipe = {};
