@@ -1,5 +1,4 @@
-# Team Meeting Minutes #
-
+# Team Meeting Minutes
 Team Name/Number: Red Pandas/29  
 Date: October 22, 2021  
 Time: 1:30pm  
@@ -23,15 +22,12 @@ Location: Zoom
 - Tri
 
 ## Purpose Of Meeting
-
 To expand on the ideas discussed in the previous brainstorm meeting.  
 
 ## Decisions Made
-
 The main purpose of the meeting was to revise the target audience of the app. The decision was made that the app be focused on fitness and health enthusiasts to have a more focused scope on the project.
 
 ## Agenda and Meeting Notes
-
 Since the target audience is more specific, we needed to expand upon the target market section. Several rough drafts of personas were created and previous ones were given more depth.
 - College students (more depth added)
 - Stay-at-home mom (more depth added)

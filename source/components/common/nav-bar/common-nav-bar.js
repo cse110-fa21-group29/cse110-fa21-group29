@@ -1,26 +1,41 @@
-class CommonNavBar extends HTMLElement {
+import { YummyRecipesComponent } from "/components/core/yummy-recipes-component.js";
+
+class CommonNavBar extends YummyRecipesComponent {
   constructor() {
     super();
-    this.attachShadow({ mode: "open" });
+    this.htmlPath = "components/common/nav-bar/common-nav-bar.html";
   }
 
-  set params(params) {
-    this.routeParams = params;
-  }
-  set route(route) {
-    this.routeName = route;
-  }
+  /**
+   * Initializes the nav bar component.
+   */
+  setupElement() {
+    this.shadowRoot
+      .getElementById("search-button")
+      .addEventListener("click", (event) => {
+        event.preventDefault();
 
-  async connectedCallback() {
-    let elementContent = await fetch(
-      "components/common/nav-bar/common-nav-bar.html"
-    );
-    let elementContentText = await elementContent.text();
-    this.shadowRoot.innerHTML = elementContentText;
-    this.setupElement();
-  }
+        // Route to search page
+        const routerEvent = new CustomEvent("router-navigate", {
+          detail: {
+            route: "recipe-search",
+            params: [],
+            searchParams: {
+              query: this.shadowRoot.getElementById("search-input").value,
+              glutenFree: true,
+              healthy: true,
+              highProtein: true,
+              vegan: true,
+              vegetarian: true,
+            },
+          },
+          bubbles: true,
+          composed: true,
+        });
 
-  setupElement() {}
+        document.dispatchEvent(routerEvent);
+      });
+  }
 }
 
 customElements.define("common-nav-bar", CommonNavBar);

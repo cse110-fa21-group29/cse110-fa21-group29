@@ -1,47 +1,33 @@
-# Team Meeting Minutes #
+# Team Meeting Minutes
+Team Name/Number: Red Pandas/29  
+Date: October 27, 2021  
+Time: 2:00pm  
+Location: Zoom  
 
-<br>
+## Attendance
 
-Team Name/Number: Red Pandas/29 <br>
-Date: October 27, 2021<br>
-Time: 2:00pm<br>
-Location: Zoom<br>
+### Present
+- Tri
+- Edbert
+- Avery
+- Baha
+- Enzo
+- Haonan
+- Justin
+- Viki
 
-<br>
-
-## Attendance ##
-
-- ### Present ###
-  - Tri
-  - Edbert
-  - Avery
-  - Baha
-  - Haonan
-  - Viki
-  - Justin
-  - Enzo
-
-- ### Abesent ###
-
-<br>
-
-## Purpose Of Meeting ##
-
-Discussing the design of the interface.
-
-<br>
-
-## Decisions Made ##
-
+### Absent
 N/A
 
-<br>
+## Purpose Of Meeting
+Discussing the design of the interface.
 
-## Agenda and Meeting Notes ##
+## Decisions Made ##
+N/A
 
+## Agenda and Meeting Notes
 - Home Page:
   - Recipe section will be like a slideshow
-
 - User:
   - Buttons on left could lead to
     - Meal Page

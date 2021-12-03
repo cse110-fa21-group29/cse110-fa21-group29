@@ -1,4 +1,4 @@
-# {short title of solved problem and solution}
+# {Recipe JSON Structure}
 
 * Status: {accepted} 
 * Deciders: {Baha, Jeffrey} 

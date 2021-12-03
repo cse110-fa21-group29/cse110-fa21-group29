@@ -1,10 +1,12 @@
-# Team Meeting Minutes #
-Team Name/Number: Red Pands/29<br>
-Date: November 19, 2021<br>
-Time: 3:25pm<br> 
+# Team Meeting Minutes
+Team Name/Number: Red Pandas/29  
+Date: November 19, 2021  
+Time: 3:25pm  
 Location: Zoom
 
-Present:
+## Attendance
+
+### Present
 - Tri 
 - Edbert
 - Avery
@@ -16,25 +18,22 @@ Present:
 - Justin
 - Viki
 
-Absent: 
+### Absent 
 - Zhuoran
 
-<br>
-
-# Purpose of Meeting #
+## Purpose of Meeting
 Completing the Retrospective Assignment
-<br>
 
-# Decisions Made #
+## Decisions Made
+N/A
 
-<br>
+## Agenda and Meeting Notes
 
-# Agenda and Meeting Notes #
-- Scrum Values
-![scrumValues](scrumValues.png)
+### Scrum Values
+![111921-retro-scrumvalues](../screenshots/111921-retro-scrumvalues.png)
 
-- Mad, Sad, Glad
-![retrospectiveFormat](retroFormat.png)
+### Mad, Sad, Glad
+![111921-retro-format](../screenshots/111921-retro-format.png)
 
-- Action Plan
-![actionPlan](actionPlan.png)
+### Action Plan
+![111921-sprint-2-actionplan](../screenshots/111921-sprint-2-actionplan.png)

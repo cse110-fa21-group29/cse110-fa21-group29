@@ -1,60 +1,42 @@
-# Team Meeting Minutes #
+# Team Meeting Minutes
+Team Name/Number: Red Pandas/29  
+Date: October 26, 2021  
+Time: 1:30pm  
+Location: Zoom  
 
-<br>
+## Attendance
 
-Team Name/Number: Red Pandas/29 <br>
-Date: October 26, 2021<br>
-Time: 1:30pm<br>
-Location: Zoom<br>
+### Present
+- Tri
+- Edbert
+- Avery
+- Baha
+- Fangcheng
+- Haonan
+- Jeffrey
+- Jiayi
+- Justin
+- Zhuoran
 
-<br>
+### Absent
+Everyone was in attendance.
 
-## Attendance ##
-
-- ### Present ###
-  - Tri
-  - Edbert
-  - Jeffrey
-  - Avery
-  - Baha
-  - Fangcheng
-  - Haonan
-  - Jiayi
-  - Justin
-  - Zhuoran
-
-- ### Abesent ###
-  - Enzo
-
-<br>
-
-## Purpose Of Meeting ##
-
+## Purpose Of Meeting
 To finalize the brainstorm ideas, and discuss the assignments given to each group.
 
-<br>
-
-## Decisions Made ##
-
+## Decisions Made
 N/A
 
-<br>
-
-## Agenda and Meeting Notes ##
-
+## Agenda and Meeting Notes
 - New Ideas Brought Up
   - Narrow down on focus
     - As in dinner, lunch, breakfast
       - Could go with the meal planner feature
     - demographics/ethnic groups
   - Move fitness features to core features
-  
-<br>
-
 - Role Assignments
   - Designer: User Centered Thinking Documents and Interface Design Documents
   - Developers: System Diagrams
   - Planners: Overarching Decisions and Project Roadmap
   - More details on these assignments on Canvas Brainstorming Activity.
   - Possibly assign testers to other groups that need help.
-

@@ -1,269 +1,133 @@
 .recipe {
   max-width: 1024px;
-  margin: auto;
+  margin: 5vh auto;
   width: 80vw;
 }
+
 .first-row {
   display: flex;
 }
+
 .recipe-image {
   object-fit: cover;
   width: 40%;
-  height: 350px;
-  margin-left: 1%;
-  margin-top: 5%;
   border-radius: 10%;
 }
 
 .title-author-box {
   width: 60%;
   height: 350px;
-  margin-left: 1%;
-  margin-top: 5%;
-  border: 0.1em solid grey;
+  margin-left: 30px;
+  position: relative;
+  border: 1px solid grey;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  padding: 30px;
 }
 
 .dish-name {
-  font-family: Ubuntu;
   font-size: 350%;
-  margin-left: 3%;
-  margin-top: 5%;
   line-height: 1em;
 }
 
 .author-name {
-  font-family: Ubuntu;
   font-size: 150%;
-  margin-left: 3%;
-  margin-top: 23%;
 }
 
-.author-date {
-  font-family: Ubuntu;
-  font-size: 150%;
-  margin-left: 3%;
+#first-row-bottom {
+  position: absolute;
+  bottom: 30px;
 }
 
-.recipe-url {
-  font-family: Ubuntu;
-  font-size: 150%;
-  margin-left: 3%;
-}
-
-.description-box {
-  width: 98.5%;
-  height: 75%;
-  margin-top: 3%;
-  margin-left: 1%;
-  border: 0.1em solid grey;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-.description-title {
-  text-decoration: underline;
-  font-family: Ubuntu;
-  font-size: 200%;
-  margin-left: 2vw;
-  margin-top: 2vh;
-}
-
-.description {
-  font-family: Ubuntu;
-  font-size: 140%;
-  margin-left: 3%;
-  margin-top: 2%;
-  overflow: hidden;
-  margin-bottom: 3%;
-}
-
-.info-category-nutrient-box {
+.info-nutrient-box {
   display: flex;
-}
-.info-category-box {
-  display: flex;
-  flex-flow: row wrap;
-  width: 70%;
-  margin-left: 1%;
 }
 
 .info-box {
-  width: 130%;
-  margin-top: 5%;
-  border: 1px solid grey;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-.category-box {
-  width: 130%;
-  margin-top: 5%;
-  border: 1px solid grey;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  width: 50%;
 }
 
 .nutrient-box {
-  width: 40%;
-  margin-top: 3%;
-  margin-left: 1%;
-  border: 1px solid grey;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-.info-title {
-  text-decoration: underline;
-  font-family: Ubuntu;
-  font-size: 180%;
-  margin-top: 3%;
-  margin-left: 2%;
-}
-
-.info-list {
-  font-family: Ubuntu;
-  font-size: 140%;
-  margin-top: 3%;
-  margin-left: 1%;
-}
-
-.category-title {
-  text-decoration: underline;
-  font-family: Ubuntu;
-  font-size: 180%;
-  margin-top: 3%;
-  margin-left: 2%;
+  width: 50%;
+  margin-left: 30px;
 }
 
 .category-list {
   display: flex;
-  gap: 5%;
-  margin-left: 5%;
-  font-family: Ubuntu;
-  font-size: 140%;
 }
 
-.nutrient-title {
-  text-decoration: underline;
-  font-family: Ubuntu;
-  font-size: 180%;
-  margin-top: 3%;
-  margin-left: 2%;
+#timer {
+  height: 300px;
+  display: none;
 }
 
-.nutrient-list {
-  text-align: left;
-  font-family: Ubuntu;
-  font-size: 140%;
-  margin-top: 3%;
-  margin-left: 1%;
+#timer-display {
+  font-size: 200px;
 }
 
-.ingredients-box {
-  width: 98.5%;
-  margin-top: 3%;
-  margin-left: 1%;
-  border: 1px solid grey;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-.ingredients-title {
-  text-align: center;
-  text-decoration: underline;
-  font-family: Ubuntu;
-  font-size: 240%;
-  margin-top: 3%;
-}
-
-.ingredients-list {
-  font-family: Ubuntu;
-  font-size: 140%;
-}
-
-li {
-  margin: 3% 0;
-}
-
-.direction-box {
-  width: 98.5%;
-  margin-top: 3%;
-  margin-left: 1%;
-  border: 1px solid grey;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-.direction-title {
-  text-align: center;
-  text-decoration: underline;
-  font-family: Ubuntu;
-  font-size: 200%;
-  margin-top: 3%;
-}
-
-.direction-list {
-  font-family: Ubuntu;
-  font-size: 140%;
-  margin-left: 2%;
-}
-
-.comment-box {
-  width: 98.5%;
-  margin-top: 3%;
-  margin-left: 1%;
-  border: 1px solid grey;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  flex-flow: row wrap;
-  font-family: Ubuntu;
-  font-size: 140%;
-}
-
-.comment-box-input {
-  display: flex;
-  margin-top: 1%;
-  margin-left: 1%;
-  margin-right: 1%;
-  border: 1px solid grey;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-textarea {
-  margin-top: 1%;
-  margin-left: 1%;
-  margin-right: 1%;
-  margin-bottom: 1%;
-  border: 1px solid grey;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  padding: 1%;
-}
-
-.submit-box {
+#timer-button-grid {
   margin: auto;
 }
 
-button {
-  border: 1px solid grey;
-  padding: 15px 32px;
-  text-align: center;
-  font-family: Ubuntu;
-  font-size: 80%;
-  background-color: white;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+.timer-control-button {
+  padding: 10px;
+  width: 100px;
   cursor: pointer;
 }
 
-.comment-box-reply-container {
-  margin-top: 1%;
-  margin-left: 1%;
-  margin-right: 1%;
-  margin-bottom: 1%;
-  border: 1px solid grey;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  padding-bottom: 1%;
+#reset-button {
+  margin-top: 30px;
 }
 
-.comment-box-reply {
-  height: 10vh;
-  margin-top: 1%;
-  margin-left: 1%;
-  margin-right: 1%;
+#vegan {
+  color: rgb(90, 240, 232);
+}
+#vegetarian {
+  color: rgb(131, 224, 24);
+}
+#gluten-free {
+  color: #b78727;
+}
+#high-protein {
+  color: violet;
+}
+#healthy {
+  color: lightblue;
+}
+
+.detail-box {
   border: 1px solid grey;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  padding: 1%;
+  padding: 30px;
+  margin-top: 30px;
+}
+
+.detail-box-title {
+  text-decoration: underline;
+  font-size: 30px;
+}
+
+.detail-box-content {
+  font-size: 20px;
+}
+
+.ingredients-box li,
+.info-box li,
+.nutrient-box li {
+  margin: 10px 0;
+}
+
+.category-box li {
+  margin-right: 40px;
+}
+
+.first-row-button {
+  cursor: pointer;
+  padding: 10px;
+  font-size: 20px;
+  margin: 5px 10px 0 0;
+}
+
+/* Do not change display: none */
+#recipe-video {
+  display: none;
 }

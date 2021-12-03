@@ -1,5 +1,5 @@
 if (typeof module !== "undefined" && module.exports) {
-  module.exports = { getRoutefromUrl };
+  module.exports = { getUrlFromRoute, getRoutefromUrl, getParamsFromUrl };
 }
 
 /** Router module.
@@ -66,6 +66,7 @@ function routerSetup() {
    * @param {Object} event - The event object
    * @param {string} event.detail.route - The route to navigate to (i.e. "home-page").
    * @param {number[]} event.detail.params - The parameters for the route (i.e. [123]).
+   * @param {Object} event.state.searchParams - The search parameters for the route (i.e. {query: "chicken"}).
    * @param {boolean} event.detail.preventStatePush - Whether to push this entry to the browser's history log.
    * @listens router-navigate
    */
@@ -74,12 +75,17 @@ function routerSetup() {
 
     // If we are pushing this route to the history state
     // AND we aren't already on the page, push the history state
-    const url = getUrlFromRoute(event.detail.route, event.detail.params);
+    const url = getUrlFromRoute(
+      event.detail.route,
+      event.detail.params,
+      event.detail.searchParams
+    );
     if (!event.detail.preventStatePush && window.location.hash !== url) {
       history.pushState(
         {
           route: event.detail.route,
           params: event.detail.params,
+          searchParams: event.detail.searchParams,
         },
         event.detail.route,
         url
@@ -96,6 +102,7 @@ function routerSetup() {
    * @param {Object} event - The event object
    * @param {string} event.state.route - The route to navigate to (i.e. "home-page").
    * @param {number[]} event.state.params - The parameters for the route (i.e. [123]).
+   * @param {Object} event.state.searchParams - The search parameters for the route (i.e. {query: "chicken"}).
    * @listens popstate
    */
   window.addEventListener("popstate", (event) => {
@@ -180,9 +187,10 @@ function navigateFromUrl(url) {
  * Generates correct url for a particular route
  * @param {string} route - The route (i.e. "home-page").
  * @param {number[]} params - The parameters for the route (i.e. [123]).
+ * @param {Object} searchParams - The search parameters for the route (i.e. {query: "chicken"}).
  * @returns {string} The URL for that particular route/params.
  */
-function getUrlFromRoute(route, params) {
+function getUrlFromRoute(route, params, searchParams) {
   // Replace all "_" in route's pattern with provided params
   const urlPattern = routePatterns[route].url;
 
@@ -194,8 +202,15 @@ function getUrlFromRoute(route, params) {
       splitUrl[i] = params[currentParam];
     }
   }
+  let finalUrl = splitUrl.join("/");
 
-  return splitUrl.join("/");
+  // If searchParams is defined, add GET parameters to end of URL
+  if (searchParams !== undefined && Object.keys(searchParams).length > 0) {
+    const searchParamsObj = new URLSearchParams(searchParams);
+    finalUrl += `?${searchParamsObj.toString()}`;
+  }
+
+  return finalUrl;
 }
 
 /**
@@ -210,8 +225,15 @@ function getRoutefromUrl(url) {
     return "home-page";
   }
 
+  // Remove all GET parameters from URL
+  let baseUrl = url;
+  const getParamsStart = url.indexOf("?");
+  if (getParamsStart !== -1) {
+    baseUrl = url.slice(0, getParamsStart);
+  }
+
   // Replace all numbers in URL with "_"
-  let splitUrl = url.split("/");
+  let splitUrl = baseUrl.split("/");
   for (let i = 0; i < splitUrl.length; i++) {
     const urlSection = splitUrl[i];
     if (!isNaN(parseInt(urlSection))) {
@@ -235,12 +257,21 @@ function getRoutefromUrl(url) {
  * @returns {number[]} Params from the URL.
  */
 function getParamsFromUrl(url) {
+  // If home page, return no params immediately
   if (url.length === 0) {
     return [];
   }
 
+  // Remove all GET parameters from URL
+  let baseUrl = url;
+  const getParamsStart = url.indexOf("?");
+  if (getParamsStart !== -1) {
+    baseUrl = url.slice(0, getParamsStart);
+  }
+
+  // Push all integer sections of URL into params array
   let params = [];
-  let splitUrl = url.split("/");
+  let splitUrl = baseUrl.split("/");
   for (let i = 0; i < splitUrl.length; i++) {
     const urlSection = splitUrl[i];
     if (!isNaN(parseInt(urlSection))) {

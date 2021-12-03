@@ -1,9 +1,6 @@
 main {
   text-align: center;
 }
-/* * {
-  border: solid 1px;
-} */
 
 #introduction-grid {
   height: 1000px;
@@ -66,6 +63,7 @@ main {
   padding-bottom: 20px;
 }
 .member-img {
+  object-fit: cover;
   margin: 20px 0px;
   height: 266px;
   width: 100%;

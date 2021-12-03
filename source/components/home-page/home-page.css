@@ -48,54 +48,34 @@
 }
 #home-header {
   background-image: url(../../static/home-page/headerimg.jpg);
-  height: 40%;
+  height: 40vh;
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100%;
   text-align: center;
   max-height: 50vw;
-}
-
-#title {
-  position: relative;
-  top: 40%;
   color: rgb(253, 226, 204);
   text-shadow: 2px 2px black;
   font-size: 3vw;
+  line-height: 40vh;
 }
-
-/* #star-text {
-  width: 40px;
-  position: absolute;
-  left: 90px;
-  top: 360px;
-} */
 
 .arrow-button-left,
 .arrow-button-right {
   font-size: 5vw;
 }
 
-/* #star {
-  font-size: 200px;
-  position: absolute;
-  left: 20px;
-  top: 300px;
-  color: rgb(219, 175, 54);
-} */
-
-/* about us */
 #about-us {
   text-align: center;
   background-color: fff1f1;
   padding: 30px;
+  margin-top: 100px;
 }
 #about-us-title {
   font-size: 40px;
 }
 
 #about-us-img {
-  /* margin: 20px; */
   height: 200px;
   width: 200px;
   padding: 30px;

@@ -1,31 +1,11 @@
-import { Database } from "../../core/database/database.js";
+import { Database } from "/core/database/database.js";
+import { YummyRecipesComponent } from "/components/core/yummy-recipes-component.js";
 
 /** Class that provides functionality to the homepage. */
-class HomePage extends HTMLElement {
+class HomePage extends YummyRecipesComponent {
   constructor() {
     super();
-    this.attachShadow({ mode: "open" });
-  }
-
-  set params(params) {
-    this.routeParams = params;
-  }
-
-  set route(route) {
-    this.routeName = route;
-  }
-
-  /**
-   * Fires when this component is inserted into the DOM.
-   *
-   * @async
-   */
-  async connectedCallback() {
-    const elementContent = await fetch("components/home-page/home-page.html");
-    const elementContentText = await elementContent.text();
-
-    this.shadowRoot.innerHTML = elementContentText;
-    this.setupElement();
+    this.htmlPath = "components/home-page/home-page.html";
   }
 
   /**
@@ -54,159 +34,78 @@ class HomePage extends HTMLElement {
     const database = new Database();
     const recipes = await database.getRecipes();
 
-    // Arrays to store recipe subsets and their index in database
-    const highProtein = [];
-    const highProteinIndex = [];
-    const healthy = [];
-    const healthyIndex = [];
-    const vegan = [];
-    const veganIndex = [];
-    const vegetarian = [];
-    const vegetarianIndex = [];
-    const glutenFree = [];
-    const glutenFreeIndex = [];
+    // Clear out recipe card grids before we append new cards
+    for (let i = 1; i < 6; i++) {
+      this.shadowRoot.getElementById("recipe-card-grid-" + i).innerHTML = "";
+    }
 
-    // Loop through recipe data and push to subset arrays
+    /**
+     * Counter array for each grid with each index being:
+     * 0: highProtein, 1: healthy, 2: vegan, 3: vegetarian, 4: glutenFree
+     */
+    const gridCount = [0, 0, 0, 0, 0];
+
+    // Create 20 recipe cards for each category grid populated with database info
     for (let i = 0; i < recipes.length; i++) {
-      if (recipes[i] == null) {
+      // If recipe does not exist at index, then skip to prevent page from breaking
+      if (recipes[i] == undefined) {
         continue;
       }
-      if (recipes[i].categories.highProtein) {
-        highProtein.push(recipes[i]);
-        highProteinIndex.push(i);
+
+      // Check if grid 1 has less than 20 recipe cards and if current recipe is high protein
+      if (gridCount[0] < 20 && recipes[i].categories.highProtein) {
+        // Increment protein counter
+        gridCount[0]++;
+        // Add high protein recipe card to grid 1
+        this.shadowRoot
+          .getElementById("recipe-card-grid-1")
+          .append(this.createRecipeCard(recipes[i], i));
       }
-      if (recipes[i].categories.healthy) {
-        healthy.push(recipes[i]);
-        healthyIndex.push(i);
+
+      // Check if grid 2 has less than 20 recipe cards and if current recipe is healthy
+      if (gridCount[1] < 20 && recipes[i].categories.healthy) {
+        // Increment healthy counter
+        gridCount[1]++;
+        // Add high protein recipe card to grid 2
+        this.shadowRoot
+          .getElementById("recipe-card-grid-2")
+          .append(this.createRecipeCard(recipes[i], i));
       }
-      if (recipes[i].categories.vegan) {
-        vegan.push(recipes[i]);
-        veganIndex.push(i);
+
+      // Check if grid 3 has less than 20 recipe cards and if current recipe is vegan
+      if (gridCount[2] < 20 && recipes[i].categories.vegan) {
+        // Increment vegan counter
+        gridCount[2]++;
+        // Add high protein recipe card to grid 3
+        this.shadowRoot
+          .getElementById("recipe-card-grid-3")
+          .append(this.createRecipeCard(recipes[i], i));
       }
-      if (recipes[i].categories.vegetarian) {
-        vegetarian.push(recipes[i]);
-        vegetarianIndex.push(i);
+
+      // Check if grid 4 has less than 20 recipe cards and if current recipe is vegetarian
+      if (gridCount[3] < 20 && recipes[i].categories.vegetarian) {
+        // Increment vegetarian counter
+        gridCount[3]++;
+        // Add high protein recipe card to grid 4
+        this.shadowRoot
+          .getElementById("recipe-card-grid-4")
+          .append(this.createRecipeCard(recipes[i], i));
       }
-      if (recipes[i].categories.glutenFree) {
-        glutenFree.push(recipes[i]);
-        glutenFreeIndex.push(i);
+
+      // Check if grid 5 has less than 20 recipe cards and if current recipe is gluten free
+      if (gridCount[4] < 20 && recipes[i].categories.glutenFree) {
+        // Increment gluten free counter
+        gridCount[4]++;
+        // Add high protein recipe card to grid 5
+        this.shadowRoot
+          .getElementById("recipe-card-grid-5")
+          .append(this.createRecipeCard(recipes[i], i));
       }
-    }
 
-    // Arrays to hold generate recipe cards
-    const highProteinCards = [];
-    const healthyCards = [];
-    const veganCards = [];
-    const vegetarianCards = [];
-    const glutenFreeCards = [];
-
-    // Create 20 recipe cards that are populated with data from recipe subset arrays
-    for (let i = 0; i < 20; i++) {
-      // High protein recipe card
-      highProteinCards[i] = document.createElement("common-recipe-card");
-      highProteinCards[i].recipeData = highProtein[i];
-
-      highProteinCards[i].addEventListener("click", () => {
-        const routerEvent = new CustomEvent("router-navigate", {
-          detail: {
-            route: "recipe-details",
-            params: [highProteinIndex[i]],
-          },
-          bubbles: true,
-          composed: true,
-        });
-        highProteinCards[i].dispatchEvent(routerEvent);
-      });
-
-      // Healthy recipe card
-      healthyCards[i] = document.createElement("common-recipe-card");
-      healthyCards[i].recipeData = healthy[i];
-
-      healthyCards[i].addEventListener("click", () => {
-        const routerEvent = new CustomEvent("router-navigate", {
-          detail: {
-            route: "recipe-details",
-            params: [healthyIndex[i]],
-          },
-          bubbles: true,
-          composed: true,
-        });
-        healthyCards[i].dispatchEvent(routerEvent);
-      });
-
-      // Vegan recipe card
-      veganCards[i] = document.createElement("common-recipe-card");
-      veganCards[i].recipeData = vegan[i];
-
-      veganCards[i].addEventListener("click", () => {
-        const routerEvent = new CustomEvent("router-navigate", {
-          detail: {
-            route: "recipe-details",
-            params: [veganIndex[i]],
-          },
-          bubbles: true,
-          composed: true,
-        });
-        veganCards[i].dispatchEvent(routerEvent);
-      });
-
-      // Vegetarian recipe card
-      vegetarianCards[i] = document.createElement("common-recipe-card");
-      vegetarianCards[i].recipeData = vegetarian[i];
-
-      vegetarianCards[i].addEventListener("click", () => {
-        const routerEvent = new CustomEvent("router-navigate", {
-          detail: {
-            route: "recipe-details",
-            params: [vegetarianIndex[i]],
-          },
-          bubbles: true,
-          composed: true,
-        });
-        vegetarianCards[i].dispatchEvent(routerEvent);
-      });
-
-      // Gluten free recipe card
-      glutenFreeCards[i] = document.createElement("common-recipe-card");
-      glutenFreeCards[i].recipeData = glutenFree[i];
-
-      glutenFreeCards[i].addEventListener("click", () => {
-        const routerEvent = new CustomEvent("router-navigate", {
-          detail: {
-            route: "recipe-details",
-            params: [glutenFreeIndex[i]],
-          },
-          bubbles: true,
-          composed: true,
-        });
-        glutenFreeCards[i].dispatchEvent(routerEvent);
-      });
-    }
-
-    // Clear out recipe card grids before we append new cards
-    this.shadowRoot.getElementById("recipe-card-grid-1").innerHTML = "";
-    this.shadowRoot.getElementById("recipe-card-grid-2").innerHTML = "";
-    this.shadowRoot.getElementById("recipe-card-grid-3").innerHTML = "";
-    this.shadowRoot.getElementById("recipe-card-grid-4").innerHTML = "";
-    this.shadowRoot.getElementById("recipe-card-grid-5").innerHTML = "";
-
-    // Append new cards
-    for (let i = 0; i < 20; i++) {
-      this.shadowRoot
-        .getElementById("recipe-card-grid-1")
-        .append(highProteinCards[i]);
-      this.shadowRoot
-        .getElementById("recipe-card-grid-2")
-        .append(healthyCards[i]);
-      this.shadowRoot
-        .getElementById("recipe-card-grid-3")
-        .append(veganCards[i]);
-      this.shadowRoot
-        .getElementById("recipe-card-grid-4")
-        .append(vegetarianCards[i]);
-      this.shadowRoot
-        .getElementById("recipe-card-grid-5")
-        .append(glutenFreeCards[i]);
+      // If every grid has been filled then break
+      if (gridCount.every((val) => val === 20)) {
+        break;
+      }
     }
   }
 
@@ -230,6 +129,30 @@ class HomePage extends HTMLElement {
         nextbutton.style.visibility = "hidden";
       }
     }
+  }
+
+  /**
+   * Creates recipe card with information and routing.
+   *
+   * @param {Object} recipe - Object that contains recipe data.
+   * @param {number} index - Index of recipe card in database to set route.
+   * @returns {Object} Generated recipe card.
+   */
+  createRecipeCard(recipe, index) {
+    const card = document.createElement("common-recipe-card");
+    card.recipeData = recipe;
+    card.addEventListener("click", () => {
+      const routerEvent = new CustomEvent("router-navigate", {
+        detail: {
+          route: "recipe-details",
+          params: [index],
+        },
+        bubbles: true,
+        composed: true,
+      });
+      card.dispatchEvent(routerEvent);
+    });
+    return card;
   }
 }
 

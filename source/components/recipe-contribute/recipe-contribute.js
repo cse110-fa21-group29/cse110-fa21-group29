@@ -1,33 +1,15 @@
-import { Database } from "../../core/database/database.js";
+import { Database } from "/core/database/database.js";
+import { Storage } from "/core/storage/storage.js";
+import { YummyRecipesComponent } from "/components/core/yummy-recipes-component.js";
 
 /** Class that provides functionality to the recipe contribute page. */
-class RecipeContribute extends HTMLElement {
+class RecipeContribute extends YummyRecipesComponent {
   constructor() {
     super();
-    this.attachShadow({ mode: "open" });
-  }
+    this.htmlPath = "components/recipe-contribute/recipe-contribute.html";
 
-  set params(params) {
-    this.routeParams = params;
-  }
-
-  set route(route) {
-    this.routeName = route;
-  }
-
-  /**
-   * Fires when this component is inserted into the DOM.
-   *
-   * @async
-   */
-  async connectedCallback() {
-    const elementContent = await fetch(
-      "components/recipe-contribute/recipe-contribute.html"
-    );
-    const elementContentText = await elementContent.text();
-
-    this.shadowRoot.innerHTML = elementContentText;
-    this.setupElement();
+    // Flag to determine if image was input in the form
+    this.imageChanged = false;
   }
 
   /**
@@ -43,11 +25,68 @@ class RecipeContribute extends HTMLElement {
     } else {
       this.editRecipe();
     }
-  }
 
-  uploadImg(event) {
-    this.shadowRoot.getElementById("submit-img").style.backgroundImage =
-      "url(" + URL.createObjectURL(event.target.files[0]) + ")";
+    // Change event listener for file button
+    this.shadowRoot
+      .getElementById("submit-img")
+      .addEventListener("change", (event) => {
+        // Get selected file object
+        const file = event.target.files[0];
+
+        // Regex to check if valid image
+        const validExt = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+
+        // File was selected successfully and is valid image
+        if (file != undefined && validExt.exec(file.name)) {
+          // Preview image selected using button background
+          const img = URL.createObjectURL(file);
+          event.target.style.backgroundImage = "url(" + img + ")";
+
+          // Image file was input into form so set flag to true
+          this.imageChanged = true;
+        } else {
+          // Reset preview
+          event.target.style.backgroundImage =
+            "url('/static/common/defaultimg.jpeg')";
+
+          // Set flag to false
+          this.imageChanged = false;
+
+          // If file was invalid instead of user hitting cancel
+          if (file != undefined && !validExt.exec(file.name)) {
+            alert("File must be .jpg, .jpeg, .png, or .gif");
+          }
+        }
+      });
+
+    /**
+     * Video field handler to check if link is valid YouTube video or field
+     * is empty. Regex from https://stackoverflow.com/a/9102270.
+     */
+    const videoUrlInput = this.shadowRoot.getElementById("input-video-url");
+
+    videoUrlInput.addEventListener("input", () => {
+      // Get form value
+      const url = videoUrlInput.value;
+
+      // If video field is blank then allow it and return
+      if (url == "") {
+        videoUrlInput.setCustomValidity("");
+        return;
+      }
+
+      // Get regex
+      const regExp =
+        /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+      const match = url.match(regExp);
+
+      // If regex worked and video ID is 11 characters then link is valid
+      if (match && match[2].length === 11) {
+        videoUrlInput.setCustomValidity("");
+      } else {
+        videoUrlInput.setCustomValidity("Video link is not valid.");
+      }
+    });
   }
 
   /**
@@ -63,6 +102,7 @@ class RecipeContribute extends HTMLElement {
         title: "",
         author: "",
         image: "static/common/demorecipe.jpg",
+        video: "",
       },
       info: {
         readyInMinutes: 0,
@@ -92,9 +132,38 @@ class RecipeContribute extends HTMLElement {
     // Assign saveRecipe function to submit button
     this.shadowRoot
       .querySelector("#submit-button")
-      .addEventListener("click", (e) => {
-        this.saveRecipe(recipe, true);
-        e.preventDefault();
+      .addEventListener("click", (event) => {
+        event.preventDefault();
+
+        // Display form validation
+        const formElement = this.shadowRoot.querySelector("#contribute-form");
+        const isFormValid = formElement.checkValidity();
+        formElement.reportValidity();
+
+        // Add recipe if form is valid
+        if (isFormValid) {
+          this.saveRecipe(recipe, true);
+        }
+      });
+
+    // Add cancel button functionality
+    this.shadowRoot
+      .querySelector("#cancel-button")
+      .addEventListener("click", (event) => {
+        event.preventDefault();
+        if (confirm("Are you sure you want to cancel?")) {
+          // Route to home page
+          const routerEvent = new CustomEvent("router-navigate", {
+            detail: {
+              route: "home-page",
+              params: [],
+            },
+            bubbles: true,
+            composed: true,
+          });
+
+          document.dispatchEvent(routerEvent);
+        }
       });
   }
 
@@ -140,6 +209,10 @@ class RecipeContribute extends HTMLElement {
       recipe.metadata.title;
     this.shadowRoot.querySelector("#input-author").value =
       recipe.metadata.author;
+    if (recipe.metadata.video != undefined) {
+      this.shadowRoot.querySelector("#input-video-url").value =
+        recipe.metadata.video;
+    }
     this.shadowRoot.querySelector("#input-time").value =
       recipe.info.readyInMinutes;
     this.shadowRoot.querySelector("#input-cost").value =
@@ -167,9 +240,38 @@ class RecipeContribute extends HTMLElement {
     // Update edited recipe in database on submit button click
     this.shadowRoot
       .querySelector("#submit-button")
-      .addEventListener("click", (e) => {
-        this.saveRecipe(recipe, false);
-        e.preventDefault();
+      .addEventListener("click", (event) => {
+        event.preventDefault();
+
+        // Display form validation
+        const formElement = this.shadowRoot.querySelector("#contribute-form");
+        const isFormValid = formElement.checkValidity();
+        formElement.reportValidity();
+
+        // Update recipe if form is valid
+        if (isFormValid) {
+          this.saveRecipe(recipe, false);
+        }
+      });
+
+    // Add cancel button functionality
+    this.shadowRoot
+      .querySelector("#cancel-button")
+      .addEventListener("click", (event) => {
+        event.preventDefault();
+        if (confirm("Are you sure you want to cancel?")) {
+          // Route to recipe details page
+          const routerEvent = new CustomEvent("router-navigate", {
+            detail: {
+              route: "recipe-details",
+              params: [this.routeParams[0]],
+            },
+            bubbles: true,
+            composed: true,
+          });
+
+          document.dispatchEvent(routerEvent);
+        }
       });
   }
 
@@ -182,6 +284,13 @@ class RecipeContribute extends HTMLElement {
    * @param {boolean} add - toggles between creating and updating recipe
    */
   async saveRecipe(recipe, add) {
+    // Image
+    const storage = new Storage();
+    let file = {};
+    if (this.imageChanged) {
+      file = this.shadowRoot.getElementById("submit-img").files[0];
+    }
+
     // Nutrients
     recipe.nutrients.totalServings = this.shadowRoot.querySelector(
       "#input-number-of-servings"
@@ -212,6 +321,9 @@ class RecipeContribute extends HTMLElement {
     ).value;
     recipe.metadata.author =
       this.shadowRoot.querySelector("#input-author").value;
+    recipe.metadata.video = this.getVideoEmbedURL(
+      this.shadowRoot.querySelector("#input-video-url").value
+    );
     recipe.info.readyInMinutes =
       this.shadowRoot.querySelector("#input-time").value;
     recipe.info.pricePerServings =
@@ -247,6 +359,15 @@ class RecipeContribute extends HTMLElement {
       // Push recipe to database and grab index of the new recipe
       const index = await db.pushRecipe(recipe);
 
+      // Upload recipe image if applicable
+      if (this.imageChanged) {
+        // Upload file named after index in database
+        const imageUrl = await storage.uploadImage(file, index);
+
+        // Set image url in recipe
+        await db.writeData(imageUrl, index, "metadata/image");
+      }
+
       // Route to new recipe page
       const routerEvent = new CustomEvent("router-navigate", {
         detail: {
@@ -259,20 +380,50 @@ class RecipeContribute extends HTMLElement {
 
       document.dispatchEvent(routerEvent);
     } else {
+      // Get recipe index in database from route param
+      const index = this.routeParams[0];
+
       // Push edited recipe to database
-      await db.updateRecipe(recipe, this.routeParams[0]);
+      await db.updateRecipe(recipe, index);
+
+      // Upload recipe image if image updated
+      if (this.imageChanged) {
+        // Upload file named after index in database
+        const imageUrl = await storage.uploadImage(file, index);
+
+        // Set image url in recipe
+        await db.writeData(imageUrl, index, "metadata/image");
+      }
 
       // Route to edited recipe page
       const routerEvent = new CustomEvent("router-navigate", {
         detail: {
           route: "recipe-details",
-          params: [this.routeParams[0]],
+          params: [index],
         },
         bubbles: true,
         composed: true,
       });
 
       document.dispatchEvent(routerEvent);
+    }
+  }
+
+  /**
+   * Converts a valid YouTube video link into a valid embed link.
+   * Regex from https://stackoverflow.com/a/9102270.
+   *
+   * @param {string} url - A string that represents a YouTube video link.
+   * @returns {string} Returns YouTube embed link or empty string if not a valid video URL.
+   */
+  getVideoEmbedURL(url) {
+    const regExp =
+      /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    const match = url.match(regExp);
+    if (match && match[2].length === 11) {
+      return "https://www.youtube.com/embed/" + match[2];
+    } else {
+      return "";
     }
   }
 }
