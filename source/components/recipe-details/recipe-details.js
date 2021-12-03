@@ -67,8 +67,17 @@ class RecipeDetails extends YummyRecipesComponent {
     let recipes = await database.getRecipes();
     let recipe = recipes[this.routeParams[0]];
 
-    // If recipe does not exist, then skip page setup.
-    if (recipe == null) {
+    // If recipe does not exist, then route back to home page
+    if (!recipe) {
+      const routerEvent = new CustomEvent("router-navigate", {
+        detail: {
+          route: "home-page",
+          params: [],
+        },
+        bubbles: true,
+        composed: true,
+      });
+      document.dispatchEvent(routerEvent);
       return;
     }
 
