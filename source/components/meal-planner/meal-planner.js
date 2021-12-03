@@ -30,15 +30,18 @@ class MealPlanner extends YummyRecipesComponent {
    */
   async createRecipeCard(mealCard) {
     // Get user entry
-    const prompt = window.prompt("Enter recipe link", "");
+    const prompt = window.prompt(
+      "Enter recipe link (leave blank to clear cell)",
+      ""
+    );
 
     // Do not do anything if prompt canceled
-    if (prompt == undefined) {
+    if (prompt === undefined) {
       return;
     }
 
     // Reset meal card if empty entry
-    if (prompt == "") {
+    if (prompt === "") {
       mealCard.innerHTML = "";
       mealCard.style.backgroundImage =
         "url(/static/meal-planner/circle-plus.png)";
@@ -53,7 +56,7 @@ class MealPlanner extends YummyRecipesComponent {
     let recipe = {};
 
     // Check if split contains "recipes" followed by number
-    if (url[url.length - 2] == "recipes" && isNaN(index) === false) {
+    if (url[url.length - 2] === "recipes" && isNaN(index) === false) {
       // Try to get recipe from database
       const db = new Database();
       recipe = await db.getRecipe(index);
