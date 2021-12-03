@@ -21,8 +21,7 @@
     "./source/**": "prettier --write --ignore-unknown"
   },
   "scripts": {
-    "test": "jest",
-    "prepare": "husky install"
+    "test": "jest"
   },
   "jest": {
     "preset": "jest-puppeteer",
