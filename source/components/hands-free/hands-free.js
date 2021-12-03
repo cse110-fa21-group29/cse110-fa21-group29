@@ -1,3 +1,4 @@
+import { Database } from "/core/database/database.js";
 import { YummyRecipesComponent } from "/components/core/yummy-recipes-component.js";
 
 class HandsFree extends YummyRecipesComponent {
@@ -13,7 +14,7 @@ class HandsFree extends YummyRecipesComponent {
   // step numbers
   maxStep = 5;
 
-  setupElement() {
+  async setupElement() {
     this.shadowRoot
       .getElementById("start-button")
       .addEventListener("click", () => {
@@ -40,6 +41,25 @@ class HandsFree extends YummyRecipesComponent {
         this.backStep();
       });
     this.hideBackButton();
+
+    // Get recipe from database
+    const db = new Database();
+    const recipe = await db.getRecipe(this.routeParams[0]);
+
+    // If recipe is undefined, go back to home page
+    if (!recipe) {
+      // Route to home page
+      const routerEvent = new CustomEvent("router-navigate", {
+        detail: {
+          route: "home-page",
+          params: [],
+        },
+        bubbles: true,
+        composed: true,
+      });
+
+      document.dispatchEvent(routerEvent);
+    }
   }
 
   timedCount() {
