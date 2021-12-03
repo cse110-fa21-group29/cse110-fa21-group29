@@ -20,6 +20,42 @@ const configFile = "/config.json";
 /** Class that interfaces with the Firebase realtime database. */
 export class Database {
   /**
+   * Fetches a single recipe object from database.
+   *
+   * @async
+   * @param {number} index - The index of the recipe in the database.
+   * @returns {(Object|undefined)} A recipe object or undefined if index is undefined.
+   */
+  async getRecipe(index) {
+    // Fetch database credentials
+    let config = await fetch(configFile);
+    config = await config.json();
+
+    // Initialize database connection
+    const app = initializeApp(config.firebaseConfig);
+    const database = getDatabase(app);
+    const dbRef = ref(getDatabase());
+
+    // Get the recipe
+    let recipe = {};
+
+    await get(child(dbRef, `recipes/${index}`))
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          recipe = snapshot.val();
+        } else {
+          recipe = undefined;
+          console.log("No data available");
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+
+    return recipe;
+  }
+
+  /**
    * Fetches all recipe objects from database.
    *
    * @async
