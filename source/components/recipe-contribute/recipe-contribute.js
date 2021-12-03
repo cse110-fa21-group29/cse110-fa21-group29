@@ -175,8 +175,22 @@ class RecipeContribute extends YummyRecipesComponent {
   async editRecipe() {
     // Get recipe from database
     const db = new Database();
-    const recipes = await db.getRecipes();
-    const recipe = recipes[this.routeParams[0]];
+    const recipe = await db.getRecipe(this.routeParams[0]);
+
+    // If recipe is undefined, go back to home page
+    if (!recipe) {
+      // Route to home page
+      const routerEvent = new CustomEvent("router-navigate", {
+        detail: {
+          route: "home-page",
+          params: [],
+        },
+        bubbles: true,
+        composed: true,
+      });
+
+      document.dispatchEvent(routerEvent);
+    }
 
     // Display current recipe image
     this.shadowRoot.getElementById("submit-img").style.backgroundImage =
