@@ -38,7 +38,7 @@ const routePatterns = {
   },
   "hands-free": {
     component: "hands-free",
-    url: "#/hands-free",
+    url: "#/recipes/_/hands-free",
   },
   "recipe-search": {
     component: "recipe-search",

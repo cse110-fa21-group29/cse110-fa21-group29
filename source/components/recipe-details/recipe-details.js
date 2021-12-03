@@ -24,7 +24,7 @@ class RecipeDetails extends YummyRecipesComponent {
         const routerEvent = new CustomEvent("router-navigate", {
           detail: {
             route: "hands-free",
-            params: [this.routeParams[0]], // TODO: Add recipe ID in URL
+            params: [this.routeParams[0]],
           },
           bubbles: true,
           composed: true,
