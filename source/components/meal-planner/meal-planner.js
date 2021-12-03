@@ -59,11 +59,7 @@ class MealPlanner extends YummyRecipesComponent {
       recipe = await db.getRecipe(index);
 
       // If recipe does not exist notify user
-      if (
-        recipe &&
-        Object.keys(recipe).length === 0 &&
-        Object.getPrototypeOf(recipe) === Object.prototype
-      ) {
+      if (recipe == undefined) {
         alert("Not a valid recipe link");
         return;
       }

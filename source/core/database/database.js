@@ -24,7 +24,7 @@ export class Database {
    *
    * @async
    * @param {number} index - The index of the recipe in the database.
-   * @returns {Object} A recipe object or empty object if index is undefined.
+   * @returns {(Object|undefined)} A recipe object or undefined if index is undefined.
    */
   async getRecipe(index) {
     // Fetch database credentials
@@ -44,6 +44,7 @@ export class Database {
         if (snapshot.exists()) {
           recipe = snapshot.val();
         } else {
+          recipe = undefined;
           console.log("No data available");
         }
       })
