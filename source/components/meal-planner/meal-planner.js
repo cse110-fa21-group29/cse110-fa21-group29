@@ -40,6 +40,8 @@ class MealPlanner extends YummyRecipesComponent {
     // Reset meal card if empty entry
     if (prompt == "") {
       mealCard.innerHTML = "";
+      mealCard.style.backgroundImage =
+        "url(/static/meal-planner/circle-plus.png)";
       return;
     }
 
@@ -76,6 +78,7 @@ class MealPlanner extends YummyRecipesComponent {
 
     // Clear out meal card then append
     mealCard.innerHTML = "";
+    mealCard.style.backgroundImage = "none";
     mealCard.append(card);
   }
 }
