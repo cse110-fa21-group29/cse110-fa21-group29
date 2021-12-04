@@ -1,6 +1,6 @@
 import { YummyRecipesComponent } from "/components/core/yummy-recipes-component.js";
 
-class CommonRecipeCard extends YummyRecipesComponent {
+export class CommonRecipeCard extends YummyRecipesComponent {
   constructor() {
     super();
     this.htmlPath = "components/common/recipe-card/common-recipe-card.html";

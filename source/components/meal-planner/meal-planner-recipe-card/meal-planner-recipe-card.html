@@ -1,8 +1,38 @@
 <link
   rel="stylesheet"
-  href="components/meal-planner-recipe-card/meal-planner-recipe-card.css"
+  href="components/common/recipe-card/common-recipe-card.css"
+/>
+<link
+  rel="stylesheet"
+  href="components/meal-planner/meal-planner-recipe-card/meal-planner-recipe-card.css"
 />
 
-<!-- INCLUDE HTML HERE -->
-<!-- DO NOT INCLUDE <html>, <head>, or <body> -->
-<main></main>
+<!-- template of recipe card -->
+<div class="recipe-card">
+  <img class="recipe-card-image" alt="" src="" />
+
+  <div class="recipe-card-name">
+    <div></div>
+  </div>
+
+  <!-- property grid -->
+  <div class="recipe-card-stats">
+    <div class="stat">
+      <div id="time"></div>
+      <div>min</div>
+    </div>
+    <div class="stat">
+      <div id="calories"></div>
+      <div>cal</div>
+    </div>
+
+    <div class="stat">
+      <div id="protein"></div>
+      <div>protein</div>
+    </div>
+    <div class="stat">
+      <div id="score"></div>
+      <div>score</div>
+    </div>
+  </div>
+</div>

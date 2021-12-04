@@ -1,15 +1,11 @@
-import { YummyRecipesComponent } from "/components/core/yummy-recipes-component.js";
+import { CommonRecipeCard } from "/components/common/recipe-card/common-recipe-card.js";
 
-class MealPlannerRecipeCard extends YummyRecipesComponent {
+class MealPlannerRecipeCard extends CommonRecipeCard {
   constructor() {
     super();
     this.htmlPath =
       "components/meal-planner/meal-planner-recipe-card/meal-planner-recipe-card.html";
   }
-
-  // Optional function, please remove if unused.
-  // Runs when element is initially loaded into page.
-  setupElement() {}
 }
 
 customElements.define("meal-planner-recipe-card", MealPlannerRecipeCard);
