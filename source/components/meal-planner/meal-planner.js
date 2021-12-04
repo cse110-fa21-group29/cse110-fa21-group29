@@ -14,11 +14,28 @@ class MealPlanner extends YummyRecipesComponent {
     const mealCards = this.shadowRoot.querySelectorAll(".meal-card");
 
     for (let i = 0; i < 21; i++) {
-      mealCards[i].addEventListener("click", () => {
-        // Function that handles meal card logic
-        this.createRecipeCard(mealCards[i]);
+      let mealcardimg = document.createElement("div");
+      mealcardimg.className = "meal-card-add";
+      mealcardimg.addEventListener("click", () => {
+        this.shadowRoot.getElementById("search-part").style.display = "block";
       });
+      mealCards[i].append(mealcardimg);
+      // mealCards[i].addEventListener("click", () => {
+      //   // Function that handles meal card logic
+      //   // this.createRecipeCard(mealCards[i]);
+      //   this.shadowRoot.getElementById("search-part").style.display = "block";
+      // });
     }
+
+    // this.shadowRoot
+    //   .getElementById("search-result")
+    //   .append(document.createElement("meal-planner-recipe-card"));
+
+    this.shadowRoot
+      .getElementById("close-search")
+      .addEventListener("click", () => {
+        this.shadowRoot.getElementById("search-part").style.display = "none";
+      });
   }
 
   /**
@@ -28,58 +45,58 @@ class MealPlanner extends YummyRecipesComponent {
    * @async
    * @param {Object} mealCard - Meal card in planner to append to.
    */
-  async createRecipeCard(mealCard) {
-    // Get user entry
-    const prompt = window.prompt(
-      "Enter recipe link (leave blank to clear cell)",
-      ""
-    );
+  // async createRecipeCard(mealCard) {
+  //   // Get user entry
+  //   const prompt = window.prompt(
+  //     "Enter recipe link (leave blank to clear cell)",
+  //     ""
+  //   );
 
-    // Do not do anything if prompt canceled
-    if (prompt === undefined) {
-      return;
-    }
+  //   // Do not do anything if prompt canceled
+  //   if (prompt === undefined) {
+  //     return;
+  //   }
 
-    // Reset meal card if empty entry
-    if (prompt === "") {
-      mealCard.innerHTML = "";
-      mealCard.style.backgroundImage =
-        "url(/static/meal-planner/circle-plus.png)";
-      return;
-    }
+  //   // Reset meal card if empty entry
+  //   if (prompt === "") {
+  //     mealCard.innerHTML = "";
+  //     mealCard.style.backgroundImage =
+  //       "url(/static/meal-planner/circle-plus.png)";
+  //     return;
+  //   }
 
-    // Split input and grab last split
-    const url = prompt.split("/");
-    const index = parseInt(url[url.length - 1], 10);
+  //   // Split input and grab last split
+  //   const url = prompt.split("/");
+  //   const index = parseInt(url[url.length - 1], 10);
 
-    // Object to hold recipe if found
-    let recipe = {};
+  //   // Object to hold recipe if found
+  //   let recipe = {};
 
-    // Check if split contains "recipes" followed by number
-    if (url[url.length - 2] === "recipes" && isNaN(index) === false) {
-      // Try to get recipe from database
-      const db = new Database();
-      recipe = await db.getRecipe(index);
+  //   // Check if split contains "recipes" followed by number
+  //   if (url[url.length - 2] === "recipes" && isNaN(index) === false) {
+  //     // Try to get recipe from database
+  //     const db = new Database();
+  //     recipe = await db.getRecipe(index);
 
-      // If recipe does not exist notify user
-      if (recipe === undefined) {
-        alert("Not a valid recipe link");
-        return;
-      }
-    } else {
-      alert("Not a valid recipe link");
-      return;
-    }
+  //     // If recipe does not exist notify user
+  //     if (recipe === undefined) {
+  //       alert("Not a valid recipe link");
+  //       return;
+  //     }
+  //   } else {
+  //     alert("Not a valid recipe link");
+  //     return;
+  //   }
 
-    // Generate recipe card
-    const card = document.createElement("common-recipe-card");
-    card.recipeData = recipe;
+  //   // Generate recipe card
+  //   const card = document.createElement("common-recipe-card");
+  //   card.recipeData = recipe;
 
-    // Clear out meal card then append
-    mealCard.innerHTML = "";
-    mealCard.style.backgroundImage = "none";
-    mealCard.append(card);
-  }
+  //   // Clear out meal card then append
+  //   mealCard.innerHTML = "";
+  //   mealCard.style.backgroundImage = "none";
+  //   mealCard.append(card);
+  // }
 }
 
 customElements.define("meal-planner", MealPlanner);
