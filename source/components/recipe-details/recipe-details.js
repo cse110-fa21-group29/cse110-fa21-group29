@@ -183,7 +183,14 @@ class RecipeDetails extends YummyRecipesComponent {
       "<ul>" + ingredients + "</ul>";
 
     // Direction box
-    this.shadowRoot.querySelector(".direction-list").innerHTML = recipe.steps;
+    let directions = "";
+
+    for (let i = 0; i < recipe.steps.length; i++) {
+      directions = directions + "<li>" + recipe.steps[i] + "</li>";
+    }
+
+    this.shadowRoot.querySelector(".direction-list").innerHTML =
+      "<ol>" + directions + "</ol>";
   }
   /**
    * help function for timer

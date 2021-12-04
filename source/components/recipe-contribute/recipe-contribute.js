@@ -125,7 +125,7 @@ class RecipeContribute extends YummyRecipesComponent {
       },
       description: "",
       ingredients: [],
-      steps: "",
+      steps: [],
       spoonacularSourceUrl: "",
     };
 
@@ -227,14 +227,7 @@ class RecipeContribute extends YummyRecipesComponent {
     this.shadowRoot.querySelector("#input-ingredient").innerHTML = ingredients;
 
     // Pre-populate form with directions
-    const stepsArr = recipe.steps.split("</li>");
-
-    for (let i = 0; i < stepsArr.length; i++) {
-      stepsArr[i] = stepsArr[i].replace(/(<([^>]+)>)/gi, "");
-    }
-
-    const steps = stepsArr.join("\n");
-
+    const steps = recipe.steps.join("\n");
     this.shadowRoot.querySelector("#input-direction").innerHTML = steps;
 
     // Update edited recipe in database on submit button click
@@ -343,14 +336,7 @@ class RecipeContribute extends YummyRecipesComponent {
     const steps = this.shadowRoot
       .querySelector("#input-direction")
       .value.split("\n");
-
-    recipe.steps = "<ol>";
-
-    for (let i = 0; i < steps.length; i++) {
-      recipe.steps = recipe.steps + "<li>" + steps[i] + "</li>";
-    }
-
-    recipe.steps = recipe.steps + "</ol>";
+    recipe.steps = steps;
 
     // Call database functions based on if add or edit function is specified
     const db = new Database();
