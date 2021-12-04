@@ -12,6 +12,7 @@ main {
   grid-template-rows: 0.5fr 1fr 1fr 1fr 1fr;
   grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
+
 #print-button {
   width: 40px;
   position: absolute;
@@ -19,6 +20,15 @@ main {
   right: 50px;
   cursor: pointer;
 }
+
+.center > div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
 #planner-grid > div {
   border: solid black 1px;
   width: 100%;
@@ -132,14 +142,6 @@ main {
 
 .center {
   position: relative;
-}
-
-.center > div {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
 }
 
 .meal-card-img {
