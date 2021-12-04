@@ -330,13 +330,19 @@ class RecipeContribute extends YummyRecipesComponent {
     const ingredients = this.shadowRoot
       .querySelector("#input-ingredient")
       .value.split("\n");
-    recipe.ingredients = ingredients;
+
+    // Remove empty lines
+    const filteredIngredients = ingredients.filter((val) => val);
+    recipe.ingredients = filteredIngredients;
 
     // Directions
     const steps = this.shadowRoot
       .querySelector("#input-direction")
       .value.split("\n");
-    recipe.steps = steps;
+
+    // Remove empty lines
+    const filteredSteps = steps.filter((val) => val);
+    recipe.steps = filteredSteps;
 
     // Call database functions based on if add or edit function is specified
     const db = new Database();
