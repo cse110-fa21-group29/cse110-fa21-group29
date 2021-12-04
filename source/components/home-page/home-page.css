@@ -9,7 +9,9 @@
   scroll-behavior: smooth;
   overflow: hidden;
   display: flex;
+  column-gap: 5vh;
   white-space: nowrap;
+  padding: 3vh;
 }
 
 .fa-angle-left {
@@ -52,12 +54,10 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100%;
-  text-align: center;
   max-height: 50vw;
   color: rgb(253, 226, 204);
   text-shadow: 2px 2px black;
   font-size: 3vw;
-  line-height: 40vh;
 }
 
 .arrow-button-left,
@@ -96,4 +96,16 @@
 #about-us-flexbox {
   display: flex;
   justify-content: center;
+}
+
+.center {
+  position: relative;
+}
+
+.center > div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
