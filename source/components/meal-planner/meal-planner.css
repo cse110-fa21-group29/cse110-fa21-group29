@@ -79,6 +79,7 @@ main {
   overflow: scroll;
   padding: 4vh 4vh;
 }
+
 #search-result::-webkit-scrollbar {
   display: none;
 }
@@ -96,7 +97,6 @@ main {
   height: 100%;
   background-repeat: no-repeat;
   background-position: center;
-  background-size: cover;
   cursor: pointer;
   background-size: 50%;
 }

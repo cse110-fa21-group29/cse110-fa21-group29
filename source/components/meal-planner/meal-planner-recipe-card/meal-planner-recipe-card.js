@@ -4,7 +4,7 @@ class MealPlannerRecipeCard extends YummyRecipesComponent {
   constructor() {
     super();
     this.htmlPath =
-      "components/meal-planner-recipe-card/meal-planner-recipe-card.html";
+      "components/meal-planner/meal-planner-recipe-card/meal-planner-recipe-card.html";
   }
 
   // Optional function, please remove if unused.
