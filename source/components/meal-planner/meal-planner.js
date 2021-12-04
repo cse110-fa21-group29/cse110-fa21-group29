@@ -10,7 +10,7 @@ class MealPlanner extends YummyRecipesComponent {
   /**
    * Sets up meal card functions
    */
-  setupElement() {
+  async setupElement() {
     const mealCards = this.shadowRoot.querySelectorAll(".meal-card");
 
     for (let i = 0; i < 21; i++) {
@@ -36,8 +36,39 @@ class MealPlanner extends YummyRecipesComponent {
       .addEventListener("click", () => {
         this.shadowRoot.getElementById("search-part").style.display = "none";
       });
+
+    const database = new Database();
+    const recipes = await database.getRecipes();
+    for (let i = 0; i < 10; i++) {
+      this.shadowRoot
+        .getElementById("search-result")
+        .appendChild(this.createRecipeCard(recipes[i], i));
+    }
   }
 
+  /**
+   * Creates recipe card with information and routing.
+   *
+   * @param {Object} recipe - Object that contains recipe data.
+   * @param {number} index - Index of recipe card in database to set route.
+   * @returns {Object} Generated recipe card.
+   */
+  createRecipeCard(recipe, index) {
+    const card = document.createElement("common-recipe-card");
+    card.recipeData = recipe;
+    card.addEventListener("click", () => {
+      const routerEvent = new CustomEvent("router-navigate", {
+        detail: {
+          route: "recipe-details",
+          params: [index],
+        },
+        bubbles: true,
+        composed: true,
+      });
+      card.dispatchEvent(routerEvent);
+    });
+    return card;
+  }
   /**
    * Asks for user input of recipe link and checks if valid. If valid, create
    * recipe card and append to meal card.

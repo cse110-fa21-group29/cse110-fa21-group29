@@ -1,7 +1,7 @@
 :host {
   height: 35vh;
   min-width: 23vh;
-  margin: 3vw 1.5vw;
+  /* margin: 2vw 1vw; */
   transition: 0.5s ease;
   cursor: pointer;
   border-radius: 18px;
