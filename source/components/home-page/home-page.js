@@ -40,14 +40,14 @@ class HomePage extends YummyRecipesComponent {
     }
 
     // create an array of recipe object
-    let random_recipe = [];
+    const recipeObjects = [];
     // fill the array with recipes
     for (let i = 0; i < recipes.length; i++) {
-      let obj = {
+      const recipeObject = {
         index: i,
         recipe: recipes[i],
       };
-      random_recipe.push(obj);
+      recipeObjects.push(recipeObject);
     }
 
     /**
@@ -58,23 +58,23 @@ class HomePage extends YummyRecipesComponent {
     /**
      * ID array to holds the randomly generated ID for the recipe card
      */
-    const id_array = [];
+    const idArray = [];
 
     // Create 20 recipe cards for each category grid populated with database info
-    for (let i = 0; i < random_recipe.length; i++) {
+    for (let i = 0; i < recipeObjects.length; i++) {
       // generate a random ID
-      let id = Math.floor(Math.random() * random_recipe.length);
+      let id = Math.floor(Math.random() * recipeObjects.length);
       // check if the is already in the array, if so generate a new random ID
-      while (id_array.includes(id)) {
-        id = Math.floor(Math.random() * random_recipe.length);
+      while (idArray.includes(id)) {
+        id = Math.floor(Math.random() * recipeObjects.length);
       }
       // if ID not in the array, push it to the array
-      id_array.push(id);
+      idArray.push(id);
 
       // randomly generates recipe
-      let randomItem = random_recipe[id];
+      let randomItem = recipeObjects[id];
       //If recipe does not exist at index, then skip to prevent page from breaking
-      if (randomItem == undefined) {
+      if (!randomItem) {
         continue;
       }
 
