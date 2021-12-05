@@ -105,4 +105,25 @@ describe('E2E Testing loading web components and navigating pages', () => {
 
         expect(contributePage.length).toBe(1);
     }, 7500);
+
+    /**
+     * @summary Meal Planner Page
+     * Test to see if we go to the meal planner page
+     */
+     it('Moving to meal planner page', async () => {
+        await new Promise((r) => setTimeout(r, 2000));
+
+        // click on the meal planner nav bar button
+        const navBar = await page.$('body > header > common-nav-bar');
+        const shadowRoot = await navBar.getProperty('shadowRoot');
+        const homePageButton = await shadowRoot.$('#nav-bar > a:nth-child(5)');
+        homePageButton.click();
+
+        await new Promise((r) => setTimeout(r, 2000));
+
+        // get the meal planner page
+        const contributePage = await page.$$('#content > meal-planner');
+
+        expect(contributePage.length).toBe(1);
+    }, 7500);
 });
