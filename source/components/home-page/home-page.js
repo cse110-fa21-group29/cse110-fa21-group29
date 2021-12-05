@@ -55,16 +55,25 @@ class HomePage extends YummyRecipesComponent {
      * 0: highProtein, 1: healthy, 2: vegan, 3: vegetarian, 4: glutenFree
      */
     const gridCount = [0, 0, 0, 0, 0];
+    /**
+     * ID array to holds the randomly generated ID for the recipe card
+     */
+    const id_array = [];
 
     // Create 20 recipe cards for each category grid populated with database info
     for (let i = 0; i < random_recipe.length; i++) {
-      // If recipe does not exist at index, then skip to prevent page from breaking
-      // if (recipes[i] == undefined) {
-      //   continue;
-      // }
+      // generate a random ID
+      let id = Math.floor(Math.random() * random_recipe.length);
+      // check if the is already in the array, if so generate a new random ID
+      while (id_array.includes(id)) {
+        id = Math.floor(Math.random() * random_recipe.length);
+      }
+      // if ID not in the array, push it to the array
+      id_array.push(id);
 
-      let randomItem =
-        random_recipe[Math.floor(Math.random() * random_recipe.length)];
+      // randomly generates recipe
+      let randomItem = random_recipe[id];
+      //If recipe does not exist at index, then skip to prevent page from breaking
       if (randomItem == undefined) {
         continue;
       }
