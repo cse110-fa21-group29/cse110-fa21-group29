@@ -256,7 +256,7 @@ class MealPlanner extends YummyRecipesComponent {
       const ids = searchParams.get("ids").split(",").map(Number);
 
       // Check if there are exactly 21 numbers
-      if (ids.length == 21 && ids.every((val) => !isNaN(val))) {
+      if (ids.length === 21 && ids.every((val) => !isNaN(val))) {
         return ids;
       }
     }
