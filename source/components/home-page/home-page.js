@@ -39,6 +39,17 @@ class HomePage extends YummyRecipesComponent {
       this.shadowRoot.getElementById("recipe-card-grid-" + i).innerHTML = "";
     }
 
+    // create an array of recipe object
+    let random_recipe = [];
+    // fill the array with recipes
+    for (let i = 0; i < recipes.length; i++) {
+      let obj = {
+        index: i,
+        recipe: recipes[i],
+      };
+      random_recipe.push(obj);
+    }
+
     /**
      * Counter array for each grid with each index being:
      * 0: highProtein, 1: healthy, 2: vegan, 3: vegetarian, 4: glutenFree
@@ -46,60 +57,66 @@ class HomePage extends YummyRecipesComponent {
     const gridCount = [0, 0, 0, 0, 0];
 
     // Create 20 recipe cards for each category grid populated with database info
-    for (let i = 0; i < recipes.length; i++) {
+    for (let i = 0; i < random_recipe.length; i++) {
       // If recipe does not exist at index, then skip to prevent page from breaking
-      if (recipes[i] == undefined) {
+      // if (recipes[i] == undefined) {
+      //   continue;
+      // }
+
+      let randomItem =
+        random_recipe[Math.floor(Math.random() * random_recipe.length)];
+      if (randomItem == undefined) {
         continue;
       }
 
       // Check if grid 1 has less than 20 recipe cards and if current recipe is high protein
-      if (gridCount[0] < 20 && recipes[i].categories.highProtein) {
+      if (gridCount[0] < 20 && randomItem.recipe.categories.highProtein) {
         // Increment protein counter
         gridCount[0]++;
         // Add high protein recipe card to grid 1
         this.shadowRoot
           .getElementById("recipe-card-grid-1")
-          .append(this.createRecipeCard(recipes[i], i));
+          .append(this.createRecipeCard(randomItem.recipe, randomItem.index));
       }
 
       // Check if grid 2 has less than 20 recipe cards and if current recipe is healthy
-      if (gridCount[1] < 20 && recipes[i].categories.healthy) {
+      if (gridCount[1] < 20 && randomItem.recipe.categories.healthy) {
         // Increment healthy counter
         gridCount[1]++;
         // Add high protein recipe card to grid 2
         this.shadowRoot
           .getElementById("recipe-card-grid-2")
-          .append(this.createRecipeCard(recipes[i], i));
+          .append(this.createRecipeCard(randomItem.recipe, randomItem.index));
       }
 
       // Check if grid 3 has less than 20 recipe cards and if current recipe is vegan
-      if (gridCount[2] < 20 && recipes[i].categories.vegan) {
+      if (gridCount[2] < 20 && randomItem.recipe.categories.vegan) {
         // Increment vegan counter
         gridCount[2]++;
         // Add high protein recipe card to grid 3
         this.shadowRoot
           .getElementById("recipe-card-grid-3")
-          .append(this.createRecipeCard(recipes[i], i));
+          .append(this.createRecipeCard(randomItem.recipe, randomItem.index));
       }
 
       // Check if grid 4 has less than 20 recipe cards and if current recipe is vegetarian
-      if (gridCount[3] < 20 && recipes[i].categories.vegetarian) {
+      if (gridCount[3] < 20 && randomItem.recipe.categories.vegetarian) {
         // Increment vegetarian counter
         gridCount[3]++;
         // Add high protein recipe card to grid 4
         this.shadowRoot
           .getElementById("recipe-card-grid-4")
-          .append(this.createRecipeCard(recipes[i], i));
+          .append(this.createRecipeCard(randomItem.recipe, randomItem.index));
       }
 
       // Check if grid 5 has less than 20 recipe cards and if current recipe is gluten free
-      if (gridCount[4] < 20 && recipes[i].categories.glutenFree) {
+      if (gridCount[4] < 20 && randomItem.recipe.categories.glutenFree) {
         // Increment gluten free counter
         gridCount[4]++;
         // Add high protein recipe card to grid 5
         this.shadowRoot
           .getElementById("recipe-card-grid-5")
-          .append(this.createRecipeCard(recipes[i], i));
+          .append(this.createRecipeCard(randomItem.recipe, randomItem.index));
       }
 
       // If every grid has been filled then break
