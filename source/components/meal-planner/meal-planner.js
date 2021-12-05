@@ -90,6 +90,9 @@ class MealPlanner extends YummyRecipesComponent {
         });
 
         mealCards[i].append(addButton);
+
+        // Update URL
+        this.setUrl(i, -1);
       });
 
       // Dragover listener
