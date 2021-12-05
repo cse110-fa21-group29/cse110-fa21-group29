@@ -266,9 +266,11 @@ class RecipeSearch extends YummyRecipesComponent {
           return;
         } else {
           let previousPage = parseInt(currPage) - 1;
+
           thisContainer.shadowRoot
             .getElementById(currPage)
             .classList.remove("active");
+
           thisContainer.shadowRoot
             .getElementById(previousPage)
             .classList.add("active");
@@ -353,12 +355,15 @@ class RecipeSearch extends YummyRecipesComponent {
           return;
         } else {
           let nextPage = parseInt(currPage) + 1;
+
           thisContainer.shadowRoot
             .getElementById(currPage)
             .classList.remove("active");
+
           thisContainer.shadowRoot
             .getElementById(nextPage)
             .classList.add("active");
+
           thisContainer.shadowRoot.getElementById(nextPage).click();
         }
       });
@@ -380,7 +385,7 @@ class RecipeSearch extends YummyRecipesComponent {
       const url = window.location.href;
 
       // Gets the URL without ?page=, then adds it back with the current page number
-      const newUrl = url.slice(0, url.indexOf("?page=")) + "?page=" + 1;
+      const newUrl = url + "?page=" + 1;
 
       history.pushState({}, "", newUrl);
 
