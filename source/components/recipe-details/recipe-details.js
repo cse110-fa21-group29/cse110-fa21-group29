@@ -185,7 +185,7 @@ class RecipeDetails extends YummyRecipesComponent {
     let ingredients = "";
 
     for (let i = 0; i < recipe.ingredients.length; i++) {
-      ingredients = ingredients + "<li>" + recipe.ingredients[i] + "</li>";
+      ingredients += "<li>" + recipe.ingredients[i] + "</li>";
     }
 
     this.shadowRoot.querySelector(".ingredients-list").innerHTML =
@@ -195,7 +195,7 @@ class RecipeDetails extends YummyRecipesComponent {
     let directions = "";
 
     for (let i = 0; i < recipe.steps.length; i++) {
-      directions = directions + "<li>" + recipe.steps[i] + "</li>";
+      directions += "<li>" + recipe.steps[i] + "</li>";
     }
 
     this.shadowRoot.querySelector(".direction-list").innerHTML =
