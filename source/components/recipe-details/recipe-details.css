@@ -169,7 +169,7 @@ button:active{
   height: 30vh;
   border: solid black 1px;
   display: none;
-}
+} */
 
 #timer-display {
   width: 80%;
@@ -183,7 +183,6 @@ button:active{
 
 #timer-button-grid button {
   width: 90%;
-  background-color: white;
   height: 20%;
   margin: 2vh 0px;
   border-radius: 5px;
@@ -201,4 +200,4 @@ button:active{
 
 #time-input-container > div {
   display: flex;
-} */
+}
