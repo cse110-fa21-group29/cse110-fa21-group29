@@ -11,11 +11,6 @@ main {
   background-color: #68a1f6;
 }
 
-@font-face {
-  font-family: "Sofia";
-  src: url("static/font/Sofia-Regular.ttf");
-}
-
 #introduction-title-grid-title {
   font-size: 100px;
   line-height: 400px;
