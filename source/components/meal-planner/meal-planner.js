@@ -14,9 +14,10 @@ class MealPlanner extends YummyRecipesComponent {
    * @async
    */
   async setupElement() {
-    // Get recipe indexes from URL and route to homepage if failed
+    // Get recipe indexes from URL
     const indexes = this.getParams();
 
+    // Route to homepage if failed
     if (indexes === undefined) {
       const routerEvent = new CustomEvent("router-navigate", {
         detail: {
@@ -30,16 +31,22 @@ class MealPlanner extends YummyRecipesComponent {
       return;
     }
 
-    // Select all cells
+    // Get all cells
     const mealCards = this.shadowRoot.querySelectorAll(".meal-card");
 
-    // Add cell functions and recipe cards if applicable
+    // Append add buttons to each cell
     for (let i = 0; i < 21; i++) {
       // Add button for empty cells
       const addButton = document.createElement("div");
 
       addButton.className = "meal-card-add";
 
+      // Append add button to cell
+      mealCards[i].append(addButton);
+    }
+
+    // Add recipe cards as specified in query string "id" parameter
+    for (let i = 0; i < 21; i++) {
       // Check if URL index is not -1
       if (indexes[i] !== -1) {
         // Attempt to get recipe from index
@@ -48,25 +55,40 @@ class MealPlanner extends YummyRecipesComponent {
 
         // Check if recipe is not undefined
         if (recipe !== undefined) {
+          // Clear out cell
+          mealCards[i].innerHTML = "";
+
           // Append recipe card to cell
           this.addRecipeToCell(mealCards[i], indexes[i]);
-        } else {
-          // Append add button to cell
-          mealCards[i].append(addButton);
         }
-      } else {
-        // Append add button to cell
-        mealCards[i].append(addButton);
       }
+    }
 
-      // Bring up search sidebar when add button clicked
-      addButton.addEventListener("click", () => {
+    // Add button functionality cells
+    this.shadowRoot.querySelectorAll(".meal-card-add").forEach((element) => {
+      // Add button click listener
+      element.addEventListener("click", () => {
+        // Bring up search sidebar when add button clicked
         this.shadowRoot.getElementById("search-part").style.display = "block";
       });
+    });
 
+    // Add functionality for each cell
+    for (let i = 0; i < 21; i++) {
       // Click event to remove card and restore add button
       mealCards[i].addEventListener("click", () => {
+        // Create new add button
+        const addButton = document.createElement("div");
+
+        addButton.className = "meal-card-add";
         mealCards[i].innerHTML = "";
+
+        // Add button click listener
+        addButton.addEventListener("click", () => {
+          // Bring up search sidebar when add button clicked
+          this.shadowRoot.getElementById("search-part").style.display = "block";
+        });
+
         mealCards[i].append(addButton);
       });
 
