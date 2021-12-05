@@ -57,10 +57,7 @@
   display: flex;
 }
 
-#timer {
-  display: none;
-  justify-content: space-around;
-}
+
 
 #timer-display {
   font-size: 20vmin;
@@ -160,3 +157,48 @@ button:active{
   width: 100%;
   float: bottom;
 }
+
+#timer {
+  display: none;
+  justify-content: space-around;
+}
+
+/* #timer {
+  background-color: lightgray;
+  width: 50vw;
+  height: 30vh;
+  border: solid black 1px;
+  display: none;
+}
+
+#timer-display {
+  width: 80%;
+  font-size: 8vw;
+  line-height: 27vh;
+}
+
+#timer-button-grid {
+  width: 20%;
+}
+
+#timer-button-grid button {
+  width: 90%;
+  background-color: white;
+  height: 20%;
+  margin: 2vh 0px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 2vw;
+}
+
+#time-input-container {
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+  justify-content: space-evenly;
+  margin: 0 auto;
+}
+
+#time-input-container > div {
+  display: flex;
+} */
