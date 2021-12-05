@@ -260,15 +260,27 @@ class RecipeSearch extends YummyRecipesComponent {
 
       // If clicked on, click previous page anchor tag
       leftArrow.addEventListener("click", () => {
-        let currPage = window.location.href[window.location.href.length - 1];
+        let url = window.location.href;
+
+        let currPageNum = "";
+
+        let pageChunk = url.slice(url.indexOf("?page="), url.length);
+        let equalIndex = pageChunk.indexOf("=");
+
+        for (let i = equalIndex + 1; i < pageChunk.length; i++) {
+          currPageNum = currPageNum + pageChunk[i];
+        }
+
+        currPageNum = parseInt(currPageNum);
+
         // The page before page 1 DNE
-        if (currPage == 1) {
+        if (currPageNum == 1) {
           return;
         } else {
-          let previousPage = parseInt(currPage) - 1;
+          let previousPage = currPageNum - 1;
 
           thisContainer.shadowRoot
-            .getElementById(currPage)
+            .getElementById(currPageNum)
             .classList.remove("active");
 
           thisContainer.shadowRoot
@@ -322,7 +334,14 @@ class RecipeSearch extends YummyRecipesComponent {
           const url = window.location.href;
 
           // Get page number before the clicked on page number
-          let lastPageNum = url[url.length - 1];
+          let lastPageNum = "";
+
+          let pageChunk = url.slice(url.indexOf("?page="), url.length);
+          let equalIndex = pageChunk.indexOf("=");
+
+          for (let i = equalIndex + 1; i < pageChunk.length; i++) {
+            lastPageNum = lastPageNum + pageChunk[i];
+          }
 
           // Remove the active class from the prev page number
           thisContainer.shadowRoot
@@ -349,15 +368,26 @@ class RecipeSearch extends YummyRecipesComponent {
 
       // If clicked on, click next page anchor tag
       rightArrow.addEventListener("click", () => {
-        let currPage = window.location.href[window.location.href.length - 1];
+        let url = window.location.href;
+
+        let currPageNum = "";
+
+        let pageChunk = url.slice(url.indexOf("?page="), url.length);
+        let equalIndex = pageChunk.indexOf("=");
+
+        for (let i = equalIndex + 1; i < pageChunk.length; i++) {
+          currPageNum = currPageNum + pageChunk[i];
+        }
+
+        currPageNum = parseInt(currPageNum);
+
         // The page after the last page DNE
-        if (currPage == pageCount) {
+        if (currPageNum == pageCount) {
           return;
         } else {
-          let nextPage = parseInt(currPage) + 1;
-
+          let nextPage = currPageNum + 1;
           thisContainer.shadowRoot
-            .getElementById(currPage)
+            .getElementById(currPageNum)
             .classList.remove("active");
 
           thisContainer.shadowRoot
