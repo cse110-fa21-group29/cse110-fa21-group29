@@ -158,19 +158,19 @@ class RecipeDetails extends YummyRecipesComponent {
       recipe.nutrients.totalServings;
 
     // Category box
-    if (recipe.categories.vegan == false) {
+    if (!recipe.categories.vegan) {
       this.shadowRoot.querySelector("#vegan").style.display = "none";
     }
-    if (recipe.categories.vegetarian == false) {
+    if (!recipe.categories.vegetarian) {
       this.shadowRoot.querySelector("#vegetarian").style.display = "none";
     }
-    if (recipe.categories.glutenFree == false) {
+    if (!recipe.categories.glutenFree) {
       this.shadowRoot.querySelector("#gluten-free").style.display = "none";
     }
-    if (recipe.categories.highProtein == false) {
+    if (!recipe.categories.highProtein) {
       this.shadowRoot.querySelector("#high-protein").style.display = "none";
     }
-    if (recipe.categories.healthy == false) {
+    if (!recipe.categories.healthy) {
       this.shadowRoot.querySelector("#healthy").style.display = "none";
     }
 
@@ -214,9 +214,9 @@ class RecipeDetails extends YummyRecipesComponent {
    * set timer
    */
   setTime() {
-    let hour = parseInt(this.count / 3600);
-    let minute = parseInt(this.count / 60);
-    let second = parseInt(this.count % 60);
+    let hour = parseInt(this.count / 3600, 10);
+    let minute = parseInt(this.count / 60, 10);
+    let second = parseInt(this.count % 60, 10);
     if (hour < 10) {
       hour = "0" + hour;
     }
