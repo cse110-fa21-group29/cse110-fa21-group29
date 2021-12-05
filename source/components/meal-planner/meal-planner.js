@@ -1,6 +1,7 @@
 import { Database } from "/core/database/database.js";
 import { YummyRecipesComponent } from "/components/core/yummy-recipes-component.js";
 
+/** Class that provides functionality to the meal planner. */
 class MealPlanner extends YummyRecipesComponent {
   constructor() {
     super();
@@ -9,21 +10,34 @@ class MealPlanner extends YummyRecipesComponent {
 
   /**
    * Sets up meal card functions
-   *
-   * @async
    */
-  async setupElement() {
+  setupElement() {
+    // Select all cells
     const mealCards = this.shadowRoot.querySelectorAll(".meal-card");
 
+    // Add cell functions
     for (let i = 0; i < 21; i++) {
+      // Add button image
       let mealcardimg = document.createElement("div");
 
       mealcardimg.className = "meal-card-add";
+      mealCards[i].append(mealcardimg);
+
+      // Bring up search sidebar when clicked
       mealcardimg.addEventListener("click", () => {
         this.shadowRoot.getElementById("search-part").style.display = "block";
       });
 
-      mealCards[i].append(mealcardimg);
+      // Dragover listener
+      mealCards[i].addEventListener("dragover", (event) => {
+        event.preventDefault();
+      });
+
+      // Drop listener
+      mealCards[i].addEventListener("drop", (event) => {
+        const index = event.dataTransfer.getData("text/plain");
+        this.addRecipeToCell(mealCards[i], index);
+      });
 
       // mealCards[i].addEventListener("click", () => {
       //   // Function that handles meal card logic
@@ -36,6 +50,7 @@ class MealPlanner extends YummyRecipesComponent {
     //   .getElementById("search-result")
     //   .append(document.createElement("meal-planner-recipe-card"));
 
+    // Close sidebar when "x" clicked
     this.shadowRoot
       .getElementById("close-search")
       .addEventListener("click", () => {
@@ -52,8 +67,14 @@ class MealPlanner extends YummyRecipesComponent {
       });
   }
 
+  /**
+   * Sets up search sidebar functionality.
+   *
+   * @async
+   * @param {string} query - User input to pass to database search.
+   */
   async search(query) {
-    // Querry array
+    // Array used in database search
     const arr = [
       ["query", query],
       ["glutenFree", "true"],
@@ -67,38 +88,40 @@ class MealPlanner extends YummyRecipesComponent {
     const db = new Database();
     const recipes = await db.searchByName(arr);
 
-    // Generate recipe cards
+    // Clear cards from any prior queries
+    this.shadowRoot.getElementById("search-result").innerHTML = "";
+
+    // Generate sidebar recipe cards
     for (let i = 0; i < recipes.length; i++) {
-      this.shadowRoot
-        .getElementById("search-result")
-        .appendChild(
-          this.createRecipeCard(recipes[i].recipe, recipes[i].index)
-        );
+      const card = document.createElement("sidebar-recipe-card");
+      card.recipeData = recipes[i].recipe;
+      card.recipeIndex = recipes[i].index;
+
+      // Append card to sidebar
+      this.shadowRoot.getElementById("search-result").appendChild(card);
     }
   }
 
   /**
-   * Creates recipe card with information and routing.
+   * Adds meal planner recipe card to cell.
    *
-   * @param {Object} recipe - Object that contains recipe data.
-   * @param {number} index - Index of recipe card in database to set route.
-   * @returns {Object} Generated recipe card.
+   * @async
+   * @param {Object} mealCard - Cell to append card to.
+   * @param {number} index - Index of recipe object in database.
    */
-  createRecipeCard(recipe, index) {
+  async addRecipeToCell(mealCard, index) {
+    // Get recipe from database
+    const db = new Database();
+    const recipe = await db.getRecipe(index);
+
+    // Create meal planner recipe card
     const card = document.createElement("meal-planner-recipe-card");
     card.recipeData = recipe;
-    card.addEventListener("click", () => {
-      const routerEvent = new CustomEvent("router-navigate", {
-        detail: {
-          route: "recipe-details",
-          params: [index],
-        },
-        bubbles: true,
-        composed: true,
-      });
-      card.dispatchEvent(routerEvent);
-    });
-    return card;
+    card.recipeIndex = index;
+
+    // Clear out any existing cards
+    mealCard.innerHTML = "";
+    mealCard.append(card);
   }
 
   /**

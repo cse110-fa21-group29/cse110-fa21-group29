@@ -10,6 +10,10 @@ export class CommonRecipeCard extends YummyRecipesComponent {
     this.recipe = recipeData;
   }
 
+  set recipeIndex(recipeIndex) {
+    this.index = recipeIndex;
+  }
+
   setupElement() {
     // Populate data into recipe card
     this.shadowRoot.querySelector(".recipe-card-name > div").innerHTML =
