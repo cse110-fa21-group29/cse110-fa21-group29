@@ -84,4 +84,25 @@ describe('E2E Testing loading web components and navigating pages', () => {
 
         expect(homePage.length).toBe(1);
     }, 7500);
+
+    /**
+     * @summary New Contribute Page
+     * Test to see if we go to the new contribute page
+     */
+     it('Moving to new contribute page', async () => {
+        await new Promise((r) => setTimeout(r, 2000));
+
+        // click on the contribute nav bar button
+        const navBar = await page.$('body > header > common-nav-bar');
+        const shadowRoot = await navBar.getProperty('shadowRoot');
+        const homePageButton = await shadowRoot.$('#nav-bar > a:nth-child(4)');
+        homePageButton.click();
+
+        await new Promise((r) => setTimeout(r, 2000));
+
+        // get the contribute page
+        const contributePage = await page.$$('#content > recipe-contribute');
+
+        expect(contributePage.length).toBe(1);
+    }, 7500);
 });
