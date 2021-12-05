@@ -76,44 +76,15 @@ class MealPlanner extends YummyRecipesComponent {
     // Add functionality for each cell
     for (let i = 0; i < 21; i++) {
       // Click event to remove card and restore add button
-      mealCards[i].addEventListener("click", () => {
-        // Create new add button
-        const addButton = document.createElement("div");
-
-        addButton.className = "meal-card-add";
-        mealCards[i].innerHTML = "";
-
-        // Add button click listener
-        addButton.addEventListener("click", () => {
-          // Bring up search sidebar when add button clicked
-          this.shadowRoot.getElementById("search-part").style.display = "block";
-        });
-
-        mealCards[i].append(addButton);
-
-        // Update total nutrition
-        this.updateNutrition();
-
-        // Update URL
-        this.setUrl(i, -1);
-      });
+      this.addButtonToCell(mealCards[i], i);
 
       // Dragover listener
       mealCards[i].addEventListener("dragover", (event) => {
         event.preventDefault();
       });
 
-      // Drop listener
-      mealCards[i].addEventListener("drop", (event) => {
-        // Get recipe index from drag data
-        const index = event.dataTransfer.getData("text/plain");
-
-        // Add recipe card
-        this.addRecipeToCell(mealCards[i], index);
-
-        // Change URL
-        this.setUrl(i, index);
-      });
+      // Drop function
+      this.drop(mealCards[i], i);
     }
 
     // Close sidebar when "x" clicked
@@ -174,6 +145,37 @@ class MealPlanner extends YummyRecipesComponent {
   }
 
   /**
+   * Adds click handler to cell which clears the cell, appends add button, and
+   * updates the URL.
+   *
+   * @param {Object} mealCard - Cell to operate on.
+   * @param {Object} mealCardIndex - Index of cell to operate on.
+   */
+  addButtonToCell(mealCard, mealCardIndex) {
+    mealCard.addEventListener("click", () => {
+      // Create new add button
+      const addButton = document.createElement("div");
+
+      addButton.className = "meal-card-add";
+      mealCard.innerHTML = "";
+
+      // Add button click listener
+      addButton.addEventListener("click", () => {
+        // Bring up search sidebar when add button clicked
+        this.shadowRoot.getElementById("search-part").style.display = "block";
+      });
+
+      mealCard.append(addButton);
+
+      // Update total nutrition
+      this.updateNutrition();
+
+      // Update URL
+      this.setUrl(mealCardIndex, -1);
+    });
+  }
+
+  /**
    * Adds meal planner recipe card to cell.
    *
    * @async
@@ -196,6 +198,27 @@ class MealPlanner extends YummyRecipesComponent {
 
     // Update total nutrition
     this.updateNutrition();
+  }
+
+  /**
+   * Adds drop handler to meal card which clears the cell, adds new recipe
+   * card, and updates the URL.
+   *
+   * @param {Object} mealCard - Cell to operate on.
+   * @param {Object} mealCardIndex - Index of cell to operate on.
+   */
+  drop(mealCard, mealCardIndex) {
+    // Drop listener
+    mealCard.addEventListener("drop", (event) => {
+      // Get recipe index from drag data
+      const index = event.dataTransfer.getData("text/plain");
+
+      // Add recipe card
+      this.addRecipeToCell(mealCard, index);
+
+      // Change URL
+      this.setUrl(mealCardIndex, index);
+    });
   }
 
   /**
