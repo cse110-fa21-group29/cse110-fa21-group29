@@ -12,10 +12,16 @@ class HandsFree extends YummyRecipesComponent {
   temp;
   timeron = 0;
 
-  // Step counter
+  // Steps array and counter
   recipeSteps = [];
   currentStep = 1;
 
+  /**
+   * Setup function for the hands free page.
+   * Gets the recipe steps, image, and video and loads them on the page.
+   *
+   * @async
+   */
   async setupElement() {
     // Grab recipe from database based on routing parameter
     const database = new Database();
@@ -40,26 +46,35 @@ class HandsFree extends YummyRecipesComponent {
     // Store recipe steps as instance variable
     this.recipeSteps = recipe.steps;
 
+    // Event handler for timer start button
     this.shadowRoot
       .getElementById("start-button")
       .addEventListener("click", () => {
         this.startCount();
       });
+
+    // Event handler for t dimer pause button
     this.shadowRoot
       .getElementById("pause-button")
       .addEventListener("click", () => {
         this.stopCount();
       });
+
+    // Event handler for timer resume button
     this.shadowRoot
       .getElementById("resume-button")
       .addEventListener("click", () => {
         this.resumeCount();
       });
+
+    // Event handler for hands free next step button
     this.shadowRoot
       .getElementById("next-button")
       .addEventListener("click", () => {
         this.nextStep();
       });
+
+    // Event handler for hands free prev step button
     this.shadowRoot
       .getElementById("back-button")
       .addEventListener("click", () => {
@@ -128,6 +143,9 @@ class HandsFree extends YummyRecipesComponent {
       hour + ":" + minute + ":" + second;
   }
 
+  /**
+   * Changes step on page to the next step.
+   */
   nextStep() {
     if (++this.currentStep === this.recipeSteps.length) {
       this.hideNextButton();
@@ -138,6 +156,9 @@ class HandsFree extends YummyRecipesComponent {
       this.recipeSteps[this.currentStep - 1];
   }
 
+  /**
+   * Changes step on page to the previous step.
+   */
   backStep() {
     if (--this.currentStep === 1) {
       this.hideBackButton();
@@ -148,18 +169,30 @@ class HandsFree extends YummyRecipesComponent {
       this.recipeSteps[this.currentStep - 1];
   }
 
+  /**
+   * Displays the prev step button.
+   */
   showBackButton() {
     this.shadowRoot.getElementById("back-button").style.visibility = "visible";
   }
 
+  /**
+   * Hides the prev step button.
+   */
   hideBackButton() {
     this.shadowRoot.getElementById("back-button").style.visibility = "hidden";
   }
 
+  /**
+   * Displays the next step button.
+   */
   showNextButton() {
     this.shadowRoot.getElementById("next-button").style.visibility = "visible";
   }
 
+  /**
+   * Hides the next step button.
+   */
   hideNextButton() {
     this.shadowRoot.getElementById("next-button").style.visibility = "hidden";
   }
