@@ -19,7 +19,8 @@ class CommonRecipeCard extends YummyRecipesComponent {
     this.shadowRoot.querySelector("#time").innerHTML =
       this.recipe.info.readyInMinutes;
     this.shadowRoot.querySelector("#calories").innerHTML = parseInt(
-      this.recipe.nutrients.calories
+      this.recipe.nutrients.calories,
+      10
     );
     this.shadowRoot.querySelector("#protein").innerHTML =
       this.recipe.nutrients.protein;

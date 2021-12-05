@@ -5,6 +5,7 @@ class HandsFree extends YummyRecipesComponent {
   constructor() {
     super();
     this.htmlPath = "components/hands-free/hands-free.html";
+    this.totalTime = -1;
   }
 
   // Timer variables
@@ -23,6 +24,7 @@ class HandsFree extends YummyRecipesComponent {
    * @async
    */
   async setupElement() {
+    this.shadowRoot.getElementById("timer-display").style.visibility = "hidden";
     // Grab recipe from database based on routing parameter
     const database = new Database();
     let recipes = await database.getRecipes();
@@ -60,11 +62,11 @@ class HandsFree extends YummyRecipesComponent {
         this.stopCount();
       });
 
-    // Event handler for timer resume button
+    // Event handler for timer reset button
     this.shadowRoot
-      .getElementById("resume-button")
+      .getElementById("reset-button")
       .addEventListener("click", () => {
-        this.resumeCount();
+        this.resetCount();
       });
 
     // Event handler for hands free next step button
@@ -102,45 +104,116 @@ class HandsFree extends YummyRecipesComponent {
     }
   }
 
-  timedCount() {
-    this.setTime();
-    this.count = this.count + 1;
-    this.temp = setTimeout(this.timedCount.bind(this), 1000);
-  }
-
+  /**
+   * Function that activates when user hits start button on timer
+   * Hides the time inputs and starts the timer
+   *
+   */
   startCount() {
+    // Hide user inputs
+    this.shadowRoot.getElementById("input-hours").style.visibility = "hidden";
+    this.shadowRoot.getElementById("input-minutes").style.visibility = "hidden";
+    this.shadowRoot.getElementById("input-seconds").style.visibility = "hidden";
+    this.shadowRoot.getElementById("input-hours-label").style.visibility =
+      "hidden";
+    this.shadowRoot.getElementById("input-minutes-label").style.visibility =
+      "hidden";
+    this.shadowRoot.getElementById("input-seconds-label").style.visibility =
+      "hidden";
+
     if (!this.timeron) {
       this.timeron = 1;
-      this.timedCount();
+      this.startTimer();
     }
   }
 
+  /**
+   * Stops the timer
+   */
   stopCount() {
     clearTimeout(this.temp);
     this.timeron = 0;
   }
 
-  resumeCount() {
+  /**
+   * Resets the timer back to user input
+   */
+  resetCount() {
     this.stopCount();
     this.count = 0;
-    this.setTime();
+    this.totalTime = -1;
+    // Show user inputs again
+    this.shadowRoot.getElementById("input-hours").style.visibility = "visible";
+    this.shadowRoot.getElementById("input-minutes").style.visibility =
+      "visible";
+    this.shadowRoot.getElementById("input-seconds").style.visibility =
+      "visible";
+    this.shadowRoot.getElementById("input-hours-label").style.visibility =
+      "visible";
+    this.shadowRoot.getElementById("input-minutes-label").style.visibility =
+      "visible";
+    this.shadowRoot.getElementById("input-seconds-label").style.visibility =
+      "visible";
+
+    // Hide timer
+    this.shadowRoot.getElementById("timer-display").style.visibility = "hidden";
   }
 
+  /**
+   * Display the initial starting time user inputted
+   */
+  startTimer() {
+    if (this.totalTime === -1) {
+      const hoursInput = Number(
+        this.shadowRoot.getElementById("input-hours").value
+      );
+      const minutesInput = Number(
+        this.shadowRoot.getElementById("input-minutes").value
+      );
+      const secondsInput = Number(
+        this.shadowRoot.getElementById("input-seconds").value
+      );
+      if (hoursInput === 0 && minutesInput === 0 && secondsInput === 0) {
+        this.shadowRoot.getElementById("timer-display").style.visibility =
+          "visible";
+        this.shadowRoot.getElementById("timer-display").innerText = "00:00:00";
+        return;
+      }
+      this.totalTime = hoursInput * 3600 + minutesInput * 60 + secondsInput;
+    }
+
+    let timer = this.shadowRoot.getElementById("timer-display");
+    timer.style.visibility = "visible";
+    this.setTime();
+    this.totalTime -= 1;
+    this.temp = setInterval(() => this.updateTime(), 1000);
+  }
+
+  /**
+   * Update timer text
+   */
   setTime() {
-    let hour = parseInt(this.count / 3600);
-    let minute = parseInt(this.count / 60);
-    let second = parseInt(this.count % 60);
-    if (hour < 10) {
-      hour = "0" + hour;
+    const timer = this.shadowRoot.getElementById("timer-display");
+    const date = new Date(null);
+    date.setSeconds(this.totalTime);
+    timer.innerText = date.toISOString().substr(11, 8);
+  }
+
+  /**
+   * Decrements the time by 1 every second
+   * If timer reaches 0, play a sound and stop the interval
+   */
+  updateTime() {
+    if (this.totalTime === 0) {
+      // Play some sound
+      const audio = new Audio("/static/hands-free/timer-done-noise.mp3");
+      audio.play();
+      // Clear interval
+      clearInterval(this.temp);
     }
-    if (minute < 10) {
-      minute = "0" + minute;
-    }
-    if (second < 10) {
-      second = "0" + second;
-    }
-    this.shadowRoot.getElementById("timer-display").innerText =
-      hour + ":" + minute + ":" + second;
+
+    this.setTime();
+    this.totalTime -= 1;
   }
 
   /**
