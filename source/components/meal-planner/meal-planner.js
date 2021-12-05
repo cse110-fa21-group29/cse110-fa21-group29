@@ -91,6 +91,9 @@ class MealPlanner extends YummyRecipesComponent {
 
         mealCards[i].append(addButton);
 
+        // Update total nutrition
+        this.updateNutrition();
+
         // Update URL
         this.setUrl(i, -1);
       });
@@ -190,6 +193,49 @@ class MealPlanner extends YummyRecipesComponent {
     // Clear out any existing cards
     mealCard.innerHTML = "";
     mealCard.append(card);
+
+    // Update total nutrition
+    this.updateNutrition();
+  }
+
+  /**
+   * Updates the nutrition row based on the recipe cards present.
+   */
+  updateNutrition() {
+    // Grab all cells
+    const calories = this.shadowRoot.querySelectorAll(".calories");
+    const fat = this.shadowRoot.querySelectorAll(".fat");
+    const plannerCells = this.shadowRoot.querySelectorAll(".meal-card");
+    const protein = this.shadowRoot.querySelectorAll(".protein");
+
+    // Iterate on column
+    for (let i = 0; i < calories.length; i++) {
+      let calorieCount = 0;
+      let fatCount = 0;
+      let proteinCount = 0;
+
+      // Iterate on row
+      for (let j = 0; j < 3; j++) {
+        // Skip cell if there is no recipe
+        if (plannerCells[7 * j + i].children[0].recipe === undefined) {
+          continue;
+        }
+
+        // Get recipe nutrition of current cell
+        const recipeNutrients =
+          plannerCells[7 * j + i].children[0].recipe.nutrients;
+
+        // Add to column nutrition
+        calorieCount += parseInt(recipeNutrients.calories);
+        fatCount += parseInt(recipeNutrients.fat);
+        proteinCount += parseInt(recipeNutrients.protein);
+      }
+
+      // Update column nutrition
+      calories[i].innerHTML = calorieCount;
+      fat[i].innerHTML = fatCount;
+      protein[i].innerHTML = proteinCount;
+    }
   }
 
   /**
