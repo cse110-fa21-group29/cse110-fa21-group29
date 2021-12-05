@@ -5,10 +5,12 @@
 }
 
 #timer {
+  background-color: lightgray;
   width: 50vw;
   height: 30vh;
   border: solid black 1px;
   display: flex;
+  position: fixed;
 }
 
 #timer-display {
@@ -33,7 +35,6 @@
 
 #back-button,
 #next-button {
-  width: 20%;
   height: 20vh;
   margin: auto;
   border-radius: 20px;
@@ -117,4 +118,22 @@
 main {
   min-height: 100%;
   padding: 10px;
+}
+
+#time-input-container {
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+  justify-content: space-evenly;
+  margin: 0 auto;
+}
+
+#time-input-container > div {
+  display: flex;
+}
+
+#back-next-container {
+  width: 500px;
+  margin-left: auto;
+  margin-bottom: 125px;
 }
