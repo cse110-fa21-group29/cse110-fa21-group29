@@ -361,7 +361,7 @@ class RecipeContribute extends YummyRecipesComponent {
     // Call database functions based on if add or edit function is specified
     const db = new Database();
 
-    if (add == true) {
+    if (add) {
       // Push recipe to database and grab index of the new recipe
       const index = await db.pushRecipe(recipe);
 
