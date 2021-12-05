@@ -256,6 +256,7 @@ class RecipeSearch extends YummyRecipesComponent {
       // Create left arrow icon for navigation
       let leftArrow = document.createElement("a");
       leftArrow.innerHTML = "&#8592;";
+      leftArrow.classList.add("pagination-arrow");
 
       // If clicked on, click previous page anchor tag
       leftArrow.addEventListener("click", () => {
@@ -265,6 +266,12 @@ class RecipeSearch extends YummyRecipesComponent {
           return;
         } else {
           let previousPage = parseInt(currPage) - 1;
+          thisContainer.shadowRoot
+            .getElementById(currPage)
+            .classList.remove("active");
+          thisContainer.shadowRoot
+            .getElementById(previousPage)
+            .classList.add("active");
           thisContainer.shadowRoot.getElementById(previousPage).click();
         }
       });
@@ -298,7 +305,9 @@ class RecipeSearch extends YummyRecipesComponent {
           let pageRecipes = searchRecipe.slice(recipeStart, recipeEnd);
 
           // Clear out recipe card grid before we append new cards
-          this.shadowRoot.getElementById("recipe-card-grid").innerHTML = "";
+          thisContainer.shadowRoot.getElementById(
+            "recipe-card-grid"
+          ).innerHTML = "";
 
           // Populate grid with all the recipes, starting at recipeStart, ending at recipeEnd
           for (const recipe of pageRecipes) {
@@ -309,6 +318,16 @@ class RecipeSearch extends YummyRecipesComponent {
 
           // Change url to have page set to the current page number
           const url = window.location.href;
+
+          // Get page number before the clicked on page number
+          let lastPageNum = url[url.length - 1];
+
+          // Remove the active class from the prev page number
+          thisContainer.shadowRoot
+            .getElementById(lastPageNum)
+            .classList.remove("active");
+
+          anchorTag.classList.add("active");
 
           // Gets the URL without ?page=, then adds it back with the current page number
           const newUrl =
@@ -324,6 +343,7 @@ class RecipeSearch extends YummyRecipesComponent {
       // Create right arrow icon for navigation
       let rightArrow = document.createElement("a");
       rightArrow.innerHTML = "&#8594;";
+      rightArrow.classList.add("pagination-arrow");
 
       // If clicked on, click next page anchor tag
       rightArrow.addEventListener("click", () => {
@@ -333,6 +353,12 @@ class RecipeSearch extends YummyRecipesComponent {
           return;
         } else {
           let nextPage = parseInt(currPage) + 1;
+          thisContainer.shadowRoot
+            .getElementById(currPage)
+            .classList.remove("active");
+          thisContainer.shadowRoot
+            .getElementById(nextPage)
+            .classList.add("active");
           thisContainer.shadowRoot.getElementById(nextPage).click();
         }
       });
@@ -357,6 +383,8 @@ class RecipeSearch extends YummyRecipesComponent {
       const newUrl = url.slice(0, url.indexOf("?page=")) + "?page=" + 1;
 
       history.pushState({}, "", newUrl);
+
+      this.shadowRoot.getElementById("1").classList.add("active");
     }
     // For the case that pagination is not required
     else {

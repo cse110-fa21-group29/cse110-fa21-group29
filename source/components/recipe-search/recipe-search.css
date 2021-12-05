@@ -82,9 +82,19 @@ common-recipe-card {
   align-items: center;
 }
 
-.pagination-numbers {
-  color: blue;
+a {
+  color: black;
   padding: 8px 20px;
   text-decoration: none;
   font-size: 1.3vw;
+  cursor: pointer;
+}
+
+a.active {
+  background-color: rgb(27, 180, 231);
+  color: white;
+}
+
+a:hover:not(.active) {
+  background-color: #ddd;
 }
