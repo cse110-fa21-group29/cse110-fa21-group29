@@ -15,19 +15,16 @@ class HomePage extends YummyRecipesComponent {
    */
   async setupElement() {
     for (let i = 1; i < 6; i++) {
-      this.shadowRoot
-        .getElementById("prev-button-" + i)
-        .addEventListener("click", () => {
-          this.recipeScroll(true, i);
-        });
+      // grab prev button and add event listener to it
+      const prevButton = this.shadowRoot.getElementById("prev-button-" + i);
+      this.prevButtonEventListener(prevButton, i);
+
       this.shadowRoot.getElementById("prev-button-" + i).style.visibility =
         "hidden";
 
-      this.shadowRoot
-        .getElementById("next-button-" + i)
-        .addEventListener("click", () => {
-          this.recipeScroll(false, i);
-        });
+      // grab next button and add event listener to it
+      const nextButton = this.shadowRoot.getElementById("next-button-" + i);
+      this.nextButtonEventListener(nextButton, i);
     }
 
     // Get recipes from database
@@ -109,6 +106,33 @@ class HomePage extends YummyRecipesComponent {
     }
   }
 
+  /**
+   * Gets a next button element and adds an eventListener to it
+   * @param {} element - Next Button
+   * @param {int} elementId - Next button id number
+   */
+  nextButtonEventListener(element, elementId) {
+    element.addEventListener("click", () => {
+      this.recipeScroll(false, elementId);
+    });
+  }
+
+  /**
+   * Gets a prev button element and adds an eventListener to it
+   * @param {} element - Prev Button
+   * @param {int} elementId - Prev button id number
+   */
+  prevButtonEventListener(element, elementId) {
+    element.addEventListener("click", () => {
+      this.recipeScroll(true, elementId);
+    });
+  }
+
+  /**
+   *
+   * @param {*} scrollleft
+   * @param {*} i
+   */
   recipeScroll(scrollleft, i) {
     let recipegrid = this.shadowRoot.getElementById("recipe-card-grid-" + i);
     let prevbutton = this.shadowRoot.getElementById("prev-button-" + i);
