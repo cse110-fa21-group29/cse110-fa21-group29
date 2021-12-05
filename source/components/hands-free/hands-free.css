@@ -74,11 +74,14 @@
 }
 
 #direction {
-  width: 60vw;
+  width: 58vw;
   border: solid black 1px;
   border-radius: 10px;
   margin: 10px;
   height: 60vh;
+  padding: 1vw;
+  font-size: 3.5vw;
+  overflow-y: scroll;
 }
 #direction-img,
 #direction-video {
