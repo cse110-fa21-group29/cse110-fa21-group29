@@ -60,16 +60,4 @@ describe('data on home-page', () => {
         expect(numRecipes).toBe(20);
     }, 5000)
 
-    it('check if the recipe cards on home-page for gluten free are correctly loaded', async () => {
-        await new Promise((r) => setTimeout(r, 2000));
-        const homePage = await page.$('home-page');
-        const shadowRoot = await homePage.getProperty('shadowRoot');
-        for (let i = 0; i < 5; i++){
-            const numRecipes = await shadowRoot.$$eval(`#recipe-card-grid-${i} > common-recipe-card`,(recipes) => {
-                return recipes.length;
-            });
-            expect(numRecipes).toBe(20);
-        }
-        
-    }, 5000)
 })
