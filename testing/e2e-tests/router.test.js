@@ -44,23 +44,23 @@ describe('E2E Testing loading web components and navigating pages', () => {
     }, 7500);
 
     /**
-     * @summary Hands-Free Mode Page
-     * Test to see if we go to hands free page
+     * @summary Existing Contribute Page
+     * Test to see if we go to the existing contribute page
      */
-     it('Moving to hands-free mode page', async () => {
+     it('Moving to existing contribute page', async () => {
         await new Promise((r) => setTimeout(r, 2000));
 
-        // click on the hands-free mode button
+        // click on the edit button
         const recipeDetails = await page.$('#content > recipe-details');
         const shadowRoot = await recipeDetails.getProperty('shadowRoot');
-        const homePageButton = await shadowRoot.$('#hands-free-button');
+        const homePageButton = await shadowRoot.$('#edit-button');
         homePageButton.click();
 
-        // wait for the page to load then get the recipe-details page
         await new Promise((r) => setTimeout(r, 2000));
 
-        const handsFreeModePage = await page.$$('#content > hands-free');
+        // get the contribute page
+        const contributePage = await page.$$('#content > recipe-contribute');
 
-        expect(handsFreeModePage.length).toBe(1);
+        expect(contributePage.length).toBe(1);
     }, 7500);
 });
