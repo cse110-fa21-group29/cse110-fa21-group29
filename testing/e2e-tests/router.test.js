@@ -63,4 +63,25 @@ describe('E2E Testing loading web components and navigating pages', () => {
 
         expect(contributePage.length).toBe(1);
     }, 7500);
+
+    /**
+     * @summary Back Home Page
+     * Test to see if we go back to the home page
+     */
+     it('Moving back to home page', async () => {
+        await new Promise((r) => setTimeout(r, 2000));
+
+        // click on the home page nav bar button
+        const navBar = await page.$('body > header > common-nav-bar');
+        const shadowRoot = await navBar.getProperty('shadowRoot');
+        const homePageButton = await shadowRoot.$('#home-page-link');
+        homePageButton.click();
+
+        await new Promise((r) => setTimeout(r, 2000));
+        
+        // get the home page
+        const homePage = await page.$$('#content > home-page');
+
+        expect(homePage.length).toBe(1);
+    }, 7500);
 });
