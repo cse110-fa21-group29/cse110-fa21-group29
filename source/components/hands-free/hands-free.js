@@ -7,14 +7,39 @@ class HandsFree extends YummyRecipesComponent {
     this.htmlPath = "components/hands-free/hands-free.html";
   }
 
+  // Timer variables
   count = 0;
   temp;
   timeron = 0;
-  step = 1;
-  // step numbers
-  maxStep = 5;
+
+  // Step counter
+  recipeSteps = [];
+  currentStep = 1;
 
   async setupElement() {
+    // Grab recipe from database based on routing parameter
+    const database = new Database();
+    let recipes = await database.getRecipes();
+    let recipe = recipes[this.routeParams[0]];
+
+    // If recipe is undefined, go back to home page
+    if (!recipe) {
+      // Route to home page
+      const routerEvent = new CustomEvent("router-navigate", {
+        detail: {
+          route: "home-page",
+          params: [],
+        },
+        bubbles: true,
+        composed: true,
+      });
+
+      document.dispatchEvent(routerEvent);
+    }
+
+    // Store recipe steps as instance variable
+    this.recipeSteps = recipe.steps;
+
     this.shadowRoot
       .getElementById("start-button")
       .addEventListener("click", () => {
@@ -42,23 +67,23 @@ class HandsFree extends YummyRecipesComponent {
       });
     this.hideBackButton();
 
-    // Get recipe from database
-    const db = new Database();
-    const recipe = await db.getRecipe(this.routeParams[0]);
+    // Populate first step
+    this.shadowRoot.getElementById("direction").innerText = this.recipeSteps[0];
 
-    // If recipe is undefined, go back to home page
-    if (!recipe) {
-      // Route to home page
-      const routerEvent = new CustomEvent("router-navigate", {
-        detail: {
-          route: "home-page",
-          params: [],
-        },
-        bubbles: true,
-        composed: true,
-      });
+    // Populate image and video (if included)
+    this.shadowRoot.getElementById("direction-img").alt = recipe.metadata.title;
+    if (recipe.metadata.image !== undefined && recipe.metadata.image !== "") {
+      this.shadowRoot.getElementById("direction-img").src =
+        recipe.metadata.image;
+    } else {
+      this.shadowRoot.getElementById("direction-img").src =
+        "/static/common/defaultimg.jpeg";
+    }
 
-      document.dispatchEvent(routerEvent);
+    if (recipe.metadata.video !== undefined && recipe.metadata.video !== "") {
+      this.shadowRoot.getElementById("direction-video").style.display = "block";
+      this.shadowRoot.getElementById("direction-video").src =
+        recipe.metadata.video;
     }
   }
 
@@ -104,19 +129,23 @@ class HandsFree extends YummyRecipesComponent {
   }
 
   nextStep() {
-    if (++this.step == this.maxStep) {
+    if (++this.currentStep == this.recipeSteps.length) {
       this.hideNextButton();
     }
     this.showBackButton();
-    this.shadowRoot.getElementById("number").innerText = this.step;
+    this.shadowRoot.getElementById("number").innerText = this.currentStep;
+    this.shadowRoot.getElementById("direction").innerText =
+      this.recipeSteps[this.currentStep];
   }
 
   backStep() {
-    if (--this.step == 1) {
+    if (--this.currentStep == 1) {
       this.hideBackButton();
     }
     this.showNextButton();
-    this.shadowRoot.getElementById("number").innerText = this.step;
+    this.shadowRoot.getElementById("number").innerText = this.currentStep;
+    this.shadowRoot.getElementById("direction").innerText =
+      this.recipeSteps[this.currentStep];
   }
 
   showBackButton() {
