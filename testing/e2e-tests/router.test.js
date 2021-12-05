@@ -95,7 +95,6 @@ describe('E2E Testing loading web components and navigating pages', () => {
         contributePageButton.click();
 
         await new Promise((r) => setTimeout(r, 2000)); // wait for the page to load
-        await page.screenshot({path: "zNewContributePage.png"})
 
         // get the contribute page
         const contributePage = await page.$$('#content > recipe-contribute');
