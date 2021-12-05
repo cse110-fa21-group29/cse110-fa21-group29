@@ -126,4 +126,25 @@ describe('E2E Testing loading web components and navigating pages', () => {
 
         expect(contributePage.length).toBe(1);
     }, 7500);
+
+    /**
+     * @summary About Us Page
+     * Test to see if we go to the about us page
+     */
+     it('Moving to about us page', async () => {
+        await new Promise((r) => setTimeout(r, 2000));
+
+        // click on the about us nav bar button
+        const navBar = await page.$('body > header > common-nav-bar');
+        const shadowRoot = await navBar.getProperty('shadowRoot');
+        const homePageButton = await shadowRoot.$('#nav-bar > a:nth-child(6)');
+        homePageButton.click();
+
+        await new Promise((r) => setTimeout(r, 2000));
+
+        // get the about us page
+        const contributePage = await page.$$('#content > about-us');
+
+        expect(contributePage.length).toBe(1);
+    }, 7500);
 });
