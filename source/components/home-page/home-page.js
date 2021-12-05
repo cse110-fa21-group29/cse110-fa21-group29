@@ -39,9 +39,10 @@ class HomePage extends YummyRecipesComponent {
       this.shadowRoot.getElementById("recipe-card-grid-" + i).innerHTML = "";
     }
 
-    // create an array of recipe object
+    // Create an array of recipe object
     const recipeObjects = [];
-    // fill the array with recipes
+
+    // Fill the array with recipes
     for (let i = 0; i < recipes.length; i++) {
       const recipeObject = {
         index: i,
@@ -55,26 +56,28 @@ class HomePage extends YummyRecipesComponent {
      * 0: highProtein, 1: healthy, 2: vegan, 3: vegetarian, 4: glutenFree
      */
     const gridCount = [0, 0, 0, 0, 0];
-    /**
-     * ID array to holds the randomly generated ID for the recipe card
-     */
+
+    // ID array to holds the randomly generated ID for the recipe card
     const idArray = [];
 
     // Create 20 recipe cards for each category grid populated with database info
     for (let i = 0; i < recipeObjects.length; i++) {
-      // generate a random ID
+      // Generate a random ID
       let id = Math.floor(Math.random() * recipeObjects.length);
-      // check if the is already in the array, if so generate a new random ID
+
+      // Check if the is already in the array, if so generate a new random ID
       while (idArray.includes(id)) {
         id = Math.floor(Math.random() * recipeObjects.length);
       }
-      // if ID not in the array, push it to the array
+
+      // If ID not in the array, push it to the array
       idArray.push(id);
 
-      // randomly generates recipe
+      // Randomly generate recipe
       const randomItem = recipeObjects[id];
-      //If recipe does not exist at index, then skip to prevent page from breaking
-      if (!randomItem) {
+
+      // If recipe does not exist at index, then skip to prevent page from breaking
+      if (!randomItem.recipe) {
         continue;
       }
 
