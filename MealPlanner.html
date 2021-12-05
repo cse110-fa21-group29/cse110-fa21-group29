@@ -157,7 +157,7 @@
 
     
 
-    <h4 class="name" id="addButtonToCell"><span class="type-signature"></span>addButtonToCell<span class="signature">(mealCard, mealCardIndex)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="addButtonToCell"><span class="type-signature"></span>addButtonToCell<span class="signature">(plannerCell, plannerCellIndex)</span><span class="type-signature"></span></h4>
 
     
 
@@ -245,7 +245,7 @@ updates the URL.
 
         <tr>
             
-                <td class="name"><code>mealCard</code></td>
+                <td class="name"><code>plannerCell</code></td>
             
 
             <td class="type">
@@ -271,7 +271,7 @@ updates the URL.
 
         <tr>
             
-                <td class="name"><code>mealCardIndex</code></td>
+                <td class="name"><code>plannerCellIndex</code></td>
             
 
             <td class="type">
@@ -319,7 +319,7 @@ updates the URL.
 
     
 
-    <h4 class="name" id="addRecipeToCell"><span class="type-signature">(async) </span>addRecipeToCell<span class="signature">(mealCard, index)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="addRecipeToCell"><span class="type-signature">(async) </span>addRecipeToCell<span class="signature">(plannerCell, index)</span><span class="type-signature"></span></h4>
 
     
 
@@ -406,7 +406,7 @@ updates the URL.
 
         <tr>
             
-                <td class="name"><code>mealCard</code></td>
+                <td class="name"><code>plannerCell</code></td>
             
 
             <td class="type">
@@ -480,15 +480,15 @@ updates the URL.
 
     
 
-    <h4 class="name" id="drop"><span class="type-signature"></span>drop<span class="signature">(mealCard, mealCardIndex)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="drop"><span class="type-signature"></span>drop<span class="signature">(plannerCell, plannerCellIndex)</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    Adds drop handler to meal card which clears the cell, adds new recipe
-card, and updates the URL.
+    Adds drop handler to cell which clears the cell, adds new recipe card,
+and updates the URL.
 </div>
 
 
@@ -568,7 +568,7 @@ card, and updates the URL.
 
         <tr>
             
-                <td class="name"><code>mealCard</code></td>
+                <td class="name"><code>plannerCell</code></td>
             
 
             <td class="type">
@@ -594,7 +594,7 @@ card, and updates the URL.
 
         <tr>
             
-                <td class="name"><code>mealCardIndex</code></td>
+                <td class="name"><code>plannerCellIndex</code></td>
             
 
             <td class="type">
@@ -642,14 +642,15 @@ card, and updates the URL.
 
     
 
-    <h4 class="name" id="getParams"><span class="type-signature">(async) </span>getParams<span class="signature">(mealCard, index)</span><span class="type-signature"> &rarr; {Array|undefined}</span></h4>
+    <h4 class="name" id="getParams"><span class="type-signature"></span>getParams<span class="signature">()</span><span class="type-signature"> &rarr; {Array|undefined}</span></h4>
 
     
 
 
 
 <div class="description">
-    Adds meal planner recipe card to cell.
+    Get list of recipe ids in order of cell index from query string "ids"
+parameter.
 </div>
 
 
@@ -685,7 +686,7 @@ card, and updates the URL.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_meal-planner_meal-planner.js.html">components/meal-planner/meal-planner.js</a>, <a href="components_meal-planner_meal-planner.js.html#line272">line 272</a>
+        <a href="components_meal-planner_meal-planner.js.html">components/meal-planner/meal-planner.js</a>, <a href="components_meal-planner_meal-planner.js.html#line270">line 270</a>
     </li></ul></dd>
     
 
@@ -702,84 +703,6 @@ card, and updates the URL.
 
 
 
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>mealCard</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>Object</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">
-                Cell to append card to.
-                
-            </td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>index</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>number</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">
-                Index of recipe object in database.
-                
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
 
 
 
@@ -816,7 +739,7 @@ card, and updates the URL.
 
 
 <div class="param-desc">
-    Array of indexes or undefined if not all numbers.
+    Array of recipe ids or undefined if failed.
 </div>
 
     
@@ -1092,7 +1015,7 @@ card, and updates the URL.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_meal-planner_meal-planner.js.html">components/meal-planner/meal-planner.js</a>, <a href="components_meal-planner_meal-planner.js.html#line296">line 296</a>
+        <a href="components_meal-planner_meal-planner.js.html">components/meal-planner/meal-planner.js</a>, <a href="components_meal-planner_meal-planner.js.html#line294">line 294</a>
     </li></ul></dd>
     
 
@@ -1305,7 +1228,7 @@ card, and updates the URL.
 <br class="clear">
 
 <footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.4</a> on Sun Dec 05 2021 19:57:39 GMT+0000 (Coordinated Universal Time) using the Minami theme.
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.4</a> on Sun Dec 05 2021 20:08:57 GMT+0000 (Coordinated Universal Time) using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>
