@@ -120,7 +120,7 @@ main {
   padding: 10px;
 }
 
-.time-input-container {
+#time-input-container {
   display: flex;
   flex-direction: column;
   height: 50%;
@@ -128,11 +128,11 @@ main {
   margin: 0 auto;
 }
 
-.time-input-container > div {
+#time-input-container > div {
   display: flex;
 }
 
-.back-next-container {
+#back-next-container {
   width: 500px;
   margin-left: auto;
   margin-bottom: 125px;

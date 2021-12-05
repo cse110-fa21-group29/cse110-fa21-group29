@@ -62,7 +62,7 @@ class HandsFree extends YummyRecipesComponent {
         this.stopCount();
       });
 
-    // Event handler for timer resume button
+    // Event handler for timer reset button
     this.shadowRoot
       .getElementById("reset-button")
       .addEventListener("click", () => {
@@ -104,6 +104,11 @@ class HandsFree extends YummyRecipesComponent {
     }
   }
 
+  /**
+   * Function that activates when user hits start button on timer
+   * Hides the time inputs and starts the timer
+   *
+   */
   startCount() {
     // Hide user inputs
     this.shadowRoot.getElementById("input-hours").style.visibility = "hidden";
@@ -122,11 +127,17 @@ class HandsFree extends YummyRecipesComponent {
     }
   }
 
+  /**
+   * Stops the timer
+   */
   stopCount() {
     clearTimeout(this.temp);
     this.timeron = 0;
   }
 
+  /**
+   * Resets the timer back to user input
+   */
   resetCount() {
     this.stopCount();
     this.count = 0;
@@ -148,15 +159,18 @@ class HandsFree extends YummyRecipesComponent {
     this.shadowRoot.getElementById("timer-display").style.visibility = "hidden";
   }
 
+  /**
+   * Display the initial starting time user inputted
+   */
   startTimer() {
     if (this.totalTime === -1) {
-      let hoursInput = Number(
+      const hoursInput = Number(
         this.shadowRoot.getElementById("input-hours").value
       );
-      let minutesInput = Number(
+      const minutesInput = Number(
         this.shadowRoot.getElementById("input-minutes").value
       );
-      let secondsInput = Number(
+      const secondsInput = Number(
         this.shadowRoot.getElementById("input-seconds").value
       );
       this.totalTime = hoursInput * 3600 + minutesInput * 60 + secondsInput;
@@ -169,17 +183,24 @@ class HandsFree extends YummyRecipesComponent {
     this.temp = setInterval(() => this.updateTime(), 1000);
   }
 
+  /**
+   * Update timer text
+   */
   setTime() {
-    let timer = this.shadowRoot.getElementById("timer-display");
-    var date = new Date(null);
+    const timer = this.shadowRoot.getElementById("timer-display");
+    const date = new Date(null);
     date.setSeconds(this.totalTime);
     timer.innerText = date.toISOString().substr(11, 8);
   }
 
+  /**
+   * Decrements the time by 1 every second
+   * If timer reaches 0, play a sound and stop the interval
+   */
   updateTime() {
     if (this.totalTime === 0) {
       // Play some sound
-      var audio = new Audio("../../static/hands-free/timer-done-noise.mp3");
+      const audio = new Audio("/static/hands-free/timer-done-noise.mp3");
       audio.play();
       // Clear interval
       clearInterval(this.temp);
