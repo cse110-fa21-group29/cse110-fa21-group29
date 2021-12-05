@@ -129,23 +129,23 @@ class HandsFree extends YummyRecipesComponent {
   }
 
   nextStep() {
-    if (++this.currentStep == this.recipeSteps.length) {
+    if (++this.currentStep === this.recipeSteps.length) {
       this.hideNextButton();
     }
     this.showBackButton();
     this.shadowRoot.getElementById("number").innerText = this.currentStep;
     this.shadowRoot.getElementById("direction").innerText =
-      this.recipeSteps[this.currentStep];
+      this.recipeSteps[this.currentStep - 1];
   }
 
   backStep() {
-    if (--this.currentStep == 1) {
+    if (--this.currentStep === 1) {
       this.hideBackButton();
     }
     this.showNextButton();
     this.shadowRoot.getElementById("number").innerText = this.currentStep;
     this.shadowRoot.getElementById("direction").innerText =
-      this.recipeSteps[this.currentStep];
+      this.recipeSteps[this.currentStep - 1];
   }
 
   showBackButton() {
