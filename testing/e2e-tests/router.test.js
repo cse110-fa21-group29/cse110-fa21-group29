@@ -1,7 +1,6 @@
 /**
  * Tests out the functionality of loading in web components and navigating to different pages
  */
-
 describe('E2E Testing loading web components and navigating pages', () => {
     beforeAll(async () => {
         await page.goto('https://dev.yummyrecipesapp.com/');
@@ -96,53 +95,12 @@ describe('E2E Testing loading web components and navigating pages', () => {
         contributePageButton.click();
 
         await new Promise((r) => setTimeout(r, 2000)); // wait for the page to load
+        await page.screenshot({path: "zNewContributePage.png"})
 
         // get the contribute page
         const contributePage = await page.$$('#content > recipe-contribute');
 
         expect(contributePage.length).toBe(1);
-    }, 7500);
-
-    /**
-     * @summary Meal Planner Page
-     * Test to see if we go to the meal planner page
-     */
-     it('Moving to meal planner page', async () => {
-        await new Promise((r) => setTimeout(r, 2000)); // wait for the page to load
-
-        // click on the meal planner nav bar button
-        const navBar = await page.$('body > header > common-nav-bar');
-        const shadowRoot = await navBar.getProperty('shadowRoot');
-        const mealPlannerButton = await shadowRoot.$('#nav-bar > a:nth-child(5)');
-        mealPlannerButton.click();
-
-        await new Promise((r) => setTimeout(r, 2000)); // wait for the page to load
-
-        // get the meal planner page
-        const mealPlannerPage = await page.$$('#content > meal-planner');
-
-        expect(mealPlannerPage.length).toBe(1);
-    }, 7500);
-
-    /**
-     * @summary About Us Page
-     * Test to see if we go to the about us page
-     */
-     it('Moving to about us page', async () => {
-        await new Promise((r) => setTimeout(r, 2000)); // wait for the page to load
-
-        // click on the about us nav bar button
-        const navBar = await page.$('body > header > common-nav-bar');
-        const shadowRoot = await navBar.getProperty('shadowRoot');
-        const aboutUsButton = await shadowRoot.$('#nav-bar > a:nth-child(6)');
-        aboutUsButton.click();
-
-        await new Promise((r) => setTimeout(r, 2000)); // wait for the page to load
-
-        // get the about us page
-        const aboutUsPage = await page.$$('#content > about-us');
-
-        expect(aboutUsPage.length).toBe(1);
     }, 7500);
 
     /**
