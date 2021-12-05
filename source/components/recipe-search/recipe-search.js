@@ -232,7 +232,7 @@ class RecipeSearch extends YummyRecipesComponent {
     let queryString = new URLSearchParams(paramString);
 
     // Number # of recipes per page
-    const recipePerPage = 5;
+    const recipePerPage = 15;
 
     let paramArray = [];
     for (let p of queryString) {
