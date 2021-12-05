@@ -32,17 +32,17 @@ class MealPlanner extends YummyRecipesComponent {
     }
 
     // Get all cells
-    const mealCards = this.shadowRoot.querySelectorAll(".meal-card");
+    const plannerCells = this.shadowRoot.querySelectorAll(".planner-cell");
 
     // Append add buttons to each cell
     for (let i = 0; i < 21; i++) {
       // Add button for empty cells
       const addButton = document.createElement("div");
 
-      addButton.className = "meal-card-add";
+      addButton.className = "planner-cell-add";
 
       // Append add button to cell
-      mealCards[i].append(addButton);
+      plannerCells[i].append(addButton);
     }
 
     // Add recipe cards as specified in query string "id" parameter
@@ -56,16 +56,16 @@ class MealPlanner extends YummyRecipesComponent {
         // Check if recipe is not undefined
         if (recipe !== undefined) {
           // Clear out cell
-          mealCards[i].innerHTML = "";
+          plannerCells[i].innerHTML = "";
 
           // Append recipe card to cell
-          this.addRecipeToCell(mealCards[i], indexes[i]);
+          this.addRecipeToCell(plannerCells[i], indexes[i]);
         }
       }
     }
 
     // Add button functionality cells
-    this.shadowRoot.querySelectorAll(".meal-card-add").forEach((element) => {
+    this.shadowRoot.querySelectorAll(".planner-cell-add").forEach((element) => {
       // Add button click listener
       element.addEventListener("click", () => {
         // Bring up search sidebar when add button clicked
@@ -76,15 +76,15 @@ class MealPlanner extends YummyRecipesComponent {
     // Add functionality for each cell
     for (let i = 0; i < 21; i++) {
       // Click event to remove card and restore add button
-      this.addButtonToCell(mealCards[i], i);
+      this.addButtonToCell(plannerCells[i], i);
 
       // Dragover listener
-      mealCards[i].addEventListener("dragover", (event) => {
+      plannerCells[i].addEventListener("dragover", (event) => {
         event.preventDefault();
       });
 
       // Drop function
-      this.drop(mealCards[i], i);
+      this.drop(plannerCells[i], i);
     }
 
     // Close sidebar when "x" clicked
@@ -148,16 +148,16 @@ class MealPlanner extends YummyRecipesComponent {
    * Adds click handler to cell which clears the cell, appends add button, and
    * updates the URL.
    *
-   * @param {Object} mealCard - Cell to operate on.
-   * @param {Object} mealCardIndex - Index of cell to operate on.
+   * @param {Object} plannerCell - Cell to operate on.
+   * @param {Object} plannerCellIndex - Index of cell to operate on.
    */
-  addButtonToCell(mealCard, mealCardIndex) {
-    mealCard.addEventListener("click", () => {
+  addButtonToCell(plannerCell, plannerCellIndex) {
+    plannerCell.addEventListener("click", () => {
       // Create new add button
       const addButton = document.createElement("div");
 
-      addButton.className = "meal-card-add";
-      mealCard.innerHTML = "";
+      addButton.className = "planner-cell-add";
+      plannerCell.innerHTML = "";
 
       // Add button click listener
       addButton.addEventListener("click", () => {
@@ -165,13 +165,13 @@ class MealPlanner extends YummyRecipesComponent {
         this.shadowRoot.getElementById("search-part").style.display = "block";
       });
 
-      mealCard.append(addButton);
+      plannerCell.append(addButton);
 
       // Update total nutrition
       this.updateNutrition();
 
       // Update URL
-      this.setUrl(mealCardIndex, -1);
+      this.setUrl(plannerCellIndex, -1);
     });
   }
 
@@ -179,10 +179,10 @@ class MealPlanner extends YummyRecipesComponent {
    * Adds meal planner recipe card to cell.
    *
    * @async
-   * @param {Object} mealCard - Cell to append card to.
+   * @param {Object} plannerCell - Cell to append card to.
    * @param {number} index - Index of recipe object in database.
    */
-  async addRecipeToCell(mealCard, index) {
+  async addRecipeToCell(plannerCell, index) {
     // Get recipe from database
     const db = new Database();
     const recipe = await db.getRecipe(index);
@@ -193,31 +193,31 @@ class MealPlanner extends YummyRecipesComponent {
     card.recipeIndex = index;
 
     // Clear out any existing cards
-    mealCard.innerHTML = "";
-    mealCard.append(card);
+    plannerCell.innerHTML = "";
+    plannerCell.append(card);
 
     // Update total nutrition
     this.updateNutrition();
   }
 
   /**
-   * Adds drop handler to meal card which clears the cell, adds new recipe
-   * card, and updates the URL.
+   * Adds drop handler to cell which clears the cell, adds new recipe card,
+   * and updates the URL.
    *
-   * @param {Object} mealCard - Cell to operate on.
-   * @param {Object} mealCardIndex - Index of cell to operate on.
+   * @param {Object} plannerCell - Cell to operate on.
+   * @param {Object} plannerCellIndex - Index of cell to operate on.
    */
-  drop(mealCard, mealCardIndex) {
+  drop(plannerCell, plannerCellIndex) {
     // Drop listener
-    mealCard.addEventListener("drop", (event) => {
+    plannerCell.addEventListener("drop", (event) => {
       // Get recipe index from drag data
       const index = event.dataTransfer.getData("text/plain");
 
       // Add recipe card
-      this.addRecipeToCell(mealCard, index);
+      this.addRecipeToCell(plannerCell, index);
 
       // Change URL
-      this.setUrl(mealCardIndex, index);
+      this.setUrl(plannerCellIndex, index);
     });
   }
 
@@ -228,7 +228,7 @@ class MealPlanner extends YummyRecipesComponent {
     // Grab all cells
     const calories = this.shadowRoot.querySelectorAll(".calories");
     const fat = this.shadowRoot.querySelectorAll(".fat");
-    const plannerCells = this.shadowRoot.querySelectorAll(".meal-card");
+    const plannerCells = this.shadowRoot.querySelectorAll(".planner-cell");
     const protein = this.shadowRoot.querySelectorAll(".protein");
 
     // Iterate on column
@@ -262,12 +262,10 @@ class MealPlanner extends YummyRecipesComponent {
   }
 
   /**
-   * Adds meal planner recipe card to cell.
+   * Get list of recipe ids in order of cell index from query string "ids"
+   * parameter.
    *
-   * @async
-   * @param {Object} mealCard - Cell to append card to.
-   * @param {number} index - Index of recipe object in database.
-   * @returns {Array|undefined} Array of indexes or undefined if not all numbers.
+   * @returns {Array|undefined} Array of recipe ids or undefined if failed.
    */
   getParams() {
     // Get params
