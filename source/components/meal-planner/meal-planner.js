@@ -133,7 +133,7 @@ class MealPlanner extends YummyRecipesComponent {
       });
 
     // Reload page when browser navigation buttons used
-    window.onpopstate = function (e) {
+    window.onpopstate = function () {
       location.reload();
     };
   }
@@ -226,9 +226,9 @@ class MealPlanner extends YummyRecipesComponent {
           plannerCells[7 * j + i].children[0].recipe.nutrients;
 
         // Add to column nutrition
-        calorieCount += parseInt(recipeNutrients.calories);
-        fatCount += parseInt(recipeNutrients.fat);
-        proteinCount += parseInt(recipeNutrients.protein);
+        calorieCount += parseInt(recipeNutrients.calories, 10);
+        fatCount += parseInt(recipeNutrients.fat, 10);
+        proteinCount += parseInt(recipeNutrients.protein, 10);
       }
 
       // Update column nutrition
