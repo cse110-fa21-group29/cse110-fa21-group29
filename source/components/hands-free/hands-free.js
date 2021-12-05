@@ -173,6 +173,12 @@ class HandsFree extends YummyRecipesComponent {
       const secondsInput = Number(
         this.shadowRoot.getElementById("input-seconds").value
       );
+      if (hoursInput === 0 && minutesInput === 0 && secondsInput === 0) {
+        this.shadowRoot.getElementById("timer-display").style.visibility =
+          "visible";
+        this.shadowRoot.getElementById("timer-display").innerText = "00:00:00";
+        return;
+      }
       this.totalTime = hoursInput * 3600 + minutesInput * 60 + secondsInput;
     }
 
