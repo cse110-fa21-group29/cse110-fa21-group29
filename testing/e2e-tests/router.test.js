@@ -147,4 +147,25 @@ describe('E2E Testing loading web components and navigating pages', () => {
 
         expect(contributePage.length).toBe(1);
     }, 7500);
+
+    /**
+     * @summary Search Page
+     * Test to see if we go to the search page
+     */
+     it('Moving to search page', async () => {
+        await new Promise((r) => setTimeout(r, 2000));
+
+        // click on the search nav bar button
+        const navBar = await page.$('body > header > common-nav-bar');
+        const shadowRoot = await navBar.getProperty('shadowRoot');
+        const homePageButton = await shadowRoot.$('#search-button');
+        homePageButton.click();
+
+        await new Promise((r) => setTimeout(r, 2000));
+
+        // get the search page
+        const contributePage = await page.$$('#content > recipe-search');
+
+        expect(contributePage.length).toBe(1);
+    }, 7500);
 });
