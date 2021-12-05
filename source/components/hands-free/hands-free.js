@@ -127,9 +127,9 @@ class HandsFree extends YummyRecipesComponent {
   }
 
   setTime() {
-    let hour = parseInt(this.count / 3600);
-    let minute = parseInt(this.count / 60);
-    let second = parseInt(this.count % 60);
+    let hour = parseInt(this.count / 3600, 10);
+    let minute = parseInt(this.count / 60, 10);
+    let second = parseInt(this.count % 60, 10);
     if (hour < 10) {
       hour = "0" + hour;
     }
