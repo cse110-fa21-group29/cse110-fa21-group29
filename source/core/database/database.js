@@ -199,6 +199,18 @@ export class Database {
     // split input phrase into array of words
     const words = phrase.toLowerCase().split(" ");
 
+    /**
+     * Checks to see if any user defined words are in the title of a recipe
+     * @param {Array} words - Words array made by user input
+     * @param {int} index - Recipe index
+     * @returns {boolean} - Whether any of the words in array words is in the title of a recipe
+     */
+    function matchingWords(words, index) {
+      return words.some((w) =>
+        recipes[index].metadata.title.toLowerCase().includes(w)
+      );
+    }
+
     let matchingRecipes = [];
 
     // loop through all recipes, add any for which the title inclues one of the input words to the output
@@ -208,7 +220,7 @@ export class Database {
         typeof recipes[i] !== "undefined" &&
         Object.prototype.hasOwnProperty.call(recipes[i], "metadata") &&
         Object.prototype.hasOwnProperty.call(recipes[i].metadata, "title") &&
-        words.some((w) => recipes[i].metadata.title.toLowerCase().includes(w))
+        matchingWords(words, i)
       ) {
         matchingRecipes.push({ index: i, recipe: recipes[i] });
       }
