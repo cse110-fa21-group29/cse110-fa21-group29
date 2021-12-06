@@ -18,7 +18,7 @@ class MealPlanner extends YummyRecipesComponent {
     const indexes = this.getParams();
 
     // Route to homepage if failed
-    if (indexes === undefined) {
+    if (!indexes) {
       const routerEvent = new CustomEvent("router-navigate", {
         detail: {
           route: "home-page",
@@ -30,6 +30,9 @@ class MealPlanner extends YummyRecipesComponent {
       this.dispatchEvent(routerEvent);
       return;
     }
+
+    // Database instance
+    const db = new Database();
 
     // Get all cells
     const plannerCells = this.shadowRoot.querySelectorAll(".planner-cell");
@@ -50,11 +53,10 @@ class MealPlanner extends YummyRecipesComponent {
       // Check if URL index is not -1
       if (indexes[i] !== -1) {
         // Attempt to get recipe from index
-        const db = new Database();
         const recipe = await db.getRecipe(indexes[i]);
 
         // Check if recipe is not undefined
-        if (recipe !== undefined) {
+        if (recipe) {
           // Clear out cell
           plannerCells[i].innerHTML = "";
 
@@ -205,7 +207,7 @@ class MealPlanner extends YummyRecipesComponent {
    * and updates the URL.
    *
    * @param {Object} plannerCell - Cell to operate on.
-   * @param {Object} plannerCellIndex - Index of cell to operate on.
+   * @param {number} plannerCellIndex - Index of cell to operate on.
    */
   drop(plannerCell, plannerCellIndex) {
     // Drop listener
@@ -240,7 +242,7 @@ class MealPlanner extends YummyRecipesComponent {
       // Iterate on row
       for (let j = 0; j < 3; j++) {
         // Skip cell if there is no recipe
-        if (plannerCells[7 * j + i].children[0].recipe === undefined) {
+        if (!plannerCells[7 * j + i].children[0].recipe) {
           continue;
         }
 
