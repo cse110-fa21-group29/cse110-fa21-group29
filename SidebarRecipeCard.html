@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>components/home-page/home-page.js - Documentation</title>
+    <title>SidebarRecipeCard - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,205 +29,220 @@
 
 <div id="main">
     
-    <h1 class="page-title">components/home-page/home-page.js</h1>
+    <h1 class="page-title">SidebarRecipeCard</h1>
     
 
     
 
 
 
+
+<section>
+
+<header>
     
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>import { Database } from "/core/database/database.js";
-import { YummyRecipesComponent } from "/components/core/yummy-recipes-component.js";
+        <h2>
+        SidebarRecipeCard
+        </h2>
+        
+            <div class="class-description">Class that provides functionality to the sidebar recipe card.</div>
+        
+    
+</header>
 
-/** Class that provides functionality to the homepage. */
-class HomePage extends YummyRecipesComponent {
-  constructor() {
-    super();
-    this.htmlPath = "components/home-page/home-page.html";
-  }
+<article>
+    <div class="container-overview">
+    
+        
+<div class="section-method">
 
-  /**
-   * Populates homepage recipe card with information from the database.
-   *
-   * @async
-   */
-  async setupElement() {
-    for (let i = 1; i &lt; 6; i++) {
-      this.shadowRoot
-        .getElementById("prev-button-" + i)
-        .addEventListener("click", () => {
-          this.recipeScroll(true, i);
-        });
-      this.shadowRoot.getElementById("prev-button-" + i).style.visibility =
-        "hidden";
+    
+    <h2>Constructor</h2>
+    
 
-      this.shadowRoot
-        .getElementById("next-button-" + i)
-        .addEventListener("click", () => {
-          this.recipeScroll(false, i);
-        });
-    }
+    <h4 class="name" id="SidebarRecipeCard"><span class="type-signature"></span>new SidebarRecipeCard<span class="signature">()</span><span class="type-signature"></span></h4>
 
-    // Get recipes from database
-    const database = new Database();
-    const recipes = await database.getRecipes();
+    
 
-    // Clear out recipe card grids before we append new cards
-    for (let i = 1; i &lt; 6; i++) {
-      this.shadowRoot.getElementById("recipe-card-grid-" + i).innerHTML = "";
-    }
 
-    // Create an array of recipe object
-    const recipeObjects = [];
 
-    // Fill the array with recipes
-    for (let i = 0; i &lt; recipes.length; i++) {
-      const recipeObject = {
-        index: i,
-        recipe: recipes[i],
-      };
-      recipeObjects.push(recipeObject);
-    }
 
-    /**
-     * Counter array for each grid with each index being:
-     * 0: highProtein, 1: healthy, 2: vegan, 3: vegetarian, 4: glutenFree
-     */
-    const gridCount = [0, 0, 0, 0, 0];
 
-    // ID array to holds the randomly generated ID for the recipe card
-    const idArray = [];
 
-    // Create 20 recipe cards for each category grid populated with database info
-    for (let i = 0; i &lt; recipeObjects.length; i++) {
-      // Generate a random ID
-      let id = Math.floor(Math.random() * recipeObjects.length);
 
-      // Check if the is already in the array, if so generate a new random ID
-      while (idArray.includes(id)) {
-        id = Math.floor(Math.random() * recipeObjects.length);
-      }
-      // If ID not in the array, push it to the array
-      idArray.push(id);
-      // Randomly generate recipe
-      const randomItem = recipeObjects[id];
+<dl class="details">
 
-      // If recipe does not exist at index, then skip to prevent page from breaking
-      if (!randomItem.recipe) {
-        continue;
-      }
+    
 
-      // Check if grid 1 has less than 20 recipe cards and if current recipe is high protein
-      if (gridCount[0] &lt; 20 &amp;&amp; randomItem.recipe.categories.highProtein) {
-        // Increment protein counter
-        gridCount[0]++;
-        // Add high protein recipe card to grid 1
-        this.shadowRoot
-          .getElementById("recipe-card-grid-1")
-          .append(this.createRecipeCard(randomItem.recipe, randomItem.index));
-      }
+    
 
-      // Check if grid 2 has less than 20 recipe cards and if current recipe is healthy
-      if (gridCount[1] &lt; 20 &amp;&amp; randomItem.recipe.categories.healthy) {
-        // Increment healthy counter
-        gridCount[1]++;
-        // Add high protein recipe card to grid 2
-        this.shadowRoot
-          .getElementById("recipe-card-grid-2")
-          .append(this.createRecipeCard(randomItem.recipe, randomItem.index));
-      }
+    
 
-      // Check if grid 3 has less than 20 recipe cards and if current recipe is vegan
-      if (gridCount[2] &lt; 20 &amp;&amp; randomItem.recipe.categories.vegan) {
-        // Increment vegan counter
-        gridCount[2]++;
-        // Add high protein recipe card to grid 3
-        this.shadowRoot
-          .getElementById("recipe-card-grid-3")
-          .append(this.createRecipeCard(randomItem.recipe, randomItem.index));
-      }
+    
 
-      // Check if grid 4 has less than 20 recipe cards and if current recipe is vegetarian
-      if (gridCount[3] &lt; 20 &amp;&amp; randomItem.recipe.categories.vegetarian) {
-        // Increment vegetarian counter
-        gridCount[3]++;
-        // Add high protein recipe card to grid 4
-        this.shadowRoot
-          .getElementById("recipe-card-grid-4")
-          .append(this.createRecipeCard(randomItem.recipe, randomItem.index));
-      }
+    
 
-      // Check if grid 5 has less than 20 recipe cards and if current recipe is gluten free
-      if (gridCount[4] &lt; 20 &amp;&amp; randomItem.recipe.categories.glutenFree) {
-        // Increment gluten free counter
-        gridCount[4]++;
-        // Add high protein recipe card to grid 5
-        this.shadowRoot
-          .getElementById("recipe-card-grid-5")
-          .append(this.createRecipeCard(randomItem.recipe, randomItem.index));
-      }
+    
 
-      // If every grid has been filled then break
-      if (gridCount.every((val) => val === 20)) {
-        break;
-      }
-    }
-  }
+    
 
-  recipeScroll(scrollleft, i) {
-    let recipegrid = this.shadowRoot.getElementById("recipe-card-grid-" + i);
-    let prevbutton = this.shadowRoot.getElementById("prev-button-" + i);
-    let nextbutton = this.shadowRoot.getElementById("next-button-" + i);
-    if (scrollleft) {
-      recipegrid.scrollLeft -= (recipegrid.clientWidth * 3) / 4;
-      nextbutton.style.visibility = "visible";
-      if (recipegrid.scrollLeft - (recipegrid.clientWidth * 3) / 4 &lt; 5) {
-        prevbutton.style.visibility = "hidden";
-      }
-    } else {
-      recipegrid.scrollLeft += (recipegrid.clientWidth * 3) / 4;
-      prevbutton.style.visibility = "visible";
-      if (
-        recipegrid.scrollLeft + (recipegrid.clientWidth * 3) / 4 >
-        recipegrid.scrollWidth - recipegrid.clientWidth
-      ) {
-        nextbutton.style.visibility = "hidden";
-      }
-    }
-  }
+    
 
-  /**
-   * Creates recipe card with information and routing.
-   *
-   * @param {Object} recipe - Object that contains recipe data.
-   * @param {number} index - Index of recipe card in database to set route.
-   * @returns {Object} Generated recipe card.
-   */
-  createRecipeCard(recipe, index) {
-    const card = document.createElement("common-recipe-card");
-    card.recipeData = recipe;
-    card.addEventListener("click", () => {
-      const routerEvent = new CustomEvent("router-navigate", {
-        detail: {
-          route: "recipe-details",
-          params: [index],
-        },
-        bubbles: true,
-        composed: true,
-      });
-      card.dispatchEvent(routerEvent);
-    });
-    return card;
-  }
-}
+    
 
-customElements.define("home-page", HomePage);
-</code></pre>
-        </article>
-    </section>
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_meal-planner_sidebar-recipe-card_sidebar-recipe-card.js.html">components/meal-planner/sidebar-recipe-card/sidebar-recipe-card.js</a>, <a href="components_meal-planner_sidebar-recipe-card_sidebar-recipe-card.js.html#line5">line 5</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="setupElement"><span class="type-signature">(async) </span>setupElement<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Sets up functionality of the component.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_meal-planner_sidebar-recipe-card_sidebar-recipe-card.js.html">components/meal-planner/sidebar-recipe-card/sidebar-recipe-card.js</a>, <a href="components_meal-planner_sidebar-recipe-card_sidebar-recipe-card.js.html#line16">line 16</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 
