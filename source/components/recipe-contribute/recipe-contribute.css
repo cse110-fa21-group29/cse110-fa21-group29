@@ -32,7 +32,7 @@
 input,
 textarea {
   border-radius: 4px;
-  border: solid grey 1px;
+  border: solid rgb(255, 164, 164) 1px;
   font-size: 20px;
 }
 .input-left-text {
@@ -57,8 +57,8 @@ textarea {
 
 #submit-button {
   margin-top: 50px;
-  background-color: orange;
-  color: white;
+  /* background-color: orange;
+  color: white; */
   width: 15vw;
   height: 3vw;
   cursor: pointer;
@@ -66,8 +66,8 @@ textarea {
 }
 #cancel-button {
   cursor: pointer;
-  background-color: grey;
-  color: white;
+  /* background-color: grey;
+  color: white; */
   width: 10vw;
   height: 3vw;
   left: 52%;
@@ -82,8 +82,8 @@ textarea {
   cursor: pointer;
   height: 25px;
   width: 25px;
-  margin-bottom: 30px;
   margin-right: 10px;
+  filter: hue-rotate(140deg)
 }
 
 .category-label {
@@ -92,6 +92,34 @@ textarea {
 }
 
 textarea,
-input[type="text"] {
-  padding: 20px;
+input {
+  padding: 10px;
+}
+
+label {
+  margin-left: 10px;
+}
+
+.category-line {
+  display: flex;
+  margin-bottom: 30px;
+}
+
+button{
+  
+  transition-duration: .5s;
+  background-color: #ffa4a4;
+  color: white;
+  border: #ffa4a4 solid 1px;
+  border-radius: 5px;
+}
+
+button:hover{
+  background-color: white;
+  color: black;
+  border: #ffa4a4 solid 1px;
+}
+
+button:active{
+  transform:scale(0.6)
 }
