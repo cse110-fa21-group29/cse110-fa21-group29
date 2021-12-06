@@ -35,7 +35,7 @@ class RecipeDetails extends YummyRecipesComponent {
     this.shadowRoot
       .getElementById("timer-button")
       .addEventListener("click", () => {
-        if (this.shadowRoot.getElementById("timer").style.display == "") {
+        if (this.shadowRoot.getElementById("timer").style.display === "") {
           this.shadowRoot.getElementById("timer").style.display = "flex";
         } else {
           this.shadowRoot.getElementById("timer").style.display = "";

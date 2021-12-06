@@ -236,7 +236,7 @@ function getRoutefromUrl(url) {
   let splitUrl = baseUrl.split("/");
   for (let i = 0; i < splitUrl.length; i++) {
     const urlSection = splitUrl[i];
-    if (!isNaN(parseInt(urlSection), 10)) {
+    if (!isNaN(parseInt(urlSection, 10))) {
       splitUrl[i] = "_";
     }
   }

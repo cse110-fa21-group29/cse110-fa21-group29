@@ -70,7 +70,7 @@ class RecipeContribute extends YummyRecipesComponent {
       const url = videoUrlInput.value;
 
       // If video field is blank then allow it and return
-      if (url == "") {
+      if (url === "") {
         videoUrlInput.setCustomValidity("");
         return;
       }
