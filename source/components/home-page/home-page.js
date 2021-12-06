@@ -70,7 +70,6 @@ class HomePage extends YummyRecipesComponent {
       }
       // if ID not in the array, push it to the array
       idArray.push(id);
-
       // randomly generates recipe
       const randomItem = recipeObjects[id];
       //If recipe does not exist at index, then skip to prevent page from breaking
