@@ -88,5 +88,5 @@ jobs:
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_CSE110GROUP29DEV }}'
-          projectId: cse110group29dev
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_CSE110GROUP29DEVNEW }}'
+          projectId: cse110group29devnew

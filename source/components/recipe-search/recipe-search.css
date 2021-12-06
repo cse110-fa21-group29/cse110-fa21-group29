@@ -82,3 +82,30 @@ common-recipe-card {
 #submit-button {
   margin-left: 50px;
 }
+
+#recipe-pagination {
+  display: inline-block;
+  width: 100%;
+  height: 90px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+a {
+  color: black;
+  padding: 8px 20px;
+  text-decoration: none;
+  font-size: 1.3vw;
+  cursor: pointer;
+}
+
+a.active {
+  background-color: rgb(27, 180, 231);
+  color: white;
+}
+
+a:hover:not(.active) {
+  background-color: #ddd;
+}
