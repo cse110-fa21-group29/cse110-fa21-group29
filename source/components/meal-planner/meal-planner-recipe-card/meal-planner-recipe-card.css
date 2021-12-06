@@ -1,1 +1,22 @@
-/* Include component-specific CSS here */
+.recipe-card-remove {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  background-color: rgba(255, 255, 255, 0.747);
+  cursor: pointer;
+  transform: translateY(100%);
+  transition: 0.5s;
+  opacity: 0;
+}
+
+.recipe-card:hover .recipe-card-remove {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.recipe-card-remove-text {
+  margin-top: 20px;
+  font-size: large;
+  width: 100%;
+}
