@@ -92,6 +92,6 @@
   transform: translate(-50%, -50%);
 }
 
-.bottom-padding {
-  height: 3vh;
+#recipe-card-section-container {
+  margin-bottom: 3vh;
 }
