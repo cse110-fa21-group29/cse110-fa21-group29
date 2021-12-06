@@ -35,15 +35,15 @@ class MealPlanner extends YummyRecipesComponent {
     const plannerCells = this.shadowRoot.querySelectorAll(".planner-cell");
 
     // Append add buttons to each cell
-    for (let i = 0; i < 21; i++) {
+    plannerCells.forEach((element) => {
       // Add button for empty cells
       const addButton = document.createElement("div");
 
       addButton.className = "planner-cell-add";
 
       // Append add button to cell
-      plannerCells[i].append(addButton);
-    }
+      element.append(addButton);
+    });
 
     // Add recipe cards as specified in query string "id" parameter
     for (let i = 0; i < 21; i++) {
