@@ -208,7 +208,7 @@ class CookingMode extends YummyRecipesComponent {
   updateTime() {
     if (this.totalTime === 0) {
       // Play some sound
-      const audio = new Audio("/static/hands-free/timer-done-noise.mp3");
+      const audio = new Audio("/static/cooking-mode/timer-done-noise.mp3");
       audio.play();
       // Clear interval
       clearInterval(this.temp);

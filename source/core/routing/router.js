@@ -36,9 +36,9 @@ const routePatterns = {
     component: "about-us",
     url: "#/about-us",
   },
-  "hands-free": {
-    component: "hands-free",
-    url: "#/recipes/_/hands-free",
+  "cooking-mode": {
+    component: "cooking-mode",
+    url: "#/recipes/_/cooking-mode",
   },
   "recipe-search": {
     component: "recipe-search",
