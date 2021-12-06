@@ -5,6 +5,7 @@ class RecipeSearch extends YummyRecipesComponent {
   constructor() {
     super();
     this.htmlPath = "components/recipe-search/recipe-search.html";
+    this.recipe = [];
   }
 
   /**
@@ -240,6 +241,7 @@ class RecipeSearch extends YummyRecipesComponent {
     }
 
     let searchRecipe = await database.searchByName(paramArray);
+    this.recipe = searchRecipe;
 
     // Clear out recipe card grid before we append new cards
     this.shadowRoot.getElementById("recipe-card-grid").innerHTML = "";
@@ -313,7 +315,7 @@ class RecipeSearch extends YummyRecipesComponent {
           const recipeEnd = recipeStart + recipePerPage;
 
           // Get recipe from start (inclusive) to end (exclusive)
-          let pageRecipes = searchRecipe.slice(recipeStart, recipeEnd);
+          let pageRecipes = this.recipe.slice(recipeStart, recipeEnd);
 
           // Clear out recipe card grid before we append new cards
           this.shadowRoot.getElementById("recipe-card-grid").innerHTML = "";
