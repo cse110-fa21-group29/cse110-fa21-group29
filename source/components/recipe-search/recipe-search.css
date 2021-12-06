@@ -7,6 +7,7 @@ main {
   width: 80%;
   margin: 50px auto;
   display: flex;
+  justify-content: center;
 }
 
 #search-box {
@@ -58,6 +59,11 @@ common-recipe-card {
 #recipe-card-grid {
   display: flex;
   flex-wrap: wrap;
+  margin: auto;
+  width: 95%;
+  row-gap: 5vh;
+  column-gap: 5vh;
+  justify-content: center;
 }
 
 #submit-button,

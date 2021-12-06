@@ -19,13 +19,14 @@
   height: 350px;
   margin-left: 30px;
   position: relative;
-  border: 1px solid grey;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border: 1px solid #ffa4a4;
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px rgba(255, 164, 164, 0.24);
   padding: 30px;
 }
 
 .dish-name {
-  font-size: 350%;
+  font-size: 40px;
   line-height: 1em;
 }
 
@@ -36,6 +37,7 @@
 #first-row-bottom {
   position: absolute;
   bottom: 30px;
+  width: 90%;
 }
 
 .info-nutrient-box {
@@ -56,11 +58,11 @@
 }
 
 #timer-display {
-  font-size: 200px;
+  font-size: 20vmin;
 }
 
 #timer-button-grid {
-  margin: auto;
+  margin: auto 0;
 }
 
 .timer-control-button {
@@ -76,22 +78,27 @@
 #vegan {
   color: rgb(90, 240, 232);
 }
+
 #vegetarian {
   color: rgb(131, 224, 24);
 }
+
 #gluten-free {
   color: #b78727;
 }
+
 #high-protein {
   color: violet;
 }
+
 #healthy {
   color: lightblue;
 }
 
 .detail-box {
-  border: 1px solid grey;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border: 1px solid #ffa4a4;
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px rgba(255, 164, 164, 0.24);
   padding: 30px;
   margin-top: 30px;
 }
@@ -119,7 +126,7 @@
   cursor: pointer;
   padding: 10px;
   font-size: 20px;
-  margin: 5px 10px 0 0;
+  margin: 5px 0 0 0;
 }
 
 /* Do not change display: none */
@@ -127,13 +134,43 @@
   display: none;
 }
 
+button {
+  transition-duration: 0.5s;
+  background-color: #ffa4a4;
+  color: white;
+  border: #ffa4a4 solid 1px;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: white;
+  color: black;
+  border: #ffa4a4 solid 1px;
+}
+
+button:active {
+  transform: scale(0.6);
+}
+
+#button-grid {
+  justify-content: space-between;
+  display: flex;
+  width: 100%;
+  float: bottom;
+}
+
 #timer {
+  display: none;
+  justify-content: space-around;
+}
+
+/* #timer {
   background-color: lightgray;
   width: 50vw;
   height: 30vh;
   border: solid black 1px;
   display: none;
-}
+} */
 
 #timer-display {
   width: 80%;
@@ -147,7 +184,6 @@
 
 #timer-button-grid button {
   width: 90%;
-  background-color: white;
   height: 20%;
   margin: 2vh 0px;
   border-radius: 5px;
