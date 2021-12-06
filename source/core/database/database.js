@@ -233,23 +233,23 @@ export class Database {
     for (const param of urlParam) {
       let specificParam = param[0];
       // if currParam is glutenFree
-      if (specificParam == "glutenFree") {
+      if (specificParam === "glutenFree") {
         categories.push(specificParam);
       }
       // if currParam is healthy
-      if (specificParam == "healthy") {
+      if (specificParam === "healthy") {
         categories.push(specificParam);
       }
       // if currParam is highProtein
-      if (specificParam == "highProtein") {
+      if (specificParam === "highProtein") {
         categories.push(specificParam);
       }
       // if currParam is vegan
-      if (specificParam == "vegan") {
+      if (specificParam === "vegan") {
         categories.push(specificParam);
       }
       // if currParam is vegetarian
-      if (specificParam == "vegetarian") {
+      if (specificParam === "vegetarian") {
         categories.push(specificParam);
       }
     }
@@ -266,7 +266,7 @@ export class Database {
       let paramValue = param[1];
 
       // handles the case if there is costmin
-      if (specificParam == "costmin") {
+      if (specificParam === "costmin") {
         let updateRecipe = [];
         for (const recipe of matchingRecipes) {
           // Price per servings * total servings = total cost
@@ -283,7 +283,7 @@ export class Database {
       }
 
       // handles the case if there is costmax
-      if (specificParam == "costmax") {
+      if (specificParam === "costmax") {
         let updateRecipe = [];
         for (const recipe of matchingRecipes) {
           // Price per servings * total servings = total cost
@@ -350,9 +350,9 @@ export class Database {
       let paramValue = param[1];
 
       // handles the case if there is sorttime
-      if (specificParam == "sorttime") {
+      if (specificParam === "sorttime") {
         // handles the case if descending by time
-        if (paramValue == "desc") {
+        if (paramValue === "desc") {
           matchingRecipes.sort(function (a, b) {
             // get a time
             let aTime = a.recipe.info.readyInMinutes;
@@ -373,7 +373,7 @@ export class Database {
           });
         }
         // handles the case if ascending by time
-        if (paramValue == "asc") {
+        if (paramValue === "asc") {
           matchingRecipes.sort(function (a, b) {
             // get a time
             let aTime = a.recipe.info.readyInMinutes;
@@ -396,9 +396,9 @@ export class Database {
       }
 
       // handles the case if there is sortcost
-      if (specificParam == "sortcost") {
+      if (specificParam === "sortcost") {
         // handles the case if descending by cost
-        if (paramValue == "desc") {
+        if (paramValue === "desc") {
           matchingRecipes.sort(function (a, b) {
             // get a total cost
             let aTotalCost =
@@ -421,7 +421,7 @@ export class Database {
           });
         }
         // handles the case if ascending by cost
-        if (paramValue == "asc") {
+        if (paramValue === "asc") {
           matchingRecipes.sort(function (a, b) {
             // get a total cost
             let aTotalCost =
