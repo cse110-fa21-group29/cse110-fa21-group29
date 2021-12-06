@@ -19,3 +19,8 @@ body {
   font-family: Montserrat;
   src: url(static/font/Montserrat-Black.ttf);
 }
+
+@font-face {
+  font-family: "Sofia";
+  src: url("static/font/Sofia-Regular.ttf");
+}

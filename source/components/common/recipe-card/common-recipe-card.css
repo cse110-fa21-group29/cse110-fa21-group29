@@ -25,7 +25,7 @@
 
 .recipe-card-name {
   margin: 0px;
-  height: 15%;
+  height: 20%;
   padding: 0 10px;
 }
 
@@ -33,7 +33,6 @@
   margin: auto;
   font-size: large;
   white-space: normal;
-  margin-bottom: 2px;
   position: relative;
   top: 50%;
   left: 50%;
@@ -45,7 +44,7 @@
 }
 .recipe-card-stats {
   margin: 0px;
-  height: 20%;
+  height: 15%;
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
 }
@@ -53,7 +52,7 @@
 .recipe-card-stats .stat {
   display: flex;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
   flex-direction: column;
   color: grey;
   font-size: small;

@@ -4,6 +4,7 @@
   type="text/css"
   href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin"
 />
+
 <div class="recipe">
   <iframe
     id="recipe-video"
@@ -22,13 +23,14 @@
       <div class="dish-name"></div>
       <!-- recipe name, author, date and the url-->
       <div id="first-row-bottom">
-        <div class="author-name">by Anonymous</div>
-        <div class="recipe-url">https://amazingrecipe.com</div>
+        <!-- <div class="author-name">by Anonymous</div>
+        <div class="recipe-url">https://amazingrecipe.com</div> -->
+        <a class="author-name" href="https://amazingrecipe.com">by Anonymous</a>
         <div id="button-grid">
           <button id="edit-button" class="first-row-button">Edit</button>
           <button id="delete-button" class="first-row-button">Delete</button>
           <button id="hands-free-button" class="first-row-button">
-            Hands-free mode
+            Hands-Free
           </button>
           <button id="timer-button" class="first-row-button">timer</button>
         </div>
@@ -37,11 +39,25 @@
   </div>
   <!-- timer -->
   <div id="timer" class="detail-box">
-    <time id="timer-display">00:00:00</time>
+    <time id="timer-display"></time><br />
+    <div id="time-input-container">
+      <div>
+        <label id="input-hours-label" for="input-hours">Hours:</label>
+        <input type="number" min="0" max="24" step="1" id="input-hours" />
+      </div>
+      <div>
+        <label id="input-minutes-label" for="input-minutes">Minutes:</label>
+        <input type="number" min="0" max="60" step="1" id="input-minutes" />
+      </div>
+      <div>
+        <label id="input-seconds-label" for="input-seconds">Seconds:</label>
+        <input type="number" min="0" max="60" step="1" id="input-seconds" />
+      </div>
+    </div>
     <div id="timer-button-grid">
-      <button id="start-button" class="timer-control-button">Start</button
-      ><br />
-      <button id="reset-button" class="timer-control-button">Reset</button>
+      <button id="start-button">Start</button><br />
+      <button id="pause-button">Pause</button><br />
+      <button id="reset-button">Reset</button>
     </div>
   </div>
   <!-- Description box-->
