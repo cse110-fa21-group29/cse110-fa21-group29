@@ -9,7 +9,7 @@ main {
   margin-right: 20px;
 }
 #introduction-title-grid {
-  height: 200px;
+  line-height: 200px;
   background-color: #68a1f6;
 }
 
@@ -22,6 +22,12 @@ main {
   background: linear-gradient(110deg, #ffd753 40%, #e990d6 40%);
   display: flex;
   overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+#introduction-bottom-grid::-webkit-scrollbar {
+  display: none;
 }
 
 #introduction-bottom-img {
@@ -31,7 +37,6 @@ main {
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
 }
 #introduction-bottom-text {
-  /* width: 300px; */
   margin-top: 100px;
   margin-left: 7vw;
   margin-right: 4vw;
@@ -41,7 +46,7 @@ main {
   line-height: 150%;
 }
 #our-team {
-  height: 200px;
+  line-height: 200px;
   font-family: "Sofia";
   font-size: 100px;
   background-color: #41cad2;
