@@ -106,9 +106,9 @@ class MealPlanner extends YummyRecipesComponent {
       });
 
     // Reload page when browser navigation buttons used
-    window.onpopstate = function () {
-      location.reload();
-    };
+    // window.onpopstate = function () {
+    //  location.reload();
+    // };
   }
 
   /**
