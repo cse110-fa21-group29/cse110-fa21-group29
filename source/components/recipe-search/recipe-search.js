@@ -5,6 +5,7 @@ class RecipeSearch extends YummyRecipesComponent {
   constructor() {
     super();
     this.htmlPath = "components/recipe-search/recipe-search.html";
+    this.recipe = [];
   }
 
   /**
@@ -231,25 +232,214 @@ class RecipeSearch extends YummyRecipesComponent {
     let paramString = window.location.href.split("?")[1];
     let queryString = new URLSearchParams(paramString);
 
+    // Number # of recipes per page
+    const recipePerPage = 15;
+
     let paramArray = [];
     for (let p of queryString) {
       paramArray.push(p);
     }
 
     let searchRecipe = await database.searchByName(paramArray);
+    this.recipe = searchRecipe;
 
     // Clear out recipe card grid before we append new cards
     this.shadowRoot.getElementById("recipe-card-grid").innerHTML = "";
 
-    for (const recipe of searchRecipe) {
-      /**
-       * Closes filters form when clicking on "X" icon.
-       */
-      this.shadowRoot
-        .getElementById("recipe-card-grid")
-        .appendChild(this.createRecipeCard(recipe.recipe, recipe.index));
+    // Apply Pagination
+    if (searchRecipe.length > recipePerPage) {
+      // Round up (recipe length)/(amount of recipes per page)
+      const pageCount = Math.ceil(searchRecipe.length / recipePerPage);
+      const pagDiv = this.shadowRoot.getElementById("recipe-pagination");
+
+      // Create left arrow icon for navigation
+      const leftArrow = document.createElement("a");
+      leftArrow.innerHTML = "&#8592;";
+      leftArrow.classList.add("pagination-arrow");
+
+      // If clicked on, click previous page anchor tag
+      leftArrow.addEventListener("click", (event) => {
+        const url = window.location.href;
+
+        let currPageNum = "";
+
+        const pageChunk = url.slice(url.indexOf("?page="), url.length);
+        const equalIndex = pageChunk.indexOf("=");
+
+        for (let i = equalIndex + 1; i < pageChunk.length; i++) {
+          currPageNum = currPageNum + pageChunk[i];
+        }
+
+        currPageNum = parseInt(currPageNum, 10);
+
+        // The page before page 1 DNE
+        if (currPageNum === 1) {
+          return;
+        } else {
+          let previousPage = currPageNum - 1;
+
+          this.shadowRoot
+            .getElementById(currPageNum)
+            .classList.remove("active");
+
+          this.shadowRoot.getElementById(previousPage).classList.add("active");
+          this.shadowRoot.getElementById(previousPage).click();
+        }
+      });
+      pagDiv.append(leftArrow);
+
+      // Create and append an anchor tag for each pageCount to a div
+      for (let i = 1; i <= pageCount; i++) {
+        let anchorTag = document.createElement("a");
+
+        // Set id to each tag according to their page #
+        anchorTag.setAttribute("id", i);
+
+        // Set tag text to current number
+        anchorTag.innerHTML = i;
+
+        // Styling Purposes
+        anchorTag.classList.add("pagination-numbers");
+
+        // If anchor is clicked, show new list of recipe cards;
+        anchorTag.addEventListener("click", (event) => {
+          const currAnchor = event.target;
+
+          // Get the current page
+          let currPage = currAnchor.innerHTML;
+
+          // Get 1st recipe index displayed on curr page
+          const recipeStart = (currPage - 1) * recipePerPage;
+
+          // Get 2nd recipe index displayed on curr page
+          const recipeEnd = recipeStart + recipePerPage;
+
+          // Get recipe from start (inclusive) to end (exclusive)
+          let pageRecipes = this.recipe.slice(recipeStart, recipeEnd);
+
+          // Clear out recipe card grid before we append new cards
+          this.shadowRoot.getElementById("recipe-card-grid").innerHTML = "";
+
+          // Populate grid with all the recipes, starting at recipeStart, ending at recipeEnd
+          for (const recipe of pageRecipes) {
+            this.shadowRoot
+              .getElementById("recipe-card-grid")
+              .appendChild(this.createRecipeCard(recipe.recipe, recipe.indedx));
+          }
+
+          // Change url to have page set to the current page number
+          const url = window.location.href;
+
+          // Get page number before the clicked on page number
+          let lastPageNum = "";
+
+          const pageChunk = url.slice(url.indexOf("?page="), url.length);
+          const equalIndex = pageChunk.indexOf("=");
+
+          for (let i = equalIndex + 1; i < pageChunk.length; i++) {
+            lastPageNum = lastPageNum + pageChunk[i];
+          }
+
+          // Remove the active class from the prev page number
+          this.shadowRoot
+            .getElementById(lastPageNum)
+            .classList.remove("active");
+
+          currAnchor.classList.add("active");
+
+          // Gets the URL without ?page=, then adds it back with the current page number
+          const newUrl =
+            url.slice(0, url.indexOf("?page=")) + "?page=" + currPage;
+
+          history.pushState({}, "", newUrl);
+        });
+
+        // Append the tag to paginationDiv
+        pagDiv.append(anchorTag);
+      }
+
+      // Create right arrow icon for navigation
+      const rightArrow = document.createElement("a");
+      rightArrow.innerHTML = "&#8594;";
+      rightArrow.classList.add("pagination-arrow");
+
+      // If clicked on, click next page anchor tag
+      rightArrow.addEventListener("click", (event) => {
+        const url = window.location.href;
+
+        let currPageNum = "";
+
+        const pageChunk = url.slice(url.indexOf("?page="), url.length);
+        const equalIndex = pageChunk.indexOf("=");
+
+        for (let i = equalIndex + 1; i < pageChunk.length; i++) {
+          currPageNum = currPageNum + pageChunk[i];
+        }
+
+        currPageNum = parseInt(currPageNum, 10);
+
+        // The page after the last page DNE
+        if (currPageNum === pageCount) {
+          return;
+        } else {
+          let nextPage = currPageNum + 1;
+          this.shadowRoot
+            .getElementById(currPageNum)
+            .classList.remove("active");
+
+          this.shadowRoot.getElementById(nextPage).classList.add("active");
+
+          this.shadowRoot.getElementById(nextPage).click();
+        }
+      });
+      pagDiv.append(rightArrow);
+
+      // Populate page initially with first recipePerPage recipes
+      for (let i = 0; i < recipePerPage; i++) {
+        /**
+         * Closes filters form when clicking on "X" icon.
+         */
+        this.shadowRoot
+          .getElementById("recipe-card-grid")
+          .appendChild(
+            this.createRecipeCard(searchRecipe[i].recipe, searchRecipe[i].index)
+          );
+      }
+
+      // Set url to have page = 1 on initial load
+      const url = window.location.href;
+
+      // If url already has a page, then do not repeat page count
+      if (url.includes("?page")) {
+        // Get page number before the clicked on page number
+        let lastPageNum = "";
+
+        const pageChunk = url.slice(url.indexOf("?page="), url.length);
+        const equalIndex = pageChunk.indexOf("=");
+
+        for (let i = equalIndex + 1; i < pageChunk.length; i++) {
+          lastPageNum = lastPageNum + pageChunk[i];
+        }
+        // Click the current page anchor again so its highlighted in pagination nav bar
+        this.shadowRoot.getElementById(lastPageNum).click();
+      } else {
+        // Gets the URL without ?page=, then adds it back with the current page number
+        const newUrl = url + "?page=" + 1;
+
+        history.pushState({}, "", newUrl);
+
+        this.shadowRoot.getElementById("1").classList.add("active");
+      }
+    } else {
+      // For the case that pagination is not required
+      for (const recipe of searchRecipe) {
+        this.shadowRoot
+          .getElementById("recipe-card-grid")
+          .appendChild(this.createRecipeCard(recipe.recipe, recipe.index));
+      }
     }
   }
+
   clickClose() {
     this.shadowRoot.getElementById("filter-form").style.display = "none";
   }

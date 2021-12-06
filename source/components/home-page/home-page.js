@@ -69,10 +69,8 @@ class HomePage extends YummyRecipesComponent {
       while (idArray.includes(id)) {
         id = Math.floor(Math.random() * recipeObjects.length);
       }
-
       // If ID not in the array, push it to the array
       idArray.push(id);
-
       // Randomly generate recipe
       const randomItem = recipeObjects[id];
 
