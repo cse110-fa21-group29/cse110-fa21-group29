@@ -1,24 +1,29 @@
 main {
   min-height: 100%;
+  width: 95%;
+  margin: auto;
 }
 
 #search-form {
   height: 50px;
-  width: 80%;
+  width: 100%;
   margin: 50px auto;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  
 }
 
 #search-box {
   display: flex;
   height: 50px;
   border: solid 1px black;
+  border-radius: 7px;
 }
 #search-input {
   border: none;
   font-size: 30px;
-  width: 60vw;
+  width: 75vw;
+  border-radius: 7px;
 }
 #filter-button {
   height: 100%;
@@ -60,7 +65,7 @@ common-recipe-card {
   display: flex;
   flex-wrap: wrap;
   margin: auto;
-  width: 95%;
+  width: 100%;
   row-gap: 5vh;
   column-gap: 5vh;
   justify-content: center;
