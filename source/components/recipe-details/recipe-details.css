@@ -57,8 +57,6 @@
   display: flex;
 }
 
-
-
 #timer-display {
   font-size: 20vmin;
 }
@@ -80,15 +78,19 @@
 #vegan {
   color: rgb(90, 240, 232);
 }
+
 #vegetarian {
   color: rgb(131, 224, 24);
 }
+
 #gluten-free {
   color: #b78727;
 }
+
 #high-protein {
   color: violet;
 }
+
 #healthy {
   color: lightblue;
 }
@@ -132,26 +134,25 @@
   display: none;
 }
 
-button{
-  
-  transition-duration: .5s;
+button {
+  transition-duration: 0.5s;
   background-color: #ffa4a4;
   color: white;
   border: #ffa4a4 solid 1px;
   border-radius: 5px;
 }
 
-button:hover{
+button:hover {
   background-color: white;
   color: black;
   border: #ffa4a4 solid 1px;
 }
 
-button:active{
-  transform:scale(0.6)
+button:active {
+  transform: scale(0.6);
 }
 
-#button-grid{
+#button-grid {
   justify-content: space-between;
   display: flex;
   width: 100%;
