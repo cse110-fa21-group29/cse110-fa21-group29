@@ -18,7 +18,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: 12
+          node-version: 14.18.1
 
       # ESLint and Prettier must be in `package.json`
       - name: Install Node.js dependencies
@@ -43,7 +43,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: 12
+          node-version: 14.18.1
       
       - name: Install Node.js dependencies
         run: npm ci
@@ -58,6 +58,11 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.18.1
 
       - name: Run JSDocs
         uses: andstor/jsdoc-action@v1
@@ -83,5 +88,5 @@ jobs:
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_CSE110GROUP29DEV }}'
-          projectId: cse110group29dev
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_CSE110GROUP29DEVNEW }}'
+          projectId: cse110group29devnew

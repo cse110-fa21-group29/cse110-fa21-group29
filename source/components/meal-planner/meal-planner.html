@@ -11,45 +11,165 @@
     src="static/meal-planner/circle-print.png"
     onclick="window.print();"
   />
-  <section id="planner-grid">
-    <!-- day -->
-    <div class="date"></div>
-    <div class="date">Sunday</div>
-    <div class="date">Monday</div>
-    <div class="date">Tuesday</div>
-    <div class="date">Wednesday</div>
-    <div class="date">Thursday</div>
-    <div class="date">Friday</div>
-    <div class="date">Saturday</div>
+  <div id="flexbox">
+    <!-- search -->
+    <div id="search-part">
+      <img id="close-search" src="static/common/close-icon.png" />
+      <div id="instruction">Drag card into planner</div>
+      <form id="search-input-grid">
+        <img id="search-input-icon" src="static/common/search-icon.png" />
+        <input type="text" id="search-input" placeholder="Search" />
+        <input type="submit" id="search-button" value="Submit" />
+      </form>
 
-    <!-- breakfast -->
-    <div class="meal">Breakfast</div>
-    <div class="meal-card"></div>
-    <div class="meal-card"></div>
-    <div class="meal-card"></div>
-    <div class="meal-card"></div>
-    <div class="meal-card"></div>
-    <div class="meal-card"></div>
-    <div class="meal-card"></div>
+      <div id="search-result">
+        <!-- put search result here -->
+      </div>
+    </div>
 
-    <!-- Lunch -->
-    <div class="meal">Lunch</div>
-    <div class="meal-card"></div>
-    <div class="meal-card"></div>
-    <div class="meal-card"></div>
-    <div class="meal-card"></div>
-    <div class="meal-card"></div>
-    <div class="meal-card"></div>
-    <div class="meal-card"></div>
+    <section id="planner-grid">
+      <!-- day -->
+      <div class="date center">
+        <div></div>
+      </div>
+      <div class="date center">
+        <div>Sunday</div>
+      </div>
+      <div class="date center">
+        <div>Monday</div>
+      </div>
+      <div class="date center">
+        <div>Tuesday</div>
+      </div>
+      <div class="date center">
+        <div>Wednesday</div>
+      </div>
+      <div class="date center">
+        <div>Thursday</div>
+      </div>
+      <div class="date center">
+        <div>Friday</div>
+      </div>
+      <div class="date center">
+        <div>Saturday</div>
+      </div>
 
-    <!-- Dinner -->
-    <div class="meal">Dinner</div>
-    <div class="meal-card"></div>
-    <div class="meal-card"></div>
-    <div class="meal-card"></div>
-    <div class="meal-card"></div>
-    <div class="meal-card"></div>
-    <div class="meal-card"></div>
-    <div class="meal-card"></div>
-  </section>
+      <!-- breakfast -->
+      <div class="meal center">
+        <div>Breakfast</div>
+      </div>
+      <div class="planner-cell"></div>
+      <div class="planner-cell"></div>
+      <div class="planner-cell"></div>
+      <div class="planner-cell"></div>
+      <div class="planner-cell"></div>
+      <div class="planner-cell"></div>
+      <div class="planner-cell"></div>
+
+      <!-- Lunch -->
+      <div class="meal center">
+        <div>Lunch</div>
+      </div>
+      <div class="planner-cell"></div>
+      <div class="planner-cell"></div>
+      <div class="planner-cell"></div>
+      <div class="planner-cell"></div>
+      <div class="planner-cell"></div>
+      <div class="planner-cell"></div>
+      <div class="planner-cell"></div>
+
+      <!-- Dinner -->
+      <div class="meal center">
+        <div>Dinner</div>
+      </div>
+      <div class="planner-cell"></div>
+      <div class="planner-cell"></div>
+      <div class="planner-cell"></div>
+      <div class="planner-cell"></div>
+      <div class="planner-cell"></div>
+      <div class="planner-cell"></div>
+      <div class="planner-cell"></div>
+
+      <div class="meal center">
+        <div>Total Nutrition</div>
+      </div>
+      <div class="total-nutrition center">
+        <div class="total-nutrition-container">
+          <div class="calory-total">
+            <span class="calories">0</span> Calories
+          </div>
+          <div class="fat-total"><span class="fat">0</span> of fat</div>
+          <div class="protein-total">
+            <span class="protein">0</span> of protein
+          </div>
+        </div>
+      </div>
+      <div class="total-nutrition center">
+        <div class="total-nutrition-container">
+          <div class="calory-total">
+            <span class="calories">0</span> Calories
+          </div>
+          <div class="fat-total"><span class="fat">0</span> of fat</div>
+          <div class="protein-total">
+            <span class="protein">0</span> of protein
+          </div>
+        </div>
+      </div>
+      <div class="total-nutrition center">
+        <div class="total-nutrition-container">
+          <div class="calory-total">
+            <span class="calories">0</span> Calories
+          </div>
+          <div class="fat-total"><span class="fat">0</span> of fat</div>
+          <div class="protein-total">
+            <span class="protein">0</span> of protein
+          </div>
+        </div>
+      </div>
+      <div class="total-nutrition center">
+        <div class="total-nutrition-container">
+          <div class="calory-total">
+            <span class="calories">0</span> Calories
+          </div>
+          <div class="fat-total"><span class="fat">0</span> of fat</div>
+          <div class="protein-total">
+            <span class="protein">0</span> of protein
+          </div>
+        </div>
+      </div>
+      <div class="total-nutrition center">
+        <div class="total-nutrition-container">
+          <div class="calory-total">
+            <span class="calories">0</span> Calories
+          </div>
+          <div class="fat-total"><span class="fat">0</span> of fat</div>
+          <div class="protein-total">
+            <span class="protein">0</span> of protein
+          </div>
+        </div>
+      </div>
+      <div class="total-nutrition center">
+        <div class="total-nutrition-container">
+          <div class="calory-total">
+            <span class="calories">0</span> Calories
+          </div>
+          <div class="fat-total"><span class="fat">0</span> of fat</div>
+          <div class="protein-total">
+            <span class="protein">0</span> of protein
+          </div>
+        </div>
+      </div>
+      <div class="total-nutrition center">
+        <div class="total-nutrition-container">
+          <div class="calory-total">
+            <span class="calories">0</span> Calories
+          </div>
+          <div class="fat-total"><span class="fat">0</span> of fat</div>
+          <div class="protein-total">
+            <span class="protein">0</span> of protein
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 </main>

@@ -38,7 +38,7 @@ const routePatterns = {
   },
   "hands-free": {
     component: "hands-free",
-    url: "#/hands-free",
+    url: "#/recipes/_/hands-free",
   },
   "recipe-search": {
     component: "recipe-search",
@@ -236,7 +236,7 @@ function getRoutefromUrl(url) {
   let splitUrl = baseUrl.split("/");
   for (let i = 0; i < splitUrl.length; i++) {
     const urlSection = splitUrl[i];
-    if (!isNaN(parseInt(urlSection))) {
+    if (!isNaN(parseInt(urlSection, 10))) {
       splitUrl[i] = "_";
     }
   }
@@ -274,7 +274,7 @@ function getParamsFromUrl(url) {
   let splitUrl = baseUrl.split("/");
   for (let i = 0; i < splitUrl.length; i++) {
     const urlSection = splitUrl[i];
-    if (!isNaN(parseInt(urlSection))) {
+    if (!isNaN(parseInt(urlSection, 10))) {
       params.push(urlSection);
     }
   }

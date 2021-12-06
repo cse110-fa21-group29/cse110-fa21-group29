@@ -1,6 +1,6 @@
 import { YummyRecipesComponent } from "/components/core/yummy-recipes-component.js";
 
-class CommonRecipeCard extends YummyRecipesComponent {
+export class CommonRecipeCard extends YummyRecipesComponent {
   constructor() {
     super();
     this.htmlPath = "components/common/recipe-card/common-recipe-card.html";
@@ -8,6 +8,10 @@ class CommonRecipeCard extends YummyRecipesComponent {
 
   set recipeData(recipeData) {
     this.recipe = recipeData;
+  }
+
+  set recipeIndex(recipeIndex) {
+    this.index = recipeIndex;
   }
 
   setupElement() {
@@ -19,7 +23,8 @@ class CommonRecipeCard extends YummyRecipesComponent {
     this.shadowRoot.querySelector("#time").innerHTML =
       this.recipe.info.readyInMinutes;
     this.shadowRoot.querySelector("#calories").innerHTML = parseInt(
-      this.recipe.nutrients.calories
+      this.recipe.nutrients.calories,
+      10
     );
     this.shadowRoot.querySelector("#protein").innerHTML =
       this.recipe.nutrients.protein;
