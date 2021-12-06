@@ -271,7 +271,7 @@ class RecipeSearch extends YummyRecipesComponent {
         currPageNum = parseInt(currPageNum, 10);
 
         // The page before page 1 DNE
-        if (currPageNum == 1) {
+        if (currPageNum === 1) {
           return;
         } else {
           let previousPage = currPageNum - 1;
@@ -377,7 +377,7 @@ class RecipeSearch extends YummyRecipesComponent {
         currPageNum = parseInt(currPageNum, 10);
 
         // The page after the last page DNE
-        if (currPageNum == pageCount) {
+        if (currPageNum === pageCount) {
           return;
         } else {
           let nextPage = currPageNum + 1;
