@@ -1,6 +1,7 @@
 import { Database } from "/core/database/database.js";
 import { YummyRecipesComponent } from "/components/core/yummy-recipes-component.js";
 
+/** Class that provides functionality to the meal planner. */
 class MealPlanner extends YummyRecipesComponent {
   constructor() {
     super();
@@ -8,126 +9,309 @@ class MealPlanner extends YummyRecipesComponent {
   }
 
   /**
-   * Sets up meal card functions
+   * Sets up meal planner functions
+   *
+   * @async
    */
   async setupElement() {
-    const mealCards = this.shadowRoot.querySelectorAll(".meal-card");
+    // Get recipe indexes from URL
+    const indexes = this.getParams();
 
-    for (let i = 0; i < 21; i++) {
-      let mealcardimg = document.createElement("div");
-      mealcardimg.className = "meal-card-add";
-      mealcardimg.addEventListener("click", () => {
-        this.shadowRoot.getElementById("search-part").style.display = "block";
+    // Route to homepage if failed
+    if (!indexes) {
+      const routerEvent = new CustomEvent("router-navigate", {
+        detail: {
+          route: "home-page",
+          params: [],
+        },
+        bubbles: true,
+        composed: true,
       });
-      mealCards[i].append(mealcardimg);
-      // mealCards[i].addEventListener("click", () => {
-      //   // Function that handles meal card logic
-      //   // this.createRecipeCard(mealCards[i]);
-      //   this.shadowRoot.getElementById("search-part").style.display = "block";
-      // });
+      this.dispatchEvent(routerEvent);
+      return;
     }
 
-    // this.shadowRoot
-    //   .getElementById("search-result")
-    //   .append(document.createElement("meal-planner-recipe-card"));
+    // Database instance
+    const db = new Database();
 
+    // Get all cells
+    const plannerCells = this.shadowRoot.querySelectorAll(".planner-cell");
+
+    // Append add buttons to each cell
+    plannerCells.forEach((element) => {
+      // Add button for empty cells
+      const addButton = document.createElement("div");
+
+      addButton.className = "planner-cell-add";
+
+      // Append add button to cell
+      element.append(addButton);
+    });
+
+    // Add recipe cards as specified in query string "id" parameter
+    for (let i = 0; i < 21; i++) {
+      // Check if URL index is not -1
+      if (indexes[i] !== -1) {
+        // Attempt to get recipe from index
+        const recipe = await db.getRecipe(indexes[i]);
+
+        // Check if recipe is not undefined
+        if (recipe) {
+          // Clear out cell
+          plannerCells[i].innerHTML = "";
+
+          // Append recipe card to cell
+          this.addRecipeToCell(plannerCells[i], indexes[i]);
+        }
+      }
+    }
+
+    // Add button functionality cells
+    this.shadowRoot.querySelectorAll(".planner-cell-add").forEach((element) => {
+      // Add button click listener
+      element.addEventListener("click", () => {
+        // Bring up search sidebar when add button clicked
+        this.shadowRoot.getElementById("search-part").style.display = "block";
+      });
+    });
+
+    // Add functionality for each cell
+    for (let i = 0; i < 21; i++) {
+      // Click event to remove card and restore add button
+      this.addButtonToCell(plannerCells[i], i);
+
+      // Dragover listener
+      plannerCells[i].addEventListener("dragover", (event) => {
+        event.preventDefault();
+      });
+
+      // Drop function
+      this.drop(plannerCells[i], i);
+    }
+
+    // Close sidebar when "x" clicked
     this.shadowRoot
       .getElementById("close-search")
       .addEventListener("click", () => {
         this.shadowRoot.getElementById("search-part").style.display = "none";
       });
 
-    const database = new Database();
-    const recipes = await database.getRecipes();
-    for (let i = 0; i < 10; i++) {
-      this.shadowRoot
-        .getElementById("search-result")
-        .appendChild(this.createRecipeCard(recipes[i], i));
+    // Search button
+    this.shadowRoot
+      .getElementById("search-button")
+      .addEventListener("click", (event) => {
+        const query = this.shadowRoot.getElementById("search-input").value;
+        this.search(query);
+        event.preventDefault();
+      });
+
+    // Reload page when browser navigation buttons used
+    // window.onpopstate = function () {
+    //  location.reload();
+    // };
+  }
+
+  /**
+   * Sets up search sidebar functionality.
+   *
+   * @async
+   * @param {string} query - User input to pass to database search.
+   */
+  async search(query) {
+    // Array used in database search
+    const arr = [
+      ["query", query],
+      ["glutenFree", "true"],
+      ["healthy", "true"],
+      ["highProtein", "true"],
+      ["vegan", "true"],
+      ["vegetarian", "true"],
+    ];
+
+    // Search recipe in database
+    const db = new Database();
+    const recipes = await db.searchByName(arr);
+
+    // Clear cards from any prior queries
+    this.shadowRoot.getElementById("search-result").innerHTML = "";
+
+    // Generate sidebar recipe cards
+    for (let i = 0; i < recipes.length; i++) {
+      const card = document.createElement("sidebar-recipe-card");
+      card.recipeData = recipes[i].recipe;
+      card.recipeIndex = recipes[i].index;
+
+      // Append card to sidebar
+      this.shadowRoot.getElementById("search-result").appendChild(card);
     }
   }
 
   /**
-   * Creates recipe card with information and routing.
+   * Adds click handler to cell which clears the cell, appends add button, and
+   * updates the URL.
    *
-   * @param {Object} recipe - Object that contains recipe data.
-   * @param {number} index - Index of recipe card in database to set route.
-   * @returns {Object} Generated recipe card.
+   * @param {Object} plannerCell - Cell to operate on.
+   * @param {Object} plannerCellIndex - Index of cell to operate on.
    */
-  createRecipeCard(recipe, index) {
-    const card = document.createElement("common-recipe-card");
-    card.recipeData = recipe;
-    card.addEventListener("click", () => {
-      const routerEvent = new CustomEvent("router-navigate", {
-        detail: {
-          route: "recipe-details",
-          params: [index],
-        },
-        bubbles: true,
-        composed: true,
+  addButtonToCell(plannerCell, plannerCellIndex) {
+    plannerCell.addEventListener("click", () => {
+      // Create new add button
+      const addButton = document.createElement("div");
+
+      addButton.className = "planner-cell-add";
+      plannerCell.innerHTML = "";
+
+      // Add button click listener
+      addButton.addEventListener("click", () => {
+        // Bring up search sidebar when add button clicked
+        this.shadowRoot.getElementById("search-part").style.display = "block";
       });
-      card.dispatchEvent(routerEvent);
+
+      plannerCell.append(addButton);
+
+      // Update total nutrition
+      this.updateNutrition();
+
+      // Update URL
+      this.setUrl(plannerCellIndex, -1);
     });
-    return card;
   }
+
   /**
-   * Asks for user input of recipe link and checks if valid. If valid, create
-   * recipe card and append to meal card.
+   * Adds meal planner recipe card to cell.
    *
    * @async
-   * @param {Object} mealCard - Meal card in planner to append to.
+   * @param {Object} plannerCell - Cell to append card to.
+   * @param {number} index - Index of recipe object in database.
    */
-  // async createRecipeCard(mealCard) {
-  //   // Get user entry
-  //   const prompt = window.prompt(
-  //     "Enter recipe link (leave blank to clear cell)",
-  //     ""
-  //   );
+  async addRecipeToCell(plannerCell, index) {
+    // Get recipe from database
+    const db = new Database();
+    const recipe = await db.getRecipe(index);
 
-  //   // Do not do anything if prompt canceled
-  //   if (prompt === undefined) {
-  //     return;
-  //   }
+    // Create meal planner recipe card
+    const card = document.createElement("meal-planner-recipe-card");
+    card.recipeData = recipe;
+    card.recipeIndex = index;
 
-  //   // Reset meal card if empty entry
-  //   if (prompt === "") {
-  //     mealCard.innerHTML = "";
-  //     mealCard.style.backgroundImage =
-  //       "url(/static/meal-planner/circle-plus.png)";
-  //     return;
-  //   }
+    // Clear out any existing cards
+    plannerCell.innerHTML = "";
+    plannerCell.append(card);
 
-  //   // Split input and grab last split
-  //   const url = prompt.split("/");
-  //   const index = parseInt(url[url.length - 1], 10);
+    // Update total nutrition
+    this.updateNutrition();
+  }
 
-  //   // Object to hold recipe if found
-  //   let recipe = {};
+  /**
+   * Adds drop handler to cell which clears the cell, adds new recipe card,
+   * and updates the URL.
+   *
+   * @param {Object} plannerCell - Cell to operate on.
+   * @param {number} plannerCellIndex - Index of cell to operate on.
+   */
+  drop(plannerCell, plannerCellIndex) {
+    // Drop listener
+    plannerCell.addEventListener("drop", (event) => {
+      // Get recipe index from drag data
+      const index = event.dataTransfer.getData("text/plain");
 
-  //   // Check if split contains "recipes" followed by number
-  //   if (url[url.length - 2] === "recipes" && isNaN(index) === false) {
-  //     // Try to get recipe from database
-  //     const db = new Database();
-  //     recipe = await db.getRecipe(index);
+      // Add recipe card
+      this.addRecipeToCell(plannerCell, index);
 
-  //     // If recipe does not exist notify user
-  //     if (recipe === undefined) {
-  //       alert("Not a valid recipe link");
-  //       return;
-  //     }
-  //   } else {
-  //     alert("Not a valid recipe link");
-  //     return;
-  //   }
+      // Change URL
+      this.setUrl(plannerCellIndex, index);
+    });
+  }
 
-  //   // Generate recipe card
-  //   const card = document.createElement("common-recipe-card");
-  //   card.recipeData = recipe;
+  /**
+   * Updates the nutrition row based on the recipe cards present.
+   */
+  updateNutrition() {
+    // Grab all cells
+    const calories = this.shadowRoot.querySelectorAll(".calories");
+    const fat = this.shadowRoot.querySelectorAll(".fat");
+    const plannerCells = this.shadowRoot.querySelectorAll(".planner-cell");
+    const protein = this.shadowRoot.querySelectorAll(".protein");
 
-  //   // Clear out meal card then append
-  //   mealCard.innerHTML = "";
-  //   mealCard.style.backgroundImage = "none";
-  //   mealCard.append(card);
-  // }
+    // Iterate on column
+    for (let i = 0; i < calories.length; i++) {
+      let calorieCount = 0;
+      let fatCount = 0;
+      let proteinCount = 0;
+
+      // Iterate on row
+      for (let j = 0; j < 3; j++) {
+        // Skip cell if there is no recipe
+        if (!plannerCells[7 * j + i].children[0].recipe) {
+          continue;
+        }
+
+        // Get recipe nutrition of current cell
+        const recipeNutrients =
+          plannerCells[7 * j + i].children[0].recipe.nutrients;
+
+        // Add to column nutrition
+        calorieCount += parseInt(recipeNutrients.calories, 10);
+        fatCount += parseInt(recipeNutrients.fat, 10);
+        proteinCount += parseInt(recipeNutrients.protein, 10);
+      }
+
+      // Update column nutrition
+      calories[i].innerHTML = calorieCount;
+      fat[i].innerHTML = fatCount;
+      protein[i].innerHTML = proteinCount;
+    }
+  }
+
+  /**
+   * Get list of recipe ids in order of cell index from query string "ids"
+   * parameter.
+   *
+   * @returns {Array|undefined} Array of recipe ids or undefined if failed.
+   */
+  getParams() {
+    // Get params
+    const paramString = window.location.href.split("?")[1];
+    const searchParams = new URLSearchParams(paramString);
+
+    // Check if "ids" exists as a query string parameter
+    if (searchParams.has("ids")) {
+      const ids = searchParams.get("ids").split(",").map(Number);
+
+      // Check if there are exactly 21 numbers
+      if (ids.length === 21 && ids.every((val) => !isNaN(val))) {
+        return ids;
+      }
+    }
+
+    return undefined;
+  }
+
+  /**
+   * Replaces URL with modified "ids" query string parameter.
+   *
+   * @param {number} paramIndex - The id in the parameter to replace.
+   * @param {number} recipeIndex - The replacement value of the id.
+   */
+  setUrl(paramIndex, recipeIndex) {
+    // Get params
+    const paramString = window.location.href.split("?")[1];
+    const searchParams = new URLSearchParams(paramString);
+
+    // Replace id
+    const ids = searchParams.get("ids").split(",");
+    ids[paramIndex] = recipeIndex;
+
+    const newIds = ids.join(",");
+
+    // Get URL and remove query string
+    const url = window.location.href;
+    let newUrl = url.slice(0, url.indexOf("?"));
+    newUrl += "?ids=" + newIds;
+
+    // Push new URL
+    history.pushState({}, "", newUrl);
+  }
 }
 
 customElements.define("meal-planner", MealPlanner);
