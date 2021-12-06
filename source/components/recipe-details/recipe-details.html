@@ -36,12 +36,26 @@
     </div>
   </div>
   <!-- timer -->
-  <div id="timer" class="detail-box">
-    <time id="timer-display">00:00:00</time>
+  <div id="timer">
+    <time id="timer-display"></time><br />
+    <div id="time-input-container">
+      <div>
+        <label id="input-hours-label" for="input-hours">Hours:</label>
+        <input type="number" min="0" max="24" step="1" id="input-hours" />
+      </div>
+      <div>
+        <label id="input-minutes-label" for="input-minutes">Minutes:</label>
+        <input type="number" min="0" max="60" step="1" id="input-minutes" />
+      </div>
+      <div>
+        <label id="input-seconds-label" for="input-seconds">Seconds:</label>
+        <input type="number" min="0" max="60" step="1" id="input-seconds" />
+      </div>
+    </div>
     <div id="timer-button-grid">
-      <button id="start-button" class="timer-control-button">Start</button
-      ><br />
-      <button id="reset-button" class="timer-control-button">Reset</button>
+      <button id="start-button">Start</button><br />
+      <button id="pause-button">Pause</button><br />
+      <button id="reset-button">Reset</button>
     </div>
   </div>
   <!-- Description box-->

@@ -7,6 +7,7 @@ class RecipeDetails extends YummyRecipesComponent {
   constructor() {
     super();
     this.htmlPath = "components/recipe-details/recipe-details.html";
+    this.totalTime = -1;
   }
   count = 0;
   timeoutID;
@@ -40,26 +41,25 @@ class RecipeDetails extends YummyRecipesComponent {
           this.shadowRoot.getElementById("timer").style.display = "";
         }
       });
+    // Event handler for timer start button
     this.shadowRoot
       .getElementById("start-button")
       .addEventListener("click", () => {
-        if (!this.timeron) {
-          this.timeron = 1;
-          this.timedCount();
-          this.shadowRoot.getElementById("start-button").innerHTML = "Stop";
-        } else {
-          this.shadowRoot.getElementById("start-button").innerHTML = "Start";
-          clearTimeout(this.timeoutID);
-          this.timeron = 0;
-        }
+        this.startCount();
       });
+
+    // Event handler for t dimer pause button
+    this.shadowRoot
+      .getElementById("pause-button")
+      .addEventListener("click", () => {
+        this.stopCount();
+      });
+
+    // Event handler for timer reset button
     this.shadowRoot
       .getElementById("reset-button")
       .addEventListener("click", () => {
-        clearTimeout(this.timeoutID);
-        this.timeron = 0;
-        this.count = 0;
-        this.setTime();
+        this.resetCount();
       });
 
     // Grab recipe from database based on routing parameter
@@ -158,19 +158,19 @@ class RecipeDetails extends YummyRecipesComponent {
       recipe.nutrients.totalServings;
 
     // Category box
-    if (recipe.categories.vegan == false) {
+    if (!recipe.categories.vegan) {
       this.shadowRoot.querySelector("#vegan").style.display = "none";
     }
-    if (recipe.categories.vegetarian == false) {
+    if (!recipe.categories.vegetarian) {
       this.shadowRoot.querySelector("#vegetarian").style.display = "none";
     }
-    if (recipe.categories.glutenFree == false) {
+    if (!recipe.categories.glutenFree) {
       this.shadowRoot.querySelector("#gluten-free").style.display = "none";
     }
-    if (recipe.categories.highProtein == false) {
+    if (!recipe.categories.highProtein) {
       this.shadowRoot.querySelector("#high-protein").style.display = "none";
     }
-    if (recipe.categories.healthy == false) {
+    if (!recipe.categories.healthy) {
       this.shadowRoot.querySelector("#healthy").style.display = "none";
     }
 
@@ -202,32 +202,115 @@ class RecipeDetails extends YummyRecipesComponent {
       "<ol>" + directions + "</ol>";
   }
   /**
-   * help function for timer
+   * Function that activates when user hits start button on timer
+   * Hides the time inputs and starts the timer
+   *
    */
-  timedCount() {
-    this.setTime();
-    this.count = this.count + 1;
-    this.timeoutID = setTimeout(this.timedCount.bind(this), 1000);
+  startCount() {
+    // Hide user inputs
+    this.shadowRoot.getElementById("input-hours").style.visibility = "hidden";
+    this.shadowRoot.getElementById("input-minutes").style.visibility = "hidden";
+    this.shadowRoot.getElementById("input-seconds").style.visibility = "hidden";
+    this.shadowRoot.getElementById("input-hours-label").style.visibility =
+      "hidden";
+    this.shadowRoot.getElementById("input-minutes-label").style.visibility =
+      "hidden";
+    this.shadowRoot.getElementById("input-seconds-label").style.visibility =
+      "hidden";
+
+    if (!this.timeron) {
+      this.timeron = 1;
+      this.startTimer();
+    }
   }
 
   /**
-   * set timer
+   * Stops the timer
+   */
+  stopCount() {
+    clearTimeout(this.temp);
+    this.timeron = 0;
+  }
+
+  /**
+   * Resets the timer back to user input
+   */
+  resetCount() {
+    this.stopCount();
+    this.count = 0;
+    this.totalTime = -1;
+    // Show user inputs again
+    this.shadowRoot.getElementById("input-hours").style.visibility = "visible";
+    this.shadowRoot.getElementById("input-minutes").style.visibility =
+      "visible";
+    this.shadowRoot.getElementById("input-seconds").style.visibility =
+      "visible";
+    this.shadowRoot.getElementById("input-hours-label").style.visibility =
+      "visible";
+    this.shadowRoot.getElementById("input-minutes-label").style.visibility =
+      "visible";
+    this.shadowRoot.getElementById("input-seconds-label").style.visibility =
+      "visible";
+
+    // Hide timer
+    this.shadowRoot.getElementById("timer-display").style.visibility = "hidden";
+  }
+
+  /**
+   * Display the initial starting time user inputted
+   */
+  startTimer() {
+    if (this.totalTime === -1) {
+      const hoursInput = Number(
+        this.shadowRoot.getElementById("input-hours").value
+      );
+      const minutesInput = Number(
+        this.shadowRoot.getElementById("input-minutes").value
+      );
+      const secondsInput = Number(
+        this.shadowRoot.getElementById("input-seconds").value
+      );
+      if (hoursInput === 0 && minutesInput === 0 && secondsInput === 0) {
+        this.shadowRoot.getElementById("timer-display").style.visibility =
+          "visible";
+        this.shadowRoot.getElementById("timer-display").innerText = "00:00:00";
+        return;
+      }
+      this.totalTime = hoursInput * 3600 + minutesInput * 60 + secondsInput;
+    }
+
+    let timer = this.shadowRoot.getElementById("timer-display");
+    timer.style.visibility = "visible";
+    this.setTime();
+    this.totalTime -= 1;
+    this.temp = setInterval(() => this.updateTime(), 1000);
+  }
+
+  /**
+   * Update timer text
    */
   setTime() {
-    let hour = parseInt(this.count / 3600);
-    let minute = parseInt(this.count / 60);
-    let second = parseInt(this.count % 60);
-    if (hour < 10) {
-      hour = "0" + hour;
+    const timer = this.shadowRoot.getElementById("timer-display");
+    const date = new Date(null);
+    date.setSeconds(this.totalTime);
+    timer.innerText = date.toISOString().substr(11, 8);
+  }
+
+  /**
+   * Decrements the time by 1 every second
+   * If timer reaches 0, play a sound and stop the interval
+   */
+  updateTime() {
+    if (this.totalTime === 0) {
+      // Play some sound
+      const audio = new Audio("/static/hands-free/timer-done-noise.mp3");
+      audio.play();
+      // Clear interval
+      clearInterval(this.temp);
     }
-    if (minute < 10) {
-      minute = "0" + minute;
-    }
-    if (second < 10) {
-      second = "0" + second;
-    }
-    this.shadowRoot.getElementById("timer-display").innerText =
-      hour + ":" + minute + ":" + second;
+
+    this.setTime();
+    this.totalTime -= 1;
   }
 }
 
