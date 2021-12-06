@@ -51,7 +51,7 @@ a {
   box-shadow: 5px 5px 2px 1px rgba(0, 0, 255, 0.2);
 }
 .category-link:hover {
-  background-color: rgb(255, 249, 197);
+  background-color: #ffd3d3;
 }
 
 #category-dropdown:hover .category-link {
@@ -71,7 +71,7 @@ a {
   cursor: pointer;
   background-color: white;
   color: white;
-  background-color: rgb(118, 118, 255);
+  background-color: rgba(118, 118, 255);
   border: none;
 }
 

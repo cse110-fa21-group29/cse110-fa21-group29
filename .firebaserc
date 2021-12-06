@@ -1,7 +1,7 @@
 {
   "projects": {
     "prod": "cse110group29",
-    "dev": "cse110group29dev",
+    "dev": "cse110group29devnew",
     "default": "cse110group29"
   },
   "targets": {}

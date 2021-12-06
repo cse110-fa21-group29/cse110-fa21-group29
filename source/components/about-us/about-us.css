@@ -10,10 +10,11 @@ main {
   height: 400px;
   background-color: #68a1f6;
 }
+
 #introduction-title-grid-title {
   font-size: 100px;
   line-height: 400px;
-  font-family: "Montserrat", Sans-serif;
+  font-family: "Sofia";
 }
 #introduction-bottom-grid {
   height: 600px;
@@ -37,6 +38,7 @@ main {
 #our-team {
   margin: 100px 100px 50px;
   height: 400px;
+  font-family: "Sofia";
   font-size: 100px;
   background-color: #41cad2;
   line-height: 400px;
