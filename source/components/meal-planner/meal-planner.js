@@ -17,17 +17,18 @@ class MealPlanner extends YummyRecipesComponent {
     // Get recipe indexes from URL
     const indexes = this.getParams();
 
-    // Route to homepage if failed
+    // Route to empty meal planner if failed
     if (!indexes) {
       const routerEvent = new CustomEvent("router-navigate", {
         detail: {
-          route: "home-page",
+          route: "meal-planner",
           params: [],
         },
         bubbles: true,
         composed: true,
       });
       this.dispatchEvent(routerEvent);
+      window.location.href += "?ids=-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1";
       return;
     }
 
