@@ -64,24 +64,6 @@
   display: flex;
 }
 
-#timer-display {
-  font-size: 20vmin;
-}
-
-#timer-button-grid {
-  margin: auto 0;
-}
-
-.timer-control-button {
-  padding: 10px;
-  width: 100px;
-  cursor: pointer;
-}
-
-#reset-button {
-  margin-top: 30px;
-}
-
 #vegan {
   color: rgb(90, 240, 232);
 }
