@@ -11,7 +11,7 @@ class CookingMode extends YummyRecipesComponent {
   // Timer variables
   count = 0;
   temp;
-  timeron = 0;
+  timeron = false;
 
   // Steps array and counter
   recipeSteps = [];
@@ -54,11 +54,13 @@ class CookingMode extends YummyRecipesComponent {
     this.shadowRoot
       .getElementById("start-pause-button")
       .addEventListener("click", () => {
-        const formElement = this.shadowRoot.querySelector("#time-input-form");
-        const isFormValid = formElement.checkValidity();
-        formElement.reportValidity();
-        if (!isFormValid) {
-          return;
+        if (!this.timeron) {
+          const formElement = this.shadowRoot.querySelector("#time-input-form");
+          const isFormValid = formElement.checkValidity();
+          formElement.reportValidity();
+          if (!isFormValid) {
+            return;
+          }
         }
         const hoursInput = Number(
           this.shadowRoot.getElementById("input-hours").value
@@ -78,7 +80,6 @@ class CookingMode extends YummyRecipesComponent {
           "Start"
         ) {
           this.startCount();
-          this.clearTimerInputs();
         } else {
           this.stopCount();
         }
@@ -140,7 +141,7 @@ class CookingMode extends YummyRecipesComponent {
     this.shadowRoot.getElementById("start-pause-button").innerText = "Pause";
 
     if (!this.timeron) {
-      this.timeron = 1;
+      this.timeron = true;
       this.startTimer();
     }
   }
@@ -151,7 +152,7 @@ class CookingMode extends YummyRecipesComponent {
   stopCount() {
     this.shadowRoot.getElementById("start-pause-button").innerText = "Start";
     clearTimeout(this.temp);
-    this.timeron = 0;
+    this.timeron = false;
   }
 
   /**
@@ -213,6 +214,8 @@ class CookingMode extends YummyRecipesComponent {
       audio.play();
       // Clear interval
       this.stopCount();
+      // Clear inputs
+      this.clearTimerInputs();
     }
 
     this.setTime();
