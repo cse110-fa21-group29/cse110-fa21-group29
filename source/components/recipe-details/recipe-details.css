@@ -131,6 +131,7 @@
 
 /* Do not change display: none */
 #recipe-video {
+  margin-top: 10px;
   display: none;
 }
 
@@ -201,4 +202,15 @@ button:active {
 
 #time-input-container > div {
   display: flex;
+}
+
+.direction-title {
+  display: flex;
+  column-gap: 10px;
+  align-items: center;
+}
+
+#direction-text-button,
+#direction-video-button {
+  display: none;
 }
