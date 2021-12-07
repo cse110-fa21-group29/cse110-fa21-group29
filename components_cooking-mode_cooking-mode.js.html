@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>components/hands-free/hands-free.js - Documentation</title>
+    <title>components/cooking-mode/cooking-mode.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">components/hands-free/hands-free.js</h1>
+    <h1 class="page-title">components/cooking-mode/cooking-mode.js</h1>
     
 
     
@@ -42,10 +42,10 @@
             <pre class="prettyprint source linenums"><code>import { Database } from "/core/database/database.js";
 import { YummyRecipesComponent } from "/components/core/yummy-recipes-component.js";
 
-class HandsFree extends YummyRecipesComponent {
+class CookingMode extends YummyRecipesComponent {
   constructor() {
     super();
-    this.htmlPath = "components/hands-free/hands-free.html";
+    this.htmlPath = "components/cooking-mode/cooking-mode.html";
     this.totalTime = -1;
   }
 
@@ -66,6 +66,8 @@ class HandsFree extends YummyRecipesComponent {
    */
   async setupElement() {
     this.shadowRoot.getElementById("timer-display").style.visibility = "hidden";
+
+    //console.log(this.shadowRoot.getElementById("pause-button").style.display);
     // Grab recipe from database based on routing parameter
     const database = new Database();
     let recipes = await database.getRecipes();
@@ -91,16 +93,36 @@ class HandsFree extends YummyRecipesComponent {
 
     // Event handler for timer start button
     this.shadowRoot
-      .getElementById("start-button")
+      .getElementById("start-pause-button")
       .addEventListener("click", () => {
-        this.startCount();
-      });
-
-    // Event handler for t dimer pause button
-    this.shadowRoot
-      .getElementById("pause-button")
-      .addEventListener("click", () => {
-        this.stopCount();
+        const formElement = this.shadowRoot.querySelector("#time-input-form");
+        const isFormValid = formElement.checkValidity();
+        formElement.reportValidity();
+        if (!isFormValid) {
+          return;
+        }
+        const hoursInput = Number(
+          this.shadowRoot.getElementById("input-hours").value
+        );
+        const minutesInput = Number(
+          this.shadowRoot.getElementById("input-minutes").value
+        );
+        const secondsInput = Number(
+          this.shadowRoot.getElementById("input-seconds").value
+        );
+        // Check if user entered anything
+        if (hoursInput &lt;= 0 &amp;&amp; minutesInput &lt;= 0 &amp;&amp; secondsInput &lt;= 0) {
+          return;
+        }
+        if (
+          this.shadowRoot.getElementById("start-pause-button").innerText ===
+          "Start"
+        ) {
+          this.startCount();
+          this.clearTimerInputs();
+        } else {
+          this.stopCount();
+        }
       });
 
     // Event handler for timer reset button
@@ -108,6 +130,7 @@ class HandsFree extends YummyRecipesComponent {
       .getElementById("reset-button")
       .addEventListener("click", () => {
         this.resetCount();
+        this.clearTimerInputs();
       });
 
     // Event handler for hands free next step button
@@ -152,15 +175,10 @@ class HandsFree extends YummyRecipesComponent {
    */
   startCount() {
     // Hide user inputs
-    this.shadowRoot.getElementById("input-hours").style.visibility = "hidden";
-    this.shadowRoot.getElementById("input-minutes").style.visibility = "hidden";
-    this.shadowRoot.getElementById("input-seconds").style.visibility = "hidden";
-    this.shadowRoot.getElementById("input-hours-label").style.visibility =
-      "hidden";
-    this.shadowRoot.getElementById("input-minutes-label").style.visibility =
-      "hidden";
-    this.shadowRoot.getElementById("input-seconds-label").style.visibility =
-      "hidden";
+    this.shadowRoot.getElementById("time-input-container").style.display =
+      "none";
+    this.shadowRoot.getElementById("timer-display").style.display = "flex";
+    this.shadowRoot.getElementById("start-pause-button").innerText = "Pause";
 
     if (!this.timeron) {
       this.timeron = 1;
@@ -172,6 +190,7 @@ class HandsFree extends YummyRecipesComponent {
    * Stops the timer
    */
   stopCount() {
+    this.shadowRoot.getElementById("start-pause-button").innerText = "Start";
     clearTimeout(this.temp);
     this.timeron = 0;
   }
@@ -184,20 +203,10 @@ class HandsFree extends YummyRecipesComponent {
     this.count = 0;
     this.totalTime = -1;
     // Show user inputs again
-    this.shadowRoot.getElementById("input-hours").style.visibility = "visible";
-    this.shadowRoot.getElementById("input-minutes").style.visibility =
-      "visible";
-    this.shadowRoot.getElementById("input-seconds").style.visibility =
-      "visible";
-    this.shadowRoot.getElementById("input-hours-label").style.visibility =
-      "visible";
-    this.shadowRoot.getElementById("input-minutes-label").style.visibility =
-      "visible";
-    this.shadowRoot.getElementById("input-seconds-label").style.visibility =
-      "visible";
-
+    this.shadowRoot.getElementById("time-input-container").style.display =
+      "flex";
     // Hide timer
-    this.shadowRoot.getElementById("timer-display").style.visibility = "hidden";
+    this.shadowRoot.getElementById("timer-display").style.display = "none";
   }
 
   /**
@@ -214,12 +223,6 @@ class HandsFree extends YummyRecipesComponent {
       const secondsInput = Number(
         this.shadowRoot.getElementById("input-seconds").value
       );
-      if (hoursInput === 0 &amp;&amp; minutesInput === 0 &amp;&amp; secondsInput === 0) {
-        this.shadowRoot.getElementById("timer-display").style.visibility =
-          "visible";
-        this.shadowRoot.getElementById("timer-display").innerText = "00:00:00";
-        return;
-      }
       this.totalTime = hoursInput * 3600 + minutesInput * 60 + secondsInput;
     }
 
@@ -247,10 +250,10 @@ class HandsFree extends YummyRecipesComponent {
   updateTime() {
     if (this.totalTime === 0) {
       // Play some sound
-      const audio = new Audio("/static/hands-free/timer-done-noise.mp3");
+      const audio = new Audio("/static/cooking-mode/timer-done-noise.mp3");
       audio.play();
       // Clear interval
-      clearInterval(this.temp);
+      this.stopCount();
     }
 
     this.setTime();
@@ -268,6 +271,16 @@ class HandsFree extends YummyRecipesComponent {
     this.shadowRoot.getElementById("number").innerText = this.currentStep;
     this.shadowRoot.getElementById("direction").innerText =
       this.recipeSteps[this.currentStep - 1];
+  }
+
+  /**
+   * Clears all user inputs
+   * Runs after hitting start
+   */
+  clearTimerInputs() {
+    this.shadowRoot.getElementById("input-hours").value = "";
+    this.shadowRoot.getElementById("input-minutes").value = "";
+    this.shadowRoot.getElementById("input-seconds").value = "";
   }
 
   /**
@@ -312,7 +325,7 @@ class HandsFree extends YummyRecipesComponent {
   }
 }
 
-customElements.define("hands-free", HandsFree);
+customElements.define("cooking-mode", CookingMode);
 </code></pre>
         </article>
     </section>
@@ -325,7 +338,7 @@ customElements.define("hands-free", HandsFree);
 <br class="clear">
 
 <footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Tue Dec 07 2021 08:26:37 GMT+0000 (Coordinated Universal Time) using the Minami theme.
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Tue Dec 07 2021 09:21:58 GMT+0000 (Coordinated Universal Time) using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>
