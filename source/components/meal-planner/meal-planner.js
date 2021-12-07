@@ -18,18 +18,18 @@ class MealPlanner extends YummyRecipesComponent {
     const indexes = this.getParams();
 
     // Route to homepage if failed
-    // if (!indexes) {
-    //   const routerEvent = new CustomEvent("router-navigate", {
-    //     detail: {
-    //       route: "home-page",
-    //       params: [],
-    //     },
-    //     bubbles: true,
-    //     composed: true,
-    //   });
-    //   this.dispatchEvent(routerEvent);
-    //   return;
-    // }
+    if (!indexes) {
+      const routerEvent = new CustomEvent("router-navigate", {
+        detail: {
+          route: "home-page",
+          params: [],
+        },
+        bubbles: true,
+        composed: true,
+      });
+      this.dispatchEvent(routerEvent);
+      return;
+    }
 
     // Database instance
     const db = new Database();
