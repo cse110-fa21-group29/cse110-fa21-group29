@@ -26,7 +26,7 @@ class CookingMode extends YummyRecipesComponent {
   async setupElement() {
     this.shadowRoot.getElementById("timer-display").style.visibility = "hidden";
 
-    console.log(this.shadowRoot.getElementById("pause-button").style.display);
+    //console.log(this.shadowRoot.getElementById("pause-button").style.display);
     // Grab recipe from database based on routing parameter
     const database = new Database();
     let recipes = await database.getRecipes();
@@ -52,16 +52,30 @@ class CookingMode extends YummyRecipesComponent {
 
     // Event handler for timer start button
     this.shadowRoot
-      .getElementById("start-button")
+      .getElementById("start-pause-button")
       .addEventListener("click", () => {
-        this.startCount();
-      });
-
-    // Event handler for timer pause button
-    this.shadowRoot
-      .getElementById("pause-button")
-      .addEventListener("click", () => {
-        this.stopCount();
+        const hoursInput = Number(
+          this.shadowRoot.getElementById("input-hours").value
+        );
+        const minutesInput = Number(
+          this.shadowRoot.getElementById("input-minutes").value
+        );
+        const secondsInput = Number(
+          this.shadowRoot.getElementById("input-seconds").value
+        );
+        // Check if user entered anything
+        if (hoursInput <= 0 && minutesInput <= 0 && secondsInput <= 0) {
+          alert("Invalid Input");
+          return;
+        }
+        if (
+          this.shadowRoot.getElementById("start-pause-button").innerText ===
+          "Start"
+        ) {
+          this.startCount();
+        } else {
+          this.stopCount();
+        }
       });
 
     // Event handler for timer reset button
@@ -113,15 +127,10 @@ class CookingMode extends YummyRecipesComponent {
    */
   startCount() {
     // Hide user inputs
-    this.shadowRoot.getElementById("input-hours").style.visibility = "hidden";
-    this.shadowRoot.getElementById("input-minutes").style.visibility = "hidden";
-    this.shadowRoot.getElementById("input-seconds").style.visibility = "hidden";
-    this.shadowRoot.getElementById("input-hours-label").style.visibility =
-      "hidden";
-    this.shadowRoot.getElementById("input-minutes-label").style.visibility =
-      "hidden";
-    this.shadowRoot.getElementById("input-seconds-label").style.visibility =
-      "hidden";
+    this.shadowRoot.getElementById("time-input-container").style.display =
+      "none";
+    this.shadowRoot.getElementById("timer-display").style.display = "flex";
+    this.shadowRoot.getElementById("start-pause-button").innerText = "Pause";
 
     if (!this.timeron) {
       this.timeron = 1;
@@ -133,6 +142,7 @@ class CookingMode extends YummyRecipesComponent {
    * Stops the timer
    */
   stopCount() {
+    this.shadowRoot.getElementById("start-pause-button").innerText = "Start";
     clearTimeout(this.temp);
     this.timeron = 0;
   }
@@ -145,20 +155,10 @@ class CookingMode extends YummyRecipesComponent {
     this.count = 0;
     this.totalTime = -1;
     // Show user inputs again
-    this.shadowRoot.getElementById("input-hours").style.visibility = "visible";
-    this.shadowRoot.getElementById("input-minutes").style.visibility =
-      "visible";
-    this.shadowRoot.getElementById("input-seconds").style.visibility =
-      "visible";
-    this.shadowRoot.getElementById("input-hours-label").style.visibility =
-      "visible";
-    this.shadowRoot.getElementById("input-minutes-label").style.visibility =
-      "visible";
-    this.shadowRoot.getElementById("input-seconds-label").style.visibility =
-      "visible";
-
+    this.shadowRoot.getElementById("time-input-container").style.display =
+      "flex";
     // Hide timer
-    this.shadowRoot.getElementById("timer-display").style.visibility = "hidden";
+    this.shadowRoot.getElementById("timer-display").style.display = "none";
   }
 
   /**
@@ -175,12 +175,6 @@ class CookingMode extends YummyRecipesComponent {
       const secondsInput = Number(
         this.shadowRoot.getElementById("input-seconds").value
       );
-      if (hoursInput === 0 && minutesInput === 0 && secondsInput === 0) {
-        this.shadowRoot.getElementById("timer-display").style.visibility =
-          "visible";
-        this.shadowRoot.getElementById("timer-display").innerText = "00:00:00";
-        return;
-      }
       this.totalTime = hoursInput * 3600 + minutesInput * 60 + secondsInput;
     }
 

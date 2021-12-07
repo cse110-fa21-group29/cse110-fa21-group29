@@ -2,32 +2,29 @@
 <main>
   <section id="top-grid">
     <div id="timer">
-      <time id="timer-display"></time><br />
-      <div id="time-input-container">
-        <div>
-          <label id="input-hours-label" for="input-hours"
-            >Hours:&nbsp;&nbsp;</label
-          >
-          <input type="number" min="0" max="24" step="1" id="input-hours" />
-        </div>
-        <div>
-          <label id="input-minutes-label" for="input-minutes"
-            >Minutes:&nbsp;&nbsp;</label
-          >
-          <input type="number" min="0" max="60" step="1" id="input-minutes" />
-        </div>
-        <div>
-          <label id="input-seconds-label" for="input-seconds"
-            >Seconds:&nbsp;&nbsp;</label
-          >
-          <input type="number" min="0" max="60" step="1" id="input-seconds" />
+      <div id="timer-display-container">
+        <time id="timer-display"></time><br />
+        <div id="time-input-container">
+          <span id="input-hours-span" style="display: inline-block">
+            <label id="input-hours-label" for="input-hours">Hours</label>
+            <input type="number" min="0" max="24" step="1" id="input-hours" />
+          </span>
+          <span id="input-minutes-span" style="display: inline-block">
+            <label id="input-minutes-label" for="input-minutes">Minutes</label>
+            <input type="number" min="0" max="60" step="1" id="input-minutes" />
+          </span>
+          <span id="input-seconds-span" style="display: inline-block">
+            <label id="input-seconds-label" for="input-seconds">Seconds</label>
+            <input type="number" min="0" max="60" step="1" id="input-seconds" />
+          </span>
         </div>
       </div>
       <div id="timer-button-grid">
-        <button id="start-button">Start</button><br />
-        <button id="pause-button">Pause</button><br />
+        <button id="start-pause-button">Start</button><br />
+        <!-- <button id="pause-button">Pause</button><br /> -->
         <button id="reset-button">Reset</button>
       </div>
+      <!-- </div> -->
     </div>
     <div id="back-next-container">
       <button id="back-button">Back</button>

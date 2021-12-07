@@ -6,39 +6,46 @@
 
 #top-grid {
   padding-top: 40px;
+  padding-left: 40px;
 }
 
 #timer {
-  background-color: lightgray;
+  align-items: center;
   width: 45vw;
   height: 30vh;
-  border: solid black 1px;
+  border: solid #ffa4a4 1px;
   border-radius: 20px;
   display: flex;
+  flex-direction: column;
+  position: relative;
 }
 
 #timer-display {
-  width: 45%;
+  width: 100%;
   font-size: 8vw;
-  line-height: 27vh;
 }
 
 #timer-button-grid {
-  width: 20%;
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  position: absolute;
+  bottom: 30px;
 }
 
-#start-button,
-#pause-button,
+#start-pause-button,
 #reset-button {
-  width: 80%;
   background-color: #ffa4a4;
   border: #ffa4a4 solid 1px;
-  height: 20%;
-  margin: 2vh 0px;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 1.5vw;
+  font-size: 45;
   color: white;
+  width: 145px;
+}
+#timer-display-container {
+  height: 80%;
 }
 
 #timer-button-grid button:hover {
@@ -51,10 +58,9 @@
   height: 20vh;
   margin: auto;
   border-radius: 20px;
-  font-size: xx-large;
+  font-size: 75px;
   color: white;
   cursor: pointer;
-  font-size: 6vw;
   border: none;
   box-shadow: 0 9px #999;
   flex: 0.4;
@@ -136,7 +142,7 @@ main {
 
 #time-input-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   height: 75%;
   width: 20%;
   justify-content: space-evenly;
@@ -144,16 +150,12 @@ main {
   font-size: 20px;
 }
 
-#time-input-container > div {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
+#time-input-container > span input {
+  height: 40%;
+  margin: 10px;
+  width: 140px;
 }
-#time-input-container > div input {
-  width: 75px;
-  height: 25px;
-}
+
 #back-next-container {
   width: 650px;
   margin-left: auto;
