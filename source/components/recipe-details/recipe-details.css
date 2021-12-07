@@ -32,6 +32,13 @@
 
 .author-name {
   font-size: 150%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.article-link {
+  font-size: 150%;
 }
 
 #first-row-bottom {
