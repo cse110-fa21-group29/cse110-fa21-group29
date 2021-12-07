@@ -157,3 +157,15 @@ main {
   cursor: pointer;
 }
 */
+
+#load-message {
+  border: solid;
+  position: fixed;
+  margin: auto;
+  background-color: white;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 30px 80px;
+  z-index: 999;
+}
