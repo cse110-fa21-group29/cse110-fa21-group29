@@ -22,7 +22,7 @@
   white-space: nowrap;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 775px) {
   #home-page-link {
     display: none;
   }
@@ -33,7 +33,7 @@ a {
   text-decoration: none;
 }
 
-.div-links {
+.nav-link-container {
   padding: 16px 12.5px 15px;
 }
 
