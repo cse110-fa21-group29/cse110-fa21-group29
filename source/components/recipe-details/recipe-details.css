@@ -42,6 +42,7 @@
 }
 
 .article-link {
+  display: none;
   font-size: 150%;
 }
 

@@ -129,8 +129,12 @@ class RecipeDetails extends YummyRecipesComponent {
     this.shadowRoot.querySelector(
       ".author-name"
     ).innerHTML = `By ${recipe.metadata.author}`;
-    this.shadowRoot.querySelector(".article-link").href =
-      recipe.spoonacularSourceUrl;
+
+    if (recipe.spoonacularSourceUrl) {
+      this.shadowRoot.querySelector(".article-link").style.display = "block";
+      this.shadowRoot.querySelector(".article-link").href =
+        recipe.spoonacularSourceUrl;
+    }
 
     // Description box
     this.shadowRoot.querySelector(".description").innerHTML =
