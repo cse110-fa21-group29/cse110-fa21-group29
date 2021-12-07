@@ -201,7 +201,8 @@ class RecipeDetails extends YummyRecipesComponent {
 
     // Show video & hide text
     this.shadowRoot.querySelector(".direction-list").style.display = "none";
-    this.shadowRoot.getElementById("recipe-video").style.display = "block";
+    this.shadowRoot.getElementById("recipe-video-container").style.display =
+      "block";
   }
 
   /**
@@ -216,7 +217,8 @@ class RecipeDetails extends YummyRecipesComponent {
 
     // Show video & hide text
     this.shadowRoot.querySelector(".direction-list").style.display = "block";
-    this.shadowRoot.getElementById("recipe-video").style.display = "none";
+    this.shadowRoot.getElementById("recipe-video-container").style.display =
+      "none";
   }
 }
 
