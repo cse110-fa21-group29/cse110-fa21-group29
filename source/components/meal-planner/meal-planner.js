@@ -220,6 +220,9 @@ class MealPlanner extends YummyRecipesComponent {
 
       // Change URL
       this.setUrl(plannerCellIndex, index);
+
+      // Firefox is special so it needs this
+      event.preventDefault();
     });
   }
 
@@ -242,7 +245,7 @@ class MealPlanner extends YummyRecipesComponent {
       // Iterate on row
       for (let j = 0; j < 3; j++) {
         // Skip cell if there is no recipe
-        if (!plannerCells[7 * j + i].children[0].recipe) {
+        if (!plannerCells[7 * j + i].children[0] || !plannerCells[7 * j + i].children[0].recipe) {
           continue;
         }
 
