@@ -6,15 +6,6 @@
 />
 
 <div class="recipe">
-  <iframe
-    id="recipe-video"
-    width="560"
-    height="315"
-    title="YouTube video player"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen
-  ></iframe>
   <!-- This is the first row of the page, including the image and the author box-->
   <div class="first-row">
     <img class="recipe-image" src="" />
@@ -107,7 +98,24 @@
 
   <!-- Direction box-->
   <div class="direction-box detail-box">
-    <div class="direction-title detail-box-title">Directions:</div>
+    <div class="direction-title">
+      <div class="detail-box-title">Directions:</div>
+      <button id="direction-video-button" class="first-row-button">
+        Switch to Video
+      </button>
+      <button id="direction-text-button" class="first-row-button">
+        Switch to Text
+      </button>
+    </div>
     <p class="direction-list detail-box-content"></p>
+    <iframe
+      id="recipe-video"
+      width="560"
+      height="315"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
   </div>
 </div>
