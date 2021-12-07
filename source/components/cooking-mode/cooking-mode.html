@@ -4,27 +4,45 @@
     <div id="timer">
       <div id="timer-display-container">
         <time id="timer-display"></time><br />
-        <div id="time-input-container">
-          <span id="input-hours-span" style="display: inline-block">
-            <label id="input-hours-label" for="input-hours">Hours</label>
-            <input type="number" min="0" max="24" step="1" id="input-hours" />
-          </span>
-          <span id="input-minutes-span" style="display: inline-block">
-            <label id="input-minutes-label" for="input-minutes">Minutes</label>
-            <input type="number" min="0" max="60" step="1" id="input-minutes" />
-          </span>
-          <span id="input-seconds-span" style="display: inline-block">
-            <label id="input-seconds-label" for="input-seconds">Seconds</label>
-            <input type="number" min="0" max="60" step="1" id="input-seconds" />
-          </span>
-        </div>
+        <form id="time-input-form">
+          <div id="time-input-container">
+            <span id="input-hours-span" style="display: inline-block">
+              <label id="input-hours-label" for="input-hours">Hours</label>
+              <input type="number" min="0" max="23" step="1" id="input-hours" />
+            </span>
+            <span id="input-minutes-span" style="display: inline-block">
+              <label id="input-minutes-label" for="input-minutes"
+                >Minutes</label
+              >
+              <input
+                type="number"
+                min="0"
+                max="59"
+                step="1"
+                id="input-minutes"
+              />
+            </span>
+            <span id="input-seconds-span" style="display: inline-block">
+              <label id="input-seconds-label" for="input-seconds"
+                >Seconds</label
+              >
+              <input
+                type="number"
+                min="0"
+                max="59"
+                step="1"
+                id="input-seconds"
+              />
+            </span>
+          </div>
+        </form>
       </div>
       <div id="timer-button-grid">
         <button id="start-pause-button">Start</button><br />
-        <!-- <button id="pause-button">Pause</button><br /> -->
+        <!-- Spacing between buttons -->
+        &nbsp;&nbsp;
         <button id="reset-button">Reset</button>
       </div>
-      <!-- </div> -->
     </div>
     <div id="back-next-container">
       <button id="back-button">Back</button>
@@ -39,7 +57,7 @@
       <img src="" id="direction-img" alt="" />
       <iframe
         id="direction-video"
-        width="560"
+        width="100%"
         height="315"
         title="YouTube video player"
         frameborder="0"

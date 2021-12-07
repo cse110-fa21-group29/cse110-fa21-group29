@@ -54,6 +54,12 @@ class CookingMode extends YummyRecipesComponent {
     this.shadowRoot
       .getElementById("start-pause-button")
       .addEventListener("click", () => {
+        const formElement = this.shadowRoot.querySelector("#time-input-form");
+        const isFormValid = formElement.checkValidity();
+        formElement.reportValidity();
+        if (!isFormValid) {
+          return;
+        }
         const hoursInput = Number(
           this.shadowRoot.getElementById("input-hours").value
         );
@@ -65,7 +71,6 @@ class CookingMode extends YummyRecipesComponent {
         );
         // Check if user entered anything
         if (hoursInput <= 0 && minutesInput <= 0 && secondsInput <= 0) {
-          alert("Invalid Input");
           return;
         }
         if (
@@ -73,6 +78,7 @@ class CookingMode extends YummyRecipesComponent {
           "Start"
         ) {
           this.startCount();
+          this.clearTimerInputs();
         } else {
           this.stopCount();
         }
@@ -83,6 +89,7 @@ class CookingMode extends YummyRecipesComponent {
       .getElementById("reset-button")
       .addEventListener("click", () => {
         this.resetCount();
+        this.clearTimerInputs();
       });
 
     // Event handler for hands free next step button
@@ -205,7 +212,7 @@ class CookingMode extends YummyRecipesComponent {
       const audio = new Audio("/static/cooking-mode/timer-done-noise.mp3");
       audio.play();
       // Clear interval
-      clearInterval(this.temp);
+      this.stopCount();
     }
 
     this.setTime();
@@ -223,6 +230,16 @@ class CookingMode extends YummyRecipesComponent {
     this.shadowRoot.getElementById("number").innerText = this.currentStep;
     this.shadowRoot.getElementById("direction").innerText =
       this.recipeSteps[this.currentStep - 1];
+  }
+
+  /**
+   * Clears all user inputs
+   * Runs after hitting start
+   */
+  clearTimerInputs() {
+    this.shadowRoot.getElementById("input-hours").value = "";
+    this.shadowRoot.getElementById("input-minutes").value = "";
+    this.shadowRoot.getElementById("input-seconds").value = "";
   }
 
   /**

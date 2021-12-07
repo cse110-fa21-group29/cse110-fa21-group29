@@ -36,6 +36,7 @@
 
 #start-pause-button,
 #reset-button {
+  transition-duration: 0.5s;
   background-color: #ffa4a4;
   border: #ffa4a4 solid 1px;
   border-radius: 5px;
@@ -106,21 +107,23 @@
 }
 #direction-img,
 #direction-video {
-  border: solid black 1px;
   height: 45%;
-  width: 95%;
-  margin: 10px;
+  width: 100%;
 }
 
 #direction-img {
+  border: solid black 1px;
   object-fit: cover;
 }
 
 #direction-video {
   display: none;
+  text-align: center;
+  margin-top: 10px;
 }
 
 #img-and-video {
+  align-items: center;
   width: 30vw;
 }
 
@@ -161,4 +164,14 @@ main {
   margin-left: auto;
   margin-bottom: 125px;
   display: flex;
+}
+
+#input-hours-label,
+#input-minutes-label,
+#input-seconds-label {
+  font-size: 120%;
+}
+
+.divider {
+  width: 5px;
 }
