@@ -35,7 +35,7 @@ class RecipeDetails extends YummyRecipesComponent {
     this.shadowRoot
       .getElementById("timer-button")
       .addEventListener("click", () => {
-        if (this.shadowRoot.getElementById("timer").style.display == "") {
+        if (this.shadowRoot.getElementById("timer").style.display === "") {
           this.shadowRoot.getElementById("timer").style.display = "flex";
         } else {
           this.shadowRoot.getElementById("timer").style.display = "";
@@ -128,11 +128,29 @@ class RecipeDetails extends YummyRecipesComponent {
         }
       });
 
-    // Display recipe video if the recipe has a link
+    // Add video embed to directions if video exists
+    // Will not show by default (user must click "Switch to Video")
     if (recipe.metadata.video != undefined && recipe.metadata.video != "") {
-      this.shadowRoot.getElementById("recipe-video").style.display = "block";
       this.shadowRoot.getElementById("recipe-video").src =
         recipe.metadata.video;
+
+      // Display video button
+      this.shadowRoot.getElementById("direction-video-button").style.display =
+        "block";
+
+      // Event handler for video button
+      this.shadowRoot
+        .getElementById("direction-video-button")
+        .addEventListener("click", () => {
+          this.switchToVideo();
+        });
+
+      // Event handler for text button
+      this.shadowRoot
+        .getElementById("direction-text-button")
+        .addEventListener("click", () => {
+          this.switchToText();
+        });
     }
 
     // This is the first row of the page, including the image and the author box
@@ -311,6 +329,36 @@ class RecipeDetails extends YummyRecipesComponent {
 
     this.setTime();
     this.totalTime -= 1;
+  }
+
+  /**
+   * Switches from text directions to video directions
+   */
+  switchToVideo() {
+    // Toggle buttons
+    this.shadowRoot.getElementById("direction-video-button").style.display =
+      "none";
+    this.shadowRoot.getElementById("direction-text-button").style.display =
+      "block";
+
+    // Show video & hide text
+    this.shadowRoot.querySelector(".direction-list").style.display = "none";
+    this.shadowRoot.getElementById("recipe-video").style.display = "block";
+  }
+
+  /**
+   * Switches from video directions to text directions
+   */
+  switchToText() {
+    // Toggle buttons
+    this.shadowRoot.getElementById("direction-video-button").style.display =
+      "block";
+    this.shadowRoot.getElementById("direction-text-button").style.display =
+      "none";
+
+    // Show video & hide text
+    this.shadowRoot.querySelector(".direction-list").style.display = "block";
+    this.shadowRoot.getElementById("recipe-video").style.display = "none";
   }
 }
 
