@@ -93,7 +93,7 @@
 }
 
 .detail-box-title {
-  text-decoration: underline;
+  font-weight: bold;
   font-size: 30px;
 }
 
@@ -103,7 +103,8 @@
 
 .ingredients-box li,
 .info-box li,
-.nutrient-box li {
+.nutrient-box li,
+.direction-box li {
   margin: 10px 0;
 }
 
