@@ -143,10 +143,10 @@ button:active {
 }
 
 #button-grid {
-  justify-content: space-between;
+  margin-top: 20px;
   display: flex;
   width: 100%;
-  float: bottom;
+  column-gap: 25px;
 }
 
 .direction-title {
