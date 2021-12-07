@@ -119,6 +119,7 @@ a:hover:not(.active) {
   color: white;
   border: #ffa4a4 solid 1px;
   border-radius: 5px;
+  font-size: x-large;
 }
 
 .buttons:hover {
