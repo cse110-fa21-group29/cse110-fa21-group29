@@ -171,3 +171,12 @@ button:active {
   padding: 8px 12px;
   border-radius: 25px;
 }
+
+.description {
+  line-height: 30px;
+}
+
+ul,
+ol {
+  padding-left: 20px;
+}
