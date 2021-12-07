@@ -36,7 +36,7 @@ a {
 .nav-link {
   display: inline-block;
   line-height: 50px;
-  max-width: max-content;
+  width: max-content;
   padding-left: 15px;
   padding-right: 15px;
 }
