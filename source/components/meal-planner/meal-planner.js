@@ -23,13 +23,14 @@ class MealPlanner extends YummyRecipesComponent {
         detail: {
           route: "meal-planner",
           params: [],
+          searchParams: {
+            ids: "-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1",
+          },
         },
         bubbles: true,
         composed: true,
       });
       this.dispatchEvent(routerEvent);
-      window.location.href +=
-        "?ids=-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1";
       return;
     }
 
