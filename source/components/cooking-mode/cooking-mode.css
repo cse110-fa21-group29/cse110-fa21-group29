@@ -4,33 +4,54 @@
   text-align: center;
 }
 
+#top-grid {
+  padding-top: 40px;
+  padding-left: 40px;
+}
+
 #timer {
-  background-color: lightgray;
-  width: 50vw;
+  align-items: center;
+  width: 45vw;
   height: 30vh;
-  border: solid black 1px;
+  border: solid #ffa4a4 1px;
+  border-radius: 20px;
   display: flex;
-  position: fixed;
+  flex-direction: column;
+  position: relative;
 }
 
 #timer-display {
-  width: 80%;
+  width: 100%;
   font-size: 8vw;
-  line-height: 27vh;
 }
 
 #timer-button-grid {
-  width: 20%;
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  position: absolute;
+  bottom: 30px;
 }
 
-#timer-button-grid button {
-  width: 90%;
-  background-color: white;
-  height: 20%;
-  margin: 2vh 0px;
+#start-pause-button,
+#reset-button {
+  transition-duration: 0.5s;
+  background-color: #ffa4a4;
+  border: #ffa4a4 solid 1px;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 2vw;
+  font-size: 45;
+  color: white;
+  width: 145px;
+}
+#timer-display-container {
+  height: 80%;
+}
+
+#timer-button-grid button:hover {
+  color: black;
+  background-color: white;
 }
 
 #back-button,
@@ -38,12 +59,12 @@
   height: 20vh;
   margin: auto;
   border-radius: 20px;
-  font-size: xx-large;
+  font-size: 75px;
   color: white;
   cursor: pointer;
-  font-size: 5vw;
   border: none;
   box-shadow: 0 9px #999;
+  flex: 0.4;
 }
 
 #back-button {
@@ -86,21 +107,23 @@
 }
 #direction-img,
 #direction-video {
-  border: solid black 1px;
   height: 45%;
-  width: 95%;
-  margin: 10px;
+  width: 100%;
 }
 
 #direction-img {
+  border: solid black 1px;
   object-fit: cover;
 }
 
 #direction-video {
   display: none;
+  text-align: center;
+  margin-top: 10px;
 }
 
 #img-and-video {
+  align-items: center;
   width: 30vw;
 }
 
@@ -122,18 +145,33 @@ main {
 
 #time-input-container {
   display: flex;
-  flex-direction: column;
-  height: 50%;
+  flex-direction: row;
+  height: 75%;
+  width: 20%;
   justify-content: space-evenly;
   margin: 0 auto;
+  font-size: 20px;
 }
 
-#time-input-container > div {
-  display: flex;
+#time-input-container > span input {
+  height: 40%;
+  margin: 10px;
+  width: 140px;
 }
 
 #back-next-container {
-  width: 500px;
+  width: 650px;
   margin-left: auto;
   margin-bottom: 125px;
+  display: flex;
+}
+
+#input-hours-label,
+#input-minutes-label,
+#input-seconds-label {
+  font-size: 120%;
+}
+
+.divider {
+  width: 5px;
 }
