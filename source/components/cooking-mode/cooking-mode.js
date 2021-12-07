@@ -25,8 +25,6 @@ class CookingMode extends YummyRecipesComponent {
    */
   async setupElement() {
     this.shadowRoot.getElementById("timer-display").style.visibility = "hidden";
-
-    //console.log(this.shadowRoot.getElementById("pause-button").style.display);
     // Grab recipe from database based on routing parameter
     const database = new Database();
     let recipes = await database.getRecipes();
