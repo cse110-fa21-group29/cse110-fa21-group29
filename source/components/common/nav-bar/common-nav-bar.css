@@ -33,17 +33,18 @@ a {
   text-decoration: none;
 }
 
+.div-links {
+  padding: 16px 12.5px 15px;
+}
+
 .nav-link {
-  display: inline-block;
-  line-height: 50px;
-  width: max-content;
   white-space: nowrap;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding: 7px;
 }
 
 .nav-link:hover {
   background: #dd8e8e;
+  border-radius: 10px;
 }
 
 #place-holder {
