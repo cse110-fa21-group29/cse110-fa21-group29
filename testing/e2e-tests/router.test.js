@@ -153,13 +153,13 @@ describe('E2E Testing loading web components and navigating pages', () => {
         // click on the cooking-mode button
         const recipeDetails = await page.$('#content > recipe-details');
         const shadowRoot = await recipeDetails.getProperty('shadowRoot');
-        const homePageButton = await shadowRoot.$('#cooking-mode-button');
-        homePageButton.click();
+        const cookingModeButton = await shadowRoot.$('#cooking-mode-button');
+        cookingModeButton.click();
 
         await new Promise((r) => setTimeout(r, 2000)); // wait for the page to load
 
-        const handsFreeModePage = await page.$$('#content > cooking-mode');
+        const cookingModePage = await page.$$('#content > cooking-mode');
 
-        expect(handsFreeModePage.length).toBe(1);
+        expect(cookingModePage.length).toBe(1);
     }, 7500);
 });
