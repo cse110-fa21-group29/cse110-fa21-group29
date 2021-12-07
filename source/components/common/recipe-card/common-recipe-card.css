@@ -1,6 +1,7 @@
 :host {
   height: 35vh;
   min-width: 23vh;
+  max-width: 23vh;
   transition: 0.5s ease;
   cursor: pointer;
   border-radius: 18px;

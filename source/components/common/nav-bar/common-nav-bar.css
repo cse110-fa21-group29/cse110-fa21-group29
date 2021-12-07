@@ -37,6 +37,7 @@ a {
   display: inline-block;
   line-height: 50px;
   width: max-content;
+  white-space: nowrap;
   padding-left: 15px;
   padding-right: 15px;
 }
