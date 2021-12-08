@@ -71,7 +71,7 @@ function routerSetup() {
    * @listens router-navigate
    */
   document.addEventListener("router-navigate", (event) => {
-    loadRoute(event.detail.route, event.detail.params);
+    loadRoute(event.detail.route, event.detail.params, event.detail.urlParams);
 
     // If we are pushing this route to the history state
     // AND we aren't already on the page, push the history state
@@ -127,14 +127,19 @@ function routerSetup() {
  * We assume all web components are named the same as their routes.
  * @param {string} route - The route to load on the page (i.e. "home-page").
  * @param {number[]} params - The parameters in the URL (i.e. [123]).
+ * @param {Object} urlParams - The GET parameters for the route (i.e. {query: "chicken"}).
  */
-function loadRoute(route, params) {
+function loadRoute(route, params, urlParams) {
+  // Create new component based on route
   const contentElement = document.getElementById("content");
   const newRouteElement = document.createElement(
     routePatterns[route].component
   );
+
+  // Set instance variables of new component
   newRouteElement.params = params;
   newRouteElement.route = route;
+  newRouteElement.urlParams = urlParams;
 
   // If there is an element loaded already, replace it with new one.
   // Otherwise, add new one.
@@ -159,6 +164,7 @@ function loadRoute(route, params) {
 function navigateFromUrl(url) {
   const initialRoute = getRoutefromUrl(url);
   const routeParams = getParamsFromUrl(url);
+  const routeUrlParams = getUrlParamsFromUrl(url);
 
   if (initialRoute) {
     loadRoute(initialRoute, routeParams);
@@ -166,6 +172,7 @@ function navigateFromUrl(url) {
       {
         route: initialRoute,
         params: routeParams,
+        urlParams: routeUrlParams,
       },
       initialRoute,
       url
@@ -280,4 +287,20 @@ function getParamsFromUrl(url) {
   }
 
   return params;
+}
+
+/**
+ * Gets the GET (url) parameters from a given URL.
+ * @param {string} url - The provided URL to extract url parameters from.
+ * @returns {Object} - The GET parameters from the URL (i.e. {query: "chicken"}).
+ */
+function getUrlParamsFromUrl(url) {
+  // Return empty object if no parameters
+  if (!url.includes("?")) {
+    return {};
+  }
+
+  const paramString = window.location.href.split("?")[1];
+  const urlParamsObj = new URLSearchParams(paramString);
+  return Object.fromEntries(urlParamsObj);
 }
