@@ -12,44 +12,56 @@
     <h1>Nutrients</h1>
     <div id="recipe-left-grid">
       <div>
-        <label for="input-colories">Calories</label><br />
+        <label for="input-colories"
+          >Calories<span class="red-star">*</span></label
+        ><br />
         <input
           type="number"
           min="0"
           step="0.01"
           id="input-colories"
           class="input-left-text"
+          required
         />
       </div>
       <div>
-        <label for="input-protein">Protein (in grams)</label><br />
+        <label for="input-protein"
+          >Protein (in grams)<span class="red-star">*</span></label
+        ><br />
         <input
           type="number"
           min="0"
           step="0.01"
           id="input-protein"
           class="input-left-text"
+          required
         />
       </div>
 
       <div>
-        <label for="input-fat">Fat (in grams)</label><br />
+        <label for="input-fat"
+          >Fat (in grams)<span class="red-star">*</span></label
+        ><br />
         <input
           type="number"
           min="0"
           step="0.01"
           id="input-fat"
           class="input-left-text"
+          required
         />
       </div>
       <div>
-        <label for="input-number-of-servings">Number of servings</label><br />
+        <label for="input-number-of-servings"
+          >Number of servings<span class="red-star">*</span></label
+        ><br />
         <input
           type="number"
           min="0"
           step="0.1"
           id="input-number-of-servings"
           class="input-left-text"
+          required
         />
       </div>
     </div>
@@ -158,6 +170,7 @@
       id="input-ingredient"
       class="right-textarea"
       placeholder="Put each ingredient on its own line."
+      required
     ></textarea>
 
     <h1>Directions<span class="red-star">*</span></h1>
@@ -166,9 +179,12 @@
       id="input-direction"
       class="right-textarea"
       placeholder="Put each step on its own line."
+      required
     ></textarea>
 
-    <button id="submit-button">Submit</button>
-    <button id="cancel-button">Cancel</button>
+    <div id="bottom-buttons">
+      <button id="submit-button">Submit</button>
+      <button id="cancel-button">Cancel</button>
+    </div>
   </section>
 </form>
