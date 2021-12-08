@@ -8,6 +8,7 @@ body {
   min-width: 700px;
   margin: 0px;
   min-height: 600px;
+  font-family: "Lato", sans-serif;
 }
 
 @font-face {

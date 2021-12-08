@@ -17,11 +17,11 @@ class RecipeDetails extends YummyRecipesComponent {
    */
   async setupElement() {
     this.shadowRoot
-      .getElementById("hands-free-button")
+      .getElementById("cooking-mode-button")
       .addEventListener("click", () => {
         const routerEvent = new CustomEvent("router-navigate", {
           detail: {
-            route: "hands-free",
+            route: "cooking-mode",
             params: [this.routeParams[0]],
           },
           bubbles: true,
