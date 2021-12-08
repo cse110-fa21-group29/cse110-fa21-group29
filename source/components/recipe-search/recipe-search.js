@@ -333,7 +333,7 @@ class RecipeSearch extends YummyRecipesComponent {
 
       // If clicked on, click next page anchor tag
       rightArrow.addEventListener("click", (event) => {
-        const currPageNum = parseInt(this.routeUrlParams.page);
+        const currPageNum = parseInt(this.routeUrlParams.page, 10);
 
         // The page after the last page DNE
         if (currPageNum === pageCount) {
