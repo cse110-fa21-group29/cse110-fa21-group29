@@ -15,7 +15,7 @@ class AboutUs extends YummyRecipesComponent {
       if (img.style.backgroundImage === 'url("/static/about-us/tri.JPG")') {
         img.style.backgroundImage = 'url("/static/about-us/team29.jpg")';
       } else {
-        img.style.backgroundImage = 'url("/static/about-us/tri.JPG")';
+        img.style.backgroundImage = 'url("/static/about-us/triscouch.jpg")';
       }
     });
   }
