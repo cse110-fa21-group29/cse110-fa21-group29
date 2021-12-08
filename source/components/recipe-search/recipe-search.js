@@ -12,14 +12,10 @@ class RecipeSearch extends YummyRecipesComponent {
    * Initializes the search page.
    */
   async setupElement() {
-    let paramString = window.location.href.split("?")[1];
-    let queryString = new URLSearchParams(paramString);
-    let paramArray = [];
-    for (let p of queryString) {
-      paramArray.push(p);
-    }
+    console.log("routeurlparams");
+    console.log(this.routeUrlParams);
 
-    if (paramArray.length > 0) {
+    if (Object.keys(this.routeUrlParams).length > 0) {
       this.populateForm();
       this.getSearchResults();
     }
@@ -61,66 +57,63 @@ class RecipeSearch extends YummyRecipesComponent {
    * Populates the query box and filters form based on URL parameters.
    */
   populateForm() {
-    const paramString = window.location.href.split("?")[1];
-    const searchParams = new URLSearchParams(paramString);
-
     // Query
-    if (searchParams.has("query")) {
+    if (this.routeUrlParams.query) {
       this.shadowRoot.getElementById("search-input").value =
-        searchParams.get("query");
+        this.routeUrlParams.query;
     }
 
     // Gluten free
-    if (searchParams.get("glutenFree")) {
+    if (this.routeUrlParams.glutenFree) {
       this.shadowRoot.getElementById("input-gluten-free").checked = true;
     }
 
     // Healthy
-    if (searchParams.get("healthy")) {
+    if (this.routeUrlParams.healthy) {
       this.shadowRoot.getElementById("input-healthy").checked = true;
     }
 
     // High protein
-    if (searchParams.get("highProtein")) {
+    if (this.routeUrlParams.highProtein) {
       this.shadowRoot.getElementById("input-high-protein").checked = true;
     }
 
     // Vegan
-    if (searchParams.get("vegan")) {
+    if (this.routeUrlParams.vegan) {
       this.shadowRoot.getElementById("input-vegan").checked = true;
     }
 
     // Vegetarian
-    if (searchParams.get("vegetarian")) {
+    if (this.routeUrlParams.vegetarian) {
       this.shadowRoot.getElementById("input-vegetarian").checked = true;
     }
 
     // Cost min
-    if (searchParams.has("costmin")) {
+    if (this.routeUrlParams.costmin) {
       this.shadowRoot.getElementById("input-cost-min").value =
-        searchParams.get("costmin");
+        this.routeUrlParams.costmin;
     }
 
     // Cost max
-    if (searchParams.has("costmax")) {
+    if (this.routeUrlParams.costmax) {
       this.shadowRoot.getElementById("input-cost-max").value =
-        searchParams.get("costmax");
+        this.routeUrlParams.costmax;
     }
 
     // Sort cost
-    if (searchParams.has("sortcost")) {
-      if (searchParams.get("sortcost") === "desc") {
+    if (this.routeUrlParams.sortcost) {
+      if (this.routeUrlParams.sortcost === "desc") {
         this.shadowRoot.getElementById("sort-cost-descending").checked = true;
-      } else if (searchParams.get("sortcost") === "asc") {
+      } else if (this.routeUrlParams.sortcost === "asc") {
         this.shadowRoot.getElementById("sort-cost-ascending").checked = true;
       }
     }
 
     // Sort time
-    if (searchParams.has("sorttime")) {
-      if (searchParams.get("sorttime") === "desc") {
+    if (this.routeUrlParams.sorttime) {
+      if (this.routeUrlParams.sorttime === "desc") {
         this.shadowRoot.getElementById("sort-time-descending").checked = true;
-      } else if (searchParams.get("sorttime") === "asc") {
+      } else if (this.routeUrlParams.sorttime === "asc") {
         this.shadowRoot.getElementById("sort-time-ascending").checked = true;
       }
     }
@@ -145,44 +138,43 @@ class RecipeSearch extends YummyRecipesComponent {
 
     // Query
     if (this.shadowRoot.getElementById("search-input").value != "") {
-      searchParams["query"] =
-        this.shadowRoot.getElementById("search-input").value;
+      searchParams.query = this.shadowRoot.getElementById("search-input").value;
     }
 
     // Gluten free
     if (this.shadowRoot.getElementById("input-gluten-free").checked) {
-      searchParams["glutenFree"] = true;
+      searchParams.glutenFree = true;
     }
 
     // Healthy
     if (this.shadowRoot.getElementById("input-healthy").checked) {
-      searchParams["healthy"] = true;
+      searchParams.healthy = true;
     }
 
     // High protein
     if (this.shadowRoot.getElementById("input-high-protein").checked) {
-      searchParams["highProtein"] = true;
+      searchParams.highProtein = true;
     }
 
     // Vegan
     if (this.shadowRoot.getElementById("input-vegan").checked) {
-      searchParams["vegan"] = true;
+      searchParams.vegan = true;
     }
 
     // Vegetarian
     if (this.shadowRoot.getElementById("input-vegetarian").checked) {
-      searchParams["vegetarian"] = true;
+      searchParams.vegetarian = true;
     }
 
     // Cost min
     if (this.shadowRoot.getElementById("input-cost-min").value != "") {
-      searchParams["costmin"] =
+      searchParams.costmin =
         this.shadowRoot.getElementById("input-cost-min").value;
     }
 
     // Cost max
     if (this.shadowRoot.getElementById("input-cost-max").value != "") {
-      searchParams["costmax"] =
+      searchParams.costmax =
         this.shadowRoot.getElementById("input-cost-max").value;
     }
 
@@ -193,13 +185,13 @@ class RecipeSearch extends YummyRecipesComponent {
     if (sortSelectedElement) {
       const sortSelectedValue = sortSelectedElement.value;
       if (sortSelectedValue === "sort-time-descending") {
-        searchParams["sorttime"] = "desc";
+        searchParams.sorttime = "desc";
       } else if (sortSelectedValue === "sort-time-ascending") {
-        searchParams["sorttime"] = "asc";
+        searchParams.sorttime = "asc";
       } else if (sortSelectedValue === "sort-cost-descending") {
-        searchParams["sortcost"] = "desc";
+        searchParams.sortcost = "desc";
       } else if (sortSelectedValue === "sort-cost-ascending") {
-        searchParams["sortcost"] = "asc";
+        searchParams.sortcost = "asc";
       }
     }
 
@@ -208,7 +200,7 @@ class RecipeSearch extends YummyRecipesComponent {
       detail: {
         route: "recipe-search",
         params: [],
-        searchParams: searchParams,
+        urlParams: searchParams,
       },
       bubbles: true,
       composed: true,
