@@ -67,11 +67,19 @@ function routerSetup() {
    * @param {string} event.detail.route - The route to navigate to (i.e. "home-page").
    * @param {number[]} event.detail.params - The parameters for the route (i.e. [123]).
    * @param {Object} event.state.urlParams - The GET parameters for the route (i.e. {query: "chicken"}).
-   * @param {boolean} event.detail.preventStatePush - Whether to push this entry to the browser's history log.
+   * @param {boolean} event.state.preventLoad - Setting to true will prevent the page from loading the route.
+   * @param {boolean} event.detail.preventStatePush - Setting to true will prevent pushing this entry to the browser's history log.
    * @listens router-navigate
    */
   document.addEventListener("router-navigate", (event) => {
-    loadRoute(event.detail.route, event.detail.params, event.detail.urlParams);
+    // If we are loading the page to a new route
+    if (!event.detail.preventLoad) {
+      loadRoute(
+        event.detail.route,
+        event.detail.params,
+        event.detail.urlParams
+      );
+    }
 
     // If we are pushing this route to the history state
     // AND we aren't already on the page, push the history state
