@@ -77,12 +77,14 @@ textarea {
   height: 3vw;
   cursor: pointer;
   font-size: large;
+  background-color: #ffa4a4;
+  border: #ffa4a4 solid 1px;
 }
 
 #cancel-button {
   cursor: pointer;
   background-color: grey;
-  border-color: grey;
+  border: grey solid 1px;
   width: 10vw;
   height: 3vw;
   font-size: large;
@@ -118,21 +120,21 @@ label {
   margin-bottom: 20px;
 }
 
-button {
+#submit-button,
+#cancel-button {
   transition-duration: 0.5s;
-  background-color: #ffa4a4;
   color: white;
-  border: #ffa4a4 solid 1px;
   border-radius: 5px;
 }
 
-button:hover {
-  background-color: white !important;
+#submit-button:hover,
+#cancel-button:hover {
+  background-color: white;
   color: black;
-  border: #ffa4a4 solid 1px;
 }
 
-button:active {
+#submit-button:active,
+#cancel-button:active {
   transform: scale(0.6);
 }
 
