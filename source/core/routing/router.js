@@ -66,7 +66,7 @@ function routerSetup() {
    * @param {Object} event - The event object
    * @param {string} event.detail.route - The route to navigate to (i.e. "home-page").
    * @param {number[]} event.detail.params - The parameters for the route (i.e. [123]).
-   * @param {Object} event.state.searchParams - The search parameters for the route (i.e. {query: "chicken"}).
+   * @param {Object} event.state.urlParams - The GET parameters for the route (i.e. {query: "chicken"}).
    * @param {boolean} event.detail.preventStatePush - Whether to push this entry to the browser's history log.
    * @listens router-navigate
    */
@@ -78,14 +78,14 @@ function routerSetup() {
     const url = getUrlFromRoute(
       event.detail.route,
       event.detail.params,
-      event.detail.searchParams
+      event.detail.urlParams
     );
     if (!event.detail.preventStatePush && window.location.hash !== url) {
       history.pushState(
         {
           route: event.detail.route,
           params: event.detail.params,
-          searchParams: event.detail.searchParams,
+          urlParams: event.detail.urlParams,
         },
         event.detail.route,
         url
@@ -102,7 +102,7 @@ function routerSetup() {
    * @param {Object} event - The event object
    * @param {string} event.state.route - The route to navigate to (i.e. "home-page").
    * @param {number[]} event.state.params - The parameters for the route (i.e. [123]).
-   * @param {Object} event.state.searchParams - The search parameters for the route (i.e. {query: "chicken"}).
+   * @param {Object} event.state.urlParams - The GET parameters for the route (i.e. {query: "chicken"}).
    * @listens popstate
    */
   window.addEventListener("popstate", (event) => {
@@ -187,10 +187,10 @@ function navigateFromUrl(url) {
  * Generates correct url for a particular route
  * @param {string} route - The route (i.e. "home-page").
  * @param {number[]} params - The parameters for the route (i.e. [123]).
- * @param {Object} searchParams - The search parameters for the route (i.e. {query: "chicken"}).
+ * @param {Object} urlParams - The GET parameters for the route (i.e. {query: "chicken"}).
  * @returns {string} The URL for that particular route/params.
  */
-function getUrlFromRoute(route, params, searchParams) {
+function getUrlFromRoute(route, params, urlParams) {
   // Replace all "_" in route's pattern with provided params
   const urlPattern = routePatterns[route].url;
 
@@ -204,9 +204,9 @@ function getUrlFromRoute(route, params, searchParams) {
   }
   let finalUrl = splitUrl.join("/");
 
-  // If searchParams is defined, add GET parameters to end of URL
-  if (searchParams !== undefined && Object.keys(searchParams).length > 0) {
-    const searchParamsObj = new URLSearchParams(searchParams);
+  // If getParams is defined, add GET parameters to end of URL
+  if (urlParams && Object.keys(urlParams).length > 0) {
+    const searchParamsObj = new URLSearchParams(urlParams);
     finalUrl += `?${searchParamsObj.toString()}`;
   }
 
