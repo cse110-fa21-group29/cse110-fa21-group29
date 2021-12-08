@@ -319,7 +319,7 @@ class RecipeSearch extends YummyRecipesComponent {
           for (const recipe of pageRecipes) {
             this.shadowRoot
               .getElementById("recipe-card-grid")
-              .appendChild(this.createRecipeCard(recipe.recipe, recipe.indedx));
+              .appendChild(this.createRecipeCard(recipe.recipe, recipe.index));
           }
 
           // Change url to have page set to the current page number
@@ -391,9 +391,6 @@ class RecipeSearch extends YummyRecipesComponent {
 
       // Populate page initially with first recipePerPage recipes
       for (let i = 0; i < recipePerPage; i++) {
-        /**
-         * Closes filters form when clicking on "X" icon.
-         */
         this.shadowRoot
           .getElementById("recipe-card-grid")
           .appendChild(
