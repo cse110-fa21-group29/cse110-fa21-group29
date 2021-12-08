@@ -5,7 +5,7 @@ class RecipeSearch extends YummyRecipesComponent {
   constructor() {
     super();
     this.htmlPath = "components/recipe-search/recipe-search.html";
-    this.recipe = [];
+    this.searchResultRecipes = [];
   }
 
   /**
@@ -216,18 +216,19 @@ class RecipeSearch extends YummyRecipesComponent {
     // Number # of recipes per page
     const recipePerPage = 15;
 
-    let searchRecipe = await database.searchByName(
+    this.searchResultRecipes = await database.searchByName(
       Object.entries(this.routeUrlParams)
     );
-    this.recipe = searchRecipe;
 
     // Clear out recipe card grid before we append new cards
     this.shadowRoot.getElementById("recipe-card-grid").innerHTML = "";
 
     // Apply Pagination
-    if (searchRecipe.length > recipePerPage) {
+    if (this.searchResultRecipes.length > recipePerPage) {
       // Round up (recipe length)/(amount of recipes per page)
-      const pageCount = Math.ceil(searchRecipe.length / recipePerPage);
+      const pageCount = Math.ceil(
+        this.searchResultRecipes.length / recipePerPage
+      );
       const pagDiv = this.shadowRoot.getElementById("recipe-pagination");
 
       // Create left arrow icon for navigation
@@ -282,7 +283,10 @@ class RecipeSearch extends YummyRecipesComponent {
           const recipeEnd = recipeStart + recipePerPage;
 
           // Get recipe from start (inclusive) to end (exclusive)
-          let pageRecipes = this.recipe.slice(recipeStart, recipeEnd);
+          let pageRecipes = this.searchResultRecipes.slice(
+            recipeStart,
+            recipeEnd
+          );
 
           // Clear out recipe card grid before we append new cards
           this.shadowRoot.getElementById("recipe-card-grid").innerHTML = "";
@@ -356,7 +360,10 @@ class RecipeSearch extends YummyRecipesComponent {
         this.shadowRoot
           .getElementById("recipe-card-grid")
           .appendChild(
-            this.createRecipeCard(searchRecipe[i].recipe, searchRecipe[i].index)
+            this.createRecipeCard(
+              this.searchResultRecipes[i].recipe,
+              this.searchResultRecipes[i].index
+            )
           );
       }
 
@@ -390,7 +397,7 @@ class RecipeSearch extends YummyRecipesComponent {
       }
     } else {
       // For the case that pagination is not required
-      for (const recipe of searchRecipe) {
+      for (const recipe of this.searchResultRecipes) {
         this.shadowRoot
           .getElementById("recipe-card-grid")
           .appendChild(this.createRecipeCard(recipe.recipe, recipe.index));
