@@ -22,16 +22,23 @@
 }
 
 #submit-img {
+  display: none;
+}
+
+#submit-img-label {
+  display: block;
   width: 30vw;
   height: 20vw;
   background-image: url("/static/common/defaultimg.jpeg");
   background-position: center;
   background-size: cover;
   cursor: pointer;
-  font-size: 0px;
-}
-#submit-img::file-selector-button {
-  display: none;
+  border-radius: 4px;
+  border: solid rgb(255, 164, 164) 1px;
+  line-height: 20vw;
+  text-align: center;
+  font-size: 3vw;
+  font-weight: bold;
 }
 
 input,
