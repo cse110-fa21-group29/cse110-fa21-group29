@@ -42,7 +42,7 @@
   font-size: 0;
 }
 
-#submit-img::-webkit-file-upload-button {
+#submit-img::file-selector-button {
   display: none;
 }
 
@@ -52,7 +52,7 @@
   position: absolute;
   cursor: pointer;
   display: block;
-  background-color: rgba(0, 0, 0, 0.623);
+  background-color: rgba(0, 0, 0, 0.315);
   width: 30vw;
   height: 20vw;
   color: white;
