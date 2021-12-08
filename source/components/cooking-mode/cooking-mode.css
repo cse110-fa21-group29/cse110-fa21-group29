@@ -31,7 +31,7 @@
   flex-direction: row;
   justify-content: space-around;
   position: absolute;
-  bottom: 30px;
+  bottom: 2vh;
 }
 
 #start-pause-button,
@@ -44,6 +44,7 @@
   font-size: 45;
   color: white;
   width: 145px;
+  margin-left: 1vw;
 }
 #timer-display-container {
   height: 80%;
@@ -184,8 +185,4 @@ main {
 #input-minutes-label,
 #input-seconds-label {
   font-size: 120%;
-}
-
-.divider {
-  width: 5px;
 }
