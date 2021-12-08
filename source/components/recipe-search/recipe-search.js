@@ -138,7 +138,10 @@ class RecipeSearch extends YummyRecipesComponent {
    * Set search URL parameters when clicking on search button.
    */
   clickSearch() {
-    const searchParams = {};
+    // Begin with empty query
+    const searchParams = {
+      query: "",
+    };
 
     // Query
     if (this.shadowRoot.getElementById("search-input").value != "") {
