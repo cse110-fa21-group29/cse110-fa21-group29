@@ -69,6 +69,7 @@ function routerSetup() {
    * @param {Object} event.state.urlParams - The GET parameters for the route (i.e. {query: "chicken"}).
    * @param {boolean} event.state.preventLoad - Setting to true will prevent the page from loading the route.
    * @param {boolean} event.detail.preventStatePush - Setting to true will prevent pushing this entry to the browser's history log.
+   * @param {boolean} event.detail.replaceState - Setting to true will replace the current state with the provided values.
    * @listens router-navigate
    */
   document.addEventListener("router-navigate", (event) => {
@@ -88,7 +89,17 @@ function routerSetup() {
       event.detail.params,
       event.detail.urlParams
     );
-    if (!event.detail.preventStatePush && window.location.hash !== url) {
+    if (event.detail.replaceState) {
+      history.replaceState(
+        {
+          route: event.detail.route,
+          params: event.detail.params,
+          urlParams: event.detail.urlParams,
+        },
+        event.detail.route,
+        url
+      );
+    } else if (!event.detail.preventStatePush && window.location.hash !== url) {
       history.pushState(
         {
           route: event.detail.route,
