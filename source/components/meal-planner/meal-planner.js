@@ -23,7 +23,7 @@ class MealPlanner extends YummyRecipesComponent {
         detail: {
           route: "meal-planner",
           params: [],
-          searchParams: {
+          urlParams: {
             ids: "-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1",
           },
         },
@@ -307,13 +307,9 @@ class MealPlanner extends YummyRecipesComponent {
    * @returns {Array|undefined} Array of recipe ids or undefined if failed.
    */
   getParams() {
-    // Get params
-    const paramString = window.location.href.split("?")[1];
-    const searchParams = new URLSearchParams(paramString);
-
     // Check if "ids" exists as a query string parameter
-    if (searchParams.has("ids")) {
-      const ids = searchParams.get("ids").split(",").map(Number);
+    if (this.routeUrlParams.ids) {
+      const ids = this.routeUrlParams.ids.split(",").map(Number);
 
       // Check if there are exactly 21 numbers
       if (ids.length === 21 && ids.every((val) => !isNaN(val))) {
@@ -331,23 +327,25 @@ class MealPlanner extends YummyRecipesComponent {
    * @param {number} recipeIndex - The replacement value of the id.
    */
   setUrl(paramIndex, recipeIndex) {
-    // Get params
-    const paramString = window.location.href.split("?")[1];
-    const searchParams = new URLSearchParams(paramString);
-
     // Replace id
-    const ids = searchParams.get("ids").split(",");
+    const ids = this.routeUrlParams.ids.split(",");
     ids[paramIndex] = recipeIndex;
 
-    const newIds = ids.join(",");
-
-    // Get URL and remove query string
-    const url = window.location.href;
-    let newUrl = url.slice(0, url.indexOf("?"));
-    newUrl += "?ids=" + newIds;
+    this.routeUrlParams.ids = ids.join(",");
 
     // Push new URL
-    history.pushState({}, "", newUrl);
+    const routerEvent = new CustomEvent("router-navigate", {
+      detail: {
+        route: "meal-planner",
+        params: [],
+        urlParams: this.routeUrlParams,
+        preventLoad: true,
+      },
+      bubbles: true,
+      composed: true,
+    });
+    this.dispatchEvent(routerEvent);
+    return;
   }
 }
 
