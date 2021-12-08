@@ -116,12 +116,6 @@
   object-fit: cover;
 }
 
-/* #direction-video {
-  display: none;
-  text-align: center;
-  margin-top: 10px;
-} */
-
 /* Do not change display: none */
 #direction-video-container {
   margin-top: 10px;
