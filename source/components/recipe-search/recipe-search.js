@@ -237,7 +237,7 @@ class RecipeSearch extends YummyRecipesComponent {
 
       // If clicked on, click previous page anchor tag
       leftArrow.addEventListener("click", (event) => {
-        const currPageNum = parseInt(this.routeUrlParams.page);
+        const currPageNum = parseInt(this.routeUrlParams.page, 10);
 
         // The page before page 1 DNE
         if (currPageNum === 1) {

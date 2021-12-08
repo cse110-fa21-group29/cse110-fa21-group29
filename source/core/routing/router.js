@@ -316,7 +316,8 @@ function getParamsFromUrl(url) {
 function getUrlParamsFromUrl(url) {
   // Return empty object if no parameters
   if (!url.includes("?")) {
-    return {};
+    const emptyObj = {};
+    return emptyObj;
   }
 
   const paramString = window.location.href.split("?")[1];
