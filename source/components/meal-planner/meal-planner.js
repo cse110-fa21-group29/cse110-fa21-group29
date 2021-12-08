@@ -51,7 +51,13 @@ class MealPlanner extends YummyRecipesComponent {
       element.append(addButton);
     });
 
-    // Add recipe cards as specified in query string "id" parameter
+    // Loading progress
+    let loadProgress = 0;
+
+    // Array to hold recipes from query string
+    const recipes = [];
+
+    // Get all recipes as specified in query string "ids" parameter
     for (let i = 0; i < 21; i++) {
       // Check if URL index is not -1
       if (indexes[i] !== -1) {
@@ -60,12 +66,21 @@ class MealPlanner extends YummyRecipesComponent {
 
         // Check if recipe is not undefined
         if (recipe) {
-          // Clear out cell
-          plannerCells[i].innerHTML = "";
-
-          // Append recipe card to cell
-          this.addRecipeToCell(plannerCells[i], indexes[i]);
+          recipes[i] = recipe;
         }
+      }
+
+      // Update loading message progress
+      loadProgress += 4;
+      this.shadowRoot.getElementById("load-progress").innerHTML = loadProgress;
+    }
+
+    // Add query string recipe cards
+    for (let i = 0; i < 21; i++) {
+      // Check if recipe array index is undefined
+      if (recipes[i]) {
+        // Append recipe card to cell
+        this.addRecipeToCell(plannerCells[i], recipes[i]);
       }
     }
 
@@ -91,6 +106,10 @@ class MealPlanner extends YummyRecipesComponent {
       // Drop function
       this.drop(plannerCells[i], i);
     }
+
+    // Finished loading meal planner so hide message
+    this.shadowRoot.getElementById("load-progress").innerHTML = 100;
+    this.shadowRoot.getElementById("load-message").style.display = "none";
 
     // Close sidebar when "x" clicked
     this.shadowRoot
@@ -181,21 +200,15 @@ class MealPlanner extends YummyRecipesComponent {
   }
 
   /**
-   * Adds meal planner recipe card to cell.
+   * Adds meal planner recipe card to cell using recipe object.
    *
-   * @async
    * @param {Object} plannerCell - Cell to append card to.
-   * @param {number} index - Index of recipe object in database.
+   * @param {Object} recipe - Recipe object.
    */
-  async addRecipeToCell(plannerCell, index) {
-    // Get recipe from database
-    const db = new Database();
-    const recipe = await db.getRecipe(index);
-
+  addRecipeToCell(plannerCell, recipe) {
     // Create meal planner recipe card
     const card = document.createElement("meal-planner-recipe-card");
     card.recipeData = recipe;
-    card.recipeIndex = index;
 
     // Clear out any existing cards
     plannerCell.innerHTML = "";
@@ -203,6 +216,21 @@ class MealPlanner extends YummyRecipesComponent {
 
     // Update total nutrition
     this.updateNutrition();
+  }
+
+  /**
+   * Adds meal planner recipe card to cell using recipe index.
+   *
+   * @async
+   * @param {Object} plannerCell - Cell to append card to.
+   * @param {number} index - Index of recipe object in database.
+   */
+  async addRecipeToCellWithDB(plannerCell, index) {
+    // Get recipe from database
+    const db = new Database();
+    const recipe = await db.getRecipe(index);
+
+    this.addRecipeToCell(plannerCell, recipe);
   }
 
   /**
@@ -219,7 +247,7 @@ class MealPlanner extends YummyRecipesComponent {
       const index = event.dataTransfer.getData("text/plain");
 
       // Add recipe card
-      this.addRecipeToCell(plannerCell, index);
+      this.addRecipeToCellWithDB(plannerCell, index);
 
       // Change URL
       this.setUrl(plannerCellIndex, index);

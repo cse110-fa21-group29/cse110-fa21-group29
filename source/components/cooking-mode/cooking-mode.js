@@ -1,17 +1,17 @@
 import { Database } from "/core/database/database.js";
 import { YummyRecipesComponent } from "/components/core/yummy-recipes-component.js";
 
-class HandsFree extends YummyRecipesComponent {
+class CookingMode extends YummyRecipesComponent {
   constructor() {
     super();
-    this.htmlPath = "components/hands-free/hands-free.html";
+    this.htmlPath = "components/cooking-mode/cooking-mode.html";
     this.totalTime = -1;
   }
 
   // Timer variables
   count = 0;
   temp;
-  timeron = 0;
+  timeron = false;
 
   // Steps array and counter
   recipeSteps = [];
@@ -50,16 +50,37 @@ class HandsFree extends YummyRecipesComponent {
 
     // Event handler for timer start button
     this.shadowRoot
-      .getElementById("start-button")
+      .getElementById("start-pause-button")
       .addEventListener("click", () => {
-        this.startCount();
-      });
-
-    // Event handler for t dimer pause button
-    this.shadowRoot
-      .getElementById("pause-button")
-      .addEventListener("click", () => {
-        this.stopCount();
+        if (!this.timeron) {
+          const formElement = this.shadowRoot.querySelector("#time-input-form");
+          const isFormValid = formElement.checkValidity();
+          formElement.reportValidity();
+          if (!isFormValid) {
+            return;
+          }
+        }
+        const hoursInput = Number(
+          this.shadowRoot.getElementById("input-hours").value
+        );
+        const minutesInput = Number(
+          this.shadowRoot.getElementById("input-minutes").value
+        );
+        const secondsInput = Number(
+          this.shadowRoot.getElementById("input-seconds").value
+        );
+        // Check if user entered anything
+        if (hoursInput <= 0 && minutesInput <= 0 && secondsInput <= 0) {
+          return;
+        }
+        if (
+          this.shadowRoot.getElementById("start-pause-button").innerText ===
+          "Start"
+        ) {
+          this.startCount();
+        } else {
+          this.stopCount();
+        }
       });
 
     // Event handler for timer reset button
@@ -67,6 +88,7 @@ class HandsFree extends YummyRecipesComponent {
       .getElementById("reset-button")
       .addEventListener("click", () => {
         this.resetCount();
+        this.clearTimerInputs();
       });
 
     // Event handler for hands free next step button
@@ -111,18 +133,13 @@ class HandsFree extends YummyRecipesComponent {
    */
   startCount() {
     // Hide user inputs
-    this.shadowRoot.getElementById("input-hours").style.visibility = "hidden";
-    this.shadowRoot.getElementById("input-minutes").style.visibility = "hidden";
-    this.shadowRoot.getElementById("input-seconds").style.visibility = "hidden";
-    this.shadowRoot.getElementById("input-hours-label").style.visibility =
-      "hidden";
-    this.shadowRoot.getElementById("input-minutes-label").style.visibility =
-      "hidden";
-    this.shadowRoot.getElementById("input-seconds-label").style.visibility =
-      "hidden";
+    this.shadowRoot.getElementById("time-input-container").style.display =
+      "none";
+    this.shadowRoot.getElementById("timer-display").style.display = "flex";
+    this.shadowRoot.getElementById("start-pause-button").innerText = "Pause";
 
     if (!this.timeron) {
-      this.timeron = 1;
+      this.timeron = true;
       this.startTimer();
     }
   }
@@ -131,8 +148,9 @@ class HandsFree extends YummyRecipesComponent {
    * Stops the timer
    */
   stopCount() {
+    this.shadowRoot.getElementById("start-pause-button").innerText = "Start";
     clearTimeout(this.temp);
-    this.timeron = 0;
+    this.timeron = false;
   }
 
   /**
@@ -143,20 +161,10 @@ class HandsFree extends YummyRecipesComponent {
     this.count = 0;
     this.totalTime = -1;
     // Show user inputs again
-    this.shadowRoot.getElementById("input-hours").style.visibility = "visible";
-    this.shadowRoot.getElementById("input-minutes").style.visibility =
-      "visible";
-    this.shadowRoot.getElementById("input-seconds").style.visibility =
-      "visible";
-    this.shadowRoot.getElementById("input-hours-label").style.visibility =
-      "visible";
-    this.shadowRoot.getElementById("input-minutes-label").style.visibility =
-      "visible";
-    this.shadowRoot.getElementById("input-seconds-label").style.visibility =
-      "visible";
-
+    this.shadowRoot.getElementById("time-input-container").style.display =
+      "flex";
     // Hide timer
-    this.shadowRoot.getElementById("timer-display").style.visibility = "hidden";
+    this.shadowRoot.getElementById("timer-display").style.display = "none";
   }
 
   /**
@@ -173,12 +181,6 @@ class HandsFree extends YummyRecipesComponent {
       const secondsInput = Number(
         this.shadowRoot.getElementById("input-seconds").value
       );
-      if (hoursInput === 0 && minutesInput === 0 && secondsInput === 0) {
-        this.shadowRoot.getElementById("timer-display").style.visibility =
-          "visible";
-        this.shadowRoot.getElementById("timer-display").innerText = "00:00:00";
-        return;
-      }
       this.totalTime = hoursInput * 3600 + minutesInput * 60 + secondsInput;
     }
 
@@ -206,10 +208,12 @@ class HandsFree extends YummyRecipesComponent {
   updateTime() {
     if (this.totalTime === 0) {
       // Play some sound
-      const audio = new Audio("/static/hands-free/timer-done-noise.mp3");
+      const audio = new Audio("/static/cooking-mode/timer-done-noise.mp3");
       audio.play();
       // Clear interval
-      clearInterval(this.temp);
+      this.stopCount();
+      // Clear inputs
+      this.clearTimerInputs();
     }
 
     this.setTime();
@@ -227,6 +231,16 @@ class HandsFree extends YummyRecipesComponent {
     this.shadowRoot.getElementById("number").innerText = this.currentStep;
     this.shadowRoot.getElementById("direction").innerText =
       this.recipeSteps[this.currentStep - 1];
+  }
+
+  /**
+   * Clears all user inputs
+   * Runs after hitting start
+   */
+  clearTimerInputs() {
+    this.shadowRoot.getElementById("input-hours").value = "";
+    this.shadowRoot.getElementById("input-minutes").value = "";
+    this.shadowRoot.getElementById("input-seconds").value = "";
   }
 
   /**
@@ -271,4 +285,4 @@ class HandsFree extends YummyRecipesComponent {
   }
 }
 
-customElements.define("hands-free", HandsFree);
+customElements.define("cooking-mode", CookingMode);

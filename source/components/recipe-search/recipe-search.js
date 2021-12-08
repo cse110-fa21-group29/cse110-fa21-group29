@@ -48,15 +48,6 @@ class RecipeSearch extends YummyRecipesComponent {
         this.clickClose();
       });
 
-    // Click event handler for the filter submit button
-    // Performs the same functionality as the search button
-    this.shadowRoot
-      .getElementById("submit-button")
-      .addEventListener("click", (event) => {
-        event.preventDefault();
-        this.clickSearch();
-      });
-
     // Click event handler for the filter reset button
     this.shadowRoot
       .getElementById("reset-button")
@@ -140,6 +131,7 @@ class RecipeSearch extends YummyRecipesComponent {
    */
   clickFilter() {
     this.shadowRoot.getElementById("filter-form").style.display = "initial";
+    this.shadowRoot.getElementById("cover").style.display = "initial";
   }
 
   /**
@@ -442,6 +434,7 @@ class RecipeSearch extends YummyRecipesComponent {
 
   clickClose() {
     this.shadowRoot.getElementById("filter-form").style.display = "none";
+    this.shadowRoot.getElementById("cover").style.display = "none";
   }
 
   /**
