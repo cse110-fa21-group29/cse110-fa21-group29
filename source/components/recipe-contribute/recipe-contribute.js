@@ -40,10 +40,10 @@ class RecipeContribute extends YummyRecipesComponent {
         if (file != undefined && validExt.exec(file.name)) {
           // Preview image selected using button background
           const img = URL.createObjectURL(file);
-          this.shadowRoot.getElementById(
-            "submit-img-label"
-          ).style.backgroundImage = "url(" + img + ")";
-          this.shadowRoot.getElementById("submit-img-label").innerText = "";
+          this.shadowRoot.getElementById("submit-img").style.backgroundImage =
+            "url(" + img + ")";
+          this.shadowRoot.getElementById("submit-img-label").style.display =
+            "none";
           // Image file was input into form so set flag to true
           this.imageChanged = true;
         } else {

@@ -21,12 +21,14 @@
   grid-template-columns: 50% 50%;
 }
 
-#submit-img {
-  display: none;
+#submit-img-box {
+  width: 30vw;
+  height: 20vw;
+  position: relative;
+  cursor: pointer;
 }
 
-#submit-img-label {
-  display: block;
+#submit-img {
   width: 30vw;
   height: 20vw;
   background-image: url("/static/common/demorecipe.jpg");
@@ -34,11 +36,26 @@
   background-size: cover;
   cursor: pointer;
   border-radius: 4px;
-  border: solid rgb(255, 164, 164) 1px;
-  line-height: 20vw;
-  text-align: center;
+  border: solid grey 1px;
+  font-size: 0;
+}
+
+#submit-img::-webkit-file-upload-button {
+  display: none;
+}
+
+#submit-img-label {
   font-size: 3vw;
   font-weight: bold;
+  position: absolute;
+  cursor: pointer;
+  display: block;
+  background-color: rgba(0, 0, 0, 0.623);
+  width: 30vw;
+  height: 20vw;
+  color: white;
+  text-align: center;
+  line-height: 20vw;
 }
 
 input,
