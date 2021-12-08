@@ -360,27 +360,31 @@ class RecipeSearch extends YummyRecipesComponent {
           );
       }
 
-      // Set url to have page = 1 on initial load
-      const url = window.location.href;
-
       // If url already has a page, then do not repeat page count
-      if (url.includes("&page")) {
-        // Get page number before the clicked on page number
-        let lastPageNum = "";
+      if (this.routeUrlParams.page) {
+        // Get current page num
+        const currPageNum = this.routeUrlParams.page;
 
-        const pageChunk = url.slice(url.indexOf("&page="), url.length);
-        const equalIndex = pageChunk.indexOf("=");
-
-        for (let i = equalIndex + 1; i < pageChunk.length; i++) {
-          lastPageNum = lastPageNum + pageChunk[i];
-        }
         // Click the current page anchor again so its highlighted in pagination nav bar
-        this.shadowRoot.getElementById(lastPageNum).click();
+        this.shadowRoot.getElementById(currPageNum).click();
       } else {
-        // Gets the URL without ?page=, then adds it back with the current page number
-        const newUrl = url + "&page=" + 1;
+        // Add page=1 to url params if no page exists in the url
+        this.routeUrlParams.page = 1;
 
-        history.pushState({}, "", newUrl);
+        // Replace current state without reloading
+        const routerEvent = new CustomEvent("router-navigate", {
+          detail: {
+            route: "recipe-search",
+            params: [],
+            urlParams: this.routeUrlParams,
+            preventLoad: true,
+            replaceState: true,
+          },
+          bubbles: true,
+          composed: true,
+        });
+
+        document.dispatchEvent(routerEvent);
 
         this.shadowRoot.getElementById("1").classList.add("active");
       }
