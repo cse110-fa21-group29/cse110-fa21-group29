@@ -91,7 +91,7 @@ describe('E2E Testing loading web components and navigating pages', () => {
         // click on the contribute nav bar button
         const navBar = await page.$('body > header > common-nav-bar');
         const shadowRoot = await navBar.getProperty('shadowRoot');
-        const contributePageButton = await shadowRoot.$('#nav-bar > a:nth-child(4)');
+        const contributePageButton = await shadowRoot.$('#nav-bar > div:nth-child(4) > a');
         contributePageButton.click();
 
         await new Promise((r) => setTimeout(r, 2000)); // wait for the page to load
@@ -112,7 +112,7 @@ describe('E2E Testing loading web components and navigating pages', () => {
         // click on the search nav bar button
         const navBar = await page.$('body > header > common-nav-bar');
         const shadowRoot = await navBar.getProperty('shadowRoot');
-        const searchPageButton = await shadowRoot.$('#search-button');
+        const searchPageButton = await shadowRoot.$('#nav-bar > div:nth-child(6) > a');
         searchPageButton.click();
 
         await new Promise((r) => setTimeout(r, 2000)); // wait for the page to load
