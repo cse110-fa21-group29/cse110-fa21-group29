@@ -12,9 +12,6 @@ class RecipeSearch extends YummyRecipesComponent {
    * Initializes the search page.
    */
   async setupElement() {
-    console.log("routeurlparams");
-    console.log(this.routeUrlParams);
-
     if (Object.keys(this.routeUrlParams).length > 0) {
       this.populateForm();
       this.getSearchResults();
@@ -216,18 +213,12 @@ class RecipeSearch extends YummyRecipesComponent {
   async getSearchResults() {
     const database = new Database();
 
-    let paramString = window.location.href.split("?")[1];
-    let queryString = new URLSearchParams(paramString);
-
     // Number # of recipes per page
     const recipePerPage = 15;
 
-    let paramArray = [];
-    for (let p of queryString) {
-      paramArray.push(p);
-    }
-
-    let searchRecipe = await database.searchByName(paramArray);
+    let searchRecipe = await database.searchByName(
+      Object.entries(this.routeUrlParams)
+    );
     this.recipe = searchRecipe;
 
     // Clear out recipe card grid before we append new cards
@@ -246,24 +237,13 @@ class RecipeSearch extends YummyRecipesComponent {
 
       // If clicked on, click previous page anchor tag
       leftArrow.addEventListener("click", (event) => {
-        const url = window.location.href;
-
-        let currPageNum = "";
-
-        const pageChunk = url.slice(url.indexOf("?page="), url.length);
-        const equalIndex = pageChunk.indexOf("=");
-
-        for (let i = equalIndex + 1; i < pageChunk.length; i++) {
-          currPageNum = currPageNum + pageChunk[i];
-        }
-
-        currPageNum = parseInt(currPageNum, 10);
+        const currPageNum = parseInt(this.routeUrlParams.page);
 
         // The page before page 1 DNE
         if (currPageNum === 1) {
           return;
         } else {
-          let previousPage = currPageNum - 1;
+          const previousPage = currPageNum - 1;
 
           this.shadowRoot
             .getElementById(currPageNum)
@@ -293,7 +273,7 @@ class RecipeSearch extends YummyRecipesComponent {
           const currAnchor = event.target;
 
           // Get the current page
-          let currPage = currAnchor.innerHTML;
+          const currPage = currAnchor.innerHTML;
 
           // Get 1st recipe index displayed on curr page
           const recipeStart = (currPage - 1) * recipePerPage;
@@ -314,18 +294,8 @@ class RecipeSearch extends YummyRecipesComponent {
               .appendChild(this.createRecipeCard(recipe.recipe, recipe.index));
           }
 
-          // Change url to have page set to the current page number
-          const url = window.location.href;
-
           // Get page number before the clicked on page number
-          let lastPageNum = "";
-
-          const pageChunk = url.slice(url.indexOf("?page="), url.length);
-          const equalIndex = pageChunk.indexOf("=");
-
-          for (let i = equalIndex + 1; i < pageChunk.length; i++) {
-            lastPageNum = lastPageNum + pageChunk[i];
-          }
+          const lastPageNum = this.routeUrlParams.page;
 
           // Remove the active class from the prev page number
           this.shadowRoot
@@ -335,10 +305,21 @@ class RecipeSearch extends YummyRecipesComponent {
           currAnchor.classList.add("active");
 
           // Gets the URL without ?page=, then adds it back with the current page number
-          const newUrl =
-            url.slice(0, url.indexOf("?page=")) + "?page=" + currPage;
+          this.routeUrlParams.page = currPage;
 
-          history.pushState({}, "", newUrl);
+          // Route to search page without reloading
+          const routerEvent = new CustomEvent("router-navigate", {
+            detail: {
+              route: "recipe-search",
+              params: [],
+              urlParams: this.routeUrlParams,
+              preventLoad: true,
+            },
+            bubbles: true,
+            composed: true,
+          });
+
+          document.dispatchEvent(routerEvent);
         });
 
         // Append the tag to paginationDiv
@@ -352,24 +333,13 @@ class RecipeSearch extends YummyRecipesComponent {
 
       // If clicked on, click next page anchor tag
       rightArrow.addEventListener("click", (event) => {
-        const url = window.location.href;
-
-        let currPageNum = "";
-
-        const pageChunk = url.slice(url.indexOf("?page="), url.length);
-        const equalIndex = pageChunk.indexOf("=");
-
-        for (let i = equalIndex + 1; i < pageChunk.length; i++) {
-          currPageNum = currPageNum + pageChunk[i];
-        }
-
-        currPageNum = parseInt(currPageNum, 10);
+        const currPageNum = parseInt(this.routeUrlParams.page);
 
         // The page after the last page DNE
         if (currPageNum === pageCount) {
           return;
         } else {
-          let nextPage = currPageNum + 1;
+          const nextPage = currPageNum + 1;
           this.shadowRoot
             .getElementById(currPageNum)
             .classList.remove("active");
@@ -394,11 +364,11 @@ class RecipeSearch extends YummyRecipesComponent {
       const url = window.location.href;
 
       // If url already has a page, then do not repeat page count
-      if (url.includes("?page")) {
+      if (url.includes("&page")) {
         // Get page number before the clicked on page number
         let lastPageNum = "";
 
-        const pageChunk = url.slice(url.indexOf("?page="), url.length);
+        const pageChunk = url.slice(url.indexOf("&page="), url.length);
         const equalIndex = pageChunk.indexOf("=");
 
         for (let i = equalIndex + 1; i < pageChunk.length; i++) {
@@ -408,7 +378,7 @@ class RecipeSearch extends YummyRecipesComponent {
         this.shadowRoot.getElementById(lastPageNum).click();
       } else {
         // Gets the URL without ?page=, then adds it back with the current page number
-        const newUrl = url + "?page=" + 1;
+        const newUrl = url + "&page=" + 1;
 
         history.pushState({}, "", newUrl);
 
