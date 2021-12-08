@@ -175,7 +175,7 @@ function navigateFromUrl(url) {
   const routeUrlParams = getUrlParamsFromUrl(url);
 
   if (initialRoute) {
-    loadRoute(initialRoute, routeParams);
+    loadRoute(initialRoute, routeParams, routeUrlParams);
     history.replaceState(
       {
         route: initialRoute,
