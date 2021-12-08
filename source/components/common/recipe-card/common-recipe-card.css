@@ -52,7 +52,6 @@
 .recipe-card-stats .stat {
   display: flex;
   align-items: center;
-  /* justify-content: center; */
   flex-direction: column;
   color: grey;
   font-size: small;
