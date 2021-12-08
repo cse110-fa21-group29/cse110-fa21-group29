@@ -32,11 +32,17 @@ main {
 
 #introduction-bottom-img {
   height: 400px;
+  width: 30vw;
   margin-top: 100px;
   margin-left: 60px;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+  background-position: center;
+  background-size: cover;
+  cursor: pointer;
+  background-image: url("/static/about-us/team29.jpg");
 }
 #introduction-bottom-text {
+  width: 50vw;
   margin-top: 100px;
   margin-left: 7vw;
   margin-right: 4vw;
