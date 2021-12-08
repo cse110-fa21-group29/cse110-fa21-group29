@@ -111,7 +111,7 @@ class CookingMode extends YummyRecipesComponent {
 
     // Populate image and video (if included)
     this.shadowRoot.getElementById("direction-img").alt = recipe.metadata.title;
-    if (recipe.metadata.image !== undefined && recipe.metadata.image !== "") {
+    if (recipe.metadata.image && recipe.metadata.image !== "") {
       this.shadowRoot.getElementById("direction-img").src =
         recipe.metadata.image;
     } else {
@@ -119,10 +119,17 @@ class CookingMode extends YummyRecipesComponent {
         "/static/common/defaultimg.jpeg";
     }
 
-    if (recipe.metadata.video !== undefined && recipe.metadata.video !== "") {
-      this.shadowRoot.getElementById("direction-video").style.display = "block";
-      this.shadowRoot.getElementById("direction-video").src =
-        recipe.metadata.video;
+    if (recipe.metadata.video && recipe.metadata.video !== "") {
+      this.shadowRoot.getElementById(
+        "direction-video-container"
+      ).style.display = "block";
+      const recipeVideoElement = document.createElement("iframe");
+      recipeVideoElement.setAttribute("id", "direction-video");
+      recipeVideoElement.setAttribute("allowfullscreen", "true");
+      recipeVideoElement.setAttribute("src", recipe.metadata.video);
+      this.shadowRoot
+        .getElementById("direction-video-container")
+        .appendChild(recipeVideoElement);
     }
   }
 

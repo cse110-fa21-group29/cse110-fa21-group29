@@ -116,10 +116,30 @@
   object-fit: cover;
 }
 
-#direction-video {
+/* #direction-video {
   display: none;
   text-align: center;
   margin-top: 10px;
+} */
+
+/* Do not change display: none */
+#direction-video-container {
+  margin-top: 10px;
+  display: none;
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#direction-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
 
 #img-and-video {
