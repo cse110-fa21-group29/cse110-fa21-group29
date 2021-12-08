@@ -1,28 +1,24 @@
 <link rel="stylesheet" href="components/common/nav-bar/common-nav-bar.css" />
 <div id="nav-bar">
-  <img id="logo" src="static/nav-bar/logo.png" alt="logo" />
+  <a href="#/">
+    <img id="logo" src="static/nav-bar/logo.png" alt="logo" />
+  </a>
   <a id="home-page-link" href="#/">Yummy Recipes</a>
-  <div id="category-dropdown">
-    <div id="category-button">Category</div>
-    <a class="category-link" href="#/recipes/search?highProtein=true"
-      >High Protein</a
-    >
-    <a class="category-link" href="#/recipes/search?healthy=true">Healthy</a>
-    <a class="category-link" href="#/recipes/search?vegan=true">Vegan</a>
-    <a class="category-link" href="#/recipes/search?vegetarian=true"
-      >Vegatarian</a
-    >
-    <a class="category-link" href="#/recipes/search?glutenFree=true"
-      >Gluten-Free</a
+  <div class="nav-link-container">
+    <a class="nav-link" href="#/about-us">About Us</a>
+  </div>
+  <div class="nav-link-container">
+    <a class="nav-link" href="#/recipes/contribute">Contribute Recipe</a>
+  </div>
+  <div class="nav-link-container">
+    <a class="nav-link" href="#/recipes/meal-planner">Meal Planner</a>
+  </div>
+  <div class="nav-link-container">
+    <a
+      class="nav-link"
+      href="#/recipes/search?query=&glutenFree=true&healthy=true&highProtein=true&vegan=true&vegetarian=true&page=1"
+      >Search</a
     >
   </div>
-  <a class="nav-link" href="#/recipes/contribute">Contribute Recipe</a>
-  <a class="nav-link" href="#/recipes/meal-planner">Meal Planner</a>
-  <a class="nav-link" href="#/about-us">About Us</a>
-  <form id="search-grid">
-    <input id="search-input" type="text" placeholder="search" />
-    <!-- <img src="static/common/search-icon.png" id="search-icon"> -->
-    <input type="submit" id="search-button" value="Search" />
-  </form>
 </div>
 <div id="place-holder"></div>

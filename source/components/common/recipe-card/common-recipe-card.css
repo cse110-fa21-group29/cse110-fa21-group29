@@ -1,16 +1,16 @@
 :host {
   height: 35vh;
   min-width: 23vh;
+  max-width: 23vh;
   transition: 0.5s ease;
   cursor: pointer;
   border-radius: 18px;
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
+  box-shadow: 0.15vh 0.15vh 0.6vh rgba(0, 0, 0, 0.9);
   text-align: center;
 }
 
 :host(:hover) {
-  transform: scale(1.15);
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.6);
+  transform: scale(1.125);
 }
 
 .recipe-card-image {
