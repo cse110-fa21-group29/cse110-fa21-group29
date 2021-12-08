@@ -21,6 +21,16 @@
   grid-template-columns: 50% 50%;
 }
 
+#submit-img-box {
+  width: 30vw;
+  height: 20vw;
+  position: relative;
+  cursor: pointer;
+  border-radius: 10px;
+  border: solid grey 1px;
+  overflow: hidden;
+}
+
 #submit-img {
   width: 30vw;
   height: 20vw;
@@ -28,10 +38,26 @@
   background-position: center;
   background-size: cover;
   cursor: pointer;
-  font-size: 0px;
+  border: none;
+  font-size: 0;
 }
+
 #submit-img::file-selector-button {
   display: none;
+}
+
+#submit-img-label {
+  font-size: 3vw;
+  font-weight: bold;
+  position: absolute;
+  cursor: pointer;
+  display: block;
+  background-color: rgba(0, 0, 0, 0.315);
+  width: 30vw;
+  height: 20vw;
+  color: white;
+  text-align: center;
+  line-height: 20vw;
 }
 
 input,
