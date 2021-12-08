@@ -12,7 +12,9 @@ class AboutUs extends YummyRecipesComponent {
   setupElement() {
     let img = this.shadowRoot.getElementById("introduction-bottom-img");
     img.addEventListener("click", () => {
-      if (img.style.backgroundImage === 'url("/static/about-us/tri.JPG")') {
+      if (
+        img.style.backgroundImage === 'url("/static/about-us/triscouch.jpg")'
+      ) {
         img.style.backgroundImage = 'url("/static/about-us/team29.jpg")';
       } else {
         img.style.backgroundImage = 'url("/static/about-us/triscouch.jpg")';
