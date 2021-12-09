@@ -48,6 +48,9 @@ class CookingMode extends YummyRecipesComponent {
     // Store recipe steps as instance variable
     this.recipeSteps = recipe.steps;
 
+    this.shadowRoot.getElementById("direction-recipe-title").innerText =
+      recipe.metadata.title;
+
     // Event handler for timer start button
     this.shadowRoot
       .getElementById("start-pause-button")
@@ -139,7 +142,10 @@ class CookingMode extends YummyRecipesComponent {
         .getElementById("recipe-video-container")
         .appendChild(recipeVideoElement);
 
-      // Display video button
+      // Display video button and add justify-content: space-between to
+      // first row flex container for correct spacing
+      this.shadowRoot.querySelector(".direction-title").style.justifyContent =
+        "space-between";
       this.shadowRoot.getElementById("direction-video-button").style.display =
         "block";
 
