@@ -202,17 +202,17 @@ export class Database {
     let categories = [];
     let costMin = 0;
     let costMax = Number.MAX_VALUE;
-    let compareFunction = null;   
+    let compareFunction = null;
 
     // loop through extra search parameters and set filter vars
     for (const param of urlParam) {
       const paramName = param[0];
-      if (paramName == "costmin") {
+      if (paramName === "costmin") {
         costMin = param[1];
-      } else if (paramName == "costmax") {
+      } else if (paramName === "costmax") {
         costMax = param[1];
-      } else if (paramName == "sortTime") {
-        if (param[1] == "asc") {
+      } else if (paramName === "sortTime") {
+        if (param[1] === "asc") {
           compareFunction = function (a, b) {
             // get a time
             const aTime = a.recipe.info.readyInMinutes;
@@ -229,7 +229,7 @@ export class Database {
             // keep original order
             return 0;
           };
-        } else if (param[1] == "desc") {
+        } else if (param[1] === "desc") {
           compareFunction = function (a, b) {
             // get a time
             const aTime = a.recipe.info.readyInMinutes;
@@ -246,9 +246,9 @@ export class Database {
             // keep original order
             return 0;
           };
-        }        
-      } else if (paramName == "sortcost") {
-        if (param[1] == "desc") {
+        }
+      } else if (paramName === "sortcost") {
+        if (param[1] === "desc") {
           compareFunction = function (a, b) {
             // get a total cost
             let aTotalCost =
@@ -269,7 +269,7 @@ export class Database {
               return 0;
             }
           };
-        } else if (param[1] == "asc") {
+        } else if (param[1] === "asc") {
           compareFunction = function (a, b) {
             // get a total cost
             let aTotalCost =
@@ -287,12 +287,13 @@ export class Database {
             }
           };
         }
-      } 
-      else if (paramName == "glutenFree" ||
-                paramName == "health" ||
-                paramName == "highProtein" ||
-                paramName == "vegan" ||
-                paramName == "vegetarian") {
+      } else if (
+        paramName === "glutenFree" ||
+        paramName === "health" ||
+        paramName === "highProtein" ||
+        paramName === "vegan" ||
+        paramName === "vegetarian"
+      ) {
         categories.push(paramName);
       }
     }
@@ -313,15 +314,15 @@ export class Database {
      * @param {number} index - Recipe index
      * @returns {boolean} - Whether any of the words in array words is in the title of a recipe
      */
-     function matchingWords(words, index) {
+    function matchingWords(words, index) {
       return words.some((w) =>
         recipes[index].metadata.title.toLowerCase().includes(w)
       );
     }
 
     /**
-     * 
-     * @param {Array} selectedCats - Array of categories from user input 
+     *
+     * @param {Array} selectedCats - Array of categories from user input
      * @param {Object} recipeCats - Object with parameters of categories in a recipe
      * @returns {number} - Number of matches between user categories and recipe categories
      */
@@ -343,10 +344,10 @@ export class Database {
         typeof recipes[i] !== "undefined" &&
         Object.prototype.hasOwnProperty.call(recipes[i], "metadata") &&
         Object.prototype.hasOwnProperty.call(recipes[i].metadata, "title") &&
-        recipes[i].info.pricePerServings *
-        recipes[i].nutrients.totalServings >= costMin &&
-        recipes[i].info.pricePerServings *
-        recipes[i].nutrients.totalServings <= costMax &&
+        recipes[i].info.pricePerServings * recipes[i].nutrients.totalServings >=
+          costMin &&
+        recipes[i].info.pricePerServings * recipes[i].nutrients.totalServings <=
+          costMax &&
         matchingWords(words, i)
       ) {
         const count = countMatches(categories, recipes[i].categories);
@@ -365,7 +366,7 @@ export class Database {
     if (compareFunction !== null) {
       output.sort(compareFunction);
     }
-    
+
     return output;
   }
 }
