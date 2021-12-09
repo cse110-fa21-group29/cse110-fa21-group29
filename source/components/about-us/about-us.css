@@ -18,7 +18,7 @@ main {
   font-family: "Sofia";
 }
 #introduction-bottom-grid {
-  height: 600px;
+  height: max-content;
   background: linear-gradient(110deg, #ffd753 40%, #e990d6 40%);
   display: flex;
   overflow: scroll;
@@ -32,25 +32,28 @@ main {
 
 #introduction-bottom-img {
   height: 400px;
-  margin-top: 100px;
-  margin-left: 60px;
+  width: 30vw;
+  min-width: 600px;
+  margin: 100px 4vw 100px 4vw;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+  background-position: center;
+  background-size: cover;
+  cursor: pointer;
+  background-image: url("/static/about-us/team29.jpg");
 }
 #introduction-bottom-text {
-  margin-top: 100px;
-  margin-left: 7vw;
-  margin-right: 4vw;
-  margin-bottom: 100px;
-  font-size: 150%;
+  height: 400px;
+  width: 50vw;
+  margin: 100px 4vw 100px 4vw;
+  font-size: 1.25vw;
   text-align: left;
-  line-height: 150%;
 }
 #our-team {
   line-height: 200px;
   font-family: "Sofia";
   font-size: 100px;
   background-color: #41cad2;
-  margin-top: 30px;
+  margin-top: 20px;
   margin-left: 20px;
   margin-right: 20px;
 }
