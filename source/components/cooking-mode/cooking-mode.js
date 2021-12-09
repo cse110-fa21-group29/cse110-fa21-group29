@@ -17,6 +17,10 @@ class CookingMode extends YummyRecipesComponent {
   recipeSteps = [];
   currentStep = 1;
 
+  // Next and Back button visibility
+  nextButtonVisible = "visible";
+  backButtonVisible = "none";
+
   /**
    * Setup function for the hands free page.
    * Gets the recipe steps, image, and video and loads them on the page.
@@ -108,13 +112,6 @@ class CookingMode extends YummyRecipesComponent {
         this.backStep();
       });
 
-    // Hide back button (since we're on the first step) and
-    // hide next button if less than 2 steps
-    this.hideBackButton();
-    if (this.recipeSteps.length < 2) {
-      this.hideNextButton();
-    }
-
     // Populate first step
     this.shadowRoot.getElementById("directions").innerText =
       this.recipeSteps[0];
@@ -129,6 +126,13 @@ class CookingMode extends YummyRecipesComponent {
       this.shadowRoot.getElementById("direction-img").src =
         "/static/common/defaultimg.jpeg";
       this.recipeSteps.push("/static/common/defaultimg.jpeg");
+    }
+
+    // Hide back button (since we're on the first step) and
+    // hide next button if less than 2 steps
+    this.hideBackButton();
+    if (this.recipeSteps.length < 2) {
+      this.hideNextButton();
     }
 
     // Add video embed to directions if video exists
@@ -273,6 +277,16 @@ class CookingMode extends YummyRecipesComponent {
     this.shadowRoot.getElementById("direction-written").style.display = "none";
     this.shadowRoot.getElementById("recipe-video-container").style.display =
       "block";
+
+    // Store the states of next and back buttons
+    this.nextButtonVisible =
+      this.shadowRoot.getElementById("next-button").style.visibility;
+    this.backButtonVisible =
+      this.shadowRoot.getElementById("back-button").style.display;
+
+    // Hide both next and back buttons
+    this.hideNextButton();
+    this.hideBackButton();
   }
 
   /**
@@ -289,6 +303,12 @@ class CookingMode extends YummyRecipesComponent {
     this.shadowRoot.getElementById("direction-written").style.display = "block";
     this.shadowRoot.getElementById("recipe-video-container").style.display =
       "none";
+
+    // Set next and back button to their previous states
+    this.shadowRoot.getElementById("next-button").style.visibility =
+      this.nextButtonVisible;
+    this.shadowRoot.getElementById("back-button").style.display =
+      this.backButtonVisible;
   }
 
   /**
@@ -339,14 +359,14 @@ class CookingMode extends YummyRecipesComponent {
    * Displays the prev step button.
    */
   showBackButton() {
-    this.shadowRoot.getElementById("back-button").style.visibility = "visible";
+    this.shadowRoot.getElementById("back-button").style.display = "block";
   }
 
   /**
    * Hides the prev step button.
    */
   hideBackButton() {
-    this.shadowRoot.getElementById("back-button").style.visibility = "hidden";
+    this.shadowRoot.getElementById("back-button").style.display = "none";
   }
 
   /**
