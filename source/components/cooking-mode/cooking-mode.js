@@ -107,7 +107,7 @@ class CookingMode extends YummyRecipesComponent {
     this.hideBackButton();
 
     // Populate first step
-    this.shadowRoot.getElementById("direction-text").innerText =
+    this.shadowRoot.getElementById("directions").innerText =
       this.recipeSteps[0];
 
     // Populate image and video (if included)
@@ -290,7 +290,7 @@ class CookingMode extends YummyRecipesComponent {
     }
     this.showBackButton();
     this.shadowRoot.getElementById("number").innerText = this.currentStep;
-    this.shadowRoot.getElementById("direction-text").innerText =
+    this.shadowRoot.getElementById("directions").innerText =
       this.recipeSteps[this.currentStep - 1];
   }
 
@@ -319,7 +319,7 @@ class CookingMode extends YummyRecipesComponent {
 
     this.showNextButton();
     this.shadowRoot.getElementById("number").innerText = this.currentStep;
-    this.shadowRoot.getElementById("direction-text").innerText =
+    this.shadowRoot.getElementById("directions").innerText =
       this.recipeSteps[this.currentStep - 1];
   }
 
