@@ -107,17 +107,15 @@
   border: 0;
 }
 
-/* The time and directions buttons */
-
-#timer-direction-buttons {
+/* Timer and Next/Back Buttons */
+#timer-box {
   display: flex;
   padding-left: 40px;
   flex-direction: column;
   text-align: center;
 }
 
-/* The timer */
-
+/* Timer Container */
 #timer {
   align-items: center;
   width: max-content;
@@ -129,28 +127,18 @@
   position: relative;
 }
 
+/* Timer Display Container */
+#timer-display-container {
+  height: 80%;
+}
+
+/* Timer Display */
 #timer-display {
   width: 100%;
   font-size: 8vw;
 }
 
-#timer-button-grid {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  position: absolute;
-  bottom: 2vh;
-}
-
-#timer-display-container {
-  height: 80%;
-}
-
-#timer-button-grid button:hover {
-  color: black;
-  background-color: white;
-}
-
+/* Timer Input Container */
 #time-input-container {
   display: flex;
   flex-direction: row;
@@ -161,18 +149,30 @@
   font-size: 20px;
 }
 
+/* Timer Input */
 #time-input-container > span input {
   height: 40%;
   margin: 10px;
   width: 140px;
 }
 
+/* Hours, Minutes, Seconds Labels */
 #input-hours-label,
 #input-minutes-label,
 #input-seconds-label {
   font-size: 120%;
 }
 
+/* Timer Button Grid */
+#timer-button-grid {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  position: absolute;
+  bottom: 2vh;
+}
+
+/* Start/Pause and Reset Buttons */
 #start-pause-button,
 #reset-button {
   transition-duration: 0.5s;
@@ -186,8 +186,20 @@
   margin-left: 1vw;
 }
 
-/* Direction buttons */
+#timer-button-grid button:hover {
+  color: black;
+  background-color: white;
+}
 
+/* Back/Next Container */
+#back-next-container {
+  width: max-content;
+  margin-bottom: 125px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Direction buttons */
 .direction-button {
   margin-top: 1vw;
   height: 200px;
@@ -200,6 +212,7 @@
   box-shadow: 0 9px #999;
 }
 
+/* Back Button */
 #back-button {
   background-color: #f93f3f;
 }
@@ -214,6 +227,7 @@
   transform: translateY(4px);
 }
 
+/* Next Button */
 #next-button {
   background-color: #2cb82c;
 }
@@ -226,11 +240,4 @@
   background-color: rgb(0, 124, 0);
   box-shadow: 0 5px #666;
   transform: translateY(4px);
-}
-
-#back-next-container {
-  width: max-content;
-  margin-bottom: 125px;
-  display: flex;
-  flex-direction: column;
 }
