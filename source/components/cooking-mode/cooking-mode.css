@@ -1,3 +1,4 @@
+/* Cooking Mode Page */
 #cooking-mode {
   display: flex;
   flex-direction: row;
@@ -5,10 +6,14 @@
   height: 100%;
 }
 
-/* 
-NEW CODE
-*/
+/* Directions/Image/Video */
+.direction-box {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
 
+/* Directions Title */
 .direction-title {
   display: flex;
   column-gap: 10px;
@@ -16,6 +21,18 @@ NEW CODE
   justify-content: space-between;
 }
 
+/* Step Number */
+#number {
+  background-color: black;
+  border-radius: 50%;
+  width: 3vw;
+  height: 3vw;
+  color: white;
+  font-size: 1vw;
+  line-height: 3vw;
+}
+
+/* Video/Text Directions Buttons */
 .first-row-button {
   cursor: pointer;
   padding: 10px;
@@ -41,17 +58,8 @@ NEW CODE
   transform: scale(0.6);
 }
 
-.direction-box {
-  text-align: center;
-  width: 100%;
-  height: 100%;
-}
-
-/* 
-NEW CODE
-*/
-
-#direction-text {
+/* Direction Written (Text and Image) */
+#direction-written {
   margin: 5vh auto;
   width: 100%;
   height: 80%;
@@ -60,33 +68,25 @@ NEW CODE
   border-radius: 10px;
   box-shadow: 0px 4px 4px rgba(255, 164, 164, 0.24);
   font-size: 3.5vw;
+}
+
+/* Direction Text */
+#direction-text {
   overflow-y: scroll;
 }
 
-#direction-image {
-  margin: 5vh auto;
-  width: 100%;
-  height: 80%;
-  margin-top: 10px;
-  border: 1px solid #ffa4a4;
-  border-radius: 10px;
-  box-shadow: 0px 4px 4px rgba(255, 164, 164, 0.24);
-  font-size: 3.5vw;
-}
-
+/* Recipe Finished Image */
 #direction-img {
   margin-top: 1vw;
   max-width: 58vw;
   max-height: 48vh;
   width: auto;
   height: auto;
-}
-
-#direction-img {
   border: solid black 1px;
   object-fit: cover;
 }
 
+/* Directions Video */
 /* Do not change display: none */
 #recipe-video-container {
   margin-top: 10px;
@@ -105,21 +105,6 @@ NEW CODE
   width: 100%;
   height: 100%;
   border: 0;
-}
-
-#img-and-video {
-  align-items: center;
-  width: 30vw;
-}
-
-#number {
-  background-color: black;
-  border-radius: 50%;
-  width: 3vw;
-  height: 3vw;
-  color: black;
-  font-size: 1vw;
-  line-height: 3vw;
 }
 
 /* The time and directions buttons */
