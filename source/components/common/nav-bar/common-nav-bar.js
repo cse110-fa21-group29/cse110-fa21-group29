@@ -1,5 +1,6 @@
 import { YummyRecipesComponent } from "/components/core/yummy-recipes-component.js";
 
+/** Class that provides functionality to the nav bar. */
 class CommonNavBar extends YummyRecipesComponent {
   constructor() {
     super();

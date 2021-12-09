@@ -1,5 +1,6 @@
 import { YummyRecipesComponent } from "/components/core/yummy-recipes-component.js";
 
+/** Class that provides functionality to the common recipe cards. */
 export class CommonRecipeCard extends YummyRecipesComponent {
   constructor() {
     super();
@@ -14,6 +15,9 @@ export class CommonRecipeCard extends YummyRecipesComponent {
     this.index = recipeIndex;
   }
 
+  /**
+   * Set up the elements for common recipe card with corresponding data
+   */
   setupElement() {
     // Populate data into recipe card
     this.shadowRoot.querySelector(".recipe-card-name > div").innerHTML =
