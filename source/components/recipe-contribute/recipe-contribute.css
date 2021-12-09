@@ -21,17 +21,44 @@
   grid-template-columns: 50% 50%;
 }
 
+#submit-img-box {
+  width: 30vw;
+  height: 20vw;
+  position: relative;
+  cursor: pointer;
+  border-radius: 10px;
+  border: solid grey 1px;
+  overflow: hidden;
+  box-shadow: 0px 4px 4px rgba(128, 128, 128, 0.24);
+}
+
 #submit-img {
   width: 30vw;
   height: 20vw;
-  background-image: url("/static/common/defaultimg.jpeg");
+  background-image: url("/static/common/demorecipe.jpg");
   background-position: center;
   background-size: cover;
   cursor: pointer;
-  font-size: 0px;
+  border: none;
+  font-size: 0;
 }
+
 #submit-img::file-selector-button {
   display: none;
+}
+
+#submit-img-label {
+  font-size: 3vw;
+  font-weight: bold;
+  position: absolute;
+  cursor: pointer;
+  display: block;
+  background-color: rgba(0, 0, 0, 0.315);
+  width: 30vw;
+  height: 20vw;
+  color: white;
+  text-align: center;
+  line-height: 20vw;
 }
 
 input,
@@ -39,6 +66,10 @@ textarea {
   border-radius: 4px;
   border: solid rgb(255, 164, 164) 1px;
   font-size: 20px;
+  padding: 10px;
+  font-family: "Lato", sans-serif;
+  line-height: 30px;
+  box-shadow: 0px 4px 4px rgba(255, 164, 164, 0.24);
 }
 
 .input-left-text {
@@ -54,7 +85,7 @@ textarea {
 .input-right-text {
   width: 95%;
   height: 40px;
-  margin-bottom: 10px;
+  margin-bottom: 17px;
 }
 
 .right-textarea {
@@ -62,29 +93,34 @@ textarea {
   height: 150px;
 }
 
-#submit-button {
+#bottom-buttons {
+  width: 95%;
   margin-top: 50px;
-  /* background-color: orange;
-  color: white; */
+  display: flex;
+  justify-content: space-between;
+}
+
+#submit-button {
   width: 15vw;
   height: 3vw;
   cursor: pointer;
   font-size: large;
+  background-color: #ffa4a4;
+  border: #ffa4a4 solid 1px;
 }
 
 #cancel-button {
   cursor: pointer;
-  /* background-color: grey;
-  color: white; */
+  background-color: grey;
+  border: grey solid 1px;
   width: 10vw;
   height: 3vw;
-  left: 52%;
-  position: relative;
   font-size: large;
 }
 
 .red-star {
   color: red;
+  margin-left: 2px;
 }
 
 .category-checkbox {
@@ -98,36 +134,39 @@ textarea {
 .category-label {
   cursor: pointer;
   font-size: 20px;
-}
-
-textarea,
-input {
-  padding: 10px;
+  margin-bottom: 0;
 }
 
 label {
-  margin-left: 10px;
+  display: inline-block;
+  margin-bottom: 3px;
 }
 
 .category-line {
   display: flex;
-  margin-bottom: 30px;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
-button {
+#submit-button,
+#cancel-button {
   transition-duration: 0.5s;
-  background-color: #ffa4a4;
   color: white;
-  border: #ffa4a4 solid 1px;
   border-radius: 5px;
 }
 
-button:hover {
+#submit-button:hover,
+#cancel-button:hover {
   background-color: white;
   color: black;
-  border: #ffa4a4 solid 1px;
 }
 
-button:active {
+#submit-button:active,
+#cancel-button:active {
   transform: scale(0.6);
+}
+
+h1 {
+  margin-top: 30px;
+  margin-bottom: 10px;
 }

@@ -1,105 +1,23 @@
 main {
-  text-align: center;
   min-height: 100%;
   min-width: 1024px;
+  text-align: center;
 }
 
-#planner-grid {
-  width: 100%;
-  height: 100%;
-  display: grid;
-  justify-items: center;
-  grid-template-rows: 1fr 2fr 2fr 2fr 2fr;
-  grid-template-columns: 1fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr;
-}
-
-#print-button {
-  width: 40px;
-  position: absolute;
-  top: 100px;
-  right: 50px;
-  cursor: pointer;
+.center {
+  display: flex;
 }
 
 .center > div {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
-
-#planner-grid > div {
-  border: solid black 1px;
-  width: 100%;
+  margin: auto;
 }
 
 .planner-cell {
-  background-size: 50%;
-  background-repeat: no-repeat;
   background-position: center;
-  position: relative;
+  background-repeat: no-repeat;
+  background-size: 50%;
   overflow: hidden;
-}
-
-#flexbox {
-  display: flex;
-  margin: 20px;
-  height: 75vh;
-  max-height: 50vw;
-}
-
-#search-part {
-  min-width: 26vh;
-  border: solid black 1px;
   position: relative;
-  display: none;
-  overflow: hidden;
-}
-
-#instruction {
-  margin: 10px;
-}
-
-#search-input-grid {
-  width: 90%;
-  height: 30px;
-  border: 0.5px solid grey;
-  text-align: left;
-  display: flex;
-  margin: 0 auto 10px;
-}
-
-#search-input {
-  all: unset;
-  height: 100%;
-  width: 100%;
-}
-
-#search-input-icon {
-  height: 100%;
-  cursor: pointer;
-}
-
-#search-result {
-  display: flex;
-  flex-direction: column;
-  row-gap: 4vh;
-  height: 75%;
-  overflow: scroll;
-  padding: 4vh 4vh;
-}
-
-#search-result::-webkit-scrollbar {
-  display: none;
-}
-
-#close-search {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  height: 30px;
-  cursor: pointer;
 }
 
 .planner-cell-add {
@@ -111,49 +29,151 @@ main {
   background-size: 50%;
 }
 
-/*
-.meal-card-div {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  background-color: rgba(255, 255, 255, 0.747);
+#close-search {
   cursor: pointer;
-  transform: translateY(100%);
-  transition: 0.5s;
-  opacity: 0;
-}
-
-.meal-card:hover .meal-card-div {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-.meal-card-name {
-  margin-top: 20px;
-  font-size: large;
-  width: 100%;
-}
-
-.meal-card-delete-button {
+  height: 30px;
   position: absolute;
-  bottom: 5px;
   right: 5px;
-}
-*/
-
-.center {
-  position: relative;
+  top: 5px;
 }
 
-/*
-.meal-card-img {
-  display: none;
-  background-image: url(/static/common/demorecipe.jpg);
-  height: 100%;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+#copy-link-image {
+  margin-right: 3px;
   cursor: pointer;
+  right: 50px;
+  top: 100px;
+  vertical-align: middle;
+  width: 30px;
 }
-*/
+
+#copy-link-image:hover {
+  opacity: 0.7;
+}
+
+#copy-message {
+  color: #008000;
+  display: none;
+}
+
+#flexbox {
+  display: flex;
+  height: 75vh;
+  margin: 20px;
+  max-height: 50vw;
+}
+
+#instruction {
+  margin: 10px;
+}
+
+#link-field {
+  border-radius: 5px;
+  border-width: 1px;
+  font-size: 16px;
+  height: 2em;
+  margin-left: 5px;
+  margin-right: 7px;
+  padding-left: 7px;
+  padding-right: 7px;
+  width: 15em;
+}
+
+#load-message {
+  background-color: white;
+  border: solid;
+  left: 50%;
+  margin: auto;
+  padding: 30px 80px;
+  position: fixed;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+}
+
+#planner-grid {
+  display: grid;
+  height: 100%;
+  grid-template-rows: 1fr 2fr 2fr 2fr 2fr;
+  grid-template-columns: 1fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr;
+  justify-items: center;
+  width: 100%;
+}
+
+#planner-grid > div {
+  border: solid black 1px;
+  width: 100%;
+}
+
+#planner-grid > div.bottom-left-corner {
+  border-bottom-left-radius: 10px;
+}
+
+#planner-grid > div.bottom-right-corner {
+  border-bottom-right-radius: 10px;
+}
+
+#planner-grid > div.top-left-corner {
+  border-top-left-radius: 10px;
+}
+
+#planner-grid > div.top-right-corner {
+  border-top-right-radius: 10px;
+}
+
+#search-input-grid {
+  border: 0.5px solid grey;
+  border-radius: 5px;
+  display: flex;
+  height: 30px;
+  margin: 0 auto 10px;
+  text-align: left;
+  width: 90%;
+}
+
+#search-button {
+  background-color: #ffa4a4;
+  border: #ffa4a4 solid 1px;
+  border-radius: 5px;
+  color: white;
+  font-size: medium;
+  transition-duration: 0.5s;
+}
+
+#search-button:hover {
+  background-color: white;
+  border: #ffa4a4 solid 1px;
+  color: black;
+}
+
+#search-input {
+  all: unset;
+  height: 100%;
+  width: 100%;
+}
+
+#search-input-icon {
+  cursor: pointer;
+  height: 100%;
+}
+
+#search-result {
+  display: flex;
+  flex-direction: column;
+  height: 75%;
+  overflow: scroll;
+  padding: 4vh 4vh;
+  row-gap: 4vh;
+}
+
+#search-result::-webkit-scrollbar {
+  display: none;
+}
+
+#search-sidebar {
+  border: solid black 1px;
+  border-radius: 10px;
+  display: none;
+  overflow: hidden;
+  position: relative;
+  width: 50vh;
+}

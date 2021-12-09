@@ -1,10 +1,6 @@
 <link rel="stylesheet" href="components/recipe-search/recipe-search.css" />
 
-<!-- INCLUDE HTML HERE -->
-<!-- DO NOT INCLUDE <html>, <head>, or <body> -->
 <main>
-  <!-- there are 5 buttons in this page, 2 submit buttons, 1 clear button, 1 filter button, 1 close button 
-  5 buttons and all inputs are all in #search-form, submit and clear button will apply to whole form -->
   <form id="search-form">
     <div id="search-box">
       <input type="text" id="search-input" />
@@ -15,35 +11,35 @@
       />
     </div>
 
-    <input type="submit" id="search-button" />
+    <input type="submit" id="search-button" class="buttons" value="Search" />
 
     <div id="filter-form">
       <img id="close-button" src="static/common/close-icon.png" />
       <div id="cost-form">
-        <h3>Cost</h3>
+        <h3 class="filter-name">Cost</h3>
         <div>
-          <label for="input-cost-min">Min</label>
+          <label for="input-cost-min" class="label-cost">Min</label>
           <input type="number" id="input-cost-min" class="input-cost" />
         </div>
         <div>
-          <label for="input-cost-max">Max</label>
+          <label for="input-cost-max" class="label-cost">Max</label>
           <input type="number" id="input-cost-max" class="input-cost" />
         </div>
       </div>
 
       <div id="category-form">
-        <h3>Categories</h3>
+        <h3 class="filter-name">Categories</h3>
         <div>
           <input
             type="checkbox"
             id="input-gluten-free"
             class="input-category"
           />
-          <label for="input-gluten-free">gluten-free</label>
+          <label for="input-gluten-free">Gluten-Free</label>
         </div>
         <div>
           <input type="checkbox" id="input-healthy" class="input-category" />
-          <label for="input-healthy">healthy</label>
+          <label for="input-healthy">Healthy</label>
         </div>
         <div>
           <input
@@ -51,21 +47,21 @@
             id="input-high-protein"
             class="input-category"
           />
-          <label for="input-high-protein">high-protein</label>
+          <label for="input-high-protein">High Protein</label>
         </div>
         <div>
           <input type="checkbox" id="input-vegan" class="input-category" />
-          <label for="input-vegan">vegan</label>
+          <label for="input-vegan">Vegan</label>
         </div>
         <div>
           <input type="checkbox" id="input-vegetarian" class="input-category" />
-          <label for="input-vegetarian">vegetarian</label>
+          <label for="input-vegetarian">Vegetarian</label>
         </div>
       </div>
 
       <!-- There are 5 kinds of sort, when default or click clear button, it is default sort. -->
       <div id="sort-form">
-        <h3>Sort</h3>
+        <h3 class="filter-name">Sort</h3>
         <div>
           <input
             type="radio"
@@ -74,7 +70,7 @@
             name="sort-type"
             value="sort-time-descending"
           />
-          <label for="sort-time-descending">time ↓</label>
+          <label for="sort-time-descending">Time ↓</label>
         </div>
         <div>
           <input
@@ -84,7 +80,7 @@
             name="sort-type"
             value="sort-time-ascending"
           />
-          <label for="sort-time-ascending">time ↑</label>
+          <label for="sort-time-ascending">Time ↑</label>
         </div>
         <div>
           <input
@@ -94,7 +90,7 @@
             name="sort-type"
             value="sort-cost-descending"
           />
-          <label for="sort-cost-descending">cost ↓</label>
+          <label for="sort-cost-descending">Cost ↓</label>
         </div>
         <div>
           <input
@@ -104,11 +100,10 @@
             name="sort-type"
             value="sort-cost-ascending"
           />
-          <label for="sort-cost-ascending">cost ↑</label>
+          <label for="sort-cost-ascending">Cost ↑</label>
         </div>
       </div>
-      <input type="reset" id="reset-button" />
-      <input type="submit" id="submit-button" />
+      <input type="reset" id="reset-button" class="buttons" />
     </div>
   </form>
 
@@ -120,3 +115,4 @@
     <!-- put pagination here -->
   </div>
 </main>
+<div id="cover"></div>

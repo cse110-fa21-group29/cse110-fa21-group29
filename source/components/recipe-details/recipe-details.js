@@ -7,11 +7,8 @@ class RecipeDetails extends YummyRecipesComponent {
   constructor() {
     super();
     this.htmlPath = "components/recipe-details/recipe-details.html";
-    this.totalTime = -1;
   }
-  count = 0;
-  timeoutID;
-  timeron = 0;
+
   /**
    * Populates recipe details page with information from the database and adds
    * delete functionality.
@@ -20,46 +17,17 @@ class RecipeDetails extends YummyRecipesComponent {
    */
   async setupElement() {
     this.shadowRoot
-      .getElementById("hands-free-button")
+      .getElementById("cooking-mode-button")
       .addEventListener("click", () => {
         const routerEvent = new CustomEvent("router-navigate", {
           detail: {
-            route: "hands-free",
+            route: "cooking-mode",
             params: [this.routeParams[0]],
           },
           bubbles: true,
           composed: true,
         });
         document.dispatchEvent(routerEvent);
-      });
-    this.shadowRoot
-      .getElementById("timer-button")
-      .addEventListener("click", () => {
-        if (this.shadowRoot.getElementById("timer").style.display === "") {
-          this.shadowRoot.getElementById("timer").style.display = "flex";
-        } else {
-          this.shadowRoot.getElementById("timer").style.display = "";
-        }
-      });
-    // Event handler for timer start button
-    this.shadowRoot
-      .getElementById("start-button")
-      .addEventListener("click", () => {
-        this.startCount();
-      });
-
-    // Event handler for t dimer pause button
-    this.shadowRoot
-      .getElementById("pause-button")
-      .addEventListener("click", () => {
-        this.stopCount();
-      });
-
-    // Event handler for timer reset button
-    this.shadowRoot
-      .getElementById("reset-button")
-      .addEventListener("click", () => {
-        this.resetCount();
       });
 
     // Grab recipe from database based on routing parameter
@@ -128,11 +96,34 @@ class RecipeDetails extends YummyRecipesComponent {
         }
       });
 
-    // Display recipe video if the recipe has a link
-    if (recipe.metadata.video != undefined && recipe.metadata.video != "") {
-      this.shadowRoot.getElementById("recipe-video").style.display = "block";
-      this.shadowRoot.getElementById("recipe-video").src =
-        recipe.metadata.video;
+    // Add video embed to directions if video exists
+    // Will not show by default (user must click "Switch to Video")
+    if (recipe.metadata.video && recipe.metadata.video !== "") {
+      const recipeVideoElement = document.createElement("iframe");
+      recipeVideoElement.setAttribute("id", "recipe-video");
+      recipeVideoElement.setAttribute("allowfullscreen", "true");
+      recipeVideoElement.setAttribute("src", recipe.metadata.video);
+      this.shadowRoot
+        .getElementById("recipe-video-container")
+        .appendChild(recipeVideoElement);
+
+      // Display video button
+      this.shadowRoot.getElementById("direction-video-button").style.display =
+        "block";
+
+      // Event handler for video button
+      this.shadowRoot
+        .getElementById("direction-video-button")
+        .addEventListener("click", () => {
+          this.switchToVideo();
+        });
+
+      // Event handler for text button
+      this.shadowRoot
+        .getElementById("direction-text-button")
+        .addEventListener("click", () => {
+          this.switchToText();
+        });
     }
 
     // This is the first row of the page, including the image and the author box
@@ -140,10 +131,15 @@ class RecipeDetails extends YummyRecipesComponent {
     this.shadowRoot.querySelector(".recipe-image").alt = recipe.metadata.title;
     this.shadowRoot.querySelector(".dish-name").innerHTML =
       recipe.metadata.title;
-    this.shadowRoot.querySelector(".author-name").innerHTML =
-      recipe.metadata.author;
-    this.shadowRoot.querySelector(".author-name").href =
-      recipe.spoonacularSourceUrl;
+    this.shadowRoot.querySelector(
+      ".author-name"
+    ).innerHTML = `By ${recipe.metadata.author}`;
+
+    if (recipe.spoonacularSourceUrl) {
+      this.shadowRoot.querySelector(".article-link").style.display = "block";
+      this.shadowRoot.querySelector(".article-link").href =
+        recipe.spoonacularSourceUrl;
+    }
 
     // Description box
     this.shadowRoot.querySelector(".description").innerHTML =
@@ -201,116 +197,37 @@ class RecipeDetails extends YummyRecipesComponent {
     this.shadowRoot.querySelector(".direction-list").innerHTML =
       "<ol>" + directions + "</ol>";
   }
-  /**
-   * Function that activates when user hits start button on timer
-   * Hides the time inputs and starts the timer
-   *
-   */
-  startCount() {
-    // Hide user inputs
-    this.shadowRoot.getElementById("input-hours").style.visibility = "hidden";
-    this.shadowRoot.getElementById("input-minutes").style.visibility = "hidden";
-    this.shadowRoot.getElementById("input-seconds").style.visibility = "hidden";
-    this.shadowRoot.getElementById("input-hours-label").style.visibility =
-      "hidden";
-    this.shadowRoot.getElementById("input-minutes-label").style.visibility =
-      "hidden";
-    this.shadowRoot.getElementById("input-seconds-label").style.visibility =
-      "hidden";
 
-    if (!this.timeron) {
-      this.timeron = 1;
-      this.startTimer();
-    }
+  /**
+   * Switches from text directions to video directions
+   */
+  switchToVideo() {
+    // Toggle buttons
+    this.shadowRoot.getElementById("direction-video-button").style.display =
+      "none";
+    this.shadowRoot.getElementById("direction-text-button").style.display =
+      "block";
+
+    // Show video & hide text
+    this.shadowRoot.querySelector(".direction-list").style.display = "none";
+    this.shadowRoot.getElementById("recipe-video-container").style.display =
+      "block";
   }
 
   /**
-   * Stops the timer
+   * Switches from video directions to text directions
    */
-  stopCount() {
-    clearTimeout(this.temp);
-    this.timeron = 0;
-  }
+  switchToText() {
+    // Toggle buttons
+    this.shadowRoot.getElementById("direction-video-button").style.display =
+      "block";
+    this.shadowRoot.getElementById("direction-text-button").style.display =
+      "none";
 
-  /**
-   * Resets the timer back to user input
-   */
-  resetCount() {
-    this.stopCount();
-    this.count = 0;
-    this.totalTime = -1;
-    // Show user inputs again
-    this.shadowRoot.getElementById("input-hours").style.visibility = "visible";
-    this.shadowRoot.getElementById("input-minutes").style.visibility =
-      "visible";
-    this.shadowRoot.getElementById("input-seconds").style.visibility =
-      "visible";
-    this.shadowRoot.getElementById("input-hours-label").style.visibility =
-      "visible";
-    this.shadowRoot.getElementById("input-minutes-label").style.visibility =
-      "visible";
-    this.shadowRoot.getElementById("input-seconds-label").style.visibility =
-      "visible";
-
-    // Hide timer
-    this.shadowRoot.getElementById("timer-display").style.visibility = "hidden";
-  }
-
-  /**
-   * Display the initial starting time user inputted
-   */
-  startTimer() {
-    if (this.totalTime === -1) {
-      const hoursInput = Number(
-        this.shadowRoot.getElementById("input-hours").value
-      );
-      const minutesInput = Number(
-        this.shadowRoot.getElementById("input-minutes").value
-      );
-      const secondsInput = Number(
-        this.shadowRoot.getElementById("input-seconds").value
-      );
-      if (hoursInput === 0 && minutesInput === 0 && secondsInput === 0) {
-        this.shadowRoot.getElementById("timer-display").style.visibility =
-          "visible";
-        this.shadowRoot.getElementById("timer-display").innerText = "00:00:00";
-        return;
-      }
-      this.totalTime = hoursInput * 3600 + minutesInput * 60 + secondsInput;
-    }
-
-    let timer = this.shadowRoot.getElementById("timer-display");
-    timer.style.visibility = "visible";
-    this.setTime();
-    this.totalTime -= 1;
-    this.temp = setInterval(() => this.updateTime(), 1000);
-  }
-
-  /**
-   * Update timer text
-   */
-  setTime() {
-    const timer = this.shadowRoot.getElementById("timer-display");
-    const date = new Date(null);
-    date.setSeconds(this.totalTime);
-    timer.innerText = date.toISOString().substr(11, 8);
-  }
-
-  /**
-   * Decrements the time by 1 every second
-   * If timer reaches 0, play a sound and stop the interval
-   */
-  updateTime() {
-    if (this.totalTime === 0) {
-      // Play some sound
-      const audio = new Audio("/static/hands-free/timer-done-noise.mp3");
-      audio.play();
-      // Clear interval
-      clearInterval(this.temp);
-    }
-
-    this.setTime();
-    this.totalTime -= 1;
+    // Show video & hide text
+    this.shadowRoot.querySelector(".direction-list").style.display = "block";
+    this.shadowRoot.getElementById("recipe-video-container").style.display =
+      "none";
   }
 }
 

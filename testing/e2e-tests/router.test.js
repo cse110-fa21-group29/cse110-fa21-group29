@@ -91,7 +91,7 @@ describe('E2E Testing loading web components and navigating pages', () => {
         // click on the contribute nav bar button
         const navBar = await page.$('body > header > common-nav-bar');
         const shadowRoot = await navBar.getProperty('shadowRoot');
-        const contributePageButton = await shadowRoot.$('#nav-bar > a:nth-child(4)');
+        const contributePageButton = await shadowRoot.$('#nav-bar > div:nth-child(4) > a');
         contributePageButton.click();
 
         await new Promise((r) => setTimeout(r, 2000)); // wait for the page to load
@@ -112,7 +112,7 @@ describe('E2E Testing loading web components and navigating pages', () => {
         // click on the search nav bar button
         const navBar = await page.$('body > header > common-nav-bar');
         const shadowRoot = await navBar.getProperty('shadowRoot');
-        const searchPageButton = await shadowRoot.$('#search-button');
+        const searchPageButton = await shadowRoot.$('#nav-bar > div:nth-child(6) > a');
         searchPageButton.click();
 
         await new Promise((r) => setTimeout(r, 2000)); // wait for the page to load
@@ -144,22 +144,22 @@ describe('E2E Testing loading web components and navigating pages', () => {
     }, 7500);
 
     /**
-     * @summary Hands-Free Mode Page
+     * @summary Cooking-Mode Page
      * Test to see if we go to hands free page
      */
-     it('Moving to hands-free mode page', async () => {
+     it('Moving to cooking-mode page', async () => {
         await new Promise((r) => setTimeout(r, 2000));
 
-        // click on the hands-free mode button
+        // click on the cooking-mode button
         const recipeDetails = await page.$('#content > recipe-details');
         const shadowRoot = await recipeDetails.getProperty('shadowRoot');
-        const homePageButton = await shadowRoot.$('#hands-free-button');
-        homePageButton.click();
+        const cookingModeButton = await shadowRoot.$('#cooking-mode-button');
+        cookingModeButton.click();
 
         await new Promise((r) => setTimeout(r, 2000)); // wait for the page to load
 
-        const handsFreeModePage = await page.$$('#content > hands-free');
+        const cookingModePage = await page.$$('#content > cooking-mode');
 
-        expect(handsFreeModePage.length).toBe(1);
+        expect(cookingModePage.length).toBe(1);
     }, 7500);
 });

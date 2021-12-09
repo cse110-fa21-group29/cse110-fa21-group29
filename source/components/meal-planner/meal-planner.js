@@ -17,12 +17,15 @@ class MealPlanner extends YummyRecipesComponent {
     // Get recipe indexes from URL
     const indexes = this.getParams();
 
-    // Route to homepage if failed
+    // Route to empty meal planner if failed
     if (!indexes) {
       const routerEvent = new CustomEvent("router-navigate", {
         detail: {
-          route: "home-page",
+          route: "meal-planner",
           params: [],
+          urlParams: {
+            ids: "-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1",
+          },
         },
         bubbles: true,
         composed: true,
@@ -48,7 +51,13 @@ class MealPlanner extends YummyRecipesComponent {
       element.append(addButton);
     });
 
-    // Add recipe cards as specified in query string "id" parameter
+    // Loading progress
+    let loadProgress = 0;
+
+    // Array to hold recipes from query string
+    const recipes = [];
+
+    // Get all recipes as specified in query string "ids" parameter
     for (let i = 0; i < 21; i++) {
       // Check if URL index is not -1
       if (indexes[i] !== -1) {
@@ -57,12 +66,21 @@ class MealPlanner extends YummyRecipesComponent {
 
         // Check if recipe is not undefined
         if (recipe) {
-          // Clear out cell
-          plannerCells[i].innerHTML = "";
-
-          // Append recipe card to cell
-          this.addRecipeToCell(plannerCells[i], indexes[i]);
+          recipes[i] = recipe;
         }
+      }
+
+      // Update loading message progress
+      loadProgress += 4;
+      this.shadowRoot.getElementById("load-progress").innerHTML = loadProgress;
+    }
+
+    // Add query string recipe cards
+    for (let i = 0; i < 21; i++) {
+      // Check if recipe array index is undefined
+      if (recipes[i]) {
+        // Append recipe card to cell
+        this.addRecipeToCell(plannerCells[i], recipes[i]);
       }
     }
 
@@ -71,7 +89,8 @@ class MealPlanner extends YummyRecipesComponent {
       // Add button click listener
       element.addEventListener("click", () => {
         // Bring up search sidebar when add button clicked
-        this.shadowRoot.getElementById("search-part").style.display = "block";
+        this.shadowRoot.getElementById("search-sidebar").style.display =
+          "block";
       });
     });
 
@@ -89,11 +108,15 @@ class MealPlanner extends YummyRecipesComponent {
       this.drop(plannerCells[i], i);
     }
 
+    // Finished loading meal planner so hide message
+    this.shadowRoot.getElementById("load-progress").innerHTML = 100;
+    this.shadowRoot.getElementById("load-message").style.display = "none";
+
     // Close sidebar when "x" clicked
     this.shadowRoot
       .getElementById("close-search")
       .addEventListener("click", () => {
-        this.shadowRoot.getElementById("search-part").style.display = "none";
+        this.shadowRoot.getElementById("search-sidebar").style.display = "none";
       });
 
     // Search button
@@ -105,10 +128,17 @@ class MealPlanner extends YummyRecipesComponent {
         event.preventDefault();
       });
 
-    // Reload page when browser navigation buttons used
-    // window.onpopstate = function () {
-    //  location.reload();
-    // };
+    // Put URL in sharing text box
+    this.shadowRoot.getElementById("link-field").value = window.location.href;
+
+    // Copy link to clipboard button
+    this.shadowRoot
+      .getElementById("copy-link-image")
+      .addEventListener("click", () => {
+        navigator.clipboard.writeText(window.location.href);
+        // Display message
+        this.shadowRoot.getElementById("copy-message").style.display = "inline";
+      });
   }
 
   /**
@@ -164,7 +194,8 @@ class MealPlanner extends YummyRecipesComponent {
       // Add button click listener
       addButton.addEventListener("click", () => {
         // Bring up search sidebar when add button clicked
-        this.shadowRoot.getElementById("search-part").style.display = "block";
+        this.shadowRoot.getElementById("search-sidebar").style.display =
+          "block";
       });
 
       plannerCell.append(addButton);
@@ -174,25 +205,22 @@ class MealPlanner extends YummyRecipesComponent {
 
       // Update URL
       this.setUrl(plannerCellIndex, -1);
+
+      // Update sharing text box
+      this.shadowRoot.getElementById("link-field").value = window.location.href;
     });
   }
 
   /**
-   * Adds meal planner recipe card to cell.
+   * Adds meal planner recipe card to cell using recipe object.
    *
-   * @async
    * @param {Object} plannerCell - Cell to append card to.
-   * @param {number} index - Index of recipe object in database.
+   * @param {Object} recipe - Recipe object.
    */
-  async addRecipeToCell(plannerCell, index) {
-    // Get recipe from database
-    const db = new Database();
-    const recipe = await db.getRecipe(index);
-
+  addRecipeToCell(plannerCell, recipe) {
     // Create meal planner recipe card
     const card = document.createElement("meal-planner-recipe-card");
     card.recipeData = recipe;
-    card.recipeIndex = index;
 
     // Clear out any existing cards
     plannerCell.innerHTML = "";
@@ -200,6 +228,21 @@ class MealPlanner extends YummyRecipesComponent {
 
     // Update total nutrition
     this.updateNutrition();
+  }
+
+  /**
+   * Adds meal planner recipe card to cell using recipe index.
+   *
+   * @async
+   * @param {Object} plannerCell - Cell to append card to.
+   * @param {number} index - Index of recipe object in database.
+   */
+  async addRecipeToCellWithDB(plannerCell, index) {
+    // Get recipe from database
+    const db = new Database();
+    const recipe = await db.getRecipe(index);
+
+    this.addRecipeToCell(plannerCell, recipe);
   }
 
   /**
@@ -216,10 +259,13 @@ class MealPlanner extends YummyRecipesComponent {
       const index = event.dataTransfer.getData("text/plain");
 
       // Add recipe card
-      this.addRecipeToCell(plannerCell, index);
+      this.addRecipeToCellWithDB(plannerCell, index);
 
       // Change URL
       this.setUrl(plannerCellIndex, index);
+
+      // Firefox is special so it needs this line
+      event.preventDefault();
     });
   }
 
@@ -242,7 +288,10 @@ class MealPlanner extends YummyRecipesComponent {
       // Iterate on row
       for (let j = 0; j < 3; j++) {
         // Skip cell if there is no recipe
-        if (!plannerCells[7 * j + i].children[0].recipe) {
+        if (
+          !plannerCells[7 * j + i].children[0] ||
+          !plannerCells[7 * j + i].children[0].recipe
+        ) {
           continue;
         }
 
@@ -270,13 +319,9 @@ class MealPlanner extends YummyRecipesComponent {
    * @returns {Array|undefined} Array of recipe ids or undefined if failed.
    */
   getParams() {
-    // Get params
-    const paramString = window.location.href.split("?")[1];
-    const searchParams = new URLSearchParams(paramString);
-
     // Check if "ids" exists as a query string parameter
-    if (searchParams.has("ids")) {
-      const ids = searchParams.get("ids").split(",").map(Number);
+    if (this.routeUrlParams.ids) {
+      const ids = this.routeUrlParams.ids.split(",").map(Number);
 
       // Check if there are exactly 21 numbers
       if (ids.length === 21 && ids.every((val) => !isNaN(val))) {
@@ -294,23 +339,31 @@ class MealPlanner extends YummyRecipesComponent {
    * @param {number} recipeIndex - The replacement value of the id.
    */
   setUrl(paramIndex, recipeIndex) {
-    // Get params
-    const paramString = window.location.href.split("?")[1];
-    const searchParams = new URLSearchParams(paramString);
-
     // Replace id
-    const ids = searchParams.get("ids").split(",");
+    const ids = this.routeUrlParams.ids.split(",");
     ids[paramIndex] = recipeIndex;
 
-    const newIds = ids.join(",");
-
-    // Get URL and remove query string
-    const url = window.location.href;
-    let newUrl = url.slice(0, url.indexOf("?"));
-    newUrl += "?ids=" + newIds;
+    this.routeUrlParams.ids = ids.join(",");
 
     // Push new URL
-    history.pushState({}, "", newUrl);
+    const routerEvent = new CustomEvent("router-navigate", {
+      detail: {
+        route: "meal-planner",
+        params: [],
+        urlParams: this.routeUrlParams,
+        preventLoad: true,
+      },
+      bubbles: true,
+      composed: true,
+    });
+    this.dispatchEvent(routerEvent);
+
+    // Update sharing text box
+    this.shadowRoot.getElementById("link-field").value = window.location.href;
+
+    // Hide copy message
+    this.shadowRoot.getElementById("copy-message").style.display = "none";
+    return;
   }
 }
 
