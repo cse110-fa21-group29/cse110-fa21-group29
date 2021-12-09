@@ -151,19 +151,6 @@ class CookingMode extends YummyRecipesComponent {
           this.switchToText();
         });
     }
-
-    // if (recipe.metadata.video && recipe.metadata.video !== "") {
-    //   this.shadowRoot.getElementById(
-    //     "direction-video-container"
-    //   ).style.display = "block";
-    //   const recipeVideoElement = document.createElement("iframe");
-    //   recipeVideoElement.setAttribute("id", "direction-video");
-    //   recipeVideoElement.setAttribute("allowfullscreen", "true");
-    //   recipeVideoElement.setAttribute("src", recipe.metadata.video);
-    //   this.shadowRoot
-    //     .getElementById("direction-video-container")
-    //     .appendChild(recipeVideoElement);
-    // }
   }
 
   /**
