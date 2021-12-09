@@ -122,18 +122,48 @@ class CookingMode extends YummyRecipesComponent {
       this.recipeSteps.push("/static/common/defaultimg.jpeg");
     }
 
-    if (recipe.metadata.video && recipe.metadata.video !== "") {
-      this.shadowRoot.getElementById(
-        "direction-video-container"
-      ).style.display = "block";
+    // Add video embed to directions if video exists
+    // Will not show by default (user must click "Switch to Video")
+    if (recipe.metadata.video && recipe.metadata.video != "") {
       const recipeVideoElement = document.createElement("iframe");
-      recipeVideoElement.setAttribute("id", "direction-video");
+      recipeVideoElement.setAttribute("id", "recipe-video");
       recipeVideoElement.setAttribute("allowfullscreen", "true");
       recipeVideoElement.setAttribute("src", recipe.metadata.video);
       this.shadowRoot
-        .getElementById("direction-video-container")
+        .getElementById("recipe-video-container")
         .appendChild(recipeVideoElement);
+
+      // Display video button
+      this.shadowRoot.getElementById("direction-video-button").style.display =
+        "block";
+
+      // Event handler for video button
+      this.shadowRoot
+        .getElementById("direction-video-button")
+        .addEventListener("click", () => {
+          this.switchToVideo();
+        });
+
+      // Event handler for text button
+      this.shadowRoot
+        .getElementById("direction-text-button")
+        .addEventListener("click", () => {
+          this.switchToText();
+        });
     }
+
+    // if (recipe.metadata.video && recipe.metadata.video !== "") {
+    //   this.shadowRoot.getElementById(
+    //     "direction-video-container"
+    //   ).style.display = "block";
+    //   const recipeVideoElement = document.createElement("iframe");
+    //   recipeVideoElement.setAttribute("id", "direction-video");
+    //   recipeVideoElement.setAttribute("allowfullscreen", "true");
+    //   recipeVideoElement.setAttribute("src", recipe.metadata.video);
+    //   this.shadowRoot
+    //     .getElementById("direction-video-container")
+    //     .appendChild(recipeVideoElement);
+    // }
   }
 
   /**
@@ -228,6 +258,38 @@ class CookingMode extends YummyRecipesComponent {
 
     this.setTime();
     this.totalTime -= 1;
+  }
+
+  /**
+   * Switches from text directions to video directions
+   */
+  switchToVideo() {
+    // Toggle buttons
+    this.shadowRoot.getElementById("direction-video-button").style.display =
+      "none";
+    this.shadowRoot.getElementById("direction-text-button").style.display =
+      "block";
+
+    // Show video & hide text
+    this.shadowRoot.getElementById("direction-written").style.display = "none";
+    this.shadowRoot.getElementById("recipe-video-container").style.display =
+      "block";
+  }
+
+  /**
+   * Switches from video directions to text directions
+   */
+  switchToText() {
+    // Toggle buttons
+    this.shadowRoot.getElementById("direction-video-button").style.display =
+      "block";
+    this.shadowRoot.getElementById("direction-text-button").style.display =
+      "none";
+
+    // Show video & hide text
+    this.shadowRoot.getElementById("direction-written").style.display = "block";
+    this.shadowRoot.getElementById("recipe-video-container").style.display =
+      "none";
   }
 
   /**

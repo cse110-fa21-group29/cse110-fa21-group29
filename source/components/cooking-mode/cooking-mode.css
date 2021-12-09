@@ -1,10 +1,11 @@
 #top-grid,
 #bottom-grid {
-  display: flex;
+  /* display: flex; */
   text-align: center;
 }
 
 #top-grid {
+  display: flex;
   padding-top: 40px;
   padding-left: 40px;
 }
@@ -96,26 +97,81 @@
   transform: translateY(4px);
 }
 
-#direction-text {
-  width: 58vw;
+/* 
+NEW CODE
+*/
+
+.direction-title {
+  display: flex;
+  margin-left: 10px;
+  margin-right: 10px;
+  column-gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.first-row-button {
+  cursor: pointer;
+  padding: 10px;
+  font-size: 20px;
+  margin: 5px 0 0 0;
+}
+
+.first-row-button {
+  transition-duration: 0.5s;
+  background-color: #ffa4a4;
+  color: white;
   border: #ffa4a4 solid 1px;
+  border-radius: 5px;
+}
+
+.first-row-button:hover {
+  background-color: white;
+  color: black;
+  border: #ffa4a4 solid 1px;
+}
+
+.first-row-button:active {
+  transform: scale(0.6);
+}
+
+.detail-box {
+  max-width: 1024px;
+  margin: 5vh auto;
+  width: 80vw;
+  padding: 30px;
+  margin-top: 30px;
+}
+
+/* 
+NEW CODE
+*/
+
+#direction-text {
+  max-width: 1024px;
+  margin: 5vh auto;
+  width: 80vw;
+  margin-top: 10px;
+  border: 1px solid #ffa4a4;
   border-radius: 10px;
-  margin: 10px;
+  box-shadow: 0px 4px 4px rgba(255, 164, 164, 0.24);
+
   height: 60vh;
-  padding: 1vw;
   font-size: 3.5vw;
   overflow-y: scroll;
 }
 
 #direction-image {
-  width: 58vw;
-  border: #ffa4a4 solid 1px;
+  max-width: 1024px;
+  margin: 5vh auto;
+  width: 80vw;
+  padding: 30px;
+  margin-top: 10px;
+  border: 1px solid #ffa4a4;
   border-radius: 10px;
-  margin: 10px;
+  box-shadow: 0px 4px 4px rgba(255, 164, 164, 0.24);
   height: 60vh;
-  padding: 1vw;
   font-size: 3.5vw;
-  overflow-y: scroll;
 }
 
 #direction-img {
@@ -126,10 +182,10 @@
   height: auto;
 }
 
-#direction-video {
+/* #direction-video {
   height: 45%;
   width: 100%;
-}
+} */
 
 #direction-img {
   border: solid black 1px;
@@ -137,7 +193,7 @@
 }
 
 /* Do not change display: none */
-#direction-video-container {
+#recipe-video-container {
   margin-top: 10px;
   display: none;
   position: relative;
@@ -147,7 +203,7 @@
   overflow: hidden;
 }
 
-#direction-video {
+#recipe-video {
   position: absolute;
   top: 0;
   left: 0;
@@ -166,7 +222,6 @@
   border-radius: 50%;
   width: 3vw;
   height: 3vw;
-  margin: 10px;
   color: white;
   font-size: 1vw;
   line-height: 3vw;
