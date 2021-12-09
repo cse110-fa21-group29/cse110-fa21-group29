@@ -1,100 +1,10 @@
-#top-grid,
-#bottom-grid {
-  /* display: flex; */
-  text-align: center;
-}
-
-#top-grid {
-  display: flex;
-  padding-top: 40px;
-  padding-left: 40px;
-}
-
-#timer {
-  align-items: center;
-  width: 45vw;
-  height: 30vh;
-  border: solid #ffa4a4 1px;
-  border-radius: 20px;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-
-#timer-display {
-  width: 100%;
-  font-size: 8vw;
-}
-
-#timer-button-grid {
-  width: 50%;
+#cooking-mode {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  position: absolute;
-  bottom: 2vh;
+  margin: 5vh 2vw;
 }
 
-#start-pause-button,
-#reset-button {
-  transition-duration: 0.5s;
-  background-color: #ffa4a4;
-  border: #ffa4a4 solid 1px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 45;
-  color: white;
-  width: 145px;
-  margin-left: 1vw;
-}
-#timer-display-container {
-  height: 80%;
-}
-
-#timer-button-grid button:hover {
-  color: black;
-  background-color: white;
-}
-
-#back-button,
-#next-button {
-  height: 20vh;
-  margin: auto;
-  border-radius: 20px;
-  font-size: 75px;
-  color: white;
-  cursor: pointer;
-  border: none;
-  box-shadow: 0 9px #999;
-  flex: 0.4;
-}
-
-#back-button {
-  background-color: F93F3F;
-}
-
-#back-button:hover {
-  background-color: rgb(226, 28, 13);
-}
-
-#back-button:active {
-  background-color: rgb(226, 28, 13);
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
-}
-
-#next-button {
-  background-color: #2cb82c;
-}
-
-#next-button:hover {
-  background-color: rgb(0, 124, 0);
-}
-
-#next-button:active {
-  background-color: rgb(0, 124, 0);
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
+#direction-photo-video {
 }
 
 /* 
@@ -103,8 +13,6 @@ NEW CODE
 
 .direction-title {
   display: flex;
-  margin-left: 10px;
-  margin-right: 10px;
   column-gap: 10px;
   align-items: center;
   justify-content: space-between;
@@ -114,7 +22,7 @@ NEW CODE
   cursor: pointer;
   padding: 10px;
   font-size: 20px;
-  margin: 5px 0 0 0;
+  margin: 0;
 }
 
 .first-row-button {
@@ -135,12 +43,10 @@ NEW CODE
   transform: scale(0.6);
 }
 
-.detail-box {
+.direction-box {
+  text-align: center;
   max-width: 1024px;
-  margin: 5vh auto;
   width: 80vw;
-  padding: 30px;
-  margin-top: 30px;
 }
 
 /* 
@@ -165,7 +71,6 @@ NEW CODE
   max-width: 1024px;
   margin: 5vh auto;
   width: 80vw;
-  padding: 30px;
   margin-top: 10px;
   border: 1px solid #ffa4a4;
   border-radius: 10px;
@@ -181,11 +86,6 @@ NEW CODE
   width: auto;
   height: auto;
 }
-
-/* #direction-video {
-  height: 45%;
-  width: 100%;
-} */
 
 #direction-img {
   border: solid black 1px;
@@ -227,16 +127,55 @@ NEW CODE
   line-height: 3vw;
 }
 
-main {
-  min-height: 100%;
-  padding: 10px;
+/* The time and directions buttons */
+
+#timer-direction-buttons {
+  display: flex;
+  padding-left: 40px;
+  flex-direction: column;
+  text-align: center;
+}
+
+/* The timer */
+
+#timer {
+  align-items: center;
+  width: max-content;
+  height: 30vh;
+  border: solid #ffa4a4 1px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+#timer-display {
+  width: 100%;
+  font-size: 8vw;
+}
+
+#timer-button-grid {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  position: absolute;
+  bottom: 2vh;
+}
+
+#timer-display-container {
+  height: 80%;
+}
+
+#timer-button-grid button:hover {
+  color: black;
+  background-color: white;
 }
 
 #time-input-container {
   display: flex;
   flex-direction: row;
   height: 75%;
-  width: 20%;
+  width: 500px;
   justify-content: space-evenly;
   margin: 0 auto;
   font-size: 20px;
@@ -248,15 +187,70 @@ main {
   width: 140px;
 }
 
-#back-next-container {
-  width: 650px;
-  margin-left: auto;
-  margin-bottom: 125px;
-  display: flex;
-}
-
 #input-hours-label,
 #input-minutes-label,
 #input-seconds-label {
   font-size: 120%;
+}
+
+#start-pause-button,
+#reset-button {
+  transition-duration: 0.5s;
+  background-color: #ffa4a4;
+  border: #ffa4a4 solid 1px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 45;
+  color: white;
+  width: 145px;
+  margin-left: 1vw;
+}
+
+/* Direction buttons */
+
+.direction-button {
+  margin-top: 1vw;
+  height: 200px;
+  width: 500px;
+  border-radius: 20px;
+  font-size: 75px;
+  color: white;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 9px #999;
+}
+
+#back-button {
+  background-color: #f93f3f;
+}
+
+#back-button:hover {
+  background-color: rgb(226, 28, 13);
+}
+
+#back-button:active {
+  background-color: rgb(226, 28, 13);
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+#next-button {
+  background-color: #2cb82c;
+}
+
+#next-button:hover {
+  background-color: rgb(0, 124, 0);
+}
+
+#next-button:active {
+  background-color: rgb(0, 124, 0);
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+#back-next-container {
+  width: 650px;
+  margin-bottom: 125px;
+  display: flex;
+  flex-direction: column;
 }

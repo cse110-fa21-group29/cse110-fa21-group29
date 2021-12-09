@@ -1,6 +1,34 @@
 <link rel="stylesheet" href="components/cooking-mode/cooking-mode.css" />
-<main>
-  <section id="top-grid">
+<div id="cooking-mode">
+  <div class="direction-box">
+    <div class="direction-title">
+      <div id="number">1</div>
+      <button
+        id="direction-video-button"
+        class="first-row-button"
+        style="display: none"
+      >
+        Switch to Video
+      </button>
+      <button
+        id="direction-text-button"
+        class="first-row-button"
+        style="display: none"
+      >
+        Switch to Text
+      </button>
+    </div>
+    <div id="direction-written" style="display: block">
+      <div id="direction-text" style="display: block"></div>
+      <div id="direction-image" style="display: none">
+        <div id="image-title">Bon Appétit!</div>
+        <img src="" id="direction-img" alt="" />
+      </div>
+    </div>
+    <div id="recipe-video-container"></div>
+  </div>
+
+  <div id="timer-direction-buttons">
     <div id="timer">
       <div id="timer-display-container">
         <time id="timer-display"></time><br />
@@ -43,38 +71,8 @@
       </div>
     </div>
     <div id="back-next-container">
-      <button id="back-button">Back</button>
-      <button id="next-button">Next</button>
+      <button id="next-button" class="direction-button">Next</button>
+      <button id="back-button" class="direction-button">Back</button>
     </div>
-  </section>
-
-  <section id="bottom-grid">
-    <div class="direction-box detail-box">
-      <div class="direction-title">
-        <div id="number">1</div>
-        <button
-          id="direction-video-button"
-          class="first-row-button"
-          style="display: block"
-        >
-          Switch to Video
-        </button>
-        <button
-          id="direction-text-button"
-          class="first-row-button"
-          style="display: none"
-        >
-          Switch to Text
-        </button>
-      </div>
-      <div id="direction-written" style="display: block">
-        <div id="direction-text" style="display: block"></div>
-        <div id="direction-image" style="display: none">
-          <div id="image-title">Bon Appétit!</div>
-          <img src="" id="direction-img" alt="" />
-        </div>
-      </div>
-      <div id="recipe-video-container"></div>
-    </div>
-  </section>
-</main>
+  </div>
+</div>
