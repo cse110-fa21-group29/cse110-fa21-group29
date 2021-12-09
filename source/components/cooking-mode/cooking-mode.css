@@ -118,7 +118,11 @@
   overflow-y: scroll;
 }
 
-#direction-img,
+#direction-img {
+  height: max-content;
+  width: max-content;
+}
+
 #direction-video {
   height: 45%;
   width: 100%;

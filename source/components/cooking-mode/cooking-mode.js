@@ -110,7 +110,7 @@ class CookingMode extends YummyRecipesComponent {
     this.shadowRoot.getElementById("direction").innerText = this.recipeSteps[0];
 
     // Populate image and video (if included)
-    // this.shadowRoot.getElementById("direction-img").alt = recipe.metadata.title;
+    this.shadowRoot.getElementById("direction-img").alt = recipe.metadata.title;
     if (recipe.metadata.image && recipe.metadata.image !== "") {
       this.shadowRoot.getElementById("direction-img").src =
         recipe.metadata.image;
