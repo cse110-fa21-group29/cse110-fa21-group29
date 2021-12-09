@@ -1,53 +1,234 @@
-#top-grid,
-#bottom-grid {
+/* Cooking Mode Page */
+#cooking-mode {
   display: flex;
+  flex-direction: row;
+  margin: 5vh 5vh;
+  height: 100%;
+}
+
+/* Directions/Image/Video */
+.direction-box {
   text-align: center;
+  width: 60%;
+  height: 100%;
 }
 
-#top-grid {
-  padding-top: 40px;
-  padding-left: 40px;
+/* Directions Title */
+.direction-title {
+  display: flex;
+  column-gap: 10px;
+  align-items: center;
 }
 
+/* Step Number */
+#number {
+  background-color: black;
+  border-radius: 50%;
+  width: 3vw;
+  height: 3vw;
+  color: white;
+  font-size: 150%;
+  line-height: 3vw;
+  flex-shrink: 0;
+}
+
+#direction-recipe-title {
+  font-size: xx-large;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  flex-grow: 1;
+}
+
+/* Video/Text Directions Buttons */
+.first-row-button {
+  cursor: pointer;
+  padding: 10px;
+  font-size: 20px;
+  margin: 0;
+  transition-duration: 0.5s;
+  background-color: #ffa4a4;
+  color: white;
+  border: #ffa4a4 solid 1px;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.first-row-button:hover {
+  background-color: white;
+  color: black;
+  border: #ffa4a4 solid 1px;
+}
+
+.first-row-button:active {
+  transform: scale(0.6);
+}
+
+/* Direction Written (Text and Image) */
+#direction-written {
+  margin: 5vh auto;
+  width: 100%;
+  height: 80%;
+  margin-top: 10px;
+  border: 1px solid #ffa4a4;
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px rgba(255, 164, 164, 0.24);
+  font-size: 3vw;
+  overflow: hidden;
+}
+
+/* Direction Text */
+#direction-text {
+  height: 100%;
+  overflow-y: scroll;
+}
+
+#directions {
+  margin: 1.5vw;
+  text-align: left;
+}
+
+/* Image Title */
+#image-title {
+  margin: 1.5vw;
+}
+
+/* Recipe Finished Image */
+#direction-img {
+  margin-top: 1vw;
+  max-width: 90%;
+  max-height: 48vh;
+  width: auto;
+  height: auto;
+  border: solid black 1px;
+  object-fit: cover;
+}
+
+/* Directions Video */
+/* Do not change display: none */
+#recipe-video-container {
+  margin-top: 10px;
+  display: none;
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#recipe-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Timer and Next/Back Buttons */
+#timer-box {
+  display: flex;
+  padding-left: 5vh;
+  flex-direction: column;
+  text-align: center;
+  height: 100%;
+  width: 40%;
+}
+
+/* Timer Container */
 #timer {
   align-items: center;
-  width: 45vw;
-  height: 30vh;
+  width: 100%;
+  height: 35%;
   border: solid #ffa4a4 1px;
-  border-radius: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px rgba(255, 164, 164, 0.24);
   display: flex;
   flex-direction: column;
   position: relative;
 }
 
-#timer-display {
+/* Timer Display Container */
+#timer-display-container {
+  height: 60%;
   width: 100%;
-  font-size: 8vw;
 }
 
-#timer-button-grid {
-  width: 50%;
+/* Timer Display */
+#timer-display {
+  margin-top: 1vh;
+  width: 100%;
+  height: max-content;
+  font-size: 7.5vw;
+  justify-content: center;
+}
+
+/* Timer Input Container */
+#time-input-container {
+  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  position: absolute;
-  bottom: 2vh;
+  justify-content: space-evenly;
+  margin: 0 auto;
+  font-size: 20px;
 }
 
+/* Timer Input */
+.time-input {
+  height: 100%;
+  margin: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hours, Minutes, Seconds Labels */
+#input-hours-label,
+#input-minutes-label,
+#input-seconds-label {
+  font-size: 100%;
+  justify-content: center;
+}
+
+#input-hours,
+#input-minutes,
+#input-seconds {
+  width: 100%;
+  height: 50%;
+  justify-content: center;
+  font-size: 250%;
+  text-align: center;
+  border-radius: 10px;
+}
+
+/* Timer Button Grid */
+#timer-button-grid {
+  height: 40%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+/* Start/Pause and Reset Buttons */
 #start-pause-button,
 #reset-button {
+  height: 100%;
+  width: 30%;
+  min-width: min-content;
   transition-duration: 0.5s;
   background-color: #ffa4a4;
   border: #ffa4a4 solid 1px;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
   font-size: 45;
   color: white;
-  width: 145px;
-  margin-left: 1vw;
 }
-#timer-display-container {
-  height: 80%;
+
+#start-pause-button {
+  margin-right: 5vw;
 }
 
 #timer-button-grid button:hover {
@@ -55,34 +236,30 @@
   background-color: white;
 }
 
-#back-button,
-#next-button {
-  height: 20vh;
-  margin: auto;
-  border-radius: 20px;
+/* Back-Next Container */
+#back-next-container {
+  width: 100%;
+  height: 65%;
+  margin-bottom: 125px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Direction buttons */
+.direction-button {
+  height: 40%;
+  width: 100%;
+  border-radius: 10px;
   font-size: 75px;
   color: white;
   cursor: pointer;
   border: none;
   box-shadow: 0 9px #999;
-  flex: 0.4;
 }
 
-#back-button {
-  background-color: F93F3F;
-}
-
-#back-button:hover {
-  background-color: rgb(226, 28, 13);
-}
-
-#back-button:active {
-  background-color: rgb(226, 28, 13);
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
-}
-
+/* Next Button */
 #next-button {
+  margin-top: 40px;
   background-color: #2cb82c;
 }
 
@@ -96,93 +273,18 @@
   transform: translateY(4px);
 }
 
-#direction {
-  width: 58vw;
-  border: solid black 1px;
-  border-radius: 10px;
-  margin: 10px;
-  height: 60vh;
-  padding: 1vw;
-  font-size: 3.5vw;
-  overflow-y: scroll;
-}
-#direction-img,
-#direction-video {
-  height: 45%;
-  width: 100%;
+/* Back Button */
+#back-button {
+  margin-top: 20px;
+  background-color: #f93f3f;
 }
 
-#direction-img {
-  border: solid black 1px;
-  object-fit: cover;
+#back-button:hover {
+  background-color: rgb(226, 28, 13);
 }
 
-/* Do not change display: none */
-#direction-video-container {
-  margin-top: 10px;
-  display: none;
-  position: relative;
-  width: 100%;
-  padding-bottom: 56.25%;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-#direction-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
-
-#img-and-video {
-  align-items: center;
-  width: 30vw;
-}
-
-#number {
-  background-color: black;
-  border-radius: 50%;
-  width: 5vw;
-  height: 5vw;
-  margin: 10px;
-  color: white;
-  font-size: 2vw;
-  line-height: 5vw;
-}
-
-main {
-  min-height: 100%;
-  padding: 10px;
-}
-
-#time-input-container {
-  display: flex;
-  flex-direction: row;
-  height: 75%;
-  width: 20%;
-  justify-content: space-evenly;
-  margin: 0 auto;
-  font-size: 20px;
-}
-
-#time-input-container > span input {
-  height: 40%;
-  margin: 10px;
-  width: 140px;
-}
-
-#back-next-container {
-  width: 650px;
-  margin-left: auto;
-  margin-bottom: 125px;
-  display: flex;
-}
-
-#input-hours-label,
-#input-minutes-label,
-#input-seconds-label {
-  font-size: 120%;
+#back-button:active {
+  background-color: rgb(226, 28, 13);
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }
