@@ -110,13 +110,15 @@ class CookingMode extends YummyRecipesComponent {
     this.shadowRoot.getElementById("direction").innerText = this.recipeSteps[0];
 
     // Populate image and video (if included)
-    this.shadowRoot.getElementById("direction-img").alt = recipe.metadata.title;
+    // this.shadowRoot.getElementById("direction-img").alt = recipe.metadata.title;
     if (recipe.metadata.image && recipe.metadata.image !== "") {
       this.shadowRoot.getElementById("direction-img").src =
         recipe.metadata.image;
+      this.recipeSteps.push(recipe.metadata.image);
     } else {
       this.shadowRoot.getElementById("direction-img").src =
         "/static/common/defaultimg.jpeg";
+      this.recipeSteps.push("/static/common/defaultimg.jpeg");
     }
 
     if (recipe.metadata.video && recipe.metadata.video !== "") {
@@ -232,6 +234,8 @@ class CookingMode extends YummyRecipesComponent {
    */
   nextStep() {
     if (++this.currentStep === this.recipeSteps.length) {
+      this.shadowRoot.getElementById("direction").style.display = "none";
+      this.shadowRoot.getElementById("direction-image").style.display = "block";
       this.hideNextButton();
     }
     this.showBackButton();
@@ -254,9 +258,15 @@ class CookingMode extends YummyRecipesComponent {
    * Changes step on page to the previous step.
    */
   backStep() {
+    if (this.currentStep === this.recipeSteps.length) {
+      this.shadowRoot.getElementById("direction").style.display = "block";
+      this.shadowRoot.getElementById("direction-image").style.display = "none";
+    }
+
     if (--this.currentStep === 1) {
       this.hideBackButton();
     }
+
     this.showNextButton();
     this.shadowRoot.getElementById("number").innerText = this.currentStep;
     this.shadowRoot.getElementById("direction").innerText =
