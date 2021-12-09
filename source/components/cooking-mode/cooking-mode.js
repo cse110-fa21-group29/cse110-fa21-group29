@@ -124,7 +124,7 @@ class CookingMode extends YummyRecipesComponent {
 
     // Add video embed to directions if video exists
     // Will not show by default (user must click "Switch to Video")
-    if (recipe.metadata.video && recipe.metadata.video != "") {
+    if (recipe.metadata.video && recipe.metadata.video !== "") {
       const recipeVideoElement = document.createElement("iframe");
       recipeVideoElement.setAttribute("id", "recipe-video");
       recipeVideoElement.setAttribute("allowfullscreen", "true");
