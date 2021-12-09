@@ -305,10 +305,12 @@ export class Database {
       matchingRecipes.push(categoryGroup);
     }
 
+    // The following two functions are helpers for the succeeding loop
+
     /**
      * Checks to see if any user defined words are in the title of a recipe
      * @param {Array} words - Words array made by user input
-     * @param {int} index - Recipe index
+     * @param {number} index - Recipe index
      * @returns {boolean} - Whether any of the words in array words is in the title of a recipe
      */
      function matchingWords(words, index) {
