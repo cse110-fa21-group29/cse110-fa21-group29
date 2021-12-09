@@ -3,9 +3,15 @@
 <main>
   <h1 id="title">Weekly Meal Planner</h1>
   <div id="header">
-    For the week of
-    <input type="text" id="week-number" placeholder="Enter the Week" />
-    <img id="print-button" src="static/meal-planner/circle-print.png" />
+    <br />
+    Sharing link
+    <input id="link-field" type="text" readonly />
+    <img
+      id="copy-link-image"
+      src="static/meal-planner/copy.png"
+      alt="Copy link button"
+    />
+    <span id="copy-message">Copied!</span>
   </div>
   <div id="load-message">
     Loading meal planner… <span id="load-progress">0</span>%

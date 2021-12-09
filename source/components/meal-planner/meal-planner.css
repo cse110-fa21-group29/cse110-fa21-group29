@@ -37,6 +37,24 @@ main {
   top: 5px;
 }
 
+#copy-link-image {
+  margin-right: 3px;
+  cursor: pointer;
+  right: 50px;
+  top: 100px;
+  vertical-align: middle;
+  width: 30px;
+}
+
+#copy-link-image:hover {
+  opacity: 0.7;
+}
+
+#copy-message {
+  color: #008000;
+  display: none;
+}
+
 #flexbox {
   display: flex;
   height: 75vh;
@@ -46,6 +64,14 @@ main {
 
 #instruction {
   margin: 10px;
+}
+
+#link-field {
+  font-size: 16px;
+  height: 2em;
+  margin-left: 5px;
+  margin-right: 7px;
+  width: 15em;
 }
 
 #load-message {
@@ -67,14 +93,6 @@ main {
   grid-template-columns: 1fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr;
   justify-items: center;
   width: 100%;
-}
-
-#print-button {
-  cursor: pointer;
-  right: 50px;
-  top: 100px;
-  vertical-align: middle;
-  width: 60px;
 }
 
 #planner-grid > div {

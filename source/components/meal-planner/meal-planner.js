@@ -128,10 +128,17 @@ class MealPlanner extends YummyRecipesComponent {
         event.preventDefault();
       });
 
-    // Reload page when browser navigation buttons used
-    // window.onpopstate = function () {
-    //  location.reload();
-    // };
+    // Put URL in sharing text box
+    this.shadowRoot.getElementById("link-field").value = window.location.href;
+
+    // Copy link to clipboard button
+    this.shadowRoot
+      .getElementById("copy-link-image")
+      .addEventListener("click", () => {
+        navigator.clipboard.writeText(window.location.href);
+        // Display message
+        this.shadowRoot.getElementById("copy-message").style.display = "inline";
+      });
   }
 
   /**
@@ -198,6 +205,9 @@ class MealPlanner extends YummyRecipesComponent {
 
       // Update URL
       this.setUrl(plannerCellIndex, -1);
+
+      // Update sharing text box
+      this.shadowRoot.getElementById("link-field").value = window.location.href;
     });
   }
 
@@ -347,6 +357,12 @@ class MealPlanner extends YummyRecipesComponent {
       composed: true,
     });
     this.dispatchEvent(routerEvent);
+
+    // Update sharing text box
+    this.shadowRoot.getElementById("link-field").value = window.location.href;
+
+    // Hide copy message
+    this.shadowRoot.getElementById("copy-message").style.display = "none";
     return;
   }
 }
