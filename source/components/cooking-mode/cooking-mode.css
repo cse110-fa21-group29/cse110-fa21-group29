@@ -119,8 +119,11 @@
 }
 
 #direction-img {
-  height: max-content;
-  width: max-content;
+  margin-top: 1vw;
+  max-width: 58vw;
+  max-height: 48vh;
+  width: auto;
+  height: auto;
 }
 
 #direction-video {
