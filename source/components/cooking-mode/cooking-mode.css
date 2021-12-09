@@ -164,12 +164,12 @@
 #number {
   background-color: black;
   border-radius: 50%;
-  width: 5vw;
-  height: 5vw;
+  width: 3vw;
+  height: 3vw;
   margin: 10px;
   color: white;
-  font-size: 2vw;
-  line-height: 5vw;
+  font-size: 1vw;
+  line-height: 3vw;
 }
 
 main {
