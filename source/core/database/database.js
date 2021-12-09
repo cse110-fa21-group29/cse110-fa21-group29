@@ -248,7 +248,7 @@ export class Database {
           };
         }        
       } else if (paramName == "sortcost") {
-        if (paramValue == "desc") {
+        if (param[1] == "desc") {
           compareFunction = function (a, b) {
             // get a total cost
             let aTotalCost =
@@ -269,7 +269,7 @@ export class Database {
               return 0;
             }
           };
-        } else if (paramValue == "asc") {
+        } else if (param[1] == "asc") {
           compareFunction = function (a, b) {
             // get a total cost
             let aTotalCost =
