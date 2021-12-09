@@ -24,6 +24,14 @@ export class YummyRecipesComponent extends HTMLElement {
   }
 
   /**
+   * Sets the routeUrlParams instance variable to the route's url parameters.
+   * @param {string} route - The url parameters for the route (i.e. {query: "chicken"}).
+   */
+  set urlParams(urlParams) {
+    this.routeUrlParams = urlParams;
+  }
+
+  /**
    * Fires when this component is inserted into the DOM.
    *
    * @async
