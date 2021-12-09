@@ -211,7 +211,7 @@ export class Database {
         costMin = param[1];
       } else if (paramName === "costmax") {
         costMax = param[1];
-      } else if (paramName === "sortTime") {
+      } else if (paramName === "sorttime") {
         if (param[1] === "asc") {
           compareFunction = function (a, b) {
             // get a time
