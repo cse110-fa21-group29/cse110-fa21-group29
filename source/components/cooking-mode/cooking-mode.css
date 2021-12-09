@@ -96,9 +96,9 @@
   transform: translateY(4px);
 }
 
-#direction {
+#direction-text {
   width: 58vw;
-  border: solid black 1px;
+  border: #ffa4a4 solid 1px;
   border-radius: 10px;
   margin: 10px;
   height: 60vh;
@@ -109,7 +109,7 @@
 
 #direction-image {
   width: 58vw;
-  border: solid black 1px;
+  border: #ffa4a4 solid 1px;
   border-radius: 10px;
   margin: 10px;
   height: 60vh;

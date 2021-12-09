@@ -107,7 +107,8 @@ class CookingMode extends YummyRecipesComponent {
     this.hideBackButton();
 
     // Populate first step
-    this.shadowRoot.getElementById("direction").innerText = this.recipeSteps[0];
+    this.shadowRoot.getElementById("direction-text").innerText =
+      this.recipeSteps[0];
 
     // Populate image and video (if included)
     this.shadowRoot.getElementById("direction-img").alt = recipe.metadata.title;
@@ -234,13 +235,13 @@ class CookingMode extends YummyRecipesComponent {
    */
   nextStep() {
     if (++this.currentStep === this.recipeSteps.length) {
-      this.shadowRoot.getElementById("direction").style.display = "none";
+      this.shadowRoot.getElementById("direction-text").style.display = "none";
       this.shadowRoot.getElementById("direction-image").style.display = "block";
       this.hideNextButton();
     }
     this.showBackButton();
     this.shadowRoot.getElementById("number").innerText = this.currentStep;
-    this.shadowRoot.getElementById("direction").innerText =
+    this.shadowRoot.getElementById("direction-text").innerText =
       this.recipeSteps[this.currentStep - 1];
   }
 
@@ -259,7 +260,7 @@ class CookingMode extends YummyRecipesComponent {
    */
   backStep() {
     if (this.currentStep === this.recipeSteps.length) {
-      this.shadowRoot.getElementById("direction").style.display = "block";
+      this.shadowRoot.getElementById("direction-text").style.display = "block";
       this.shadowRoot.getElementById("direction-image").style.display = "none";
     }
 
@@ -269,7 +270,7 @@ class CookingMode extends YummyRecipesComponent {
 
     this.showNextButton();
     this.shadowRoot.getElementById("number").innerText = this.currentStep;
-    this.shadowRoot.getElementById("direction").innerText =
+    this.shadowRoot.getElementById("direction-text").innerText =
       this.recipeSteps[this.currentStep - 1];
   }
 
