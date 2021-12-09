@@ -10,7 +10,7 @@ class AboutUs extends YummyRecipesComponent {
    * Initializes the about us page.
    */
   setupElement() {
-    let img = this.shadowRoot.getElementById("introduction-bottom-img");
+    const img = this.shadowRoot.getElementById("introduction-bottom-img");
     img.addEventListener("click", () => {
       if (
         img.style.backgroundImage === 'url("/static/about-us/triscouch.jpg")'
