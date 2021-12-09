@@ -89,7 +89,8 @@ class MealPlanner extends YummyRecipesComponent {
       // Add button click listener
       element.addEventListener("click", () => {
         // Bring up search sidebar when add button clicked
-        this.shadowRoot.getElementById("search-part").style.display = "block";
+        this.shadowRoot.getElementById("search-sidebar").style.display =
+          "block";
       });
     });
 
@@ -115,7 +116,7 @@ class MealPlanner extends YummyRecipesComponent {
     this.shadowRoot
       .getElementById("close-search")
       .addEventListener("click", () => {
-        this.shadowRoot.getElementById("search-part").style.display = "none";
+        this.shadowRoot.getElementById("search-sidebar").style.display = "none";
       });
 
     // Search button
@@ -186,7 +187,8 @@ class MealPlanner extends YummyRecipesComponent {
       // Add button click listener
       addButton.addEventListener("click", () => {
         // Bring up search sidebar when add button clicked
-        this.shadowRoot.getElementById("search-part").style.display = "block";
+        this.shadowRoot.getElementById("search-sidebar").style.display =
+          "block";
       });
 
       plannerCell.append(addButton);
