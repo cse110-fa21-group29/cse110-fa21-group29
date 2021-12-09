@@ -104,7 +104,13 @@ class CookingMode extends YummyRecipesComponent {
       .addEventListener("click", () => {
         this.backStep();
       });
+
+    // Hide back button (since we're on the first step) and
+    // hide next button if less than 2 steps
     this.hideBackButton();
+    if (this.recipeSteps.length < 2) {
+      this.hideNextButton();
+    }
 
     // Populate first step
     this.shadowRoot.getElementById("directions").innerText =
