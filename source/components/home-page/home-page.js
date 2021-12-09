@@ -146,9 +146,9 @@ class HomePage extends YummyRecipesComponent {
   }
 
   /**
-   *
-   * @param {*} scrollleft
-   * @param {*} i
+   * Hide the prev or next button if reach the end
+   * @param {*} scrollleft - scrollleft or right
+   * @param {*} i - button id
    */
   recipeScroll(scrollleft, i) {
     let recipegrid = this.shadowRoot.getElementById("recipe-card-grid-" + i);

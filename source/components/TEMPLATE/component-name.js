@@ -1,5 +1,6 @@
 import { YummyRecipesComponent } from "/components/core/yummy-recipes-component.js";
 
+/** Class that provides functionality to component name. */
 class ComponentName extends YummyRecipesComponent {
   constructor() {
     super();
