@@ -2,27 +2,29 @@
 
 <main>
   <h1 id="title">Weekly Meal Planner</h1>
-  <div id="sub-title">
-    For the week of
-    <input type="text" id="week-number" placeholder="Enter the Week" />
+  <div id="header">
+    <br />
+    Sharing link
+    <input id="link-field" type="text" readonly />
+    <img
+      id="copy-link-image"
+      src="static/meal-planner/copy.png"
+      alt="Copy link button"
+    />
+    <span id="copy-message">Copied!</span>
   </div>
-  <img
-    id="print-button"
-    src="static/meal-planner/circle-print.png"
-    onclick="window.print();"
-  />
   <div id="load-message">
     Loading meal planner… <span id="load-progress">0</span>%
   </div>
   <div id="flexbox">
     <!-- search -->
-    <div id="search-part">
+    <div id="search-sidebar">
       <img id="close-search" src="static/common/close-icon.png" />
       <div id="instruction">Drag card into planner</div>
       <form id="search-input-grid">
         <img id="search-input-icon" src="static/common/search-icon.png" />
         <input type="text" id="search-input" placeholder="Search" />
-        <input type="submit" id="search-button" value="Submit" />
+        <input type="submit" id="search-button" value="Search" />
       </form>
 
       <div id="search-result">
@@ -32,7 +34,7 @@
 
     <section id="planner-grid">
       <!-- day -->
-      <div class="date center">
+      <div class="date top-left-corner">
         <div></div>
       </div>
       <div class="date center">
@@ -53,7 +55,7 @@
       <div class="date center">
         <div>Friday</div>
       </div>
-      <div class="date center">
+      <div class="date center top-right-corner">
         <div>Saturday</div>
       </div>
 
@@ -93,83 +95,83 @@
       <div class="planner-cell"></div>
       <div class="planner-cell"></div>
 
-      <div class="meal center">
+      <div class="meal center bottom-left-corner">
         <div>Total Nutrition</div>
       </div>
       <div class="total-nutrition center">
         <div class="total-nutrition-container">
-          <div class="calory-total">
-            <span class="calories">0</span> Calories
+          <div class="calorie-total">
+            <span class="calories">0</span> calories
           </div>
-          <div class="fat-total"><span class="fat">0</span> of fat</div>
+          <div class="fat-total"><span class="fat">0</span>g fat</div>
           <div class="protein-total">
-            <span class="protein">0</span> of protein
+            <span class="protein">0</span>g protein
           </div>
         </div>
       </div>
       <div class="total-nutrition center">
         <div class="total-nutrition-container">
-          <div class="calory-total">
-            <span class="calories">0</span> Calories
+          <div class="calorie-total">
+            <span class="calories">0</span> calories
           </div>
-          <div class="fat-total"><span class="fat">0</span> of fat</div>
+          <div class="fat-total"><span class="fat">0</span>g fat</div>
           <div class="protein-total">
-            <span class="protein">0</span> of protein
+            <span class="protein">0</span>g protein
           </div>
         </div>
       </div>
       <div class="total-nutrition center">
         <div class="total-nutrition-container">
-          <div class="calory-total">
-            <span class="calories">0</span> Calories
+          <div class="calorie-total">
+            <span class="calories">0</span> calories
           </div>
-          <div class="fat-total"><span class="fat">0</span> of fat</div>
+          <div class="fat-total"><span class="fat">0</span>g fat</div>
           <div class="protein-total">
-            <span class="protein">0</span> of protein
+            <span class="protein">0</span>g protein
           </div>
         </div>
       </div>
       <div class="total-nutrition center">
         <div class="total-nutrition-container">
-          <div class="calory-total">
-            <span class="calories">0</span> Calories
+          <div class="calorie-total">
+            <span class="calories">0</span> calories
           </div>
-          <div class="fat-total"><span class="fat">0</span> of fat</div>
+          <div class="fat-total"><span class="fat">0</span>g fat</div>
           <div class="protein-total">
-            <span class="protein">0</span> of protein
+            <span class="protein">0</span>g protein
           </div>
         </div>
       </div>
       <div class="total-nutrition center">
         <div class="total-nutrition-container">
-          <div class="calory-total">
-            <span class="calories">0</span> Calories
+          <div class="calorie-total">
+            <span class="calories">0</span> calories
           </div>
-          <div class="fat-total"><span class="fat">0</span> of fat</div>
+          <div class="fat-total"><span class="fat">0</span>g fat</div>
           <div class="protein-total">
-            <span class="protein">0</span> of protein
+            <span class="protein">0</span>g protein
           </div>
         </div>
       </div>
       <div class="total-nutrition center">
         <div class="total-nutrition-container">
-          <div class="calory-total">
-            <span class="calories">0</span> Calories
+          <div class="calorie-total">
+            <span class="calories">0</span> calories
           </div>
-          <div class="fat-total"><span class="fat">0</span> of fat</div>
+          <div class="fat-total"><span class="fat">0</span>g fat</div>
           <div class="protein-total">
-            <span class="protein">0</span> of protein
+            <span class="protein">0</span>g protein
           </div>
         </div>
       </div>
-      <div class="total-nutrition center">
+      <div class="total-nutrition center bottom-right-corner">
         <div class="total-nutrition-container">
-          <div class="calory-total">
-            <span class="calories">0</span> Calories
+          <div class="calorie-total">
+            <span class="calories">0</span> calories
           </div>
-          <div class="fat-total"><span class="fat">0</span> of fat</div>
+          <div class="fat-total"><span class="fat">0</span>g fat</div>
           <div class="protein-total">
-            <span class="protein">0</span> of protein
+            <span class="protein">0</span>g protein
           </div>
         </div>
       </div>
