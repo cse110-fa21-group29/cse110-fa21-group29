@@ -1,6 +1,7 @@
 import { YummyRecipesComponent } from "/components/core/yummy-recipes-component.js";
 import { Database } from "/core/database/database.js";
 
+/** Class that provides functionality to the search page. */
 class RecipeSearch extends YummyRecipesComponent {
   constructor() {
     super();
@@ -405,6 +406,7 @@ class RecipeSearch extends YummyRecipesComponent {
     }
   }
 
+  /**Closes the filter */
   clickClose() {
     this.shadowRoot.getElementById("filter-form").style.display = "none";
     this.shadowRoot.getElementById("cover").style.display = "none";
