@@ -15,19 +15,16 @@ class HomePage extends YummyRecipesComponent {
    */
   async setupElement() {
     for (let i = 1; i < 6; i++) {
-      this.shadowRoot
-        .getElementById("prev-button-" + i)
-        .addEventListener("click", () => {
-          this.recipeScroll(true, i);
-        });
+      // grab prev button and add event listener to it
+      const prevButton = this.shadowRoot.getElementById("prev-button-" + i);
+      this.buttonEventListener(prevButton, i, true);
+
       this.shadowRoot.getElementById("prev-button-" + i).style.visibility =
         "hidden";
 
-      this.shadowRoot
-        .getElementById("next-button-" + i)
-        .addEventListener("click", () => {
-          this.recipeScroll(false, i);
-        });
+      // grab next button and add event listener to it
+      const nextButton = this.shadowRoot.getElementById("next-button-" + i);
+      this.buttonEventListener(nextButton, i, false);
     }
 
     // Get recipes from database
@@ -39,67 +36,94 @@ class HomePage extends YummyRecipesComponent {
       this.shadowRoot.getElementById("recipe-card-grid-" + i).innerHTML = "";
     }
 
+    // Create an array of recipe object
+    const recipeObjects = [];
+
+    // Fill the array with recipes
+    for (let i = 0; i < recipes.length; i++) {
+      const recipeObject = {
+        index: i,
+        recipe: recipes[i],
+      };
+      recipeObjects.push(recipeObject);
+    }
+
     /**
      * Counter array for each grid with each index being:
      * 0: highProtein, 1: healthy, 2: vegan, 3: vegetarian, 4: glutenFree
      */
     const gridCount = [0, 0, 0, 0, 0];
 
+    // ID array to holds the randomly generated ID for the recipe card
+    const idArray = [];
+
     // Create 20 recipe cards for each category grid populated with database info
-    for (let i = 0; i < recipes.length; i++) {
+    for (let i = 0; i < recipeObjects.length; i++) {
+      // Generate a random ID
+      let id = Math.floor(Math.random() * recipeObjects.length);
+
+      // Check if the is already in the array, if so generate a new random ID
+      while (idArray.includes(id)) {
+        id = Math.floor(Math.random() * recipeObjects.length);
+      }
+      // If ID not in the array, push it to the array
+      idArray.push(id);
+      // Randomly generate recipe
+      const randomItem = recipeObjects[id];
+
       // If recipe does not exist at index, then skip to prevent page from breaking
-      if (recipes[i] == undefined) {
+      if (!randomItem.recipe) {
         continue;
       }
 
       // Check if grid 1 has less than 20 recipe cards and if current recipe is high protein
-      if (gridCount[0] < 20 && recipes[i].categories.highProtein) {
+      if (gridCount[0] < 20 && randomItem.recipe.categories.highProtein) {
         // Increment protein counter
         gridCount[0]++;
         // Add high protein recipe card to grid 1
         this.shadowRoot
           .getElementById("recipe-card-grid-1")
-          .append(this.createRecipeCard(recipes[i], i));
+          .append(this.createRecipeCard(randomItem.recipe, randomItem.index));
       }
 
       // Check if grid 2 has less than 20 recipe cards and if current recipe is healthy
-      if (gridCount[1] < 20 && recipes[i].categories.healthy) {
+      if (gridCount[1] < 20 && randomItem.recipe.categories.healthy) {
         // Increment healthy counter
         gridCount[1]++;
         // Add high protein recipe card to grid 2
         this.shadowRoot
           .getElementById("recipe-card-grid-2")
-          .append(this.createRecipeCard(recipes[i], i));
+          .append(this.createRecipeCard(randomItem.recipe, randomItem.index));
       }
 
       // Check if grid 3 has less than 20 recipe cards and if current recipe is vegan
-      if (gridCount[2] < 20 && recipes[i].categories.vegan) {
+      if (gridCount[2] < 20 && randomItem.recipe.categories.vegan) {
         // Increment vegan counter
         gridCount[2]++;
         // Add high protein recipe card to grid 3
         this.shadowRoot
           .getElementById("recipe-card-grid-3")
-          .append(this.createRecipeCard(recipes[i], i));
+          .append(this.createRecipeCard(randomItem.recipe, randomItem.index));
       }
 
       // Check if grid 4 has less than 20 recipe cards and if current recipe is vegetarian
-      if (gridCount[3] < 20 && recipes[i].categories.vegetarian) {
+      if (gridCount[3] < 20 && randomItem.recipe.categories.vegetarian) {
         // Increment vegetarian counter
         gridCount[3]++;
         // Add high protein recipe card to grid 4
         this.shadowRoot
           .getElementById("recipe-card-grid-4")
-          .append(this.createRecipeCard(recipes[i], i));
+          .append(this.createRecipeCard(randomItem.recipe, randomItem.index));
       }
 
       // Check if grid 5 has less than 20 recipe cards and if current recipe is gluten free
-      if (gridCount[4] < 20 && recipes[i].categories.glutenFree) {
+      if (gridCount[4] < 20 && randomItem.recipe.categories.glutenFree) {
         // Increment gluten free counter
         gridCount[4]++;
         // Add high protein recipe card to grid 5
         this.shadowRoot
           .getElementById("recipe-card-grid-5")
-          .append(this.createRecipeCard(recipes[i], i));
+          .append(this.createRecipeCard(randomItem.recipe, randomItem.index));
       }
 
       // If every grid has been filled then break
@@ -109,6 +133,23 @@ class HomePage extends YummyRecipesComponent {
     }
   }
 
+  /**
+   * Gets a button element and adds an eventListener to it
+   * @param {Object} element - Next Button
+   * @param {int} elementId - Next button id number
+   * @param {boolean} buttonType - false for next, true for back
+   */
+  buttonEventListener(element, elementId, buttonType) {
+    element.addEventListener("click", () => {
+      this.recipeScroll(buttonType, elementId);
+    });
+  }
+
+  /**
+   * Hide the prev or next button if reach the end
+   * @param {*} scrollleft - scrollleft or right
+   * @param {*} i - button id
+   */
   recipeScroll(scrollleft, i) {
     let recipegrid = this.shadowRoot.getElementById("recipe-card-grid-" + i);
     let prevbutton = this.shadowRoot.getElementById("prev-button-" + i);

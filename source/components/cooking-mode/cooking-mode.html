@@ -1,0 +1,89 @@
+<link rel="stylesheet" href="components/cooking-mode/cooking-mode.css" />
+<div id="cooking-mode">
+  <div class="direction-box">
+    <div class="direction-title">
+      <div id="number">1</div>
+      <div id="direction-recipe-title"></div>
+      <button
+        id="direction-video-button"
+        class="first-row-button"
+        style="display: none"
+      >
+        Switch to Video
+      </button>
+      <button
+        id="direction-text-button"
+        class="first-row-button"
+        style="display: none"
+      >
+        Switch to Text
+      </button>
+    </div>
+    <div id="direction-written" style="display: block">
+      <div id="direction-text" style="display: block">
+        <p id="directions"></p>
+      </div>
+      <div id="direction-image" style="display: none">
+        <div id="image-title">Bon Appétit!</div>
+        <img src="" id="direction-img" alt="" />
+      </div>
+    </div>
+    <div id="recipe-video-container"></div>
+  </div>
+
+  <div id="timer-box">
+    <div id="timer">
+      <div id="timer-display-container">
+        <time id="timer-display"></time>
+        <form id="time-input-form">
+          <div id="time-input-container">
+            <span id="input-hours-span" class="time-input">
+              <label id="input-hours-label" for="input-hours">Hours</label>
+              <input type="number" min="0" max="23" step="1" id="input-hours" />
+            </span>
+            <span id="input-minutes-span" class="time-input">
+              <label id="input-minutes-label" for="input-minutes"
+                >Minutes</label
+              >
+              <input
+                type="number"
+                min="0"
+                max="59"
+                step="1"
+                id="input-minutes"
+              />
+            </span>
+            <span id="input-seconds-span" class="time-input">
+              <label id="input-seconds-label" for="input-seconds"
+                >Seconds</label
+              >
+              <input
+                type="number"
+                min="0"
+                max="59"
+                step="1"
+                id="input-seconds"
+              />
+            </span>
+          </div>
+        </form>
+      </div>
+      <div id="timer-button-grid">
+        <button id="start-pause-button">Start</button><br />
+        <button id="reset-button">Reset</button>
+      </div>
+    </div>
+    <div id="back-next-container">
+      <button
+        id="next-button"
+        class="direction-button"
+        style="visibility: visible"
+      >
+        Next
+      </button>
+      <button id="back-button" class="direction-button" style="display: none">
+        Back
+      </button>
+    </div>
+  </div>
+</div>

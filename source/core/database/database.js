@@ -1,12 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.1/firebase-app.js";
 import {
-  collection,
-  getDocs,
-  limit,
-  query,
-  where,
-} from "https://www.gstatic.com/firebasejs/9.4.1/firebase-firestore.js";
-import {
   child,
   get,
   getDatabase,
@@ -19,6 +12,42 @@ const configFile = "/config.json";
 
 /** Class that interfaces with the Firebase realtime database. */
 export class Database {
+  /**
+   * Fetches a single recipe object from database.
+   *
+   * @async
+   * @param {number} index - The index of the recipe in the database.
+   * @returns {(Object|undefined)} A recipe object or undefined if index is undefined.
+   */
+  async getRecipe(index) {
+    // Fetch database credentials
+    let config = await fetch(configFile);
+    config = await config.json();
+
+    // Initialize database connection
+    const app = initializeApp(config.firebaseConfig);
+    const database = getDatabase(app);
+    const dbRef = ref(getDatabase());
+
+    // Get the recipe
+    let recipe = {};
+
+    await get(child(dbRef, `recipes/${index}`))
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          recipe = snapshot.val();
+        } else {
+          recipe = undefined;
+          console.log("No data available");
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+
+    return recipe;
+  }
+
   /**
    * Fetches all recipe objects from database.
    *
@@ -165,158 +194,47 @@ export class Database {
     // get all recipes
     const recipes = await this.getRecipes();
 
-    let phrase = urlParam[0][1];
+    // split input query into array of words
+    let query = urlParam[0][1];
+    const words = query.toLowerCase().split(" ");
 
-    // split input phrase into array of words
-    const words = phrase.toLowerCase().split(" ");
-
-    let matchingRecipes = [];
-
-    // loop through all recipes, add any for which the title inclues one of the input words to the output
-    for (let i = 0; i < recipes.length; ++i) {
-      if (
-        recipes[i] !== null &&
-        typeof recipes[i] !== "undefined" &&
-        Object.prototype.hasOwnProperty.call(recipes[i], "metadata") &&
-        Object.prototype.hasOwnProperty.call(recipes[i].metadata, "title") &&
-        words.some((w) => recipes[i].metadata.title.toLowerCase().includes(w))
-      ) {
-        matchingRecipes.push({ index: i, recipe: recipes[i] });
-      }
-    }
-
-    // contains all categories in url
+    // initialize extra search filters to default parameters
     let categories = [];
+    let costMin = 0;
+    let costMax = Number.MAX_VALUE;
+    let compareFunction = null;
 
-    // loop through all parameters to get all categories
+    // loop through extra search parameters and set filter vars
     for (const param of urlParam) {
-      let specificParam = param[0];
-      // if currParam is glutenFree
-      if (specificParam == "glutenFree") {
-        categories.push(specificParam);
-      }
-      // if currParam is healthy
-      if (specificParam == "healthy") {
-        categories.push(specificParam);
-      }
-      // if currParam is highProtein
-      if (specificParam == "highProtein") {
-        categories.push(specificParam);
-      }
-      // if currParam is vegan
-      if (specificParam == "vegan") {
-        categories.push(specificParam);
-      }
-      // if currParam is vegetarian
-      if (specificParam == "vegetarian") {
-        categories.push(specificParam);
-      }
-    }
-
-    // holds objects that contain categoryCount and the recipe with it
-    let recipePriority = [];
-
-    // loop through all parameters
-    for (const param of urlParam) {
-      // parameter type
-      let specificParam = param[0];
-
-      // parameter value
-      let paramValue = param[1];
-
-      // handles the case if there is costmin
-      if (specificParam == "costmin") {
-        let updateRecipe = [];
-        for (const recipe of matchingRecipes) {
-          // Price per servings * total servings = total cost
-          let totalCost =
-            recipe.recipe.info.pricePerServings *
-            recipe.recipe.nutrients.totalServings;
-          // if totalCost is greater than minCost
-          if (totalCost > paramValue) {
-            updateRecipe.push(recipe);
-          }
-        }
-        // set matchingRecipes to newly sorted updateRecipe
-        matchingRecipes = updateRecipe;
-      }
-
-      // handles the case if there is costmax
-      if (specificParam == "costmax") {
-        let updateRecipe = [];
-        for (const recipe of matchingRecipes) {
-          // Price per servings * total servings = total cost
-          let totalCost =
-            recipe.recipe.info.pricePerServings *
-            recipe.recipe.nutrients.totalServings;
-          // if totalCost is greater than minCost
-          if (totalCost < paramValue) {
-            updateRecipe.push(recipe);
-          }
-        }
-        // set matchingRecipes to newly sorted updateRecipe
-        matchingRecipes = updateRecipe;
-      }
-    }
-
-    // handles the case if there is at least 1 category
-    if (categories.length > 0) {
-      // loop through entire matchingRecipes
-      for (const recipe of matchingRecipes) {
-        let categoryCount = 0;
-        // loop through all categories
-        for (const category of categories) {
-          // if current recipe has category as true
-          if (recipe.recipe.categories[category]) {
-            // increment categoryCount for specific recicpe
-            categoryCount++;
-          }
-        }
-        // push an object with the categoryCount and recipe
-        recipePriority.push({
-          categoryCount: categoryCount,
-          recipe: recipe,
-        });
-      }
-    }
-
-    // sort recipePriority by category count from highest to lowest
-    recipePriority.sort(function (a, b) {
-      if (a.categoryCount > b.categoryCount) {
-        return -1;
-      } else if (b.categoryCount > a.categoryCount) {
-        return 1;
-      } else {
-        return 0;
-      }
-    });
-
-    // hold the recipes that have the requested category/categories
-    let updateRecipe = [];
-    for (const recipe of recipePriority) {
-      if (recipe.categoryCount > 0) {
-        updateRecipe.push(recipe.recipe);
-      }
-    }
-    matchingRecipes = updateRecipe;
-
-    // loop through all parameters
-    for (const param of urlParam) {
-      // parameter type
-      let specificParam = param[0];
-
-      // parameter value
-      let paramValue = param[1];
-
-      // handles the case if there is sorttime
-      if (specificParam == "sorttime") {
-        // handles the case if descending by time
-        if (paramValue == "desc") {
-          matchingRecipes.sort(function (a, b) {
+      const paramName = param[0];
+      if (paramName === "costmin") {
+        costMin = param[1];
+      } else if (paramName === "costmax") {
+        costMax = param[1];
+      } else if (paramName === "sorttime") {
+        if (param[1] === "asc") {
+          compareFunction = function (a, b) {
             // get a time
-            let aTime = a.recipe.info.readyInMinutes;
+            const aTime = a.recipe.info.readyInMinutes;
             // get b time
-            let bTime = b.recipe.info.readyInMinutes;
+            const bTime = b.recipe.info.readyInMinutes;
+            // sort a before b
+            if (aTime > bTime) {
+              return 1;
+            }
+            // sort b before a
+            else if (bTime > aTime) {
+              return -1;
+            }
+            // keep original order
+            return 0;
+          };
+        } else if (param[1] === "desc") {
+          compareFunction = function (a, b) {
+            // get a time
+            const aTime = a.recipe.info.readyInMinutes;
+            // get b time
+            const bTime = b.recipe.info.readyInMinutes;
             // sort a before b
             if (aTime > bTime) {
               return -1;
@@ -326,39 +244,12 @@ export class Database {
               return 1;
             }
             // keep original order
-            else {
-              return 0;
-            }
-          });
+            return 0;
+          };
         }
-        // handles the case if ascending by time
-        if (paramValue == "asc") {
-          matchingRecipes.sort(function (a, b) {
-            // get a time
-            let aTime = a.recipe.info.readyInMinutes;
-            // get b time
-            let bTime = b.recipe.info.readyInMinutes;
-            // sort b before a
-            if (aTime > bTime) {
-              return 1;
-            }
-            // sort a before b
-            else if (bTime > aTime) {
-              return -1;
-            }
-            // keep original order
-            else {
-              return 0;
-            }
-          });
-        }
-      }
-
-      // handles the case if there is sortcost
-      if (specificParam == "sortcost") {
-        // handles the case if descending by cost
-        if (paramValue == "desc") {
-          matchingRecipes.sort(function (a, b) {
+      } else if (paramName === "sortcost") {
+        if (param[1] === "desc") {
+          compareFunction = function (a, b) {
             // get a total cost
             let aTotalCost =
               a.recipe.info.pricePerServings * a.recipe.nutrients.totalServings;
@@ -377,11 +268,9 @@ export class Database {
             else {
               return 0;
             }
-          });
-        }
-        // handles the case if ascending by cost
-        if (paramValue == "asc") {
-          matchingRecipes.sort(function (a, b) {
+          };
+        } else if (param[1] === "asc") {
+          compareFunction = function (a, b) {
             // get a total cost
             let aTotalCost =
               a.recipe.info.pricePerServings * a.recipe.nutrients.totalServings;
@@ -396,10 +285,88 @@ export class Database {
             } else {
               return 0;
             }
-          });
+          };
         }
+      } else if (
+        paramName === "glutenFree" ||
+        paramName === "health" ||
+        paramName === "highProtein" ||
+        paramName === "vegan" ||
+        paramName === "vegetarian"
+      ) {
+        categories.push(paramName);
       }
     }
-    return matchingRecipes;
+
+    // initialize matrix of matching recipes:
+    // M[i, j] = jth recipe which matches i categories
+    let matchingRecipes = [];
+    for (let i = 0; i <= categories.length; ++i) {
+      const categoryGroup = [];
+      matchingRecipes.push(categoryGroup);
+    }
+
+    // The following two functions are helpers for the succeeding loop
+
+    /**
+     * Checks to see if any user defined words are in the title of a recipe
+     * @param {Array} words - Words array made by user input
+     * @param {number} index - Recipe index
+     * @returns {boolean} - Whether any of the words in array words is in the title of a recipe
+     */
+    function matchingWords(words, index) {
+      return words.some((w) =>
+        recipes[index].metadata.title.toLowerCase().includes(w)
+      );
+    }
+
+    /**
+     *
+     * @param {Array} selectedCats - Array of categories from user input
+     * @param {Object} recipeCats - Object with parameters of categories in a recipe
+     * @returns {number} - Number of matches between user categories and recipe categories
+     */
+    function countMatches(selectedCats, recipeCats) {
+      let count = 0;
+      for (let e of selectedCats) {
+        if (recipeCats[e] === true) {
+          ++count;
+        }
+      }
+      return count;
+    }
+
+    // loop through all recipes, add any for which the title inclues at least
+    // one of the input words to the output and is within price parameters
+    for (let i = 0; i < recipes.length; ++i) {
+      if (
+        recipes[i] !== null &&
+        typeof recipes[i] !== "undefined" &&
+        Object.prototype.hasOwnProperty.call(recipes[i], "metadata") &&
+        Object.prototype.hasOwnProperty.call(recipes[i].metadata, "title") &&
+        recipes[i].info.pricePerServings * recipes[i].nutrients.totalServings >=
+          costMin &&
+        recipes[i].info.pricePerServings * recipes[i].nutrients.totalServings <=
+          costMax &&
+        matchingWords(words, i)
+      ) {
+        const count = countMatches(categories, recipes[i].categories);
+        matchingRecipes[count].push({ index: i, recipe: recipes[i] });
+      }
+    }
+
+    // concatenate rows of matchingRecipes into single array
+    // in order of most matches
+    let output = [];
+    for (let i = matchingRecipes.length - 1; i > 0; --i) {
+      output = output.concat(matchingRecipes[i]);
+    }
+
+    // sort if a sorting function was chosen
+    if (compareFunction !== null) {
+      output.sort(compareFunction);
+    }
+
+    return output;
   }
 }

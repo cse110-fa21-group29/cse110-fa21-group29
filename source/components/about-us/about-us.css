@@ -3,52 +3,59 @@ main {
 }
 
 #introduction-grid {
-  height: 1000px;
-  margin: 100px;
+  height: 800px;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 #introduction-title-grid {
-  height: 400px;
+  line-height: 200px;
   background-color: #68a1f6;
 }
+
 #introduction-title-grid-title {
   font-size: 100px;
-  line-height: 400px;
-  font-family: "Montserrat", Sans-serif;
+  font-family: "Sofia";
 }
 #introduction-bottom-grid {
-  height: 600px;
+  height: max-content;
   background: linear-gradient(110deg, #ffd753 40%, #e990d6 40%);
   display: flex;
-  justify-content: center;
+  overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+#introduction-bottom-grid::-webkit-scrollbar {
+  display: none;
 }
 
 #introduction-bottom-img {
   height: 400px;
-  margin-top: 100px;
-  margin-left: 20px;
+  width: 30vw;
+  min-width: 600px;
+  margin: 100px 4vw 100px 4vw;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+  background-position: center;
+  background-size: cover;
+  cursor: pointer;
+  background-image: url("/static/about-us/team29.jpg");
 }
 #introduction-bottom-text {
-  width: 300px;
-  margin-top: 150px;
-  margin-left: 7vw;
+  height: 400px;
+  width: 50vw;
+  margin: 100px 4vw 100px 4vw;
+  font-size: 1.25vw;
   text-align: left;
 }
 #our-team {
-  margin: 100px 100px 50px;
-  height: 400px;
+  line-height: 200px;
+  font-family: "Sofia";
   font-size: 100px;
   background-color: #41cad2;
-  line-height: 400px;
-}
-#team-img,
-#team-story {
-  width: 49%;
-  height: 200px;
-  padding: 50px;
-}
-#team-story {
-  text-align: left;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 #member-grid {
@@ -63,6 +70,7 @@ main {
   padding-bottom: 20px;
 }
 .member-img {
+  object-fit: cover;
   margin: 20px 0px;
   height: 266px;
   width: 100%;

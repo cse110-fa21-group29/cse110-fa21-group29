@@ -18,6 +18,14 @@
   font-style: normal;
   font-size: 30px;
   line-height: 50px;
+  padding-right: 10px;
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 775px) {
+  #home-page-link {
+    display: none;
+  }
 }
 
 a {
@@ -25,61 +33,20 @@ a {
   text-decoration: none;
 }
 
+.nav-link-container {
+  padding: 16px 12.5px 15px;
+}
+
 .nav-link {
-  display: inline-block;
-  line-height: 50px;
-  width: 150px;
-  height: 50px;
+  white-space: nowrap;
+  padding: 7px;
 }
 
-.nav-link:hover,
-#category-button:hover {
+.nav-link:hover {
   background: #dd8e8e;
+  border-radius: 7px;
 }
 
-#category-button {
-  height: 50px;
-  width: 150px;
-  line-height: 50px;
-}
-
-.category-link {
-  display: none;
-  height: 50px;
-  line-height: 50px;
-  background-color: white;
-  box-shadow: 5px 5px 2px 1px rgba(0, 0, 255, 0.2);
-}
-.category-link:hover {
-  background-color: rgb(255, 249, 197);
-}
-
-#category-dropdown:hover .category-link {
-  display: block;
-}
-#search-grid {
-  right: 10px;
-  position: absolute;
-  border: 1px solid rgb(155, 155, 155);
-  top: 10px;
-  height: 30px;
-  display: flex;
-}
-
-#search-button {
-  height: 30px;
-  cursor: pointer;
-  background-color: white;
-  color: white;
-  background-color: rgb(118, 118, 255);
-  border: none;
-}
-
-#search-input {
-  display: inline-block;
-  border: none;
-  height: 30px;
-}
 #place-holder {
   height: 50px;
 }

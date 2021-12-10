@@ -5,6 +5,22 @@ class AboutUs extends YummyRecipesComponent {
     super();
     this.htmlPath = "components/about-us/about-us.html";
   }
+
+  /**
+   * Initializes the about us page.
+   */
+  setupElement() {
+    const img = this.shadowRoot.getElementById("introduction-bottom-img");
+    img.addEventListener("click", () => {
+      if (
+        img.style.backgroundImage === 'url("/static/about-us/triscouch.jpg")'
+      ) {
+        img.style.backgroundImage = 'url("/static/about-us/team29.jpg")';
+      } else {
+        img.style.backgroundImage = 'url("/static/about-us/triscouch.jpg")';
+      }
+    });
+  }
 }
 
 customElements.define("about-us", AboutUs);

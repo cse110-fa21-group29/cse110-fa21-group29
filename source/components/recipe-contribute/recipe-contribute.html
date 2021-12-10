@@ -6,86 +6,107 @@
 <form id="contribute-form">
   <section id="left-side">
     <h1>Recipe Cover Image</h1>
-    <input type="file" id="submit-img" />
+    <div id="submit-img-box">
+      <label for="submit-img" id="submit-img-label">Upload Image</label>
+      <input type="file" id="submit-img" />
+    </div>
 
     <h1>Nutrients</h1>
     <div id="recipe-left-grid">
       <div>
-        <label for="input-colories">Calories</label><br />
+        <label for="input-colories"
+          >Calories<span class="red-star">*</span></label
+        ><br />
         <input
           type="number"
           min="0"
           step="0.01"
           id="input-colories"
           class="input-left-text"
+          required
         />
       </div>
       <div>
-        <label for="input-protein">Protein (in grams)</label><br />
+        <label for="input-protein"
+          >Protein (in grams)<span class="red-star">*</span></label
+        ><br />
         <input
           type="number"
           min="0"
           step="0.01"
           id="input-protein"
           class="input-left-text"
+          required
         />
       </div>
 
       <div>
-        <label for="input-fat">Fat (in grams)</label><br />
+        <label for="input-fat"
+          >Fat (in grams)<span class="red-star">*</span></label
+        ><br />
         <input
           type="number"
           min="0"
           step="0.01"
           id="input-fat"
           class="input-left-text"
+          required
         />
       </div>
       <div>
-        <label for="input-number-of-servings">Number of servings</label><br />
+        <label for="input-number-of-servings"
+          >Number of servings<span class="red-star">*</span></label
+        ><br />
         <input
           type="number"
           min="0"
           step="0.1"
           id="input-number-of-servings"
           class="input-left-text"
+          required
         />
       </div>
     </div>
     <h1>Categories</h1>
-
-    <input type="checkbox" id="input-vegan" class="category-checkbox" /><label
-      for="input-vegan"
-      class="category-label"
-      >Vegan</label
-    ><br />
-
-    <input
-      type="checkbox"
-      id="input-vegetarian"
-      class="category-checkbox"
-    /><label for="input-vegetarian" class="category-label">Vegetarian</label
-    ><br />
-
-    <input
-      type="checkbox"
-      id="input-gluten-free"
-      class="category-checkbox"
-    /><label for="input-gluten-free" class="category-label">Gluten-Free</label
-    ><br />
-
-    <input
-      type="checkbox"
-      id="input-high-protein"
-      class="category-checkbox"
-    /><label for="input-high-protein" class="category-label">High Protein</label
-    ><br />
-
-    <input type="checkbox" id="input-healthy" class="category-checkbox" /><label
-      for="input-healthy"
-      class="category-label"
-      >Healthy</label
-    >
+    <div class="category-line">
+      <input type="checkbox" id="input-vegan" class="category-checkbox" /><label
+        for="input-vegan"
+        class="category-label"
+        >Vegan</label
+      >
+    </div>
+    <div class="category-line">
+      <input
+        type="checkbox"
+        id="input-vegetarian"
+        class="category-checkbox"
+      /><label for="input-vegetarian" class="category-label">Vegetarian</label>
+    </div>
+    <div class="category-line">
+      <input
+        type="checkbox"
+        id="input-gluten-free"
+        class="category-checkbox"
+      /><label for="input-gluten-free" class="category-label"
+        >Gluten-Free</label
+      >
+    </div>
+    <div class="category-line">
+      <input
+        type="checkbox"
+        id="input-high-protein"
+        class="category-checkbox"
+      /><label for="input-high-protein" class="category-label"
+        >High Protein</label
+      >
+    </div>
+    <div class="category-line">
+      <input
+        type="checkbox"
+        id="input-healthy"
+        class="category-checkbox"
+      /><label for="input-healthy" class="category-label">Healthy</label>
+    </div>
   </section>
   <section id="right-side">
     <h1>Recipe General Information</h1>
@@ -151,6 +172,7 @@
       id="input-ingredient"
       class="right-textarea"
       placeholder="Put each ingredient on its own line."
+      required
     ></textarea>
 
     <h1>Directions<span class="red-star">*</span></h1>
@@ -159,9 +181,12 @@
       id="input-direction"
       class="right-textarea"
       placeholder="Put each step on its own line."
+      required
     ></textarea>
 
-    <button id="submit-button">Submit</button>
-    <button id="cancel-button">Cancel</button>
+    <div id="bottom-buttons">
+      <button id="submit-button">Submit</button>
+      <button id="cancel-button">Cancel</button>
+    </div>
   </section>
 </form>

@@ -1,17 +1,16 @@
 :host {
   height: 35vh;
   min-width: 23vh;
-  margin: 3vw 1.5vw;
+  max-width: 23vh;
   transition: 0.5s ease;
   cursor: pointer;
   border-radius: 18px;
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
+  box-shadow: 0.15vh 0.15vh 0.6vh rgba(0, 0, 0, 0.9);
   text-align: center;
 }
 
 :host(:hover) {
-  transform: scale(1.15);
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.6);
+  transform: scale(1.125);
 }
 
 .recipe-card-image {
@@ -26,7 +25,7 @@
 
 .recipe-card-name {
   margin: 0px;
-  height: 15%;
+  height: 20%;
   padding: 0 10px;
 }
 
@@ -34,7 +33,6 @@
   margin: auto;
   font-size: large;
   white-space: normal;
-  margin-bottom: 2px;
   position: relative;
   top: 50%;
   left: 50%;
@@ -46,7 +44,7 @@
 }
 .recipe-card-stats {
   margin: 0px;
-  height: 20%;
+  height: 15%;
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
 }
@@ -54,7 +52,6 @@
 .recipe-card-stats .stat {
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
   color: grey;
   font-size: small;

@@ -36,8 +36,8 @@ describe('Tests getUrlFromRoute from routing.js', () => {
     expect(router.getUrlFromRoute("about-us", [])).toBe("#/about-us");
   });
 
-  test("getUrlFromRoute: testing 'hands-free' '[]' returns '#/hands-free'", () => {
-    expect(router.getUrlFromRoute("hands-free", [])).toBe("#/hands-free");
+  test("getUrlFromRoute: testing 'cooking-mode' '[3]' returns '#/recipes/3/cooking-mode'", () => {
+    expect(router.getUrlFromRoute("cooking-mode", [3])).toBe("#/recipes/3/cooking-mode");
   });
 
   test("getUrlFromRoute: testing 'recipe-search' '[]' returns '#/recipes/search'", () => {
@@ -78,8 +78,8 @@ describe('Tests getRoutefromUrl from routing.js', () => {
     expect(router.getRoutefromUrl("#/about-us")).toBe("about-us");
   });
 
-  test("getRoutefromUrl: testing '#/hands-free' returns 'hands-free'", () => {
-    expect(router.getRoutefromUrl("#/hands-free")).toBe("hands-free");
+  test("getRoutefromUrl: testing '#/recipes/3/cooking-mode' returns 'cooking-mode'", () => {
+    expect(router.getRoutefromUrl("#/recipes/3/cooking-mode")).toBe("cooking-mode");
   });
 
   test("getRoutefromUrl: testing '#/recipes/search' returns 'recipe-search'", () => {
@@ -120,8 +120,8 @@ describe('Tests getParamsFromUrl from routing.js', () => {
     expect(router.getParamsFromUrl("#/about-us")).toStrictEqual([]);
   });
 
-  test("getParamsFromUrl: testing '#/hands-free' returns '[]'", () => {
-    expect(router.getParamsFromUrl("#/hands-free")).toStrictEqual([]);
+  test("getParamsFromUrl: testing '#/recipes/3/cooking-mode' returns '['3']'", () => {
+    expect(router.getParamsFromUrl("#/recipes/3/cooking-mode")).toStrictEqual(['3']);
   });
 
   test("getParamsFromUrl: testing '#/recipes/search' returns '[]'", () => {

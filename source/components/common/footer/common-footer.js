@@ -1,5 +1,6 @@
 import { YummyRecipesComponent } from "/components/core/yummy-recipes-component.js";
 
+/** Class that provides functionality to the footer. */
 class CommonFooter extends YummyRecipesComponent {
   constructor() {
     super();

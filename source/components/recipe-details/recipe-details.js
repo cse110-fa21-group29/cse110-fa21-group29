@@ -8,9 +8,7 @@ class RecipeDetails extends YummyRecipesComponent {
     super();
     this.htmlPath = "components/recipe-details/recipe-details.html";
   }
-  count = 0;
-  timeoutID;
-  timeron = 0;
+
   /**
    * Populates recipe details page with information from the database and adds
    * delete functionality.
@@ -19,47 +17,17 @@ class RecipeDetails extends YummyRecipesComponent {
    */
   async setupElement() {
     this.shadowRoot
-      .getElementById("hands-free-button")
+      .getElementById("cooking-mode-button")
       .addEventListener("click", () => {
         const routerEvent = new CustomEvent("router-navigate", {
           detail: {
-            route: "hands-free",
-            params: [this.routeParams[0]], // TODO: Add recipe ID in URL
+            route: "cooking-mode",
+            params: [this.routeParams[0]],
           },
           bubbles: true,
           composed: true,
         });
         document.dispatchEvent(routerEvent);
-      });
-    this.shadowRoot
-      .getElementById("timer-button")
-      .addEventListener("click", () => {
-        if (this.shadowRoot.getElementById("timer").style.display == "") {
-          this.shadowRoot.getElementById("timer").style.display = "flex";
-        } else {
-          this.shadowRoot.getElementById("timer").style.display = "";
-        }
-      });
-    this.shadowRoot
-      .getElementById("start-button")
-      .addEventListener("click", () => {
-        if (!this.timeron) {
-          this.timeron = 1;
-          this.timedCount();
-          this.shadowRoot.getElementById("start-button").innerHTML = "Stop";
-        } else {
-          this.shadowRoot.getElementById("start-button").innerHTML = "Start";
-          clearTimeout(this.timeoutID);
-          this.timeron = 0;
-        }
-      });
-    this.shadowRoot
-      .getElementById("reset-button")
-      .addEventListener("click", () => {
-        clearTimeout(this.timeoutID);
-        this.timeron = 0;
-        this.count = 0;
-        this.setTime();
       });
 
     // Grab recipe from database based on routing parameter
@@ -67,8 +35,17 @@ class RecipeDetails extends YummyRecipesComponent {
     let recipes = await database.getRecipes();
     let recipe = recipes[this.routeParams[0]];
 
-    // If recipe does not exist, then skip page setup.
-    if (recipe == null) {
+    // If recipe does not exist, then route back to home page
+    if (!recipe) {
+      const routerEvent = new CustomEvent("router-navigate", {
+        detail: {
+          route: "home-page",
+          params: [],
+        },
+        bubbles: true,
+        composed: true,
+      });
+      document.dispatchEvent(routerEvent);
       return;
     }
 
@@ -119,11 +96,34 @@ class RecipeDetails extends YummyRecipesComponent {
         }
       });
 
-    // Display recipe video if the recipe has a link
-    if (recipe.metadata.video != undefined && recipe.metadata.video != "") {
-      this.shadowRoot.getElementById("recipe-video").style.display = "block";
-      this.shadowRoot.getElementById("recipe-video").src =
-        recipe.metadata.video;
+    // Add video embed to directions if video exists
+    // Will not show by default (user must click "Switch to Video")
+    if (recipe.metadata.video && recipe.metadata.video !== "") {
+      const recipeVideoElement = document.createElement("iframe");
+      recipeVideoElement.setAttribute("id", "recipe-video");
+      recipeVideoElement.setAttribute("allowfullscreen", "true");
+      recipeVideoElement.setAttribute("src", recipe.metadata.video);
+      this.shadowRoot
+        .getElementById("recipe-video-container")
+        .appendChild(recipeVideoElement);
+
+      // Display video button
+      this.shadowRoot.getElementById("direction-video-button").style.display =
+        "block";
+
+      // Event handler for video button
+      this.shadowRoot
+        .getElementById("direction-video-button")
+        .addEventListener("click", () => {
+          this.switchToVideo();
+        });
+
+      // Event handler for text button
+      this.shadowRoot
+        .getElementById("direction-text-button")
+        .addEventListener("click", () => {
+          this.switchToText();
+        });
     }
 
     // This is the first row of the page, including the image and the author box
@@ -131,10 +131,15 @@ class RecipeDetails extends YummyRecipesComponent {
     this.shadowRoot.querySelector(".recipe-image").alt = recipe.metadata.title;
     this.shadowRoot.querySelector(".dish-name").innerHTML =
       recipe.metadata.title;
-    this.shadowRoot.querySelector(".author-name").innerHTML =
-      recipe.metadata.author;
-    this.shadowRoot.querySelector(".recipe-url").innerHTML =
-      recipe.spoonacularSourceUrl;
+    this.shadowRoot.querySelector(
+      ".author-name"
+    ).innerHTML = `By ${recipe.metadata.author}`;
+
+    if (recipe.spoonacularSourceUrl) {
+      this.shadowRoot.querySelector(".article-link").style.display = "block";
+      this.shadowRoot.querySelector(".article-link").href =
+        recipe.spoonacularSourceUrl;
+    }
 
     // Description box
     this.shadowRoot.querySelector(".description").innerHTML =
@@ -149,19 +154,19 @@ class RecipeDetails extends YummyRecipesComponent {
       recipe.nutrients.totalServings;
 
     // Category box
-    if (recipe.categories.vegan == false) {
+    if (!recipe.categories.vegan) {
       this.shadowRoot.querySelector("#vegan").style.display = "none";
     }
-    if (recipe.categories.vegetarian == false) {
+    if (!recipe.categories.vegetarian) {
       this.shadowRoot.querySelector("#vegetarian").style.display = "none";
     }
-    if (recipe.categories.glutenFree == false) {
+    if (!recipe.categories.glutenFree) {
       this.shadowRoot.querySelector("#gluten-free").style.display = "none";
     }
-    if (recipe.categories.highProtein == false) {
+    if (!recipe.categories.highProtein) {
       this.shadowRoot.querySelector("#high-protein").style.display = "none";
     }
-    if (recipe.categories.healthy == false) {
+    if (!recipe.categories.healthy) {
       this.shadowRoot.querySelector("#healthy").style.display = "none";
     }
 
@@ -176,42 +181,53 @@ class RecipeDetails extends YummyRecipesComponent {
     let ingredients = "";
 
     for (let i = 0; i < recipe.ingredients.length; i++) {
-      ingredients = ingredients + "<li>" + recipe.ingredients[i] + "</li>";
+      ingredients += "<li>" + recipe.ingredients[i] + "</li>";
     }
 
     this.shadowRoot.querySelector(".ingredients-list").innerHTML =
       "<ul>" + ingredients + "</ul>";
 
     // Direction box
-    this.shadowRoot.querySelector(".direction-list").innerHTML = recipe.steps;
-  }
-  /**
-   * help function for timer
-   */
-  timedCount() {
-    this.setTime();
-    this.count = this.count + 1;
-    this.timeoutID = setTimeout(this.timedCount.bind(this), 1000);
+    let directions = "";
+
+    for (let i = 0; i < recipe.steps.length; i++) {
+      directions += "<li>" + recipe.steps[i] + "</li>";
+    }
+
+    this.shadowRoot.querySelector(".direction-list").innerHTML =
+      "<ol>" + directions + "</ol>";
   }
 
   /**
-   * set timer
+   * Switches from text directions to video directions
    */
-  setTime() {
-    let hour = parseInt(this.count / 3600);
-    let minute = parseInt(this.count / 60);
-    let second = parseInt(this.count % 60);
-    if (hour < 10) {
-      hour = "0" + hour;
-    }
-    if (minute < 10) {
-      minute = "0" + minute;
-    }
-    if (second < 10) {
-      second = "0" + second;
-    }
-    this.shadowRoot.getElementById("timer-display").innerText =
-      hour + ":" + minute + ":" + second;
+  switchToVideo() {
+    // Toggle buttons
+    this.shadowRoot.getElementById("direction-video-button").style.display =
+      "none";
+    this.shadowRoot.getElementById("direction-text-button").style.display =
+      "block";
+
+    // Show video & hide text
+    this.shadowRoot.querySelector(".direction-list").style.display = "none";
+    this.shadowRoot.getElementById("recipe-video-container").style.display =
+      "block";
+  }
+
+  /**
+   * Switches from video directions to text directions
+   */
+  switchToText() {
+    // Toggle buttons
+    this.shadowRoot.getElementById("direction-video-button").style.display =
+      "block";
+    this.shadowRoot.getElementById("direction-text-button").style.display =
+      "none";
+
+    // Show video & hide text
+    this.shadowRoot.querySelector(".direction-list").style.display = "block";
+    this.shadowRoot.getElementById("recipe-video-container").style.display =
+      "none";
   }
 }
 
